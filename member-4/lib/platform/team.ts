@@ -1,0 +1,18 @@
+import { z } from 'zod';
+import { knowledge, roadmapFor, type Step as SourceStep } from '@/lib/integrations/knowledge';
+import type { UserProfile } from '@/lib/integrations/types';
+import type { CostData } from '@/lib/integrations/business-plan';
+const text=z.string().trim().max(2000);
+const date=z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine(v=>Number.isFinite(Date.parse(v+'T12:00:00Z'))&&new Date(v+'T12:00:00Z').toISOString().slice(0,10)===v,'Invalid date');
+export const profileSchema=z.object({
+ language:z.enum(['ar','en']),
+ personal:z.object({fullNameAr:text.min(1),fullNameEn:text.min(1),nationalId:z.string().regex(/^(\d{10})?$/).default(''),birthDate:date,gender:z.enum(['female','male']),phone:z.string().max(30),email:z.string().email(),city:z.string().trim().min(1).max(120)}).strict(),
+ business:z.object({nameAr:text.min(1),nameEn:text.min(1),sector:z.enum(['food','retail','tech','crafts','services','agriculture','tourism']),description:text.min(1),descriptionAr:text.optional(),legalForm:z.enum(['home_business','sole_proprietorship','llc']),homeBased:z.boolean(),premises:z.enum(['rented','owned']).default('rented'),stage:z.enum(['idea','prototype','revenue']),employeesPlanned:z.number().int().min(0).max(10000),wantsTradeName:z.boolean().default(false),startupCapitalJod:z.number().min(0).max(100000000),fundingNeededJod:z.number().min(0).max(100000000),targetCustomers:text.min(1),targetCustomersAr:text.optional(),plannedLaunch:z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/)}).strict(),
+}).strict().refine(p=>p.business.homeBased===(p.business.legalForm==='home_business'),'Home-based flag must agree with legal form');
+export const draftSchema=z.object({language:z.enum(['ar','en']).optional(),personal:profileSchema.shape.personal.partial().optional(),business:profileSchema.shape.business.partial().optional()}).strict();
+export type Task={id:string;step_key:string;title_ar:string;title_en:string;office:string;documents:string[];dependencies:string[];status:string;fee_min:number|null;fee_max:number|null;days:number|null;details:Record<string,unknown>;is_demo:boolean};
+export function summarize(tasks:Task[]) {const done=new Set(tasks.filter(t=>t.status==='done').map(t=>t.step_key));const steps=tasks.map(t=>({...t,locked:!t.dependencies.every(key=>done.has(key))}));return {steps,progress:tasks.length?Math.round(done.size/tasks.length*100):0,nextAction:steps.find(t=>t.status!=='done'&&!t.locked)||null};}
+export function teamEstimate(profile:UserProfile,snapshot?:Task[]):CostData & {range:{minJod:number;maxJod:number|null;unknownSteps:string[]};steps:ReturnType<typeof roadmapFor>;estimatedDays:number|null;scopeWarning:string|null;provenance:object} {
+ const steps=snapshot?snapshot.slice().sort((a,b)=>Number(a.details.order)-Number(b.details.order)).map(task=>task.details as unknown as SourceStep):roadmapFor(profile);const unknown=steps.filter(s=>s.fee.minJod===null||s.fee.maxJod===null).map(s=>s.id);
+ return {currency:'JOD',setup:steps.filter(s=>s.fee.minJod!==null).map(s=>({item:s.title,amountJod:s.fee.minJod!,kind:'estimate'})),monthly:[],range:{minJod:steps.reduce((n,s)=>n+(s.fee.minJod??0),0),maxJod:unknown.length?null:steps.reduce((n,s)=>n+(s.fee.maxJod??0),0),unknownSteps:unknown},steps,estimatedDays:steps.some(s=>s.days.value===null)?null:steps.reduce((n,s)=>n+(s.days.value??0),0),scopeWarning:!['Amman','عمّان','عمان'].includes(profile.personal.city)?'Municipal and chamber data includes Amman-specific rules; confirm the corresponding local authority.':null,provenance:{source:'Member 1 data via M5_Ameen',version:knowledge.version,verification:'team-supplied',feesAreRanges:true,monthlyCostsProvided:false}};
+}

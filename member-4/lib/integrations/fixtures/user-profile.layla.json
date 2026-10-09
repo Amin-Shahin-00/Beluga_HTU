@@ -1,0 +1,32 @@
+{
+  "userId": "00000000-0000-4000-8000-000000000001",
+  "language": "ar",
+  "personal": {
+    "fullNameAr": "ليلى أحمد محمود الخطيب",
+    "fullNameEn": "Layla Ahmad Mahmoud Al-Khatib",
+    "nationalId": "9991012345",
+    "birthDate": "1999-03-14",
+    "gender": "female",
+    "phone": "+962790000001",
+    "email": "layla@example.jo",
+    "city": "Amman"
+  },
+  "business": {
+    "nameAr": "حلويات ليلى",
+    "nameEn": "Layla's Sweets",
+    "sector": "food",
+    "description": "Homemade Jordanian sweets (maamoul, knafeh trays) sold by pre-order on Instagram and WhatsApp.",
+    "descriptionAr": "حلويات أردنية منزلية (معمول وصواني كنافة) تُباع بالطلب المسبق عبر إنستغرام وواتساب.",
+    "legalForm": "home_business",
+    "homeBased": true,
+    "premises": "rented",
+    "stage": "prototype",
+    "employeesPlanned": 1,
+    "wantsTradeName": true,
+    "startupCapitalJod": 1500,
+    "fundingNeededJod": 5000,
+    "targetCustomers": "Families and offices in West Amman ordering for Eid, weddings and events.",
+    "targetCustomersAr": "العائلات والمكاتب في غرب عمّان التي تطلب للأعياد والأعراس والمناسبات.",
+    "plannedLaunch": "2026-12"
+  }
+}
