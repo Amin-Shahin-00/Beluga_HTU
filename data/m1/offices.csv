@@ -1,10 +1,11 @@
-office_id,name_en,name_ar,city,hours,website
-MIT,Ministry of Industry Trade and Supply,وزارة الصناعة والتجارة والتموين,Amman,Sun-Thu 08:30-15:00,https://www.mit.gov.jo
-CCD,Companies Control Department,دائرة مراقبة الشركات,Amman,Sun-Thu 08:30-15:00,https://www.ccd.gov.jo
-GAM,Greater Amman Municipality,أمانة عمّان الكبرى,Amman,Sun-Thu 08:00-15:00,https://www.ammancity.gov.jo
-ACC,Amman Chamber of Commerce,غرفة تجارة عمّان,Amman,Sun-Thu 08:00-15:30,https://www.ammanchamber.org.jo
-ISTD,Income and Sales Tax Department,دائرة ضريبة الدخل والمبيعات,Amman,Sun-Thu 08:30-15:00,https://www.istd.gov.jo
-SSC,Social Security Corporation,المؤسسة العامة للضمان الاجتماعي,Amman,Sun-Thu 08:30-15:00,https://www.ssc.gov.jo
-MOH,Ministry of Health,وزارة الصحة,Amman,Sun-Thu 08:00-14:30,https://www.moh.gov.jo
-CDD,Civil Defense Directorate,مديرية الدفاع المدني,Amman,Sun-Thu 08:00-14:00,https://www.cdd.gov.jo
-CSPD,Civil Status and Passports Department,دائرة الأحوال المدنية والجوازات,Amman,Sun-Thu 08:00-15:00,https://www.cspd.gov.jo
+office_id,name_en,name_ar,city,address_en,address_ar,hours_en,hours_ar,phone,website,source_ids
+MIT,"Ministry of Industry, Trade and Supply (Commercial Registry)",وزارة الصناعة والتجارة والتموين (مديرية السجل التجاري),Amman,"34 King Hussein Street, Abdali; outside Amman use the MIT directorate in your governorate","شارع الملك حسين 34، العبدلي؛ خارج عمّان مديرية الصناعة والتجارة في محافظتك",Sun-Thu 8:30-15:30,الأحد-الخميس 8:30-3:30,+962 6 562 9030,https://www.mit.gov.jo,S1;S4
+CCD,Companies Control Department,دائرة مراقبة الشركات,Amman,"Amman; branches at the Zarqa, Irbid and Mafraq chambers of commerce, the MIT directorates in Karak and Madaba, and ASEZA in Aqaba","عمّان؛ فروع في غرف تجارة الزرقاء وإربد والمفرق ومديريات الصناعة والتجارة في الكرك ومأدبا وسلطة العقبة",,,,https://www.ccd.gov.jo,S1
+GAM,Greater Amman Municipality (vocational licences),أمانة عمّان الكبرى (رخص المهن),Amman,The GAM district office for your home or shop; outside Amman your municipality,منطقة الأمانة التابع لها منزلك أو محلك؛ خارج عمّان البلدية,,,,https://www.ammancity.gov.jo,S1;S2
+ACC,Amman Chamber of Commerce,غرفة تجارة عمّان,Amman,Amman,عمّان,,,,https://www.ammanchamber.org.jo,S3
+ISTD,Income and Sales Tax Department,دائرة ضريبة الدخل والمبيعات,Amman,Online e-services or any ISTD office,الخدمات الإلكترونية أو أي مكتب للدائرة,,,,https://www.istd.gov.jo,S7
+SSC,Social Security Corporation,المؤسسة العامة للضمان الاجتماعي,Amman,Any SSC branch,أي فرع للمؤسسة,,,,https://www.ssc.gov.jo,S1
+JFDA,Jordan Food and Drug Administration,المؤسسة العامة للغذاء والدواء,Amman,Amman,عمّان,,,"Hotline 117114, WhatsApp 0795632000",https://www.jfda.jo,S6
+CSPD,Civil Status and Passports Department,دائرة الأحوال المدنية والجوازات,Amman,Any CSPD office,أي مكتب للدائرة,,,,https://www.cspd.gov.jo,
+JEDCO,Jordan Enterprise Development Corporation,المؤسسة الأردنية لتطوير المشاريع الاقتصادية,Amman,Amman,عمّان,,,,https://www.jedco.gov.jo,
+MOL,Ministry of Labour,وزارة العمل,Amman,Amman,عمّان,,,,https://www.mol.gov.jo,S1

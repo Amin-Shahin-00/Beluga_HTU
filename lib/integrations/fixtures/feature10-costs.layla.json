@@ -1,0 +1,22 @@
+{
+  "note": "Dummy output of feature 10 (cost calculator) until its owner shares the real format. Registration lines use the official fees in knowledge.json; the rest are estimates.",
+  "currency": "JOD",
+  "setup": [
+    { "item": { "en": "Trade name (search + registration)", "ar": "الاسم التجاري (تحرٍّ + تسجيل)" }, "amountJod": 30, "kind": "official" },
+    { "item": { "en": "Commercial registration + certificate", "ar": "القيد في السجل التجاري + الشهادة" }, "amountJod": 15, "kind": "official" },
+    { "item": { "en": "Home-based vocational licence (upper bound)", "ar": "رخصة المهن المنزلية (الحد الأعلى)" }, "amountJod": 50, "kind": "official" },
+    { "item": { "en": "Second oven", "ar": "فرن إضافي" }, "amountJod": 450, "kind": "estimate" },
+    { "item": { "en": "Stand mixer", "ar": "عجانة كهربائية" }, "amountJod": 180, "kind": "estimate" },
+    { "item": { "en": "Fridge for ingredients", "ar": "ثلاجة للمواد الخام" }, "amountJod": 320, "kind": "estimate" },
+    { "item": { "en": "Kitchen fit-out to JFDA conditions (tiles, extractor fan, window screens)", "ar": "تجهيز المطبخ حسب شروط الغذاء والدواء (بلاط، شفاط، مناخل)" }, "amountJod": 600, "kind": "estimate" },
+    { "item": { "en": "First packaging stock and labels", "ar": "مخزون التغليف والملصقات الأول" }, "amountJod": 200, "kind": "estimate" }
+  ],
+  "monthly": [
+    { "item": { "en": "Ingredients", "ar": "المواد الخام" }, "amountJod": 350, "kind": "estimate" },
+    { "item": { "en": "Packaging", "ar": "التغليف" }, "amountJod": 80, "kind": "estimate" },
+    { "item": { "en": "Delivery", "ar": "التوصيل" }, "amountJod": 60, "kind": "estimate" },
+    { "item": { "en": "Instagram ads", "ar": "إعلانات إنستغرام" }, "amountJod": 50, "kind": "estimate" },
+    { "item": { "en": "Gas and electricity (business share)", "ar": "الغاز والكهرباء (حصة المشروع)" }, "amountJod": 40, "kind": "estimate" }
+  ],
+  "expectedMonthlyRevenueJod": 900
+}

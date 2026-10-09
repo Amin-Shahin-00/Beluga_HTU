@@ -9,14 +9,17 @@ export type Bilingual = { ar: string; en: string };
 export type DocType =
   | "national_id"
   | "passport"
+  | "service_booklet"
   | "trade_name_certificate"
   | "registration_certificate"
+  | "chamber_certificate"
   | "lease_contract"
-  | "home_business_consent"
-  | "health_certificate"
+  | "building_permit"
+  | "inspection_undertaking"
+  | "no_disturbance_undertaking"
+  | "jfda_approval"
   | "memorandum_of_association"
   | "bank_capital_letter"
-  | "civil_defense_approval"
   | "unknown";
 
 export interface OcrFields {
@@ -75,13 +78,18 @@ export interface UserProfile {
     nameEn: string;
     sector: Sector;
     description: string;
+    /** Arabic versions of the free-text answers, if the wizard collected them. */
+    descriptionAr?: string;
     legalForm: LegalForm;
     homeBased: boolean;
     stage: Stage;
     employeesPlanned: number;
+    /** Registers a trade name instead of trading under the owner's own name. */
+    wantsTradeName?: boolean;
     startupCapitalJod: number;
     fundingNeededJod: number;
     targetCustomers: string;
+    targetCustomersAr?: string;
     /** yyyy-mm */
     plannedLaunch: string;
   };

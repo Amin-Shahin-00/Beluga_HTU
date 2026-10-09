@@ -16,36 +16,25 @@
   },
   {
     "fileId": "10000000-0000-4000-8000-000000000002",
+    "fileName": "commercial-register.jpg",
+    "docType": "registration_certificate",
+    "fields": {
+      "name": "ليل? أحم? الخ?يب",
+      "documentNumber": "2?41?7"
+    },
+    "confidence": 0.41,
+    "imageQuality": 0.32
+  },
+  {
+    "fileId": "10000000-0000-4000-8000-000000000003",
     "fileName": "lease-contract.pdf",
     "docType": "lease_contract",
     "fields": {
       "name": "ليلى أحمد محمود الخطيب",
-      "issueDate": "2026-01-01",
-      "expiryDate": "2026-12-31"
+      "issueDate": "2025-09-01",
+      "expiryDate": "2026-08-31"
     },
-    "confidence": 0.85,
-    "imageQuality": 0.8
-  },
-  {
-    "fileId": "10000000-0000-4000-8000-000000000003",
-    "fileName": "health-certificate.jpg",
-    "docType": "health_certificate",
-    "fields": {
-      "name": "ليلى أحمد الخطيب",
-      "issueDate": "2025-06-01",
-      "expiryDate": "2026-06-01"
-    },
-    "confidence": 0.9,
-    "imageQuality": 0.84
-  },
-  {
-    "fileId": "10000000-0000-4000-8000-000000000004",
-    "fileName": "neighbours-consent.jpg",
-    "docType": "home_business_consent",
-    "fields": {
-      "name": "ليل? أحم? الخ?يب"
-    },
-    "confidence": 0.41,
-    "imageQuality": 0.32
+    "confidence": 0.86,
+    "imageQuality": 0.81
   }
 ]

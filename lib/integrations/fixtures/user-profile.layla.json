@@ -16,13 +16,16 @@
     "nameEn": "Layla's Sweets",
     "sector": "food",
     "description": "Homemade Jordanian sweets (maamoul, knafeh trays) sold by pre-order on Instagram and WhatsApp.",
+    "descriptionAr": "حلويات أردنية منزلية (معمول وصواني كنافة) تُباع بالطلب المسبق عبر إنستغرام وواتساب.",
     "legalForm": "home_business",
     "homeBased": true,
     "stage": "prototype",
     "employeesPlanned": 1,
+    "wantsTradeName": true,
     "startupCapitalJod": 1500,
     "fundingNeededJod": 5000,
     "targetCustomers": "Families and offices in West Amman ordering for Eid, weddings and events.",
+    "targetCustomersAr": "العائلات والمكاتب في غرب عمّان التي تطلب للأعياد والأعراس والمناسبات.",
     "plannedLaunch": "2026-12"
   }
 }

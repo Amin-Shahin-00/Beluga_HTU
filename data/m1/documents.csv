@@ -1,11 +1,14 @@
-doc_id,name_en,name_ar,issued_by,has_expiry,ocr_doc_type
-national_id,National ID card,البطاقة الشخصية,CSPD,yes,national_id
-passport,Passport,جواز السفر,CSPD,yes,passport
-trade_name_certificate,Trade name reservation certificate,شهادة حجز الاسم التجاري,MIT,yes,trade_name_certificate
-registration_certificate,Business registration certificate,شهادة تسجيل المؤسسة,MIT,no,registration_certificate
-lease_contract,Lease contract or property deed,عقد الإيجار أو سند الملكية,landlord,yes,lease_contract
-home_business_consent,Building owner and neighbours consent,موافقة مالك العقار والجيران,landlord,no,home_business_consent
-health_certificate,Food handler health certificate,الشهادة الصحية,MOH,yes,health_certificate
-memorandum_of_association,Memorandum of association,عقد التأسيس,CCD,no,memorandum_of_association
-bank_capital_letter,Bank letter confirming capital deposit,كتاب البنك بإيداع رأس المال,bank,no,bank_capital_letter
-civil_defense_approval,Civil Defense approval,موافقة الدفاع المدني,CDD,yes,civil_defense_approval
+doc_id,name_en,name_ar,issued_by,issued_by_step,has_expiry,ocr_doc_type,notes_en,notes_ar
+national_id,National ID card,البطاقة الشخصية,CSPD,,yes,national_id,Non-Jordanians use a valid passport.,لغير الأردنيين جواز سفر ساري المفعول.
+passport,Passport,جواز السفر,CSPD,,yes,passport,,
+service_booklet,Military service booklet (deferred),دفتر خدمة العلم (مؤجل),CSPD,,no,service_booklet,Only for Jordanian males born in 1989 or later.,فقط للذكور الأردنيين مواليد 1989 فما فوق.
+trade_name_certificate,Trade name certificate,شهادة تسجيل الاسم التجاري,MIT,reserve_trade_name,no,trade_name_certificate,,
+registration_certificate,Commercial register certificate,شهادة السجل التجاري,MIT,register_sole_proprietorship;register_llc,no,registration_certificate,,
+chamber_certificate,Chamber of Commerce membership certificate,شهادة الانتساب لغرفة التجارة,ACC,chamber_membership,yes,chamber_certificate,,
+lease_contract,"Lease contract, owner's written consent, or title deed",عقد الإيجار أو موافقة المالك الخطية أو سند الملكية,landlord,,yes,lease_contract,,
+building_permit,Occupancy permit or zoning plan,إذن الإشغال أو المخطط التنظيمي,GAM,,no,building_permit,,
+inspection_undertaking,Undertaking to allow municipal inspection,تعهد بالسماح لموظفي الأمانة بالتفتيش,applicant,,no,inspection_undertaking,Can be signed inside Bedaya.,يمكن توقيعه داخل بداية.
+no_disturbance_undertaking,Undertaking not to disturb neighbours and to follow the licence conditions,تعهد بعدم الإزعاج والالتزام بشروط الترخيص,applicant,,no,no_disturbance_undertaking,Can be signed inside Bedaya.,يمكن توقيعه داخل بداية.
+jfda_approval,JFDA approval for home food production,موافقة المؤسسة العامة للغذاء والدواء,JFDA,jfda_home_food_license,yes,jfda_approval,,
+memorandum_of_association,Memorandum and articles of association,عقد التأسيس والنظام الأساسي,partners,,no,memorandum_of_association,,
+bank_capital_letter,Bank letter proving at least 50% of each partner's share is deposited,كتاب بنكي يثبت إيداع 50% على الأقل من حصة كل شريك,bank,,no,bank_capital_letter,,

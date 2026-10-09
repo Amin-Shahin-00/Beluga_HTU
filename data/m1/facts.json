@@ -1,0 +1,191 @@
+[
+  {
+    "id": "home_area",
+    "kind": "answer",
+    "match": [["area", "space", "square met", "m2", "m²", "how big", "size", "مساحة", "مساحه", "متر"]],
+    "text": {
+      "en": "You may use up to 15% of your home's area for the business, and no more than 25 m². The work must stay inside the home's enclosed rooms (not balconies, garages or the yard), without structural changes.",
+      "ar": "يمكنك استغلال 15% من مساحة المنزل كحد أقصى وبما لا يزيد عن 25 متراً مربعاً. يجب أن يبقى العمل داخل حدود المنزل المغلقة (وليس في الشرفة أو الكراج أو الحديقة) ودون أي تغيير إنشائي."
+    },
+    "officeIds": ["GAM"],
+    "sourceIds": ["S1", "S2"]
+  },
+  {
+    "id": "home_employees",
+    "kind": "answer",
+    "match": [["employ", "hire", "staff", "worker", "how many people", "موظف", "عامل", "عمال", "اوظف", "أوظف", "توظيف", "اشغل", "أشغل"]],
+    "text": {
+      "en": "A home-based business may employ one person to work with you inside the home, and the total number of partners and employees working in the home cannot exceed 3.",
+      "ar": "يسمح للمشروع المنزلي بتشغيل عامل واحد يعمل معك داخل المنزل، ولا يجوز أن يزيد مجموع الشركاء والموظفين العاملين داخل المنزل عن 3 أشخاص."
+    },
+    "officeIds": ["GAM"],
+    "sourceIds": ["S1"]
+  },
+  {
+    "id": "home_customers",
+    "kind": "answer",
+    "boost": 20,
+    "match": [["customer", "client", "visitor", "receive", "display", "زبائن", "زباين", "زبون", "عملاء", "عميل", "استقبال", "استقبل", "اعرض", "أعرض"]],
+    "text": {
+      "en": "It depends on the activity. Food businesses inside Greater Amman may not display products or receive customers at home, but you may hand over finished products from home. Handicrafts may display products and receive customers, and intellectual professions and home services may receive clients within normal residential limits.",
+      "ar": "يعتمد ذلك على نوع المهنة. لا يجوز لمشاريع تصنيع الأغذية ضمن أمانة عمّان عرض المنتجات أو استقبال الزبائن في المنزل، لكن يسمح بتسليم المنتجات الجاهزة من المنزل. أما الحرف اليدوية فيسمح لها بعرض المنتجات واستقبال الزبائن، ويسمح للمهن الفكرية وخدمات المنازل باستقبال العملاء ضمن الحدود المألوفة للاستخدام السكني."
+    },
+    "officeIds": ["GAM"],
+    "sourceIds": ["S1"]
+  },
+  {
+    "id": "home_sign",
+    "kind": "answer",
+    "match": [["sign", "board", "banner", "قارمة", "لافتة", "يافطة", "لوحة"]],
+    "text": {
+      "en": "Only a small sign of up to 15 × 5 cm on the home's door is allowed, showing the licence number and profession. Signs on the building are not allowed.",
+      "ar": "يسمح فقط بقارمة على باب المنزل لا تتجاوز 15 × 5 سم تبين رقم الرخصة والمهنة، ولا يسمح بأي لافتة على المبنى."
+    },
+    "officeIds": ["GAM"],
+    "sourceIds": ["S1", "S2"]
+  },
+  {
+    "id": "home_food_allowed",
+    "kind": "answer",
+    "match": [
+      ["bakery", "bake", "cake", "sweets", "dessert", "pastr", "biscuit", "pickle", "jam", "jameed", "food", "kitchen", "cook", "حلويات", "مخبوزات", "كيك", "معجنات", "بسكويت", "مخلل", "كبيس", "مربى", "جميد", "طعام", "اكل", "أكل", "مطبخ", "طبخ", "غذائي"],
+      ["home", "house", "منزل", "البيت", "بيت", "منزلي"]
+    ],
+    "text": {
+      "en": "Yes. Food activities allowed from home include home-baked goods (cakes, pastries, biscuits, sweets), jams, pickles, jameed, prepared vegetables, and herbs and legumes, all made by hand. You first need JFDA approval (Jordan Food and Drug Administration), then the home-based vocational licence from GAM (20-50 JOD, about 3 working days). Food businesses in Amman can't receive customers at home.",
+      "ar": "نعم. من المهن الغذائية المسموحة من المنزل: المخبوزات المنزلية (الكعك والمعجنات والكيك والبسكويت والحلويات)، والمربيات، والكبيس، والجميد، وتحضير الخضار، والأعشاب والبقوليات، وكلها يدوياً. تحتاج أولاً موافقة المؤسسة العامة للغذاء والدواء، ثم رخصة المهن المنزلية من أمانة عمّان (20 إلى 50 ديناراً، خلال 3 أيام عمل تقريباً). لا يجوز للمشاريع الغذائية في عمّان استقبال الزبائن في المنزل."
+    },
+    "officeIds": ["JFDA", "GAM"],
+    "sourceIds": ["S1", "S2", "S6"]
+  },
+  {
+    "id": "home_allowed_activities",
+    "kind": "answer",
+    "match": [
+      ["what business", "which business", "what kind", "which activit", "what activit", "allowed", "permitted", "what can i", "اي مهن", "أي مهن", "ما المهن", "شو المهن", "المهن المسموح", "مسموح", "شو بقدر", "ممكن اشتغل"],
+      ["home", "house", "منزل", "البيت", "بيت", "منزلي"]
+    ],
+    "text": {
+      "en": "GAM allows four groups of activities from home: intellectual professions (consulting, design, translation, IT, online selling), handicrafts (knitting, embroidery, pottery, soap, candles, leatherwork), food production (home-baked goods, jams, pickles, jameed, prepared vegetables, herbs and legumes, all by hand), and home services (electrical repair, maintenance, cleaning, home nursing). Some need a prior approval, for example JFDA for food.",
+      "ar": "تسمح الأمانة بأربع فئات من المهن من المنزل: المهن الفكرية (الاستشارات والتصميم والترجمة وتكنولوجيا المعلومات والبيع عبر الإنترنت)، والحرف اليدوية (الحياكة والتطريز والخزف والصابون والشموع والأشغال الجلدية)، وتصنيع الأغذية (المخبوزات المنزلية والمربيات والكبيس والجميد وتحضير الخضار والأعشاب والبقوليات يدوياً)، وخدمات المنازل (تصليح الكهرباء والصيانة والتنظيف والتمريض المنزلي). بعضها يحتاج موافقة مسبقة، مثل موافقة الغذاء والدواء للمهن الغذائية."
+    },
+    "officeIds": ["GAM"],
+    "sourceIds": ["S1"]
+  },
+  {
+    "id": "license_renewal",
+    "kind": "answer",
+    "match": [["renew", "expire", "every year", "annual", "تجديد", "اجدد", "أجدد", "تنتهي", "سنوي"]],
+    "text": {
+      "en": "Renew the vocational licence every year by the end of February. A late renewal adds 20% of the fee until the end of June, and 50% after that.",
+      "ar": "جدّد رخصة المهن سنوياً قبل نهاية شهر شباط. يضاف 20% من الرسم عند التأخير حتى نهاية حزيران، و50% بعد ذلك."
+    },
+    "officeIds": ["GAM"],
+    "sourceIds": ["S1"]
+  },
+  {
+    "id": "ssc_mandatory",
+    "kind": "answer",
+    "match": [
+      ["social security", "ssc", "ضمان"],
+      ["alone", "myself", "on my own", "have to", "must", "mandatory", "do i need", "required", "need to", "لحالي", "لوحدي", "وحدي", "لازم", "الزامي", "إلزامي", "مضطر", "هل يجب", "بحتاج", "احتاج", "أحتاج"]
+    ],
+    "text": {
+      "en": "Yes. Social security enrolment is mandatory for the owner of a sole proprietorship who works in it, even if you work alone, and for every employee once you have one or more workers. Contributions are paid monthly, within 15 days of the following month.",
+      "ar": "نعم. الاشتراك في الضمان الاجتماعي إلزامي لمالك المؤسسة الفردية الذي يعمل فيها حتى لو كان يعمل وحده، ولكل عامل عندما يكون لديك عامل واحد أو أكثر. تُدفع الاشتراكات شهرياً خلال 15 يوماً من الشهر التالي."
+    },
+    "officeIds": ["SSC"],
+    "sourceIds": ["S1"]
+  },
+  {
+    "id": "min_capital",
+    "kind": "answer",
+    "match": [
+      ["capital", "رأس المال", "راس المال", "رأسمال", "راسمال"],
+      ["minimum", "least", "how much", "lowest", "الحد الادنى", "الحد الأدنى", "اقل", "أقل", "كم"]
+    ],
+    "text": {
+      "en": "The minimum capital for an LLC is 1 JOD. A sole proprietorship declares at least 1,000 JOD, with no deposit required. General and limited partnerships need at least 1,000 JOD.",
+      "ar": "الحد الأدنى لرأس مال الشركة ذات المسؤولية المحدودة دينار واحد (1 دينار). المؤسسة الفردية تصرّح برأس مال لا يقل عن 1,000 دينار ولا يشترط إيداعه. وشركات التضامن والتوصية البسيطة حدها الأدنى 1,000 دينار."
+    },
+    "officeIds": ["CCD", "MIT"],
+    "sourceIds": ["S1"]
+  },
+  {
+    "id": "sales_tax",
+    "kind": "answer",
+    "match": [["sales tax", "gst", "vat", "ضريبة المبيعات", "المبيعات"]],
+    "text": {
+      "en": "You must register for general sales tax once your taxable sales over 12 consecutive months reach 75,000 JOD (trade), 50,000 JOD (industry) or 30,000 JOD (services). Importers must register regardless of sales. Confirm current thresholds with ISTD.",
+      "ar": "يجب التسجيل في الضريبة العامة على المبيعات إذا بلغت مبيعاتك الخاضعة خلال 12 شهراً متتالية 75,000 دينار للقطاع التجاري، أو 50,000 للصناعي، أو 30,000 للخدمي. المستورد يسجل مهما بلغت مبيعاته. تأكد من الحدود الحالية لدى دائرة ضريبة الدخل والمبيعات."
+    },
+    "officeIds": ["ISTD"],
+    "sourceIds": ["S1"]
+  },
+  {
+    "id": "llc_lawyer_auditor",
+    "kind": "answer",
+    "match": [["lawyer", "attorney", "auditor", "محامي", "محام", "مدقق"]],
+    "text": {
+      "en": "An LLC must appoint an auditor. It also needs a lawyer if its capital exceeds 20,000 JOD. General and limited partnerships need a lawyer only above 50,000 JOD.",
+      "ar": "يجب على الشركة ذات المسؤولية المحدودة تعيين مدقق حسابات، ويلزمها محامٍ إذا زاد رأس مالها عن 20,000 دينار. أما شركات التضامن والتوصية البسيطة فلا تحتاج محامياً إلا إذا زاد رأس المال عن 50,000 دينار."
+    },
+    "officeIds": ["CCD"],
+    "sourceIds": ["S1"]
+  },
+  {
+    "id": "legal_forms",
+    "kind": "answer",
+    "match": [["legal form", "which type", "what type", "difference", "types of", "الفرق", "شكل قانوني", "الشكل القانوني", "نوع الشركة", "انواع", "أنواع"]],
+    "text": {
+      "en": "There are four common legal forms. A sole proprietorship is one owner with unlimited personal liability (registered at MIT). General and limited partnerships have 2-20 partners (registered at the Companies Control Department). An LLC separates your personal assets from the company's debts, needs only 1 JOD of capital, but must appoint an auditor (also registered at the Companies Control Department). A home-based business can use any of these forms.",
+      "ar": "هناك أربعة أشكال قانونية شائعة. المؤسسة الفردية يملكها شخص واحد وهو مسؤول بأمواله الشخصية (تُسجل في وزارة الصناعة والتجارة). شركة التضامن وشركة التوصية البسيطة من 2 إلى 20 شريكاً (تُسجلان في دائرة مراقبة الشركات). الشركة ذات المسؤولية المحدودة تفصل ذمتك المالية عن ديون الشركة، ويكفي رأس مال دينار واحد، لكن يلزمها مدقق حسابات (وتُسجل في دائرة مراقبة الشركات). ويمكن للمشروع المنزلي أن يتخذ أياً من هذه الأشكال."
+    },
+    "officeIds": ["MIT", "CCD"],
+    "sourceIds": ["S1"]
+  },
+  {
+    "id": "unknown_financing",
+    "kind": "unknown_redirect",
+    "match": [["loan", "financ", "grant", "قرض", "قروض", "تمويل", "منحة"]],
+    "text": {
+      "en": "I don't have verified information about loans or financing. The Jordan Enterprise Development Corporation (JEDCO) supports small businesses, and Bedaya can match you with incubators that offer funding.",
+      "ar": "لا تتوفر لدي معلومات موثقة عن القروض أو التمويل. يمكنك مراجعة المؤسسة الأردنية لتطوير المشاريع الاقتصادية (جيدكو) التي تدعم المشاريع الصغيرة، كما يمكن لبداية أن تقترح عليك حاضنات تقدم تمويلاً."
+    },
+    "officeIds": ["JEDCO"],
+    "sourceIds": []
+  },
+  {
+    "id": "unknown_tax_rate",
+    "kind": "unknown_redirect",
+    "match": [["tax rate", "income tax", "rate", "percentage", "how much tax", "نسبة الضريبة", "ضريبة الدخل", "نسبة", "كم ضريبة"]],
+    "text": {
+      "en": "I don't have verified information about income tax rates; they depend on your business type and income. Please ask the Income and Sales Tax Department (ISTD).",
+      "ar": "لا تتوفر لدي معلومات موثقة عن نسب ضريبة الدخل، فهي تعتمد على نوع نشاطك ودخلك. يرجى مراجعة دائرة ضريبة الدخل والمبيعات."
+    },
+    "officeIds": ["ISTD"],
+    "sourceIds": []
+  },
+  {
+    "id": "unknown_work_permit",
+    "kind": "unknown_redirect",
+    "match": [["work permit", "foreign worker", "non-jordanian worker", "تصريح عمل", "وافد", "عامل اجنبي", "عامل أجنبي"]],
+    "text": {
+      "en": "I don't have verified information about work permits. Hiring a non-Jordanian worker needs the Ministry of Labour's approval, so please ask the Ministry of Labour.",
+      "ar": "لا تتوفر لدي معلومات موثقة عن تصاريح العمل. تشغيل عامل غير أردني يحتاج موافقة وزارة العمل، لذا يرجى مراجعة وزارة العمل."
+    },
+    "officeIds": ["MOL"],
+    "sourceIds": ["S1"]
+  },
+  {
+    "id": "unknown_trademark",
+    "kind": "unknown_redirect",
+    "match": [["trademark", "trade mark", "logo", "علامة تجارية", "العلامة التجارية", "شعار"]],
+    "text": {
+      "en": "I don't have verified information about trademark registration. Please ask the Ministry of Industry, Trade and Supply.",
+      "ar": "لا تتوفر لدي معلومات موثقة عن تسجيل العلامات التجارية. يرجى مراجعة وزارة الصناعة والتجارة والتموين."
+    },
+    "officeIds": ["MIT"],
+    "sourceIds": []
+  }
+]

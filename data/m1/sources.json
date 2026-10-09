@@ -1,0 +1,51 @@
+[
+  {
+    "id": "S1",
+    "title": { "en": "Your guide to starting a business from home (GAM, MIT and Ministry of Municipal Affairs)", "ar": "دليلك لبدء عملك من المنزل (أمانة عمان الكبرى ووزارة الصناعة والتجارة والتموين ووزارة الشؤون البلدية)" },
+    "url": "https://www.ammancity.gov.jo/site_doc/HBBsBook.pdf",
+    "accessed": "2026-10-09",
+    "note": "Official guide. Source of the registration steps, documents, LLC fees, home-business conditions and obligations."
+  },
+  {
+    "id": "S2",
+    "title": { "en": "GAM news: 351 home-based vocational licences issued", "ar": "الأمانة: إصدار 351 رخصة مهن منزلية" },
+    "url": "https://media.ammancity.gov.jo/Ar/NewsDetails/%D8%A7%D9%84%D8%A3%D9%85%D8%A7%D9%86%D8%A9___%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1_351_%D8%B1%D8%AE%D8%B5%D8%A9_%D9%85%D9%87%D9%86_%D9%85%D9%86%D8%B2%D9%84%D9%8A%D8%A9",
+    "accessed": "2026-10-09",
+    "note": "Home licence fee 20-50 JOD, 3-day processing, JFDA prior approval for food."
+  },
+  {
+    "id": "S3",
+    "title": { "en": "Amman Chamber of Commerce: registration terms and fees", "ar": "غرفة تجارة عمان: شروط التسجيل والرسوم" },
+    "url": "https://ammanchamber.org.jo/eservice/registrationterms",
+    "accessed": "2026-10-09",
+    "note": "Membership documents and first-registration / annual fees by capital."
+  },
+  {
+    "id": "S4",
+    "title": { "en": "Jordan e-Government portal: registering a trade name (MIT)", "ar": "بوابة الحكومة الإلكترونية: تسجيل اسم تجاري (وزارة الصناعة والتجارة والتموين)" },
+    "url": "https://portal.jordan.gov.jo/wps/portal/Home/GovernmentEntities/Ministries/MinistryServiceDetails_ar/ministry%20of%20industry%20and%20trade/services/registering%20trade%20names?lang=ar",
+    "accessed": "2026-10-09",
+    "note": "Read through a search index because the portal blocks direct fetches: 10 JOD name search, 20 JOD registration, MIT hours and address. Re-check on the page."
+  },
+  {
+    "id": "S5",
+    "title": { "en": "Jordan e-Government portal: registering a sole proprietorship (MIT)", "ar": "بوابة الحكومة الإلكترونية: تسجيل مؤسسة فردية" },
+    "url": "https://portal.jordan.gov.jo/wps/portal/Home/GovernmentEntities/Ministries/MinistryServiceDetails_ar/ministry%20of%20industry%20and%20trade/services/individual%20institutions%20registration?lang=ar",
+    "accessed": "2026-10-09",
+    "note": "Registration fee 10-40 JOD by capital plus 5 JOD certificate. Matches S1."
+  },
+  {
+    "id": "S6",
+    "title": { "en": "JFDA statement on licensing home food preparation (Al-Mamlaka TV, 19 May 2026)", "ar": "المؤسسة العامة للغذاء والدواء حول ترخيص إعداد الغذاء من المنزل (قناة المملكة، 19 أيار 2026)" },
+    "url": "https://www.almamlakatv.com/news/199806-",
+    "accessed": "2026-10-09",
+    "note": "2024 instructions; documents: commercial register, zoning plan or lease, ID; inspection and lab samples; hotline 117114."
+  },
+  {
+    "id": "S7",
+    "title": { "en": "ISTD guide to electronic services 2024", "ar": "دائرة ضريبة الدخل والمبيعات: الدليل الإرشادي للخدمات الإلكترونية 2024" },
+    "url": "https://www.istd.gov.jo/ebv4.0/root_storage/en/eb_list_page/guide_for_electronic_services_2024.pdf",
+    "accessed": "2026-10-09",
+    "note": "First-time tax number registration is an online service."
+  }
+]

@@ -55,9 +55,8 @@ create index if not exists consent_log_user_idx on consent_log (user_id, purpose
 -- Seed: Layla (user 00000000-0000-4000-8000-000000000001), same files as lib/integrations/fixtures/ocr-results.layla.json
 insert into documents (id, user_id, doc_type, file_name, storage_path, mime_type, status) values
   ('10000000-0000-4000-8000-000000000001', '00000000-0000-4000-8000-000000000001', 'national_id', 'layla-national-id.jpg', 'uploads/layla/national-id.jpg', 'image/jpeg', 'uploaded'),
-  ('10000000-0000-4000-8000-000000000002', '00000000-0000-4000-8000-000000000001', 'lease_contract', 'lease-contract.pdf', 'uploads/layla/lease-contract.pdf', 'application/pdf', 'uploaded'),
-  ('10000000-0000-4000-8000-000000000003', '00000000-0000-4000-8000-000000000001', 'health_certificate', 'health-certificate.jpg', 'uploads/layla/health-certificate.jpg', 'image/jpeg', 'uploaded'),
-  ('10000000-0000-4000-8000-000000000004', '00000000-0000-4000-8000-000000000001', 'home_business_consent', 'neighbours-consent.jpg', 'uploads/layla/neighbours-consent.jpg', 'image/jpeg', 'uploaded')
+  ('10000000-0000-4000-8000-000000000002', '00000000-0000-4000-8000-000000000001', 'registration_certificate', 'commercial-register.jpg', 'uploads/layla/commercial-register.jpg', 'image/jpeg', 'uploaded'),
+  ('10000000-0000-4000-8000-000000000003', '00000000-0000-4000-8000-000000000001', 'lease_contract', 'lease-contract.pdf', 'uploads/layla/lease-contract.pdf', 'application/pdf', 'uploaded')
 on conflict (id) do nothing;
 
 insert into consent_log (user_id, purpose, granted, consent_text_version) values
@@ -66,4 +65,4 @@ insert into consent_log (user_id, purpose, granted, consent_text_version) values
   ('00000000-0000-4000-8000-000000000001', 'incubator_share', true, 'v1');
 
 insert into notifications (user_id, type, title_ar, title_en, body_ar, body_en) values
-  ('00000000-0000-4000-8000-000000000001', 'step_done', 'تم رفع الوثائق', 'Documents uploaded', 'رفعتِ ٤ وثائق، وسنراجعها الآن.', 'You uploaded 4 documents; we are checking them now.');
+  ('00000000-0000-4000-8000-000000000001', 'step_done', 'تم رفع الوثائق', 'Documents uploaded', 'رفعتِ ٣ وثائق، وسنراجعها الآن.', 'You uploaded 3 documents; we are checking them now.');
