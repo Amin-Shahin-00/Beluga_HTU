@@ -81,17 +81,18 @@ export const ROLE_LABELS: Record<string, { ar: string; en: string }> = {
 };
 
 /**
- * MOCK staff sign-in: shows a role picker until a matching role is signed in,
- * then renders the dashboard. Real life: each party's own login system.
+ * Staff sign-in for the demo: the signed-in Bedaya admin account picks which office it plays, then
+ * the dashboard renders. Anyone else is asked to sign in as admin. Real life: each party's own login.
  */
 export function StaffGate({ roles, children }: { roles: string[]; children: (role: string, signOut: () => void) => ReactNode }) {
   const [role, setRole] = useState<string | null | undefined>(undefined);
+  const [allowed, setAllowed] = useState(true);
   const [picked, setPicked] = useState(roles[0]);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    api<{ role: string | null }>("/api/staff/session")
-      .then((d) => setRole(d.role))
+    api<{ role: string | null; allowed?: boolean }>("/api/staff/session")
+      .then((d) => (setAllowed(d.allowed !== false), setRole(d.role)))
       .catch(() => setRole(null));
   }, []);
 
@@ -112,11 +113,24 @@ export function StaffGate({ roles, children }: { roles: string[]; children: (rol
 
   if (role === undefined) return <p className="muted">...</p>;
   if (role && roles.includes(role)) return <>{children(role, signOut)}</>;
+  if (!allowed)
+    return (
+      <div className="card" style={{ maxWidth: 560 }}>
+        <h2>لوحات الموظفين لحساب الإدارة فقط</h2>
+        <p className="en">Staff dashboards are for the Bedaya admin account, which plays each office in this demo.</p>
+        <p className="muted">سجّل الدخول إلى بداية بحساب الإدارة ثم عد إلى هذه الصفحة. · Sign in to Bedaya as admin, then come back.</p>
+        <div className="row" style={{ marginTop: 12 }}>
+          <a className="btn primary" href="/#account">
+            تسجيل الدخول · Sign in
+          </a>
+        </div>
+      </div>
+    );
 
   return (
     <div className="card" style={{ maxWidth: 560 }}>
       <h2>تسجيل دخول الموظفين (تجريبي)</h2>
-      <p className="en">Staff sign-in (MOCK). In real life each party signs in through its own system.</p>
+      <p className="en">Staff sign-in (demo): as the Bedaya admin, choose which office to act as. In real life each party signs in through its own system.</p>
       {roles.length > 1 &&
         roles.map((r) => (
           <label key={r} className={`choice ${picked === r ? "on" : ""}`}>

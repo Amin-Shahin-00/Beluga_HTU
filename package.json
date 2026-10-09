@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit",
     "knowledge": "node scripts/build-knowledge.mjs",
     "check:data": "node scripts/check-data.mjs",
+    "db:bundle": "node scripts/bundle-sql.mjs",
     "test:assistant": "tsx scripts/test-assistant.ts",
     "test:features": "tsx scripts/test-features.ts",
     "demo:cache": "tsx scripts/build-demo-cache.ts",

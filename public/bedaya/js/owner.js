@@ -367,7 +367,7 @@ export const signed = {
       <div class="list">${sent
         .map((f) => `<div class="item"><span class="lead">${esc(f.office || "")}</span><div class="details"><strong>${esc(f.title)}</strong><small>${esc(f.officeName ? tx(f.officeName) : "")}</small></div><span class="status ${f.status === "returned" ? "error" : f.status === "approved" ? "done" : "info"}">${tx(FORM_STATUS[f.status])}</span></div>`)
         .join("")}</div>
-      <p class="note">${t("Demo: you can play the government office on the staff dashboard and approve or return these forms.", "تجريبي: يمكنك تمثيل الجهة الحكومية من لوحة الموظفين والموافقة على النماذج أو إعادتها.")} <a href="/dashboard/government" target="_blank" rel="noopener">${t("Open the office dashboard", "فتح لوحة الجهة")}</a></p>
+      <p class="note">${t("Demo: the Bedaya admin account plays each government office on the staff dashboard, where it approves or returns these forms.", "تجريبي: يمثل حساب إدارة بداية كل جهة حكومية في لوحة الموظفين، ومنها يوافق على النماذج أو يعيدها.")}</p>
       <div class="toolbar"><button class="primary" data-go="incubators">${t("Explore incubators", "استكشاف الحاضنات")}</button><button data-go="roadmap">${t("Back to the roadmap", "العودة إلى المسار")}</button></div>`;
   },
 };

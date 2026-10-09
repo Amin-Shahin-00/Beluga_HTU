@@ -29,8 +29,10 @@ export function clearSession(res: NextResponse) {
 
 // ---------------------------------------------------------------- staff (MOCK)
 // Staff dashboards: a government office, SANAD/MoDEE, or the Bedaya team.
-// MOCK: anyone can pick a role on the dashboard. In real life each party signs
-// in through its own system (government staff accounts, MoDEE, Bedaya admin auth).
+// In this demo the Bedaya admin account plays each office: only a signed-in admin can pick a staff
+// role, and the role is re-checked against the account on every request (the cookie alone is not
+// trusted). Without the account service (demo mode) the mock role picker stays open.
+// In real life each party signs in through its own system (government staff accounts, MoDEE).
 
 export const STAFF_COOKIE = "bedaya_staff";
 /** gov:<OfficeKey> (offices.ts, M1's office ids), then SANAD/MoDEE and the Bedaya team. */
@@ -41,9 +43,17 @@ export function isStaffRole(role: string): role is StaffRole {
   return (STAFF_ROLES as readonly string[]).includes(role);
 }
 
+/** May the current visitor use the staff dashboards? (Bedaya admin account, or demo mode without accounts.) */
+export async function staffAllowed(): Promise<boolean> {
+  const { accountContext } = await import("./account");
+  const ctx = await accountContext();
+  return ctx.backend === "down" || ctx.role === "admin";
+}
+
 export async function currentStaff(): Promise<StaffRole | null> {
   const role = (await cookies()).get(STAFF_COOKIE)?.value ?? "";
-  return isStaffRole(role) ? role : null;
+  if (!isStaffRole(role)) return null;
+  return (await staffAllowed()) ? role : null;
 }
 
 /** Returns the staff role, or a 401/403 response when the role doesn't pass `allowed`. */

@@ -5,7 +5,8 @@ import { sanitizeSvg } from "@/lib/studio/svg";
 import ContactForm from "./ContactForm";
 import "./public-site.css";
 
-const fontUrl = (fonts: string[]) => `https://fonts.googleapis.com/css2?${fonts.map((f) => `family=${encodeURIComponent(f).replace(/%20/g, "+")}:wght@400;700`).join("&")}&display=swap`;
+// Brand fonts are self-hosted (public/vendor/fonts); the browser downloads only the two this site uses.
+const FONT_CSS = "/vendor/fonts/fonts.css";
 
 export default function SiteView({ site, slug, lang, preview = false }: { site: Site; slug: string; lang: "ar" | "en"; preview?: boolean }) {
   const t = (v: { en: string; ar: string }) => (lang === "ar" ? v.ar || v.en : v.en || v.ar);
@@ -23,7 +24,7 @@ export default function SiteView({ site, slug, lang, preview = false }: { site: 
   const L = (en: string, ar: string) => (lang === "ar" ? ar : en);
   return (
     <div className="ps" dir={lang === "ar" ? "rtl" : "ltr"} lang={lang} style={style}>
-      <link rel="stylesheet" href={fontUrl([site.theme.fontArabic, site.theme.fontLatin])} precedence="default" />
+      <link rel="stylesheet" href={FONT_CSS} precedence="default" />
       <header className="ps-head">
         <a href="#top" className="ps-brand">
           {logo && <img src={`data:image/svg+xml;charset=utf-8,${encodeURIComponent(logo)}`} alt="" width={44} height={44} />}

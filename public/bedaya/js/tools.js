@@ -319,7 +319,15 @@ export const location = {
     $("#map").replaceChildren();
     const start = self.saved ? [self.saved.lat, self.saved.lng, 16] : findPlace($("#address").value) || [31.9539, 35.9106, 12];
     const map = L.map("map", { scrollWheelZoom: false }).setView([start[0], start[1]], start[2]);
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "© OpenStreetMap" }).addTo(map);
+    let tileWarned = false;
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "© OpenStreetMap" })
+      .on("tileerror", () => {
+        // Offline or blocked: the zones, pin, save and check still work on a plain background.
+        if (tileWarned) return;
+        tileWarned = true;
+        $("#find-note").textContent = t("The street map can't load right now (no internet?). You can still place the pin inside the coloured areas, save and check.", "تعذر تحميل خريطة الشوارع الآن (لا يوجد إنترنت؟). ما زال بإمكانك وضع الدبوس داخل المناطق الملونة والحفظ والفحص.");
+      })
+      .addTo(map);
     for (const z of self.zones) {
       const ok = z.activities.includes(session.profile.business.sector);
       L.polygon(z.polygon, { color: ok ? "#00543f" : "#b42318", weight: 2, dashArray: "6 4", fillOpacity: 0.12 }).addTo(map).bindTooltip(lang === "ar" ? z.nameAr : z.name);

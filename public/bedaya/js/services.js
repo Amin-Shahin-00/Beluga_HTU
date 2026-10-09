@@ -123,7 +123,7 @@ const hub = {
 
 // ================================================================ E1 HR
 // Jordanian rules used here (Labour Law No. 8 of 1996 and the Social Security Law):
-const RULES = { sscEmployee: 0.075, sscEmployer: 0.1425, minWage: 290, annualLeave: 14, annualLeaveSenior: 21, sickLeave: 14, probationMonths: 3, weeklyHours: 48 };
+const RULES = { sscEmployee: 0.075, sscEmployer: 0.1425, sscDueDay: 15, taxExemption: 9000, taxExemptionDependants: 18000, minWage: 290, annualLeave: 14, annualLeaveSenior: 21, sickLeave: 14, probationMonths: 3, weeklyHours: 48 };
 const CONTRACT = { full: ["Full-time, open-ended", "دوام كامل، غير محدد المدة"], part: ["Part-time", "دوام جزئي"], fixed: ["Fixed-term", "محدد المدة"] };
 const LEAVE = { annual: ["Annual", "سنوية"], sick: ["Sick", "مرضية"], unpaid: ["Unpaid", "بدون راتب"], other: ["Other", "أخرى"] };
 const ROLE_TEMPLATES = {
@@ -135,6 +135,22 @@ const ROLE_TEMPLATES = {
 };
 // Money is rounded half-up to the fils (2 decimals shown), avoiding floating-point drift (350 × 14.25% = 49.88).
 const round2 = (n) => Math.round(n * 100 + 1e-7) / 100;
+// Income tax withholding (Income Tax Law No. 34 of 2014 as amended in 2018): annual taxable = 12 × salary
+// minus the personal exemption (JOD 9,000, or 18,000 with resident dependants); 5/10/15/20% on each
+// JOD 5,000 band, 25% up to 1,000,000, then 30%. Employee SSC is not deductible. Receipt-based extra
+// exemptions (medical, education, rent: up to JOD 1,000 each) are not included, so this is a ceiling.
+const TAX_BANDS = [[5000, 0.05], [5000, 0.1], [5000, 0.15], [5000, 0.2], [980000, 0.25], [Infinity, 0.3]];
+function monthlyIncomeTax(salary, dependants) {
+  let taxable = Math.max(0, salary * 12 - (dependants ? RULES.taxExemptionDependants : RULES.taxExemption));
+  let tax = 0;
+  for (const [size, rate] of TAX_BANDS) {
+    const part = Math.min(taxable, size);
+    tax += part * rate;
+    taxable -= part;
+    if (taxable <= 0) break;
+  }
+  return round2(tax / 12);
+}
 const yearsOfService = (start) => (Date.now() - new Date(start).getTime()) / (365.25 * 864e5);
 function workDays(from, to) {
   let n = 0;
@@ -207,6 +223,11 @@ const hrScreen = {
   },
 };
 const save = () => autosave("hr", { employees: hr.employees, roles: hr.roles, leaves: hr.leaves });
+const nextMonthName = (month, l) => {
+  const d = new Date(`${month}-15T12:00:00`);
+  d.setMonth(d.getMonth() + 1);
+  return d.toLocaleDateString(l === "ar" ? "ar-JO" : "en-GB", { month: "long", year: "numeric" });
+};
 const empName = (id) => hr.employees.find((e) => e.id === id)?.name || "—";
 
 const HR_TABS = {
@@ -261,30 +282,31 @@ const HR_TABS = {
     const active = hr.employees.filter((e) => e.start <= end && (!e.end || e.end >= `${month}-01`));
     const rows = active.map((e) => {
       const g = Number(e.salary) || 0;
-      return { e, g, ee: round2(g * RULES.sscEmployee), er: round2(g * RULES.sscEmployer) };
+      return { e, g, ee: round2(g * RULES.sscEmployee), er: round2(g * RULES.sscEmployer), tax: monthlyIncomeTax(g, e.dependants) };
     });
     const sum = (k) => rows.reduce((n, r) => n + r[k], 0);
     const f = (n) => n.toFixed(2);
     hr.payrollRows = rows;
     return `<label class="field compact"><span>${t("Month", "الشهر")}</span><input type="month" id="pay-month" value="${month}"></label>
-      ${rows.length ? `<div class="table-wrap"><table class="data"><thead><tr><th>${t("Employee", "الموظف")}</th><th>${t("Gross", "الإجمالي")}</th><th>${t("SSC employee 7.5%", "ضمان العامل 7.5%")}</th><th>${t("Net pay*", "الصافي*")}</th><th>${t("SSC employer 14.25%", "ضمان صاحب العمل 14.25%")}</th><th>${t("Cost to you", "الكلفة عليك")}</th></tr></thead><tbody>${rows
-        .map((r) => `<tr><td>${esc(r.e.name)}${r.e.ssc ? "" : ` <span class="status error">${t("not in SSC", "غير مسجل")}</span>`}</td><td class="ltr">${f(r.g)}</td><td class="ltr">${f(r.ee)}</td><td class="ltr"><strong>${f(r.g - r.ee)}</strong></td><td class="ltr">${f(r.er)}</td><td class="ltr">${f(r.g + r.er)}</td></tr>`)
-        .join("")}<tr><th>${t("Total (JOD)", "المجموع (دينار)")}</th><th class="ltr">${f(sum("g"))}</th><th class="ltr">${f(sum("ee"))}</th><th class="ltr">${f(sum("g") - sum("ee"))}</th><th class="ltr">${f(sum("er"))}</th><th class="ltr">${f(sum("g") + sum("er"))}</th></tr></tbody></table></div>
-        <p class="summary">${t(`Pay Social Security JOD ${f(sum("ee") + sum("er"))} for ${month} (21.75% of salaries), usually by the 15th of the following month.`, `ادفع للضمان الاجتماعي ${f(sum("ee") + sum("er"))} ديناراً عن ${month} (21.75% من الرواتب)، عادةً قبل اليوم الخامس عشر من الشهر التالي.`)}</p>
+      ${rows.length ? `<div class="table-wrap"><table class="data"><thead><tr><th>${t("Employee", "الموظف")}</th><th>${t("Gross", "الإجمالي")}</th><th>${t("SSC employee 7.5%", "ضمان العامل 7.5%")}</th><th>${t("Income tax*", "ضريبة الدخل*")}</th><th>${t("Net pay", "الصافي")}</th><th>${t("SSC employer 14.25%", "ضمان صاحب العمل 14.25%")}</th><th>${t("Cost to you", "الكلفة عليك")}</th></tr></thead><tbody>${rows
+        .map((r) => `<tr><td>${esc(r.e.name)}${r.e.ssc ? "" : ` <span class="status error">${t("not in SSC", "غير مسجل")}</span>`}</td><td class="ltr">${f(r.g)}</td><td class="ltr">${f(r.ee)}</td><td class="ltr">${f(r.tax)}</td><td class="ltr"><strong>${f(r.g - r.ee - r.tax)}</strong></td><td class="ltr">${f(r.er)}</td><td class="ltr">${f(r.g + r.er)}</td></tr>`)
+        .join("")}<tr><th>${t("Total (JOD)", "المجموع (دينار)")}</th><th class="ltr">${f(sum("g"))}</th><th class="ltr">${f(sum("ee"))}</th><th class="ltr">${f(sum("tax"))}</th><th class="ltr">${f(sum("g") - sum("ee") - sum("tax"))}</th><th class="ltr">${f(sum("er"))}</th><th class="ltr">${f(sum("g") + sum("er"))}</th></tr></tbody></table></div>
+        <p class="summary">${t(`Pay Social Security JOD ${f(sum("ee") + sum("er"))} for ${month} (21.75% of salaries) by ${RULES.sscDueDay} ${nextMonthName(month, "en")}.${sum("tax") ? ` Pay the income tax withheld (JOD ${f(sum("tax"))}) to ISTD.` : ""}`, `ادفع للضمان الاجتماعي ${f(sum("ee") + sum("er"))} ديناراً عن ${month} (21.75% من الرواتب) قبل ${RULES.sscDueDay} ${nextMonthName(month, "ar")}.${sum("tax") ? ` وادفع ضريبة الدخل المقتطعة (${f(sum("tax"))} ديناراً) لدائرة الضريبة.` : ""}`)}</p>
         <div class="toolbar"><button id="pay-csv">${t("Download payroll (CSV)", "تنزيل كشف الرواتب (CSV)")}</button></div>
-        <p class="note">${t("*Net before income tax. Most small salaries are below the income-tax exemption, but check withholding with the Income and Sales Tax Department (istd.gov.jo). Rates: SSC 7.5% employee + 14.25% employer.", "*الصافي قبل ضريبة الدخل. معظم الرواتب الصغيرة ضمن الإعفاء، لكن تحقق من الاقتطاع مع دائرة ضريبة الدخل والمبيعات (istd.gov.jo). النسب: ضمان 7.5% على العامل و14.25% على صاحب العمل.")}</p>`
+        <p class="note">${t("*Income tax is the most that should be withheld: 12 × salary minus the JOD 9,000 personal exemption (18,000 with dependants), taxed at 5% to 30%. Extra receipt-based exemptions (medical, education, rent) lower it. Confirm with the Income and Sales Tax Department (istd.gov.jo). Social Security: 7.5% employee + 14.25% employer, due by the 15th of the following month.", "*ضريبة الدخل هنا هي الحد الأقصى للاقتطاع: 12 × الراتب ناقص الإعفاء الشخصي 9,000 دينار (18,000 مع المعالين)، بنسب من 5% إلى 30%. الإعفاءات الإضافية بالفواتير (العلاج والتعليم والإيجار) تخفضها. تحقق مع دائرة ضريبة الدخل والمبيعات (istd.gov.jo). الضمان الاجتماعي: 7.5% على العامل و14.25% على صاحب العمل، ويستحق قبل 15 من الشهر التالي.")}</p>`
       : `<p class="summary">${t("No employees on payroll for this month.", "لا موظفين على الرواتب لهذا الشهر.")}</p>`}`;
   },
   ssc: () => {
     const missing = hr.employees.filter((e) => !e.ssc);
     const next = new Date();
-    next.setMonth(next.getMonth() + 1, 15);
+    if (next.getDate() > RULES.sscDueDay) next.setMonth(next.getMonth() + 1);
+    next.setDate(RULES.sscDueDay);
     return `<div class="list">${
       missing.length
         ? missing.map((e) => `<div class="item"><span class="status error">${t("Register", "سجّل")}</span><div class="details"><strong>${esc(e.name)}</strong><small>${t(`Working since ${day(e.start)}: register with Social Security from the first day.`, `يعمل منذ ${day(e.start)}: يجب التسجيل في الضمان من أول يوم.`)}</small></div><button data-ssc-done="${e.id}">${t("Mark registered", "تم التسجيل")}</button></div>`).join("")
         : `<div class="item"><span class="status done">✓</span><div class="details"><strong>${t("Everyone is registered", "الجميع مسجلون")}</strong></div></div>`
     }
-      <div class="item"><span class="lead">${esc(day(next.toISOString().slice(0, 10)))}</span><div class="details"><strong>${t("Next monthly contribution", "الاشتراك الشهري القادم")}</strong><small>${t("Pay this month's contributions through the SSC e-services.", "ادفع اشتراكات هذا الشهر عبر الخدمات الإلكترونية للضمان.")}</small></div></div></div>
+      <div class="item"><span class="lead">${esc(day(next.toISOString().slice(0, 10)))}</span><div class="details"><strong>${t("Next monthly contribution", "الاشتراك الشهري القادم")}</strong><small>${t("Last month's contributions are due by the 15th. Pay through the SSC e-services.", "اشتراكات الشهر الماضي مستحقة قبل يوم 15. ادفعها عبر الخدمات الإلكترونية للضمان.")}</small></div></div></div>
       <h3>${t("How to register an employee", "كيف تسجل موظفاً")}</h3>
       <ol class="service-steps"><li>${t("Register your business as an employer with the Social Security Corporation (once).", "سجّل منشأتك كصاحب عمل لدى المؤسسة العامة للضمان الاجتماعي (مرة واحدة).")}</li><li>${t("Add the employee on the SSC e-services portal with their national ID, start date and salary.", "أضف الموظف عبر بوابة الخدمات الإلكترونية للضمان برقمه الوطني وتاريخ مباشرته وراتبه.")}</li><li>${t("Deduct 7.5% from the salary, add your 14.25%, and pay the total monthly.", "اقتطع 7.5% من الراتب وأضف 14.25% على حسابك وادفع المجموع شهرياً.")}</li></ol>
       <p><a href="https://www.ssc.gov.jo" target="_blank" rel="noopener noreferrer">ssc.gov.jo</a></p>`;
@@ -303,11 +325,12 @@ async function employeeDialog(e) {
       <label class="field"><span>${t("Start date", "تاريخ المباشرة")}</span><input type="date" id="e-start" value="${esc(e?.start || today())}"></label>
       <label class="field"><span>${t("Monthly salary (JOD)", "الراتب الشهري (دينار)")}</span><input type="number" id="e-salary" min="0" step="1" value="${esc(e?.salary ?? RULES.minWage)}"></label>
       <label class="field"><span>${t("Contract", "العقد")}</span><select id="e-type">${Object.entries(CONTRACT).map(([k, v]) => `<option value="${k}" ${e?.type === k ? "selected" : ""}>${tx(v)}</option>`).join("")}</select></label>
-      <label class="field"><span>${t("End date (fixed-term)", "تاريخ الانتهاء (محدد المدة)")}</span><input type="date" id="e-end" value="${esc(e?.end || "")}"></label></div>`,
+      <label class="field"><span>${t("End date (fixed-term)", "تاريخ الانتهاء (محدد المدة)")}</span><input type="date" id="e-end" value="${esc(e?.end || "")}"></label></div>
+      <label class="option small"><input type="checkbox" id="e-dep" ${e?.dependants ? "checked" : ""}>${t("Has resident dependants (spouse/children): income-tax exemption JOD 18,000", "لديه معالون مقيمون (زوج/أبناء): إعفاء ضريبي 18,000 دينار")}</label>`,
     confirmLabel: t("Save", "حفظ"),
   });
   if (!res.confirmed) return null;
-  const v = { name: $("#e-name").value.trim(), nationalId: $("#e-nid").value.replace(/\D/g, ""), role: $("#e-role").value.trim(), phone: $("#e-phone").value.trim(), start: $("#e-start").value, salary: Number($("#e-salary").value) || 0, type: $("#e-type").value, end: $("#e-end").value };
+  const v = { name: $("#e-name").value.trim(), nationalId: $("#e-nid").value.replace(/\D/g, ""), role: $("#e-role").value.trim(), phone: $("#e-phone").value.trim(), start: $("#e-start").value, salary: Number($("#e-salary").value) || 0, type: $("#e-type").value, end: $("#e-end").value, dependants: $("#e-dep").checked };
   if (!v.name || !v.start) return (toast(t("Name and start date are required.", "الاسم وتاريخ المباشرة مطلوبان.")), null);
   if (v.type === "full" && v.salary < RULES.minWage) toast(t(`Warning: below the minimum wage (JOD ${RULES.minWage}).`, `تنبيه: أقل من الحد الأدنى للأجور (${RULES.minWage} ديناراً).`));
   return v;
@@ -396,7 +419,7 @@ const HR_MOUNT = {
     if (btn)
       btn.onclick = () =>
         downloadCsv(
-          [["Employee", "Gross JOD", "SSC employee 7.5%", "Net before income tax", "SSC employer 14.25%", "Employer cost"], ...hr.payrollRows.map((r) => [r.e.name, r.g.toFixed(2), r.ee.toFixed(2), (r.g - r.ee).toFixed(2), r.er.toFixed(2), (r.g + r.er).toFixed(2)])],
+          [["Employee", "Gross JOD", "SSC employee 7.5%", "Income tax (max)", "Net pay", "SSC employer 14.25%", "Employer cost"], ...hr.payrollRows.map((r) => [r.e.name, r.g.toFixed(2), r.ee.toFixed(2), r.tax.toFixed(2), (r.g - r.ee - r.tax).toFixed(2), r.er.toFixed(2), (r.g + r.er).toFixed(2)])],
           `payroll-${hr.month || today().slice(0, 7)}.csv`,
         );
   },

@@ -29,46 +29,44 @@ const loadImage = (src) =>
     img.src = src;
   });
 
-// Google Fonts for the brand's typefaces (page text and canvas rendering).
-const fontLinks = new Set();
+// The brand typefaces are served by Bedaya itself (public/vendor/fonts, SIL Open Font Licence), so
+// pages, canvas designs, PDFs and logo exports keep the right fonts offline too.
+const FONT_CSS = "/vendor/fonts/fonts.css";
 async function useFonts(fonts) {
   const families = [fonts?.arabic, fonts?.latin].filter(Boolean);
-  const href = `https://fonts.googleapis.com/css2?${families.map((f) => `family=${f.replace(/ /g, "+")}:wght@400;700`).join("&")}&display=swap`;
-  if (families.length && !fontLinks.has(href)) {
-    fontLinks.add(href);
+  if (!document.querySelector(`link[href="${FONT_CSS}"]`)) {
     const l = document.createElement("link");
     l.rel = "stylesheet";
-    l.href = href;
+    l.href = FONT_CSS;
     document.head.append(l);
   }
   const wait = Promise.all(families.flatMap((f) => [document.fonts.load(`700 40px "${f}"`, "بداية Bedaya"), document.fonts.load(`400 40px "${f}"`, "بداية Bedaya")]));
   await Promise.race([wait, new Promise((r) => setTimeout(r, 3000))]).catch(() => {});
 }
 // Fonts inlined into an SVG so a logo keeps its typeface when drawn as an image (PNG export, designs).
+let fontCss = null;
 const embedded = {};
 async function embedFontCss(fonts) {
   const families = [fonts?.arabic, fonts?.latin].filter(Boolean);
   const key = families.join("|");
   embedded[key] ??= (async () => {
     try {
-      const css = await (await fetch(`https://fonts.googleapis.com/css2?${families.map((f) => `family=${f.replace(/ /g, "+")}:wght@400;700`).join("&")}`)).text();
-      const urls = [...new Set(css.match(/https:\/\/fonts\.gstatic\.com\/[^)]+/g) || [])];
-      let out = css;
-      for (const u of urls) {
-        const buf = await (await fetch(u)).arrayBuffer();
+      fontCss ??= await (await fetch(FONT_CSS)).text();
+      const blocks = (fontCss.match(/@font-face\s*\{[^}]+\}/g) || []).filter((b) => families.some((f) => b.includes(`'${f}'`)));
+      let out = blocks.join("\n");
+      for (const u of [...new Set(out.match(/\/vendor\/fonts\/[\w.-]+\.woff2/g) || [])]) {
+        const bytes = new Uint8Array(await (await fetch(u)).arrayBuffer());
         let bin = "";
-        const bytes = new Uint8Array(buf);
         for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
         out = out.split(u).join(`data:font/woff2;base64,${btoa(bin)}`);
       }
       return out;
     } catch {
-      return ""; // offline: the browser's fallback fonts are used
+      return ""; // the browser's fallback fonts are used
     }
   })();
   return embedded[key];
-}
-async function logoImage(svg, fonts) {
+}async function logoImage(svg, fonts) {
   const css = await embedFontCss(fonts);
   const withFonts = css ? svg.replace(/^<svg([^>]*)>/, `<svg$1><style>${css.replace(/</g, "")}</style>`) : svg;
   return loadImage(svgUrl(withFonts));

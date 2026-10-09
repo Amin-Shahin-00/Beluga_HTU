@@ -35,7 +35,7 @@ npm run dev                     # http://localhost:3000
 Accounts, roadmaps, bookings, applications, expert availability, Launch Studio drafts and published websites are stored in Supabase.
 
 1. In `.env.local`, set `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`. Also set `SUPABASE_SECRET_KEY`. It is **server-only**: it must never be prefixed `NEXT_PUBLIC_` or put in code. "Login with SANAD" needs it to open the account linked to a national ID.
-2. Run these in the Supabase SQL Editor, in order:
+2. The quickest way is to paste **`supabase/setup-all.sql`** into the Supabase SQL Editor and run it. It holds everything below in the right order and is safe to re-run; rebuild it with `npm run db:bundle` after changing a migration or seed. Or run the files one by one, in order:
    - `supabase/migrations/202610090001_business_ownership.sql`
    - `supabase/migrations/202610090002_member4_platform.sql`
    - `supabase/migrations/202610100001_parties_studio_services.sql` (roles per party, SANAD identities, experts, versioned drafts, websites, map zones)
@@ -92,7 +92,7 @@ Every party has its own account. The login screen never lists them.
    - Designs: posts, profile and cover images, business card, flyer, menu and shop sign as PNG/PDF.
    - Website: edit by chat or directly, preview on phone or desktop, and publish to `/s/<name>` and `<name>.localhost`.
 8. **Startup services.**
-   - HR: employees, roles, contract PDFs, leave, payroll and Social Security reminders.
+   - HR: employees, roles, contract PDFs and leave. Payroll covers Social Security (7.5% employee, 14.25% employer, due by the 15th of the next month) and an income-tax withholding estimate: 12 × salary minus the JOD 9,000 personal exemption (18,000 with dependants), taxed 5–30%. Social Security reminders are included.
    - Domain and email: name ideas, a demo purchase, and DNS records for Google, Microsoft or Zoho.
    - Accounting and branded invoices.
    - Online-presence texts.
@@ -100,8 +100,8 @@ Every party has its own account. The login screen never lists them.
 9. **Bank / incubator / expert / admin.** Sign in with their accounts above. Each lands on its own dashboard, and owner pages are closed to them. Every page has a breadcrumb and **Back to main page**, and the logo always goes home.
 
 Other pages, each with a back bar:
-- `/dashboard`: staff dashboards for government, SANAD and admin (mock).
-- `/mock-sanad/login`: the mock SANAD login, clearly labelled as a demo.
+- `/dashboard`: staff dashboards for the government offices, SANAD and the Bedaya team. Sign in with the **admin** account first: in this demo the admin plays each office, and nobody else can open these dashboards. Without Supabase (demo mode) they stay open.
+- `/mock-sanad/login`: the mock SANAD sign-in, clearly labelled as a demo, in Arabic or English. It runs in 3 steps: sign in with national ID and SANAD password, approve exactly what Bedaya receives, then return to Bedaya.
 - Developer benches: `/ai-bench`, `/m5-demo` and `/backend`.
 
 ## Tests
@@ -124,7 +124,7 @@ npm run build
   - The demo bank, appointment and expert slots, compliance dates, zoning areas on the map, and analytics.
   - Domain availability and purchase, and published-site hosting (local subdomains).
   - Email/WhatsApp sending, which is only logged.
-- **AI:** works with no API key (`LLM_PROVIDER=mock` answers from the data and the Launch Studio uses offline generators). Live AI needs `LLM_PROVIDER=anthropic`, `LLM_API_KEY` and `BEDAYA_ALLOW_EXTERNAL_AI=true`, all as environment variables. Logos from the model are rebuilt by an allow-list SVG sanitiser. Websites are JSON that fills Bedaya's template, never model-written HTML.
+- **AI:** works with no API key (`LLM_PROVIDER=mock` answers from the data and the Launch Studio uses offline generators). Live AI needs `LLM_PROVIDER=anthropic`, `LLM_API_KEY` and `BEDAYA_ALLOW_EXTERNAL_AI=true`, all as environment variables. Logos from the model are rebuilt by an allow-list SVG sanitiser. The 14 brand fonts are served from `public/vendor/fonts` (SIL Open Font Licence; `scripts/fetch-fonts.mjs` downloaded them). Logos, designs, PDFs and published sites keep their fonts offline; only the street-map tiles need internet. Websites are JSON that fills Bedaya's template, never model-written HTML.
 
 ## More documentation
 
