@@ -66,7 +66,8 @@ export async function generate(req: LlmRequest): Promise<LlmResult> {
 
   const config = llmConfig();
   // Mock mode is already offline and instant, and always reflects the latest data, so it skips the cache.
-  if (config.provider === "mock" || !config.apiKey) return done(await req.fallback(), "mock");
+  // M4 integration: external AI is opt-in; importing M5 must not transmit profiles.
+  if (process.env.BEDAYA_ALLOW_EXTERNAL_AI !== "true" || config.provider === "mock" || !config.apiKey) return done(await req.fallback(), "mock");
 
   if (req.cacheKey && process.env.DEMO_CACHE !== "off") {
     const hit = cache[cacheId(req.task, req.cacheKey)];
