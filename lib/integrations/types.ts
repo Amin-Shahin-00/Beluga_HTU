@@ -14,10 +14,17 @@ export type DocType =
   | "registration_certificate"
   | "chamber_certificate"
   | "lease_contract"
-  | "building_permit"
-  | "inspection_undertaking"
-  | "no_disturbance_undertaking"
+  | "property_ownership_document"
+  | "property_owner_approval"
+  | "declaration_pledge"
+  | "building_documents"
+  | "building_residents_consent"
+  | "inspection_pledge"
+  | "product_label"
+  | "gam_rental_certificate"
   | "jfda_approval"
+  | "vocational_licence"
+  | "liaison_officer_form"
   | "memorandum_of_association"
   | "bank_capital_letter"
   | "unknown";
@@ -82,6 +89,8 @@ export interface UserProfile {
     descriptionAr?: string;
     legalForm: LegalForm;
     homeBased: boolean;
+    /** Whether the home or shop is rented or owned; decides the rent-contract steps. Defaults to rented. */
+    premises?: "rented" | "owned";
     stage: Stage;
     employeesPlanned: number;
     /** Registers a trade name instead of trading under the owner's own name. */
@@ -105,17 +114,31 @@ export interface ApplicationField {
   options?: string[];
 }
 
+/** A real support programme (incubator, accelerator, grant, loan or competition) from M1's list. */
 export interface Incubator {
   id: string;
+  type: "incubator" | "accelerator" | "grant" | "loan" | "competition";
   name: Bilingual;
+  organisation: Bilingual;
   city: string;
   sectors: Sector[];
   stages: Stage[];
   womenFocused: boolean;
   homeBasedFriendly: boolean;
-  maxFundingJod: number;
-  programWeeks: number;
-  applicationDeadline: string;
+  /** Largest amount on offer, or null when not published. */
+  maxFundingJod: number | null;
+  fundingNote: Bilingual | null;
+  benefits: Bilingual;
+  programWeeks: number | null;
+  /** yyyy-mm-dd, or null when applications are rolling or not announced. */
+  applicationDeadline: string | null;
+  /** Rules we can check against the profile. */
+  eligibility: { minAge?: number; maxAge?: number; jordanianOnly?: boolean; minMonthsOperating?: number };
+  /** Conditions the user must confirm themselves. */
+  requirements: Bilingual[];
+  website: string;
+  sourceIds: string[];
+  /** The real forms are online and not published; these are the fields we expect them to ask for. */
   applicationFields: ApplicationField[];
 }
 

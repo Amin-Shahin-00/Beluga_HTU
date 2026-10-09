@@ -47,5 +47,96 @@
     "url": "https://www.istd.gov.jo/ebv4.0/root_storage/en/eb_list_page/guide_for_electronic_services_2024.pdf",
     "accessed": "2026-10-09",
     "note": "First-time tax number registration is an online service."
+  },
+  {
+    "id": "S8",
+    "title": { "en": "MIT eRegulations investor guide: register a home-based food business (rented home)", "ar": "دليل المستثمر الإلكتروني لوزارة الصناعة والتجارة: تسجيل مشروع منزلي لتصنيع الغذاء (منزل مستأجر)" },
+    "url": "https://jordan.eregulations.org/procedure/54?l=en",
+    "accessed": "2026-10-09",
+    "note": "Official step-by-step procedure with offices, documents, fees and times: trader registration, Chamber of Industry, GAM rent-contract certificate, JFDA approval with lab tests, vocational licence, tax number."
+  },
+  {
+    "id": "S9",
+    "title": { "en": "MIT eRegulations investor guide: register an individual trader (rented premises)", "ar": "دليل المستثمر الإلكتروني: تسجيل تاجر فرد (موقع مستأجر)" },
+    "url": "https://jordan.eregulations.org/procedure/28?l=en",
+    "accessed": "2026-10-09",
+    "note": "Chamber of Commerce fees by capital and GAM vocational licence fee ranges."
+  },
+  {
+    "id": "S10",
+    "title": { "en": "MIT eRegulations investor guide: register a limited liability company (Jordanian partners)", "ar": "دليل المستثمر الإلكتروني: تسجيل شركة ذات مسؤولية محدودة (شركاء أردنيون)" },
+    "url": "https://jordan.eregulations.org/procedure/57?l=en",
+    "accessed": "2026-10-09",
+    "note": "CCD fees (0.2% of capital, minimum 250 JOD, plus stamps and document fees), bank deposit, chamber, licence, tax, seal and social security steps."
+  },
+  {
+    "id": "S11",
+    "title": { "en": "MIT eRegulations investor guide: register with social security", "ar": "دليل المستثمر الإلكتروني: التسجيل في الضمان الاجتماعي" },
+    "url": "https://jordan.eregulations.org/procedure/21?l=en",
+    "accessed": "2026-10-09",
+    "note": "Business seal (10-20 JOD), online social security number (1-2 days), account activation."
+  },
+  {
+    "id": "S12",
+    "title": { "en": "MIT eRegulations investor guide: get a tax number online", "ar": "دليل المستثمر الإلكتروني: الحصول على الرقم الضريبي إلكترونياً" },
+    "url": "https://jordan.eregulations.org/procedure/23?l=en",
+    "accessed": "2026-10-09",
+    "note": "No fee; 5-25 minutes online plus ratification at ISTD."
+  },
+  {
+    "id": "S13",
+    "title": { "en": "JEDCO programmes: Home-Based Businesses Support Program", "ar": "برامج جيدكو: برنامج دعم المشاريع المنزلية" },
+    "url": "https://www.jedco.gov.jo/EN/ListDetails/JEDCO_Programs/50/8",
+    "accessed": "2026-10-09",
+    "note": "Grants averaging JD 800 for 40 home-based businesses, with training, coaching and marketing help."
+  },
+  {
+    "id": "S14",
+    "title": { "en": "Jordan News: interest-free loans for vocational training graduates' home projects (4 April 2026)", "ar": "جوردن نيوز: قروض بدون فوائد لمشاريع خريجي التدريب المهني المنزلية (4 نيسان 2026)" },
+    "url": "https://www.jordannews.jo/Section-109/News/Agreement-to-Grant-Interest-Free-Loans-to-Vocational-Training-Graduates-50301",
+    "accessed": "2026-10-09",
+    "note": "Development and Employment Fund: JOD 1,000-3,000, ages 18-45, VTC graduates with a professional licence, 3-month grace, up to 60 months."
+  },
+  {
+    "id": "S15",
+    "title": { "en": "Orange Corners Jordan", "ar": "أورانج كورنرز الأردن" },
+    "url": "https://www.orangecorners.com/country/jordan/",
+    "accessed": "2026-10-09",
+    "note": "Incubation for 40 Jordanian entrepreneurs a year with an MVP, running at least one year; with iPARK and QRCE."
+  },
+  {
+    "id": "S16",
+    "title": { "en": "Oasis500 accelerator profile (ProDevs)", "ar": "ملف مسرّعة Oasis500 (ProDevs)" },
+    "url": "https://www.prodevs.io/accelerators/oasis500",
+    "accessed": "2026-10-09",
+    "note": "Third-party profile: seed investment of $30,000-50,000 for 5-15% equity, via bootcamp. Confirm on oasis500.com."
+  },
+  {
+    "id": "S17",
+    "title": { "en": "PSUT: Queen Rania National Entrepreneurship Competition, Orange Corners edition", "ar": "جامعة الأميرة سمية: مسابقة الملكة رانيا الوطنية للريادة - نسخة أورانج كورنرز" },
+    "url": "https://psut.edu.jo/en/news/the-13th-edition-of-the-queen-rania-national-entrepreneurship-competition-orange-corners-edition-is-now-open-for-registration",
+    "accessed": "2026-10-09",
+    "note": "Run by QRCE at PSUT for technology projects: ideas with a business plan, MVPs, or startups under one year old."
+  },
+  {
+    "id": "S18",
+    "title": { "en": "iPARK, Royal Scientific Society", "ar": "آي بارك، الجمعية العلمية الملكية" },
+    "url": "https://www.ipark.jo/",
+    "accessed": "2026-10-09",
+    "note": "Technology incubator in Amman; 300+ startups supported. Its certificate had expired when accessed, so details came from search."
+  },
+  {
+    "id": "S19",
+    "title": { "en": "EU Delegation to Jordan: Luminus ShamalStart", "ar": "بعثة الاتحاد الأوروبي في الأردن: لومينوس شمال ستارت" },
+    "url": "https://www.eeas.europa.eu/node/70887_ar",
+    "accessed": "2026-10-09",
+    "note": "Hardware and maker accelerator for northern Jordan with FabLab Irbid. EU-funded; check that a cohort is open."
+  },
+  {
+    "id": "S20",
+    "title": { "en": "Social security in Jordan 2026: contribution rates (Al-Masry in Gulf)", "ar": "الضمان الاجتماعي في الأردن 2026: نسب الاشتراك" },
+    "url": "https://www.almasryingulf.com/%D8%A7%D9%84%D8%B6%D9%85%D8%A7%D9%86-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D9%81%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86-2026-%D9%83%D9%85-%D9%8A%D9%8F%D8%AE%D8%B5%D9%85-%D9%85/",
+    "accessed": "2026-10-09",
+    "note": "News source, not SSC: 21.75% of wages (14.25% employer, 7.5% employee). Confirm with SSC."
   }
 ]

@@ -52,11 +52,11 @@
       ["home", "house", "منزل", "البيت", "بيت", "منزلي"]
     ],
     "text": {
-      "en": "Yes. Food activities allowed from home include home-baked goods (cakes, pastries, biscuits, sweets), jams, pickles, jameed, prepared vegetables, and herbs and legumes, all made by hand. You first need JFDA approval (Jordan Food and Drug Administration), then the home-based vocational licence from GAM (20-50 JOD, about 3 working days). Food businesses in Amman can't receive customers at home.",
-      "ar": "نعم. من المهن الغذائية المسموحة من المنزل: المخبوزات المنزلية (الكعك والمعجنات والكيك والبسكويت والحلويات)، والمربيات، والكبيس، والجميد، وتحضير الخضار، والأعشاب والبقوليات، وكلها يدوياً. تحتاج أولاً موافقة المؤسسة العامة للغذاء والدواء، ثم رخصة المهن المنزلية من أمانة عمّان (20 إلى 50 ديناراً، خلال 3 أيام عمل تقريباً). لا يجوز للمشاريع الغذائية في عمّان استقبال الزبائن في المنزل."
+      "en": "Yes. Food activities allowed from home include home-baked goods (cakes, pastries, biscuits, sweets), jams, pickles, jameed, prepared vegetables, and herbs and legumes, all made by hand. After registering as a trader, join the Amman Chamber of Industry (40 JOD if your capital is under 10,000 JOD), then get JFDA approval (Jordan Food and Drug Administration: 200 JOD for one food type, including lab tests, in 7-10 days), then the home-based vocational licence from GAM (20-50 JOD). Food businesses in Amman can't receive customers at home.",
+      "ar": "نعم. من المهن الغذائية المسموحة من المنزل: المخبوزات المنزلية (الكعك والمعجنات والكيك والبسكويت والحلويات)، والمربيات، والكبيس، والجميد، وتحضير الخضار، والأعشاب والبقوليات، وكلها يدوياً. بعد التسجيل كتاجر، انتسب لغرفة صناعة عمّان (40 ديناراً إذا كان رأس مالك أقل من 10,000 دينار)، ثم احصل على موافقة المؤسسة العامة للغذاء والدواء (200 دينار لنوع غذاء واحد شاملة الفحوص المخبرية، خلال 7 إلى 10 أيام)، ثم رخصة المهن المنزلية من أمانة عمّان (20 إلى 50 ديناراً). لا يجوز للمشاريع الغذائية في عمّان استقبال الزبائن في المنزل."
     },
-    "officeIds": ["JFDA", "GAM"],
-    "sourceIds": ["S1", "S2", "S6"]
+    "officeIds": ["JFDA", "ACI", "GAM"],
+    "sourceIds": ["S1", "S2", "S6", "S8"]
   },
   {
     "id": "home_allowed_activities",
@@ -71,6 +71,18 @@
     },
     "officeIds": ["GAM"],
     "sourceIds": ["S1"]
+  },
+  {
+    "id": "which_chamber",
+    "kind": "answer",
+    "boost": 10,
+    "match": [["which chamber", "what chamber", "which one chamber", "chamber of industry or", "اي غرفة", "شو الغرفة", "غرفة تجارة ولا", "غرفة صناعة ولا"]],
+    "text": {
+      "en": "It depends on the activity. Home food production counts as industry, so you join the Amman Chamber of Industry (40 JOD if your capital is under 10,000 JOD). Shops, trading and services join the Amman Chamber of Commerce (30 JOD for the first registration if your capital is under 5,000 JOD). Both have service offices inside the Ministry of Industry building.",
+      "ar": "يعتمد ذلك على النشاط. تصنيع الغذاء المنزلي نشاط صناعي، فتنتسب لغرفة صناعة عمّان (40 ديناراً إذا كان رأس مالك أقل من 10,000 دينار). أما المحلات والتجارة والخدمات فتنتسب لغرفة تجارة عمّان (30 ديناراً للتسجيل الأول إذا كان رأس المال أقل من 5,000 دينار). للغرفتين مكاتب خدمة داخل مبنى وزارة الصناعة والتجارة."
+    },
+    "officeIds": ["ACI", "ACC"],
+    "sourceIds": ["S8", "S9"]
   },
   {
     "id": "license_renewal",
@@ -91,11 +103,25 @@
       ["alone", "myself", "on my own", "have to", "must", "mandatory", "do i need", "required", "need to", "لحالي", "لوحدي", "وحدي", "لازم", "الزامي", "إلزامي", "مضطر", "هل يجب", "بحتاج", "احتاج", "أحتاج"]
     ],
     "text": {
-      "en": "Yes. Social security enrolment is mandatory for the owner of a sole proprietorship who works in it, even if you work alone, and for every employee once you have one or more workers. Contributions are paid monthly, within 15 days of the following month.",
-      "ar": "نعم. الاشتراك في الضمان الاجتماعي إلزامي لمالك المؤسسة الفردية الذي يعمل فيها حتى لو كان يعمل وحده، ولكل عامل عندما يكون لديك عامل واحد أو أكثر. تُدفع الاشتراكات شهرياً خلال 15 يوماً من الشهر التالي."
+      "en": "Yes. Social security enrolment is mandatory for the owner of a sole proprietorship who works in it, even if you work alone, and for every employee once you have one or more workers. Contributions are paid monthly, within 15 days of the following month. Registering is free: get the number online, then activate the account at SSC with a liaison officer form and your business stamp.",
+      "ar": "نعم. الاشتراك في الضمان الاجتماعي إلزامي لمالك المؤسسة الفردية الذي يعمل فيها حتى لو كان يعمل وحده، ولكل عامل عندما يكون لديك عامل واحد أو أكثر. تُدفع الاشتراكات شهرياً خلال 15 يوماً من الشهر التالي. التسجيل مجاني: احصل على الرقم إلكترونياً ثم فعّل الحساب لدى المؤسسة بنموذج ضابط الارتباط وختم المنشأة."
     },
     "officeIds": ["SSC"],
-    "sourceIds": ["S1"]
+    "sourceIds": ["S1", "S11"]
+  },
+  {
+    "id": "ssc_rates",
+    "kind": "answer",
+    "match": [
+      ["social security", "ssc", "ضمان"],
+      ["rate", "percent", "%", "how much", "contribution", "deduct", "نسبة", "كم", "اشتراك", "يخصم", "اقتطاع"]
+    ],
+    "text": {
+      "en": "Social security contributions are 21.75% of the wage: 14.25% paid by the employer and 7.5% by the employee, every month. This comes from a news source rather than SSC itself, so please confirm with the Social Security Corporation.",
+      "ar": "اشتراكات الضمان الاجتماعي 21.75% من الأجر: 14.25% يدفعها صاحب العمل و7.5% يدفعها العامل شهرياً. هذه النسب من مصدر إخباري وليس من المؤسسة نفسها، لذا يرجى التأكد من المؤسسة العامة للضمان الاجتماعي."
+    },
+    "officeIds": ["SSC"],
+    "sourceIds": ["S20"]
   },
   {
     "id": "min_capital",

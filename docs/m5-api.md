@@ -99,21 +99,29 @@ Response ([document-checker.ts](../lib/integrations/document-checker.ts)):
 
 ## 3. Incubator matches: `POST /api/ai/incubators/match` (feature 5)
 
-Request: `{ "profile": UserProfile, "ranked"?: [{ "incubatorId": "inc_women_makers", "score": 0.92 }] }`. `ranked` is M4's ranking, in order. Without it, a stand-in ranker is used.
+Request: `{ "profile": UserProfile, "ranked"?: [{ "incubatorId": "jedco_hbb", "score": 0.92 }] }`. `ranked` is M4's ranking, in order. Without it, a stand-in ranker is used, which also drops programmes the user isn't eligible for (age, months operating).
+
+The programmes are real Jordanian ones; the ids are in [data/m1/incubators.json](../data/m1/incubators.json): `jedco_hbb`, `def_hbb_loans`, `orange_corners`, `oasis500`, `qrce_competition`, `ipark`, `luminus_shamalstart`.
 
 Response: `{ "matches": IncubatorMatch[], "source": "mock" }`, where:
 
 ```json
-{ "incubatorId": "inc_women_makers", "name": { "en": "Women Makers Jordan", "ar": "صانعات الأردن" }, "score": 11,
-  "reason": { "en": "Women Makers Jordan fits you because ...", "ar": "صانعات الأردن: يناسبك هذا البرنامج لأنه ..." },
-  "maxFundingJod": 5000, "applicationDeadline": "2026-10-30" }
+{ "incubatorId": "jedco_hbb", "type": "grant",
+  "name": { "en": "JEDCO Home-Based Businesses Support Program", "ar": "برنامج جيدكو لدعم المشاريع المنزلية" },
+  "organisation": { "en": "Jordan Enterprise Development Corporation (JEDCO)", "ar": "..." }, "score": 10,
+  "reason": { "en": "JEDCO Home-Based Businesses Support Program fits you because ...", "ar": "... - يناسبك هذا البرنامج لأنه ..." },
+  "benefits": { "en": "...", "ar": "..." }, "requirements": [{ "en": "A home-based business run by a woman or a young person", "ar": "..." }],
+  "eligibilityProblems": [], "maxFundingJod": 800, "applicationDeadline": null, "website": "https://www.jedco.gov.jo/..." }
 ```
 
-Unknown incubator ids in `ranked` are dropped.
+- `type`: `incubator`, `accelerator`, `grant`, `loan` or `competition`.
+- `maxFundingJod` and `applicationDeadline` are `null` when the programme doesn't publish them; show "check the website".
+- `eligibilityProblems`: rules the user seems to break. This is only non-empty when M4's ranking includes such a programme.
+- Unknown ids in `ranked` are dropped.
 
 ## 4. One-click multi-apply: `POST /api/ai/incubators/prefill` (feature 5)
 
-Request: `{ "profile": UserProfile, "incubatorIds": ["inc_women_makers", "inc_zarqa_green"] }`
+Request: `{ "profile": UserProfile, "incubatorIds": ["jedco_hbb", "def_hbb_loans"] }`
 
 Response: `{ "applications": PrefilledApplication[] }`. Each application has its incubator's form fields with values filled in:
 
@@ -125,7 +133,12 @@ Response: `{ "applications": PrefilledApplication[] }`. Each application has its
   ] }
 ```
 
-`origin` is `profile` (copied), `derived` (computed or shortened, e.g. a pitch cut to the field's max length), or `empty` (the user fills it in). Show the form for review before submitting.
+`origin` is one of:
+- `profile`: copied from the profile.
+- `derived`: computed or shortened, for example a pitch cut to the field's max length, or a loan request capped at the programme's maximum.
+- `empty`: the user fills it in, for example a VTC certificate number.
+
+Show the form for review before submitting. The real programmes don't publish their forms, so these fields are our best guess. Update `applicationFields` in incubators.json when you see the real form.
 
 ## 5. Business plan: `POST /api/ai/business-plan` (feature 14)
 
@@ -135,4 +148,6 @@ Response: `BusinessPlan` ([business-plan.ts](../lib/integrations/business-plan.t
 
 ## 6. Business plan PDF: `POST /api/ai/business-plan/pdf`
 
-Request: `{ "plan": BusinessPlan }` (preferred, the plan the user is looking at) or `{ "profile", "costs" }`. Returns `application/pdf` as an attachment. The PDF is English-only for now (pdf-lib can't shape Arabic); it switches to the partner's shared pdf-lib helper when that lands.
+Request: `{ "plan": BusinessPlan, "lang": "ar" | "en" }` (preferred: the plan the user is looking at) or `{ "profile", "costs", "lang" }`. Returns `application/pdf` as an attachment.
+
+The Arabic PDF is right-to-left with connected letters (Amiri font, about 420 KB). The English one is about 4 KB.

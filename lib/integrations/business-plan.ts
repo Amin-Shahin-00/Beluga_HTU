@@ -2,6 +2,7 @@
 // Numbers and the timeline are computed in code; the LLM only writes the "business" and "market" paragraphs.
 import { feeText, office, roadmapFor } from "./knowledge";
 import { generate, parseJson, type LlmSource } from "./llm";
+import { cityName } from "./text";
 import type { Bilingual, UserProfile } from "./types";
 
 export interface CostLine {
@@ -57,11 +58,9 @@ const addDays = (iso: string, days: number) => {
   return d.toISOString().slice(0, 10);
 };
 
-const CITY_AR: Record<string, string> = { Amman: "عمّان", Irbid: "إربد", Zarqa: "الزرقاء", Aqaba: "العقبة", Salt: "السلط", Madaba: "مأدبا", Karak: "الكرك", Mafraq: "المفرق", Jerash: "جرش", Ajloun: "عجلون", Maan: "معان", Tafilah: "الطفيلة" };
-
 function textTemplate(p: UserProfile): { business: Bilingual; market: Bilingual } {
   const b = p.business;
-  const cityAr = CITY_AR[p.personal.city] ?? p.personal.city;
+  const cityAr = cityName(p.personal.city, "ar");
   const form = { home_business: ["a home-based business", "مشروع منزلي"], sole_proprietorship: ["a sole proprietorship", "مؤسسة فردية"], llc: ["a limited liability company", "شركة ذات مسؤولية محدودة"] }[b.legalForm];
   return {
     business: {

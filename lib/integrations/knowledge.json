@@ -74,6 +74,136 @@
       "url": "https://www.istd.gov.jo/ebv4.0/root_storage/en/eb_list_page/guide_for_electronic_services_2024.pdf",
       "accessed": "2026-10-09",
       "note": "First-time tax number registration is an online service."
+    },
+    "S8": {
+      "id": "S8",
+      "title": {
+        "en": "MIT eRegulations investor guide: register a home-based food business (rented home)",
+        "ar": "دليل المستثمر الإلكتروني لوزارة الصناعة والتجارة: تسجيل مشروع منزلي لتصنيع الغذاء (منزل مستأجر)"
+      },
+      "url": "https://jordan.eregulations.org/procedure/54?l=en",
+      "accessed": "2026-10-09",
+      "note": "Official step-by-step procedure with offices, documents, fees and times: trader registration, Chamber of Industry, GAM rent-contract certificate, JFDA approval with lab tests, vocational licence, tax number."
+    },
+    "S9": {
+      "id": "S9",
+      "title": {
+        "en": "MIT eRegulations investor guide: register an individual trader (rented premises)",
+        "ar": "دليل المستثمر الإلكتروني: تسجيل تاجر فرد (موقع مستأجر)"
+      },
+      "url": "https://jordan.eregulations.org/procedure/28?l=en",
+      "accessed": "2026-10-09",
+      "note": "Chamber of Commerce fees by capital and GAM vocational licence fee ranges."
+    },
+    "S10": {
+      "id": "S10",
+      "title": {
+        "en": "MIT eRegulations investor guide: register a limited liability company (Jordanian partners)",
+        "ar": "دليل المستثمر الإلكتروني: تسجيل شركة ذات مسؤولية محدودة (شركاء أردنيون)"
+      },
+      "url": "https://jordan.eregulations.org/procedure/57?l=en",
+      "accessed": "2026-10-09",
+      "note": "CCD fees (0.2% of capital, minimum 250 JOD, plus stamps and document fees), bank deposit, chamber, licence, tax, seal and social security steps."
+    },
+    "S11": {
+      "id": "S11",
+      "title": {
+        "en": "MIT eRegulations investor guide: register with social security",
+        "ar": "دليل المستثمر الإلكتروني: التسجيل في الضمان الاجتماعي"
+      },
+      "url": "https://jordan.eregulations.org/procedure/21?l=en",
+      "accessed": "2026-10-09",
+      "note": "Business seal (10-20 JOD), online social security number (1-2 days), account activation."
+    },
+    "S12": {
+      "id": "S12",
+      "title": {
+        "en": "MIT eRegulations investor guide: get a tax number online",
+        "ar": "دليل المستثمر الإلكتروني: الحصول على الرقم الضريبي إلكترونياً"
+      },
+      "url": "https://jordan.eregulations.org/procedure/23?l=en",
+      "accessed": "2026-10-09",
+      "note": "No fee; 5-25 minutes online plus ratification at ISTD."
+    },
+    "S13": {
+      "id": "S13",
+      "title": {
+        "en": "JEDCO programmes: Home-Based Businesses Support Program",
+        "ar": "برامج جيدكو: برنامج دعم المشاريع المنزلية"
+      },
+      "url": "https://www.jedco.gov.jo/EN/ListDetails/JEDCO_Programs/50/8",
+      "accessed": "2026-10-09",
+      "note": "Grants averaging JD 800 for 40 home-based businesses, with training, coaching and marketing help."
+    },
+    "S14": {
+      "id": "S14",
+      "title": {
+        "en": "Jordan News: interest-free loans for vocational training graduates' home projects (4 April 2026)",
+        "ar": "جوردن نيوز: قروض بدون فوائد لمشاريع خريجي التدريب المهني المنزلية (4 نيسان 2026)"
+      },
+      "url": "https://www.jordannews.jo/Section-109/News/Agreement-to-Grant-Interest-Free-Loans-to-Vocational-Training-Graduates-50301",
+      "accessed": "2026-10-09",
+      "note": "Development and Employment Fund: JOD 1,000-3,000, ages 18-45, VTC graduates with a professional licence, 3-month grace, up to 60 months."
+    },
+    "S15": {
+      "id": "S15",
+      "title": {
+        "en": "Orange Corners Jordan",
+        "ar": "أورانج كورنرز الأردن"
+      },
+      "url": "https://www.orangecorners.com/country/jordan/",
+      "accessed": "2026-10-09",
+      "note": "Incubation for 40 Jordanian entrepreneurs a year with an MVP, running at least one year; with iPARK and QRCE."
+    },
+    "S16": {
+      "id": "S16",
+      "title": {
+        "en": "Oasis500 accelerator profile (ProDevs)",
+        "ar": "ملف مسرّعة Oasis500 (ProDevs)"
+      },
+      "url": "https://www.prodevs.io/accelerators/oasis500",
+      "accessed": "2026-10-09",
+      "note": "Third-party profile: seed investment of $30,000-50,000 for 5-15% equity, via bootcamp. Confirm on oasis500.com."
+    },
+    "S17": {
+      "id": "S17",
+      "title": {
+        "en": "PSUT: Queen Rania National Entrepreneurship Competition, Orange Corners edition",
+        "ar": "جامعة الأميرة سمية: مسابقة الملكة رانيا الوطنية للريادة - نسخة أورانج كورنرز"
+      },
+      "url": "https://psut.edu.jo/en/news/the-13th-edition-of-the-queen-rania-national-entrepreneurship-competition-orange-corners-edition-is-now-open-for-registration",
+      "accessed": "2026-10-09",
+      "note": "Run by QRCE at PSUT for technology projects: ideas with a business plan, MVPs, or startups under one year old."
+    },
+    "S18": {
+      "id": "S18",
+      "title": {
+        "en": "iPARK, Royal Scientific Society",
+        "ar": "آي بارك، الجمعية العلمية الملكية"
+      },
+      "url": "https://www.ipark.jo/",
+      "accessed": "2026-10-09",
+      "note": "Technology incubator in Amman; 300+ startups supported. Its certificate had expired when accessed, so details came from search."
+    },
+    "S19": {
+      "id": "S19",
+      "title": {
+        "en": "EU Delegation to Jordan: Luminus ShamalStart",
+        "ar": "بعثة الاتحاد الأوروبي في الأردن: لومينوس شمال ستارت"
+      },
+      "url": "https://www.eeas.europa.eu/node/70887_ar",
+      "accessed": "2026-10-09",
+      "note": "Hardware and maker accelerator for northern Jordan with FabLab Irbid. EU-funded; check that a cohort is open."
+    },
+    "S20": {
+      "id": "S20",
+      "title": {
+        "en": "Social security in Jordan 2026: contribution rates (Al-Masry in Gulf)",
+        "ar": "الضمان الاجتماعي في الأردن 2026: نسب الاشتراك"
+      },
+      "url": "https://www.almasryingulf.com/%D8%A7%D9%84%D8%B6%D9%85%D8%A7%D9%86-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A-%D9%81%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86-2026-%D9%83%D9%85-%D9%8A%D9%8F%D8%AE%D8%B5%D9%85-%D9%85/",
+      "accessed": "2026-10-09",
+      "note": "News source, not SSC: 21.75% of wages (14.25% employer, 7.5% employee). Confirm with SSC."
     }
   },
   "offices": {
@@ -96,7 +226,8 @@
       "website": "https://www.mit.gov.jo",
       "sourceIds": [
         "S1",
-        "S4"
+        "S4",
+        "S8"
       ]
     },
     "CCD": {
@@ -107,14 +238,15 @@
       },
       "city": "Amman",
       "address": {
-        "en": "Amman; branches at the Zarqa, Irbid and Mafraq chambers of commerce, the MIT directorates in Karak and Madaba, and ASEZA in Aqaba",
-        "ar": "عمّان؛ فروع في غرف تجارة الزرقاء وإربد والمفرق ومديريات الصناعة والتجارة في الكرك ومأدبا وسلطة العقبة"
+        "en": "Amman (most steps are online); branches at the Zarqa, Irbid and Mafraq chambers of commerce, the MIT directorates in Karak and Madaba, and ASEZA in Aqaba",
+        "ar": "عمّان (معظم الخطوات إلكترونية)؛ فروع في غرف تجارة الزرقاء وإربد والمفرق ومديريات الصناعة والتجارة في الكرك ومأدبا وسلطة العقبة"
       },
       "hours": null,
       "phone": null,
       "website": "https://www.ccd.gov.jo",
       "sourceIds": [
-        "S1"
+        "S1",
+        "S10"
       ]
     },
     "GAM": {
@@ -125,15 +257,16 @@
       },
       "city": "Amman",
       "address": {
-        "en": "The GAM district office for your home or shop; outside Amman your municipality",
-        "ar": "منطقة الأمانة التابع لها منزلك أو محلك؛ خارج عمّان البلدية"
+        "en": "Online through GAM e-services; outside Amman your municipality",
+        "ar": "إلكترونياً عبر خدمات الأمانة؛ خارج عمّان البلدية"
       },
       "hours": null,
       "phone": null,
       "website": "https://www.ammancity.gov.jo",
       "sourceIds": [
         "S1",
-        "S2"
+        "S2",
+        "S8"
       ]
     },
     "ACC": {
@@ -144,14 +277,33 @@
       },
       "city": "Amman",
       "address": {
-        "en": "Amman",
-        "ar": "عمّان"
+        "en": "Service office inside the Ministry of Industry building",
+        "ar": "مكتب خدمة داخل مبنى وزارة الصناعة والتجارة"
       },
       "hours": null,
       "phone": null,
       "website": "https://www.ammanchamber.org.jo",
       "sourceIds": [
-        "S3"
+        "S3",
+        "S9"
+      ]
+    },
+    "ACI": {
+      "id": "ACI",
+      "name": {
+        "en": "Amman Chamber of Industry",
+        "ar": "غرفة صناعة عمّان"
+      },
+      "city": "Amman",
+      "address": {
+        "en": "Service office inside the Ministry of Industry building",
+        "ar": "مكتب خدمة داخل مبنى وزارة الصناعة والتجارة"
+      },
+      "hours": null,
+      "phone": null,
+      "website": "https://www.aci.org.jo",
+      "sourceIds": [
+        "S8"
       ]
     },
     "ISTD": {
@@ -162,14 +314,15 @@
       },
       "city": "Amman",
       "address": {
-        "en": "Online e-services or any ISTD office",
-        "ar": "الخدمات الإلكترونية أو أي مكتب للدائرة"
+        "en": "Online e-services, then the Taxpayer Services Division to ratify the certificate",
+        "ar": "الخدمات الإلكترونية ثم قسم خدمات المكلفين لتصديق الشهادة"
       },
       "hours": null,
-      "phone": null,
+      "phone": "Call centre 117171",
       "website": "https://www.istd.gov.jo",
       "sourceIds": [
-        "S7"
+        "S7",
+        "S12"
       ]
     },
     "SSC": {
@@ -180,14 +333,15 @@
       },
       "city": "Amman",
       "address": {
-        "en": "Any SSC branch",
-        "ar": "أي فرع للمؤسسة"
+        "en": "Online, then the Central Amman administration (Subscribers Directorate) to activate the account",
+        "ar": "إلكترونياً ثم إدارة ضمان وسط عمّان (مديرية المشتركين) لتفعيل الحساب"
       },
       "hours": null,
       "phone": null,
       "website": "https://www.ssc.gov.jo",
       "sourceIds": [
-        "S1"
+        "S1",
+        "S11"
       ]
     },
     "JFDA": {
@@ -198,14 +352,33 @@
       },
       "city": "Amman",
       "address": {
-        "en": "Amman",
-        "ar": "عمّان"
+        "en": "Circulating Food Division, Specifications and Food Quality Division, and Sample Reception Unit",
+        "ar": "قسم الأغذية المتداولة وقسم المواصفات وجودة الغذاء ووحدة استقبال العينات"
       },
       "hours": null,
       "phone": "Hotline 117114, WhatsApp 0795632000",
       "website": "https://www.jfda.jo",
       "sourceIds": [
-        "S6"
+        "S6",
+        "S8"
+      ]
+    },
+    "SEAL": {
+      "id": "SEAL",
+      "name": {
+        "en": "Any seal (stamp) shop",
+        "ar": "أي محل لصناعة الأختام"
+      },
+      "city": "Any city",
+      "address": {
+        "en": "Any seal shop",
+        "ar": "أي محل أختام"
+      },
+      "hours": null,
+      "phone": null,
+      "website": "https://jordan.eregulations.org/procedure/21?l=en",
+      "sourceIds": [
+        "S11"
       ]
     },
     "CSPD": {
@@ -238,7 +411,27 @@
       "hours": null,
       "phone": null,
       "website": "https://www.jedco.gov.jo",
-      "sourceIds": []
+      "sourceIds": [
+        "S13"
+      ]
+    },
+    "DEF": {
+      "id": "DEF",
+      "name": {
+        "en": "Development and Employment Fund",
+        "ar": "صندوق التنمية والتشغيل"
+      },
+      "city": "Amman",
+      "address": {
+        "en": "Branches in every governorate",
+        "ar": "فروع في جميع المحافظات"
+      },
+      "hours": null,
+      "phone": null,
+      "website": "https://www.def.gov.jo",
+      "sourceIds": [
+        "S14"
+      ]
     },
     "MOL": {
       "id": "MOL",
@@ -319,8 +512,8 @@
     "registration_certificate": {
       "id": "registration_certificate",
       "name": {
-        "en": "Commercial register certificate",
-        "ar": "شهادة السجل التجاري"
+        "en": "Trader registration certificate (commercial register)",
+        "ar": "شهادة تسجيل التاجر (السجل التجاري)"
       },
       "issuedBy": "MIT",
       "issuedByStep": [
@@ -334,12 +527,13 @@
     "chamber_certificate": {
       "id": "chamber_certificate",
       "name": {
-        "en": "Chamber of Commerce membership certificate",
-        "ar": "شهادة الانتساب لغرفة التجارة"
+        "en": "Chamber membership certificate",
+        "ar": "شهادة الانتساب للغرفة"
       },
       "issuedBy": "ACC",
       "issuedByStep": [
-        "chamber_membership"
+        "chamber_membership",
+        "chamber_of_industry"
       ],
       "hasExpiry": true,
       "ocrDocType": "chamber_certificate",
@@ -348,8 +542,8 @@
     "lease_contract": {
       "id": "lease_contract",
       "name": {
-        "en": "Lease contract, owner's written consent, or title deed",
-        "ar": "عقد الإيجار أو موافقة المالك الخطية أو سند الملكية"
+        "en": "Rent contract",
+        "ar": "عقد الإيجار"
       },
       "issuedBy": "landlord",
       "issuedByStep": [],
@@ -357,53 +551,127 @@
       "ocrDocType": "lease_contract",
       "notes": null
     },
-    "building_permit": {
-      "id": "building_permit",
+    "property_ownership_document": {
+      "id": "property_ownership_document",
       "name": {
-        "en": "Occupancy permit or zoning plan",
-        "ar": "إذن الإشغال أو المخطط التنظيمي"
+        "en": "Title deed of the property (copy)",
+        "ar": "سند ملكية العقار (نسخة)"
       },
-      "issuedBy": "GAM",
+      "issuedBy": "landlord",
       "issuedByStep": [],
       "hasExpiry": false,
-      "ocrDocType": "building_permit",
+      "ocrDocType": "property_ownership_document",
+      "notes": {
+        "en": "Ask your landlord for a copy if you rent.",
+        "ar": "اطلب نسخة من المالك إذا كنت مستأجراً."
+      }
+    },
+    "property_owner_approval": {
+      "id": "property_owner_approval",
+      "name": {
+        "en": "Property owner approval form",
+        "ar": "نموذج موافقة مالك العقار"
+      },
+      "issuedBy": "landlord",
+      "issuedByStep": [],
+      "hasExpiry": false,
+      "ocrDocType": "property_owner_approval",
+      "notes": {
+        "en": "GAM form signed by the owner of the home.",
+        "ar": "نموذج الأمانة يوقعه مالك المنزل."
+      }
+    },
+    "declaration_pledge": {
+      "id": "declaration_pledge",
+      "name": {
+        "en": "GAM declaration and pledge form",
+        "ar": "نموذج الإقرار والتعهد لأمانة عمّان"
+      },
+      "issuedBy": "applicant",
+      "issuedByStep": [],
+      "hasExpiry": false,
+      "ocrDocType": "declaration_pledge",
+      "notes": {
+        "en": "You sign it yourself, and you can do this inside Bedaya. It covers allowing inspections and following the licence conditions.",
+        "ar": "توقعه بنفسك ويمكنك ذلك داخل بداية. يشمل السماح بالتفتيش والالتزام بشروط الترخيص."
+      }
+    },
+    "building_documents": {
+      "id": "building_documents",
+      "name": {
+        "en": "Building documents: occupancy permit, construction licence, building specifications certificate and zoning sheet",
+        "ar": "وثائق البناء: إذن الإشغال ورخصة الإنشاء وشهادة مواصفات البناء والمخطط التنظيمي"
+      },
+      "issuedBy": "landlord",
+      "issuedByStep": [],
+      "hasExpiry": false,
+      "ocrDocType": "building_documents",
+      "notes": {
+        "en": "Usually held by the owner of the building.",
+        "ar": "عادة تكون لدى مالك البناء."
+      }
+    },
+    "building_residents_consent": {
+      "id": "building_residents_consent",
+      "name": {
+        "en": "Consent of the building's residents",
+        "ar": "موافقة سكان البناء"
+      },
+      "issuedBy": "landlord",
+      "issuedByStep": [],
+      "hasExpiry": false,
+      "ocrDocType": "building_residents_consent",
+      "notes": {
+        "en": "JFDA asks for it for home food businesses.",
+        "ar": "تطلبها مؤسسة الغذاء والدواء للمشاريع الغذائية المنزلية."
+      }
+    },
+    "inspection_pledge": {
+      "id": "inspection_pledge",
+      "name": {
+        "en": "JFDA pledge for inspection form",
+        "ar": "نموذج التعهد بالتفتيش لمؤسسة الغذاء والدواء"
+      },
+      "issuedBy": "applicant",
+      "issuedByStep": [],
+      "hasExpiry": false,
+      "ocrDocType": "inspection_pledge",
+      "notes": {
+        "en": "You sign it yourself, and you can do this inside Bedaya.",
+        "ar": "توقعه بنفسك ويمكنك ذلك داخل بداية."
+      }
+    },
+    "product_label": {
+      "id": "product_label",
+      "name": {
+        "en": "Product label design (one per food type)",
+        "ar": "تصميم ملصق المنتج (لكل نوع غذاء)"
+      },
+      "issuedBy": "applicant",
+      "issuedByStep": [],
+      "hasExpiry": false,
+      "ocrDocType": "product_label",
       "notes": null
     },
-    "inspection_undertaking": {
-      "id": "inspection_undertaking",
+    "gam_rental_certificate": {
+      "id": "gam_rental_certificate",
       "name": {
-        "en": "Undertaking to allow municipal inspection",
-        "ar": "تعهد بالسماح لموظفي الأمانة بالتفتيش"
+        "en": "GAM rent-contract certificate",
+        "ar": "شهادة عقد الإيجار من الأمانة"
       },
-      "issuedBy": "applicant",
-      "issuedByStep": [],
+      "issuedBy": "GAM",
+      "issuedByStep": [
+        "gam_rental_certificate"
+      ],
       "hasExpiry": false,
-      "ocrDocType": "inspection_undertaking",
-      "notes": {
-        "en": "Can be signed inside Bedaya.",
-        "ar": "يمكن توقيعه داخل بداية."
-      }
-    },
-    "no_disturbance_undertaking": {
-      "id": "no_disturbance_undertaking",
-      "name": {
-        "en": "Undertaking not to disturb neighbours and to follow the licence conditions",
-        "ar": "تعهد بعدم الإزعاج والالتزام بشروط الترخيص"
-      },
-      "issuedBy": "applicant",
-      "issuedByStep": [],
-      "hasExpiry": false,
-      "ocrDocType": "no_disturbance_undertaking",
-      "notes": {
-        "en": "Can be signed inside Bedaya.",
-        "ar": "يمكن توقيعه داخل بداية."
-      }
+      "ocrDocType": "gam_rental_certificate",
+      "notes": null
     },
     "jfda_approval": {
       "id": "jfda_approval",
       "name": {
-        "en": "JFDA approval for home food production",
-        "ar": "موافقة المؤسسة العامة للغذاء والدواء"
+        "en": "JFDA food processing and label approval",
+        "ar": "موافقة الغذاء والدواء على التصنيع والملصق"
       },
       "issuedBy": "JFDA",
       "issuedByStep": [
@@ -411,6 +679,33 @@
       ],
       "hasExpiry": true,
       "ocrDocType": "jfda_approval",
+      "notes": null
+    },
+    "vocational_licence": {
+      "id": "vocational_licence",
+      "name": {
+        "en": "Vocational licence",
+        "ar": "رخصة المهن"
+      },
+      "issuedBy": "GAM",
+      "issuedByStep": [
+        "home_business_license",
+        "vocational_license"
+      ],
+      "hasExpiry": true,
+      "ocrDocType": "vocational_licence",
+      "notes": null
+    },
+    "liaison_officer_form": {
+      "id": "liaison_officer_form",
+      "name": {
+        "en": "Social security liaison officer form",
+        "ar": "نموذج ضابط الارتباط للضمان"
+      },
+      "issuedBy": "applicant",
+      "issuedByStep": [],
+      "hasExpiry": false,
+      "ocrDocType": "liaison_officer_form",
       "notes": null
     },
     "memorandum_of_association": {
@@ -450,8 +745,8 @@
           "order": 1,
           "id": "reserve_trade_name",
           "title": {
-            "en": "Reserve a trade name",
-            "ar": "حجز الاسم التجاري"
+            "en": "Register a trade name",
+            "ar": "تسجيل الاسم التجاري"
           },
           "officeId": "MIT",
           "requiredDocs": [
@@ -461,21 +756,21 @@
             }
           ],
           "fee": {
-            "minJod": 30,
+            "minJod": 20,
             "maxJod": 30,
             "note": {
-              "en": "10 JOD name search + 20 JOD registration",
-              "ar": "10 دنانير للتحري عن الاسم + 20 ديناراً للتسجيل"
+              "en": "20 JOD registration (+10 JOD if you ask for a name search first); 3 JOD per extra certificate copy",
+              "ar": "20 ديناراً للتسجيل (+10 دنانير إذا طلبت التحري عن الاسم أولاً)؛ 3 دنانير لكل نسخة إضافية من الشهادة"
             },
-            "verified": "partial"
+            "verified": "yes"
           },
           "days": {
-            "value": 1,
+            "value": 0,
             "note": {
-              "en": "Usually same day (estimate)",
-              "ar": "عادة في نفس اليوم (تقدير)"
+              "en": "Same visit as the trader registration",
+              "ar": "في نفس زيارة تسجيل التاجر"
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "condition": "optional",
           "notes": {
@@ -483,15 +778,16 @@
             "ar": "فقط إذا أردت اسماً تجارياً لمشروعك."
           },
           "sourceIds": [
-            "S4"
+            "S4",
+            "S8"
           ]
         },
         {
           "order": 2,
           "id": "register_sole_proprietorship",
           "title": {
-            "en": "Register a sole proprietorship (Commercial Registry)",
-            "ar": "تسجيل مؤسسة فردية (السجل التجاري)"
+            "en": "Register as a trader (Commercial Registry)",
+            "ar": "التسجيل كتاجر (السجل التجاري)"
           },
           "officeId": "MIT",
           "requiredDocs": [
@@ -508,37 +804,38 @@
             "minJod": 15,
             "maxJod": 45,
             "note": {
-              "en": "10-40 JOD registration fee by declared capital (10 JOD if capital is under 20,000 JOD) + 5 JOD registration certificate",
-              "ar": "رسوم قيد من 10 إلى 40 ديناراً حسب رأس المال (10 دنانير إذا كان رأس المال أقل من 20,000 دينار) + 5 دنانير شهادة التسجيل"
+              "en": "5 JOD certificate + registration fee by capital: 10 JOD under 20,000 JOD, then 20 / 30 / 40 JOD; extra copies 3 JOD each",
+              "ar": "5 دنانير شهادة + رسم قيد حسب رأس المال: 10 دنانير لأقل من 20,000 دينار، ثم 20 / 30 / 40 ديناراً؛ النسخة الإضافية 3 دنانير"
             },
             "verified": "yes"
           },
           "days": {
-            "value": 1,
+            "value": 0,
             "note": {
-              "en": "Usually same day (estimate)",
-              "ar": "عادة في نفس اليوم (تقدير)"
+              "en": "Same day: about 15-75 minutes at MIT, paid in cash",
+              "ar": "في نفس اليوم: حوالي 15 إلى 75 دقيقة في الوزارة، والدفع نقداً"
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "condition": "always",
           "notes": {
-            "en": "In Amman go to the Commercial Registry at MIT in Abdali; outside Amman go to the MIT directorate in your governorate. Minimum declared capital is 1,000 JOD and no deposit is needed.",
-            "ar": "في عمّان راجع مديرية السجل التجاري في وزارة الصناعة والتجارة والتموين في العبدلي، وخارج عمّان راجع مديرية الصناعة والتجارة في محافظتك. الحد الأدنى لرأس المال المصرح به 1,000 دينار ولا يشترط إيداعه."
+            "en": "Take a queue number at MIT in Abdali (outside Amman, the MIT directorate in your governorate) and fill in the trader declaration and pledge forms. Minimum declared capital is 1,000 JOD and no deposit is needed.",
+            "ar": "خذ رقم دور في الوزارة في العبدلي (وخارج عمّان مديرية الصناعة والتجارة في محافظتك) واملأ نموذجي تصريح احتراف التجارة والتعهد. الحد الأدنى لرأس المال المصرح به 1,000 دينار ولا يشترط إيداعه."
           },
           "sourceIds": [
             "S1",
-            "S5"
+            "S5",
+            "S8"
           ]
         },
         {
           "order": 3,
-          "id": "jfda_home_food_license",
+          "id": "chamber_of_industry",
           "title": {
-            "en": "Get JFDA approval for home food production",
-            "ar": "الحصول على موافقة المؤسسة العامة للغذاء والدواء للإنتاج الغذائي المنزلي"
+            "en": "Join the Amman Chamber of Industry",
+            "ar": "الانتساب لغرفة صناعة عمّان"
           },
-          "officeId": "JFDA",
+          "officeId": "ACI",
           "requiredDocs": [
             {
               "docId": "registration_certificate",
@@ -546,6 +843,62 @@
             },
             {
               "docId": "lease_contract",
+              "condition": "if_rented"
+            },
+            {
+              "docId": "property_ownership_document",
+              "condition": "always"
+            },
+            {
+              "docId": "national_id",
+              "condition": "always"
+            },
+            {
+              "docId": "trade_name_certificate",
+              "condition": "if_trade_name"
+            }
+          ],
+          "fee": {
+            "minJod": 40,
+            "maxJod": 175,
+            "note": {
+              "en": "Annual fee by capital (20 JOD under 10,000 JOD; 30 / 40 / 70 JOD above) + registration fee of 50% of the annual fee + community service fee (10 JOD under 10,000; 20 / 20 / 70 above). Under 10,000 JOD of capital it's 40 JOD.",
+              "ar": "اشتراك سنوي حسب رأس المال (20 ديناراً لأقل من 10,000؛ 30 / 40 / 70 ديناراً لما فوق) + رسم تسجيل بنسبة 50% من الاشتراك السنوي + رسم خدمة مجتمع (10 دنانير لأقل من 10,000؛ 20 / 20 / 70 لما فوق). لرأس مال أقل من 10,000 دينار المجموع 40 ديناراً."
+            },
+            "verified": "yes"
+          },
+          "days": {
+            "value": 0,
+            "note": {
+              "en": "Same day: 5-15 minutes at the chamber's office in the Ministry building",
+              "ar": "في نفس اليوم: 5 إلى 15 دقيقة في مكتب الغرفة داخل مبنى الوزارة"
+            },
+            "verified": "yes"
+          },
+          "condition": "if_food",
+          "notes": {
+            "en": "Home food production counts as industry, so it's the Chamber of Industry rather than the Chamber of Commerce.",
+            "ar": "يُعد تصنيع الغذاء المنزلي نشاطاً صناعياً، لذا الانتساب لغرفة الصناعة وليس غرفة التجارة."
+          },
+          "sourceIds": [
+            "S8"
+          ]
+        },
+        {
+          "order": 4,
+          "id": "gam_rental_certificate",
+          "title": {
+            "en": "Get GAM's rent-contract certificate",
+            "ar": "الحصول على شهادة عقد الإيجار من الأمانة"
+          },
+          "officeId": "GAM",
+          "requiredDocs": [
+            {
+              "docId": "lease_contract",
+              "condition": "always"
+            },
+            {
+              "docId": "property_ownership_document",
               "condition": "always"
             },
             {
@@ -557,31 +910,99 @@
             "minJod": null,
             "maxJod": null,
             "note": {
-              "en": "Fee not published in our sources; ask JFDA",
-              "ar": "الرسوم غير منشورة في مصادرنا؛ اسأل المؤسسة"
+              "en": "0.5% of the annual rent (max 15 JOD) + 0.3% of the total contract value in stamps",
+              "ar": "0.5% من الإيجار السنوي (بحد أقصى 15 ديناراً) + 0.003 من قيمة العقد الكلية طوابع"
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "days": {
-            "value": null,
+            "value": 0,
             "note": {
-              "en": "Includes a home inspection and lab tests on samples; time not published",
-              "ar": "تشمل كشفاً على المنزل وفحص عينات في المختبر؛ المدة غير منشورة"
+              "en": "Online, same day",
+              "ar": "إلكترونياً في نفس اليوم"
             },
-            "verified": "no"
+            "verified": "yes"
           },
-          "condition": "if_food",
+          "condition": "if_rented",
           "notes": {
-            "en": "Required before GAM can license any home food business.",
-            "ar": "مطلوبة قبل أن تمنح الأمانة رخصة لأي مشروع غذائي منزلي."
+            "en": "Only if you rent the home.",
+            "ar": "فقط إذا كان المنزل مستأجراً."
           },
           "sourceIds": [
-            "S2",
-            "S6"
+            "S8"
           ]
         },
         {
-          "order": 4,
+          "order": 5,
+          "id": "jfda_home_food_license",
+          "title": {
+            "en": "Get JFDA food processing and label approval",
+            "ar": "الحصول على موافقة الغذاء والدواء على التصنيع والملصق"
+          },
+          "officeId": "JFDA",
+          "requiredDocs": [
+            {
+              "docId": "registration_certificate",
+              "condition": "always"
+            },
+            {
+              "docId": "lease_contract",
+              "condition": "if_rented"
+            },
+            {
+              "docId": "property_ownership_document",
+              "condition": "always"
+            },
+            {
+              "docId": "building_documents",
+              "condition": "always"
+            },
+            {
+              "docId": "building_residents_consent",
+              "condition": "always"
+            },
+            {
+              "docId": "inspection_pledge",
+              "condition": "always"
+            },
+            {
+              "docId": "product_label",
+              "condition": "always"
+            },
+            {
+              "docId": "national_id",
+              "condition": "always"
+            }
+          ],
+          "fee": {
+            "minJod": 200,
+            "maxJod": null,
+            "note": {
+              "en": "100 JOD permit application + 10 JOD label approval per food type + 90 JOD lab tests per sample (30 physical, 30 microbiological, 30 chemical). For one food type: 200 JOD.",
+              "ar": "100 دينار طلب التصريح + 10 دنانير لاعتماد الملصق لكل نوع غذاء + 90 ديناراً فحوص مخبرية لكل عينة (30 فيزيائي، 30 ميكروبيولوجي، 30 كيميائي). لنوع غذاء واحد: 200 دينار."
+            },
+            "verified": "yes"
+          },
+          "days": {
+            "value": 10,
+            "note": {
+              "en": "7-10 days: the inspection visit comes 2-3 days after you apply, and the lab report 5-7 days after the samples",
+              "ar": "7 إلى 10 أيام: زيارة الكشف بعد 2 إلى 3 أيام من التقديم، وتقرير المختبر بعد 5 إلى 7 أيام من أخذ العينات"
+            },
+            "verified": "yes"
+          },
+          "condition": "if_food",
+          "notes": {
+            "en": "Start the vocational licence request online at GAM first; you need its application number here. JFDA inspects your kitchen and takes samples.",
+            "ar": "ابدأ طلب رخصة المهن إلكترونياً لدى الأمانة أولاً لأنك تحتاج رقم الطلب هنا. تكشف المؤسسة على مطبخك وتأخذ عينات."
+          },
+          "sourceIds": [
+            "S6",
+            "S8"
+          ]
+        },
+        {
+          "order": 6,
           "id": "home_business_license",
           "title": {
             "en": "Get the home-based vocational licence",
@@ -590,24 +1011,36 @@
           "officeId": "GAM",
           "requiredDocs": [
             {
+              "docId": "property_owner_approval",
+              "condition": "if_rented"
+            },
+            {
+              "docId": "declaration_pledge",
+              "condition": "always"
+            },
+            {
               "docId": "registration_certificate",
               "condition": "always"
             },
             {
-              "docId": "lease_contract",
+              "docId": "property_ownership_document",
               "condition": "always"
             },
             {
-              "docId": "inspection_undertaking",
+              "docId": "building_documents",
               "condition": "always"
             },
             {
-              "docId": "no_disturbance_undertaking",
-              "condition": "always"
+              "docId": "gam_rental_certificate",
+              "condition": "if_rented"
             },
             {
               "docId": "jfda_approval",
               "condition": "if_food"
+            },
+            {
+              "docId": "national_id",
+              "condition": "always"
             }
           ],
           "fee": {
@@ -622,23 +1055,24 @@
           "days": {
             "value": 3,
             "note": {
-              "en": "3 working days once the file is complete",
-              "ar": "3 أيام عمل بعد اكتمال الوثائق"
+              "en": "3 working days once the file is complete; requested and issued online",
+              "ar": "3 أيام عمل بعد اكتمال الملف؛ الطلب والإصدار إلكترونيان"
             },
             "verified": "yes"
           },
           "condition": "always",
           "notes": {
-            "en": "Apply at your GAM district office (or your municipality). GAM inspects the home; food businesses also get a health inspection. Chamber membership is needed only if required for your profession.",
-            "ar": "قدّم الطلب في منطقة الأمانة التابع لها منزلك (أو البلدية). تكشف الأمانة على المنزل، ويُجرى كشف صحي للمهن الغذائية. الانتساب للغرفة مطلوب فقط إذا تطلبته المهنة."
+            "en": "GAM checks the home. You may use up to 15% of it (max 25 m²). Non-food activities may need chamber membership; GAM will tell you.",
+            "ar": "تكشف الأمانة على المنزل. يمكنك استخدام 15% منه كحد أقصى (25 متراً مربعاً). قد تحتاج المهن غير الغذائية الانتساب لغرفة، وستبلغك الأمانة بذلك."
           },
           "sourceIds": [
             "S1",
-            "S2"
+            "S2",
+            "S8"
           ]
         },
         {
-          "order": 5,
+          "order": 7,
           "id": "tax_number",
           "title": {
             "en": "Get a tax number",
@@ -647,75 +1081,136 @@
           "officeId": "ISTD",
           "requiredDocs": [
             {
-              "docId": "national_id",
+              "docId": "registration_certificate",
               "condition": "always"
             },
             {
-              "docId": "registration_certificate",
+              "docId": "vocational_licence",
+              "condition": "always"
+            },
+            {
+              "docId": "lease_contract",
+              "condition": "if_rented"
+            },
+            {
+              "docId": "national_id",
               "condition": "always"
             }
           ],
           "fee": {
-            "minJod": null,
-            "maxJod": null,
+            "minJod": 0,
+            "maxJod": 0,
             "note": {
-              "en": "No fee listed in our sources",
-              "ar": "لا توجد رسوم مذكورة في مصادرنا"
+              "en": "Free",
+              "ar": "مجاناً"
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "days": {
-            "value": 1,
+            "value": 0,
             "note": {
-              "en": "Online service (estimate)",
-              "ar": "خدمة إلكترونية (تقدير)"
+              "en": "Online, same day (up to 24 hours if you apply at the end of the working day); then have the certificate ratified at ISTD in about 5 minutes",
+              "ar": "إلكترونياً في نفس اليوم (حتى 24 ساعة إذا قدمت في نهاية الدوام)؛ ثم تصديق الشهادة لدى الدائرة في حوالي 5 دقائق"
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "condition": "always",
           "notes": {
-            "en": "Register online through ISTD e-services and use the number on all invoices.",
-            "ar": "سجّل إلكترونياً عبر خدمات دائرة ضريبة الدخل والمبيعات واستخدم الرقم في كل فواتيرك."
+            "en": "Use the tax number on all your invoices.",
+            "ar": "استخدم الرقم الضريبي في كل فواتيرك."
           },
           "sourceIds": [
             "S1",
-            "S7"
+            "S7",
+            "S12"
           ]
         },
         {
-          "order": 6,
+          "order": 8,
+          "id": "business_seal",
+          "title": {
+            "en": "Make a business stamp",
+            "ar": "عمل ختم للمنشأة"
+          },
+          "officeId": "SEAL",
+          "requiredDocs": [
+            {
+              "docId": "registration_certificate",
+              "condition": "always"
+            },
+            {
+              "docId": "national_id",
+              "condition": "always"
+            }
+          ],
+          "fee": {
+            "minJod": 10,
+            "maxJod": 20,
+            "note": {
+              "en": "10-20 JOD at any seal shop",
+              "ar": "10 إلى 20 ديناراً في أي محل أختام"
+            },
+            "verified": "yes"
+          },
+          "days": {
+            "value": 0,
+            "note": {
+              "en": "Same day",
+              "ar": "في نفس اليوم"
+            },
+            "verified": "yes"
+          },
+          "condition": "always",
+          "notes": {
+            "en": "You need the stamp to activate your social security account.",
+            "ar": "تحتاج الختم لتفعيل حساب الضمان الاجتماعي."
+          },
+          "sourceIds": [
+            "S11"
+          ]
+        },
+        {
+          "order": 9,
           "id": "social_security",
           "title": {
-            "en": "Enrol in social security",
-            "ar": "الاشتراك في الضمان الاجتماعي"
+            "en": "Register with social security",
+            "ar": "التسجيل في الضمان الاجتماعي"
           },
           "officeId": "SSC",
           "requiredDocs": [
             {
-              "docId": "national_id",
+              "docId": "registration_certificate",
               "condition": "always"
             },
             {
-              "docId": "registration_certificate",
+              "docId": "vocational_licence",
+              "condition": "always"
+            },
+            {
+              "docId": "liaison_officer_form",
+              "condition": "always"
+            },
+            {
+              "docId": "national_id",
               "condition": "always"
             }
           ],
           "fee": {
-            "minJod": null,
-            "maxJod": null,
+            "minJod": 0,
+            "maxJod": 0,
             "note": {
-              "en": "No registration fee listed; monthly contributions apply",
-              "ar": "لا توجد رسوم تسجيل مذكورة؛ تُدفع اشتراكات شهرية"
+              "en": "No registration fee; monthly contributions on wages",
+              "ar": "لا رسوم تسجيل؛ تُدفع اشتراكات شهرية على الأجور"
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "days": {
-            "value": 1,
+            "value": 2,
             "note": {
-              "en": "Estimate",
-              "ar": "تقدير"
+              "en": "1-2 days: get the number online, then activate the account at SSC",
+              "ar": "1 إلى 2 يوم: الحصول على الرقم إلكترونياً ثم تفعيل الحساب لدى المؤسسة"
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "condition": "always",
           "notes": {
@@ -723,7 +1218,8 @@
             "ar": "إلزامي لمالك المؤسسة الفردية الذي يعمل فيها ولكل موظف."
           },
           "sourceIds": [
-            "S1"
+            "S1",
+            "S11"
           ]
         }
       ]
@@ -739,8 +1235,8 @@
           "order": 1,
           "id": "reserve_trade_name",
           "title": {
-            "en": "Reserve a trade name",
-            "ar": "حجز الاسم التجاري"
+            "en": "Register a trade name",
+            "ar": "تسجيل الاسم التجاري"
           },
           "officeId": "MIT",
           "requiredDocs": [
@@ -750,21 +1246,21 @@
             }
           ],
           "fee": {
-            "minJod": 30,
+            "minJod": 20,
             "maxJod": 30,
             "note": {
-              "en": "10 JOD name search + 20 JOD registration",
-              "ar": "10 دنانير للتحري عن الاسم + 20 ديناراً للتسجيل"
+              "en": "20 JOD registration (+10 JOD if you ask for a name search first); 3 JOD per extra certificate copy",
+              "ar": "20 ديناراً للتسجيل (+10 دنانير إذا طلبت التحري عن الاسم أولاً)؛ 3 دنانير لكل نسخة إضافية من الشهادة"
             },
-            "verified": "partial"
+            "verified": "yes"
           },
           "days": {
-            "value": 1,
+            "value": 0,
             "note": {
-              "en": "Usually same day (estimate)",
-              "ar": "عادة في نفس اليوم (تقدير)"
+              "en": "Same visit as the trader registration",
+              "ar": "في نفس زيارة تسجيل التاجر"
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "condition": "optional",
           "notes": {
@@ -772,15 +1268,16 @@
             "ar": "فقط إذا أردت اسماً تجارياً لمشروعك."
           },
           "sourceIds": [
-            "S4"
+            "S4",
+            "S9"
           ]
         },
         {
           "order": 2,
           "id": "register_sole_proprietorship",
           "title": {
-            "en": "Register a sole proprietorship (Commercial Registry)",
-            "ar": "تسجيل مؤسسة فردية (السجل التجاري)"
+            "en": "Register as a trader (Commercial Registry)",
+            "ar": "التسجيل كتاجر (السجل التجاري)"
           },
           "officeId": "MIT",
           "requiredDocs": [
@@ -797,27 +1294,28 @@
             "minJod": 15,
             "maxJod": 45,
             "note": {
-              "en": "10-40 JOD registration fee by declared capital (10 JOD if capital is under 20,000 JOD) + 5 JOD registration certificate",
-              "ar": "رسوم قيد من 10 إلى 40 ديناراً حسب رأس المال (10 دنانير إذا كان رأس المال أقل من 20,000 دينار) + 5 دنانير شهادة التسجيل"
+              "en": "5 JOD certificate + registration fee by capital: 10 JOD under 20,000 JOD, then 20 / 30 / 40 JOD; extra copies 3 JOD each",
+              "ar": "5 دنانير شهادة + رسم قيد حسب رأس المال: 10 دنانير لأقل من 20,000 دينار، ثم 20 / 30 / 40 ديناراً؛ النسخة الإضافية 3 دنانير"
             },
             "verified": "yes"
           },
           "days": {
-            "value": 1,
+            "value": 0,
             "note": {
-              "en": "Usually same day (estimate)",
-              "ar": "عادة في نفس اليوم (تقدير)"
+              "en": "Same day: about 15-75 minutes at MIT, paid in cash",
+              "ar": "في نفس اليوم: حوالي 15 إلى 75 دقيقة في الوزارة، والدفع نقداً"
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "condition": "always",
           "notes": {
-            "en": "In Amman go to the Commercial Registry at MIT in Abdali; outside Amman go to the MIT directorate in your governorate. Minimum declared capital is 1,000 JOD and no deposit is needed.",
-            "ar": "في عمّان راجع مديرية السجل التجاري في وزارة الصناعة والتجارة والتموين في العبدلي، وخارج عمّان راجع مديرية الصناعة والتجارة في محافظتك. الحد الأدنى لرأس المال المصرح به 1,000 دينار ولا يشترط إيداعه."
+            "en": "Take a queue number at MIT in Abdali (outside Amman, the MIT directorate in your governorate). Minimum declared capital is 1,000 JOD and no deposit is needed.",
+            "ar": "خذ رقم دور في الوزارة في العبدلي (وخارج عمّان مديرية الصناعة والتجارة في محافظتك). الحد الأدنى لرأس المال المصرح به 1,000 دينار ولا يشترط إيداعه."
           },
           "sourceIds": [
             "S1",
-            "S5"
+            "S5",
+            "S9"
           ]
         },
         {
@@ -839,11 +1337,7 @@
             },
             {
               "docId": "lease_contract",
-              "condition": "always"
-            },
-            {
-              "docId": "building_permit",
-              "condition": "always"
+              "condition": "if_rented"
             },
             {
               "docId": "national_id",
@@ -854,18 +1348,18 @@
             "minJod": 30,
             "maxJod": 2250,
             "note": {
-              "en": "First registration by capital: 30 JOD under 5,000; 75 JOD for 5,000-50,000; 150 JOD for 50,000-100,000 (annual fee afterwards: 20 / 50 / 100 JOD)",
-              "ar": "التسجيل لأول مرة حسب رأس المال: 30 ديناراً لأقل من 5,000؛ 75 ديناراً من 5,000 إلى 50,000؛ 150 ديناراً من 50,000 إلى 100,000 (الاشتراك السنوي بعدها: 20 / 50 / 100 دينار)"
+              "en": "First registration by capital: 30 JOD under 5,000; 75 JOD for 5,000-50,000; 150 JOD for 50,000-100,000; up to 2,250 JOD (annual fee afterwards from 20 JOD)",
+              "ar": "التسجيل لأول مرة حسب رأس المال: 30 ديناراً لأقل من 5,000؛ 75 ديناراً من 5,000 إلى 50,000؛ 150 ديناراً من 50,000 إلى 100,000؛ حتى 2,250 ديناراً (والاشتراك السنوي بعدها من 20 ديناراً)"
             },
             "verified": "yes"
           },
           "days": {
-            "value": 1,
+            "value": 0,
             "note": {
-              "en": "Estimate",
-              "ar": "تقدير"
+              "en": "Same day: 10-20 minutes at the chamber's office in the Ministry building",
+              "ar": "في نفس اليوم: 10 إلى 20 دقيقة في مكتب الغرفة داخل مبنى الوزارة"
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "condition": "always",
           "notes": {
@@ -873,11 +1367,60 @@
             "ar": "للمنشآت ضمن حدود أمانة عمّان ومحافظة العاصمة."
           },
           "sourceIds": [
-            "S3"
+            "S3",
+            "S9"
           ]
         },
         {
           "order": 4,
+          "id": "gam_rental_certificate",
+          "title": {
+            "en": "Get GAM's rent-contract certificate",
+            "ar": "الحصول على شهادة عقد الإيجار من الأمانة"
+          },
+          "officeId": "GAM",
+          "requiredDocs": [
+            {
+              "docId": "lease_contract",
+              "condition": "always"
+            },
+            {
+              "docId": "property_ownership_document",
+              "condition": "always"
+            },
+            {
+              "docId": "national_id",
+              "condition": "always"
+            }
+          ],
+          "fee": {
+            "minJod": null,
+            "maxJod": null,
+            "note": {
+              "en": "0.5% of the annual rent (max 15 JOD) + 0.3% of the total contract value in stamps",
+              "ar": "0.5% من الإيجار السنوي (بحد أقصى 15 ديناراً) + 0.003 من قيمة العقد الكلية طوابع"
+            },
+            "verified": "yes"
+          },
+          "days": {
+            "value": 0,
+            "note": {
+              "en": "Online, same day",
+              "ar": "إلكترونياً في نفس اليوم"
+            },
+            "verified": "yes"
+          },
+          "condition": "if_rented",
+          "notes": {
+            "en": "Only if you rent the premises.",
+            "ar": "فقط إذا كان الموقع مستأجراً."
+          },
+          "sourceIds": [
+            "S9"
+          ]
+        },
+        {
+          "order": 5,
           "id": "vocational_license",
           "title": {
             "en": "Get the vocational licence for your shop or office",
@@ -894,7 +1437,15 @@
               "condition": "always"
             },
             {
-              "docId": "lease_contract",
+              "docId": "gam_rental_certificate",
+              "condition": "if_rented"
+            },
+            {
+              "docId": "property_ownership_document",
+              "condition": "always"
+            },
+            {
+              "docId": "building_documents",
               "condition": "always"
             },
             {
@@ -903,21 +1454,21 @@
             }
           ],
           "fee": {
-            "minJod": null,
-            "maxJod": null,
+            "minJod": 3,
+            "maxJod": 1000,
             "note": {
-              "en": "Depends on the activity and the premises; not published in our sources",
-              "ar": "تعتمد على النشاط والموقع؛ غير منشورة في مصادرنا"
+              "en": "Depends on the activity: fixed-fee activities 25-200 JOD for individual traders (3-1,000 JOD for companies); capital-based activities 40-750 JOD. Plus 15 JOD per m² of signboard (min 1 m²) and an extra 20% of the licence fee (min 20 JOD).",
+              "ar": "حسب النشاط: الأنشطة ذات الرسم الثابت 25 إلى 200 دينار للتاجر الفرد (3 إلى 1,000 دينار للشركات)؛ والأنشطة حسب رأس المال 40 إلى 750 ديناراً. إضافة إلى 15 ديناراً لكل متر مربع من اللوحة الإعلانية (بحد أدنى متر واحد) و20% من رسم الرخصة (بحد أدنى 20 ديناراً)."
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "days": {
-            "value": null,
+            "value": 0,
             "note": {
-              "en": "Not published in our sources",
-              "ar": "غير منشورة في مصادرنا"
+              "en": "Online, same day once the documents are complete",
+              "ar": "إلكترونياً في نفس اليوم بعد اكتمال الوثائق"
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "condition": "always",
           "notes": {
@@ -925,11 +1476,13 @@
             "ar": "تحتاج بعض الأنشطة موافقة مسبقة من الجهة القطاعية المختصة."
           },
           "sourceIds": [
-            "S1"
+            "S1",
+            "S9",
+            "S10"
           ]
         },
         {
-          "order": 5,
+          "order": 6,
           "id": "tax_number",
           "title": {
             "en": "Get a tax number",
@@ -938,75 +1491,136 @@
           "officeId": "ISTD",
           "requiredDocs": [
             {
-              "docId": "national_id",
+              "docId": "registration_certificate",
               "condition": "always"
             },
             {
-              "docId": "registration_certificate",
+              "docId": "vocational_licence",
+              "condition": "always"
+            },
+            {
+              "docId": "lease_contract",
+              "condition": "if_rented"
+            },
+            {
+              "docId": "national_id",
               "condition": "always"
             }
           ],
           "fee": {
-            "minJod": null,
-            "maxJod": null,
+            "minJod": 0,
+            "maxJod": 0,
             "note": {
-              "en": "No fee listed in our sources",
-              "ar": "لا توجد رسوم مذكورة في مصادرنا"
+              "en": "Free",
+              "ar": "مجاناً"
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "days": {
-            "value": 1,
+            "value": 0,
             "note": {
-              "en": "Online service (estimate)",
-              "ar": "خدمة إلكترونية (تقدير)"
+              "en": "Online, same day (up to 24 hours if you apply at the end of the working day); then have the certificate ratified at ISTD in about 5 minutes",
+              "ar": "إلكترونياً في نفس اليوم (حتى 24 ساعة إذا قدمت في نهاية الدوام)؛ ثم تصديق الشهادة لدى الدائرة في حوالي 5 دقائق"
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "condition": "always",
           "notes": {
-            "en": "Register online through ISTD e-services and use the number on all invoices.",
-            "ar": "سجّل إلكترونياً عبر خدمات دائرة ضريبة الدخل والمبيعات واستخدم الرقم في كل فواتيرك."
+            "en": "Use the tax number on all your invoices.",
+            "ar": "استخدم الرقم الضريبي في كل فواتيرك."
           },
           "sourceIds": [
             "S1",
-            "S7"
+            "S7",
+            "S12"
           ]
         },
         {
-          "order": 6,
+          "order": 7,
+          "id": "business_seal",
+          "title": {
+            "en": "Make a business stamp",
+            "ar": "عمل ختم للمنشأة"
+          },
+          "officeId": "SEAL",
+          "requiredDocs": [
+            {
+              "docId": "registration_certificate",
+              "condition": "always"
+            },
+            {
+              "docId": "national_id",
+              "condition": "always"
+            }
+          ],
+          "fee": {
+            "minJod": 10,
+            "maxJod": 20,
+            "note": {
+              "en": "10-20 JOD at any seal shop",
+              "ar": "10 إلى 20 ديناراً في أي محل أختام"
+            },
+            "verified": "yes"
+          },
+          "days": {
+            "value": 0,
+            "note": {
+              "en": "Same day",
+              "ar": "في نفس اليوم"
+            },
+            "verified": "yes"
+          },
+          "condition": "always",
+          "notes": {
+            "en": "You need the stamp to activate your social security account.",
+            "ar": "تحتاج الختم لتفعيل حساب الضمان الاجتماعي."
+          },
+          "sourceIds": [
+            "S11"
+          ]
+        },
+        {
+          "order": 8,
           "id": "social_security",
           "title": {
-            "en": "Enrol in social security",
-            "ar": "الاشتراك في الضمان الاجتماعي"
+            "en": "Register with social security",
+            "ar": "التسجيل في الضمان الاجتماعي"
           },
           "officeId": "SSC",
           "requiredDocs": [
             {
-              "docId": "national_id",
+              "docId": "registration_certificate",
               "condition": "always"
             },
             {
-              "docId": "registration_certificate",
+              "docId": "vocational_licence",
+              "condition": "always"
+            },
+            {
+              "docId": "liaison_officer_form",
+              "condition": "always"
+            },
+            {
+              "docId": "national_id",
               "condition": "always"
             }
           ],
           "fee": {
-            "minJod": null,
-            "maxJod": null,
+            "minJod": 0,
+            "maxJod": 0,
             "note": {
-              "en": "No registration fee listed; monthly contributions apply",
-              "ar": "لا توجد رسوم تسجيل مذكورة؛ تُدفع اشتراكات شهرية"
+              "en": "No registration fee; monthly contributions on wages",
+              "ar": "لا رسوم تسجيل؛ تُدفع اشتراكات شهرية على الأجور"
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "days": {
-            "value": 1,
+            "value": 2,
             "note": {
-              "en": "Estimate",
-              "ar": "تقدير"
+              "en": "1-2 days: get the number online, then activate the account at SSC",
+              "ar": "1 إلى 2 يوم: الحصول على الرقم إلكترونياً ثم تفعيل الحساب لدى المؤسسة"
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "condition": "always",
           "notes": {
@@ -1014,7 +1628,8 @@
             "ar": "إلزامي لمالك المؤسسة الفردية الذي يعمل فيها ولكل موظف."
           },
           "sourceIds": [
-            "S1"
+            "S1",
+            "S11"
           ]
         }
       ]
@@ -1049,21 +1664,21 @@
             }
           ],
           "fee": {
-            "minJod": 45,
+            "minJod": 310,
             "maxJod": null,
             "note": {
-              "en": "25 JOD registration + 10 JOD application + 10 JOD certificate + capital stamps of 0.3% of capital (+10 JOD if a lawyer's power of attorney is deposited)",
-              "ar": "25 ديناراً رسوم تسجيل + 10 دنانير رسم طلب + 10 دنانير شهادة + طوابع بنسبة 0.003 من رأس المال (+10 دنانير إيداع وكالة محامٍ إن وجدت)"
+              "en": "Registration fee of 0.2% of capital (minimum 250 JOD) + 0.3% of capital in stamps + 10 JOD memorandum + 10 JOD per document + 15 JOD publishing + 10 JOD certificate + 5 JOD memorandum copy + 10 JOD company commercial registry. Plus the bank's capital-deposit fee (about 50 JOD; varies by bank).",
+              "ar": "رسم تسجيل 0.002 من رأس المال (بحد أدنى 250 ديناراً) + 0.003 من رأس المال طوابع + 10 دنانير عقد التأسيس + 10 دنانير لكل وثيقة + 15 ديناراً نشر + 10 دنانير شهادة + 5 دنانير نسخة عقد التأسيس + 10 دنانير سجل تجاري للشركة. إضافة إلى عمولة البنك على إيداع رأس المال (حوالي 50 ديناراً وتختلف حسب البنك)."
             },
             "verified": "yes"
           },
           "days": {
-            "value": 1,
+            "value": 2,
             "note": {
-              "en": "Estimate",
-              "ar": "تقدير"
+              "en": "1-2 days, mostly online",
+              "ar": "1 إلى 2 يوم، ومعظمها إلكتروني"
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "condition": "always",
           "notes": {
@@ -1071,7 +1686,8 @@
             "ar": "الحد الأدنى لرأس المال دينار واحد. يجب أن يثبت الكتاب البنكي إيداع 50% على الأقل من حصة كل شريك. يلزم تعيين مدقق حسابات، ومحامٍ إذا زاد رأس المال عن 20,000 دينار، وتحتاج الشركة ذات المالك الواحد موافقة مراقب الشركات."
           },
           "sourceIds": [
-            "S1"
+            "S1",
+            "S10"
           ]
         },
         {
@@ -1089,10 +1705,10 @@
             },
             {
               "docId": "lease_contract",
-              "condition": "always"
+              "condition": "if_rented"
             },
             {
-              "docId": "building_permit",
+              "docId": "building_documents",
               "condition": "always"
             },
             {
@@ -1108,18 +1724,18 @@
             "minJod": 30,
             "maxJod": 2250,
             "note": {
-              "en": "First registration by capital: 30 JOD under 5,000; 75 JOD for 5,000-50,000; 150 JOD for 50,000-100,000 (annual fee afterwards: 20 / 50 / 100 JOD)",
-              "ar": "التسجيل لأول مرة حسب رأس المال: 30 ديناراً لأقل من 5,000؛ 75 ديناراً من 5,000 إلى 50,000؛ 150 ديناراً من 50,000 إلى 100,000 (الاشتراك السنوي بعدها: 20 / 50 / 100 دينار)"
+              "en": "First registration by capital: 30 JOD under 5,000; 75 JOD for 5,000-50,000; 150 JOD for 50,000-100,000; up to 2,250 JOD (annual fee afterwards from 20 JOD)",
+              "ar": "التسجيل لأول مرة حسب رأس المال: 30 ديناراً لأقل من 5,000؛ 75 ديناراً من 5,000 إلى 50,000؛ 150 ديناراً من 50,000 إلى 100,000؛ حتى 2,250 ديناراً (والاشتراك السنوي بعدها من 20 ديناراً)"
             },
             "verified": "yes"
           },
           "days": {
-            "value": 1,
+            "value": 0,
             "note": {
-              "en": "Estimate",
-              "ar": "تقدير"
+              "en": "Same day: 10-20 minutes at the chamber's office in the Ministry building",
+              "ar": "في نفس اليوم: 10 إلى 20 دقيقة في مكتب الغرفة داخل مبنى الوزارة"
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "condition": "always",
           "notes": {
@@ -1127,11 +1743,60 @@
             "ar": "للمنشآت ضمن حدود أمانة عمّان ومحافظة العاصمة."
           },
           "sourceIds": [
-            "S3"
+            "S3",
+            "S10"
           ]
         },
         {
           "order": 3,
+          "id": "gam_rental_certificate",
+          "title": {
+            "en": "Get GAM's rent-contract certificate",
+            "ar": "الحصول على شهادة عقد الإيجار من الأمانة"
+          },
+          "officeId": "GAM",
+          "requiredDocs": [
+            {
+              "docId": "lease_contract",
+              "condition": "always"
+            },
+            {
+              "docId": "property_ownership_document",
+              "condition": "always"
+            },
+            {
+              "docId": "national_id",
+              "condition": "always"
+            }
+          ],
+          "fee": {
+            "minJod": null,
+            "maxJod": null,
+            "note": {
+              "en": "0.5% of the annual rent (max 15 JOD) + 0.3% of the total contract value in stamps",
+              "ar": "0.5% من الإيجار السنوي (بحد أقصى 15 ديناراً) + 0.003 من قيمة العقد الكلية طوابع"
+            },
+            "verified": "yes"
+          },
+          "days": {
+            "value": 0,
+            "note": {
+              "en": "Online, same day",
+              "ar": "إلكترونياً في نفس اليوم"
+            },
+            "verified": "yes"
+          },
+          "condition": "if_rented",
+          "notes": {
+            "en": "Only if you rent the premises.",
+            "ar": "فقط إذا كان الموقع مستأجراً."
+          },
+          "sourceIds": [
+            "S10"
+          ]
+        },
+        {
+          "order": 4,
           "id": "vocational_license",
           "title": {
             "en": "Get the vocational licence for your shop or office",
@@ -1148,7 +1813,15 @@
               "condition": "always"
             },
             {
-              "docId": "lease_contract",
+              "docId": "gam_rental_certificate",
+              "condition": "if_rented"
+            },
+            {
+              "docId": "property_ownership_document",
+              "condition": "always"
+            },
+            {
+              "docId": "building_documents",
               "condition": "always"
             },
             {
@@ -1157,21 +1830,21 @@
             }
           ],
           "fee": {
-            "minJod": null,
-            "maxJod": null,
+            "minJod": 3,
+            "maxJod": 1000,
             "note": {
-              "en": "Depends on the activity and the premises; not published in our sources",
-              "ar": "تعتمد على النشاط والموقع؛ غير منشورة في مصادرنا"
+              "en": "Depends on the activity: fixed-fee activities 25-200 JOD for individual traders (3-1,000 JOD for companies); capital-based activities 40-750 JOD. Plus 15 JOD per m² of signboard (min 1 m²) and an extra 20% of the licence fee (min 20 JOD).",
+              "ar": "حسب النشاط: الأنشطة ذات الرسم الثابت 25 إلى 200 دينار للتاجر الفرد (3 إلى 1,000 دينار للشركات)؛ والأنشطة حسب رأس المال 40 إلى 750 ديناراً. إضافة إلى 15 ديناراً لكل متر مربع من اللوحة الإعلانية (بحد أدنى متر واحد) و20% من رسم الرخصة (بحد أدنى 20 ديناراً)."
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "days": {
-            "value": null,
+            "value": 0,
             "note": {
-              "en": "Not published in our sources",
-              "ar": "غير منشورة في مصادرنا"
+              "en": "Online, same day once the documents are complete",
+              "ar": "إلكترونياً في نفس اليوم بعد اكتمال الوثائق"
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "condition": "always",
           "notes": {
@@ -1179,11 +1852,13 @@
             "ar": "تحتاج بعض الأنشطة موافقة مسبقة من الجهة القطاعية المختصة."
           },
           "sourceIds": [
-            "S1"
+            "S1",
+            "S9",
+            "S10"
           ]
         },
         {
-          "order": 4,
+          "order": 5,
           "id": "tax_number",
           "title": {
             "en": "Get a tax number",
@@ -1194,37 +1869,94 @@
             {
               "docId": "registration_certificate",
               "condition": "always"
+            },
+            {
+              "docId": "vocational_licence",
+              "condition": "always"
+            },
+            {
+              "docId": "lease_contract",
+              "condition": "if_rented"
+            },
+            {
+              "docId": "national_id",
+              "condition": "always"
             }
           ],
           "fee": {
-            "minJod": null,
-            "maxJod": null,
+            "minJod": 0,
+            "maxJod": 0,
             "note": {
-              "en": "No fee listed in our sources",
-              "ar": "لا توجد رسوم مذكورة في مصادرنا"
+              "en": "Free",
+              "ar": "مجاناً"
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "days": {
-            "value": 1,
+            "value": 0,
             "note": {
-              "en": "Online service (estimate)",
-              "ar": "خدمة إلكترونية (تقدير)"
+              "en": "Online, same day (up to 24 hours if you apply at the end of the working day); then have the certificate ratified at ISTD in about 5 minutes",
+              "ar": "إلكترونياً في نفس اليوم (حتى 24 ساعة إذا قدمت في نهاية الدوام)؛ ثم تصديق الشهادة لدى الدائرة في حوالي 5 دقائق"
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "condition": "always",
           "notes": {
-            "en": "Register online through ISTD e-services and use the number on all invoices.",
-            "ar": "سجّل إلكترونياً عبر خدمات دائرة ضريبة الدخل والمبيعات واستخدم الرقم في كل فواتيرك."
+            "en": "Use the tax number on all your invoices.",
+            "ar": "استخدم الرقم الضريبي في كل فواتيرك."
           },
           "sourceIds": [
-            "S1",
-            "S7"
+            "S10",
+            "S12"
           ]
         },
         {
-          "order": 5,
+          "order": 6,
+          "id": "business_seal",
+          "title": {
+            "en": "Make a business stamp",
+            "ar": "عمل ختم للمنشأة"
+          },
+          "officeId": "SEAL",
+          "requiredDocs": [
+            {
+              "docId": "registration_certificate",
+              "condition": "always"
+            },
+            {
+              "docId": "national_id",
+              "condition": "always"
+            }
+          ],
+          "fee": {
+            "minJod": 10,
+            "maxJod": 20,
+            "note": {
+              "en": "10-20 JOD at any seal shop",
+              "ar": "10 إلى 20 ديناراً في أي محل أختام"
+            },
+            "verified": "yes"
+          },
+          "days": {
+            "value": 0,
+            "note": {
+              "en": "Same day",
+              "ar": "في نفس اليوم"
+            },
+            "verified": "yes"
+          },
+          "condition": "always",
+          "notes": {
+            "en": "You need the stamp to activate your social security account.",
+            "ar": "تحتاج الختم لتفعيل حساب الضمان الاجتماعي."
+          },
+          "sourceIds": [
+            "S10",
+            "S11"
+          ]
+        },
+        {
+          "order": 7,
           "id": "social_security",
           "title": {
             "en": "Register with social security",
@@ -1235,32 +1967,46 @@
             {
               "docId": "registration_certificate",
               "condition": "always"
+            },
+            {
+              "docId": "vocational_licence",
+              "condition": "always"
+            },
+            {
+              "docId": "liaison_officer_form",
+              "condition": "always"
+            },
+            {
+              "docId": "national_id",
+              "condition": "always"
             }
           ],
           "fee": {
-            "minJod": null,
-            "maxJod": null,
+            "minJod": 0,
+            "maxJod": 0,
             "note": {
-              "en": "No registration fee listed; monthly contributions apply",
-              "ar": "لا توجد رسوم تسجيل مذكورة؛ تُدفع اشتراكات شهرية"
+              "en": "No registration fee; monthly contributions on wages",
+              "ar": "لا رسوم تسجيل؛ تُدفع اشتراكات شهرية على الأجور"
             },
-            "verified": "no"
+            "verified": "yes"
           },
           "days": {
-            "value": 1,
+            "value": 2,
             "note": {
-              "en": "Estimate",
-              "ar": "تقدير"
+              "en": "1-2 days: get the number online, then activate the account at SSC",
+              "ar": "1 إلى 2 يوم: الحصول على الرقم إلكترونياً ثم تفعيل الحساب لدى المؤسسة"
             },
-            "verified": "no"
+            "verified": "yes"
           },
-          "condition": "if_employees",
+          "condition": "always",
           "notes": {
             "en": "Mandatory once the company has one or more workers.",
             "ar": "إلزامي عندما يكون لدى الشركة عامل واحد أو أكثر."
           },
           "sourceIds": [
-            "S1"
+            "S1",
+            "S10",
+            "S11"
           ]
         }
       ]
@@ -1430,17 +2176,19 @@
         ]
       ],
       "text": {
-        "en": "Yes. Food activities allowed from home include home-baked goods (cakes, pastries, biscuits, sweets), jams, pickles, jameed, prepared vegetables, and herbs and legumes, all made by hand. You first need JFDA approval (Jordan Food and Drug Administration), then the home-based vocational licence from GAM (20-50 JOD, about 3 working days). Food businesses in Amman can't receive customers at home.",
-        "ar": "نعم. من المهن الغذائية المسموحة من المنزل: المخبوزات المنزلية (الكعك والمعجنات والكيك والبسكويت والحلويات)، والمربيات، والكبيس، والجميد، وتحضير الخضار، والأعشاب والبقوليات، وكلها يدوياً. تحتاج أولاً موافقة المؤسسة العامة للغذاء والدواء، ثم رخصة المهن المنزلية من أمانة عمّان (20 إلى 50 ديناراً، خلال 3 أيام عمل تقريباً). لا يجوز للمشاريع الغذائية في عمّان استقبال الزبائن في المنزل."
+        "en": "Yes. Food activities allowed from home include home-baked goods (cakes, pastries, biscuits, sweets), jams, pickles, jameed, prepared vegetables, and herbs and legumes, all made by hand. After registering as a trader, join the Amman Chamber of Industry (40 JOD if your capital is under 10,000 JOD), then get JFDA approval (Jordan Food and Drug Administration: 200 JOD for one food type, including lab tests, in 7-10 days), then the home-based vocational licence from GAM (20-50 JOD). Food businesses in Amman can't receive customers at home.",
+        "ar": "نعم. من المهن الغذائية المسموحة من المنزل: المخبوزات المنزلية (الكعك والمعجنات والكيك والبسكويت والحلويات)، والمربيات، والكبيس، والجميد، وتحضير الخضار، والأعشاب والبقوليات، وكلها يدوياً. بعد التسجيل كتاجر، انتسب لغرفة صناعة عمّان (40 ديناراً إذا كان رأس مالك أقل من 10,000 دينار)، ثم احصل على موافقة المؤسسة العامة للغذاء والدواء (200 دينار لنوع غذاء واحد شاملة الفحوص المخبرية، خلال 7 إلى 10 أيام)، ثم رخصة المهن المنزلية من أمانة عمّان (20 إلى 50 ديناراً). لا يجوز للمشاريع الغذائية في عمّان استقبال الزبائن في المنزل."
       },
       "officeIds": [
         "JFDA",
+        "ACI",
         "GAM"
       ],
       "sourceIds": [
         "S1",
         "S2",
-        "S6"
+        "S6",
+        "S8"
       ]
     },
     {
@@ -1483,6 +2231,35 @@
       ],
       "sourceIds": [
         "S1"
+      ]
+    },
+    {
+      "id": "which_chamber",
+      "kind": "answer",
+      "boost": 10,
+      "match": [
+        [
+          "which chamber",
+          "what chamber",
+          "which one chamber",
+          "chamber of industry or",
+          "اي غرفة",
+          "شو الغرفة",
+          "غرفة تجارة ولا",
+          "غرفة صناعة ولا"
+        ]
+      ],
+      "text": {
+        "en": "It depends on the activity. Home food production counts as industry, so you join the Amman Chamber of Industry (40 JOD if your capital is under 10,000 JOD). Shops, trading and services join the Amman Chamber of Commerce (30 JOD for the first registration if your capital is under 5,000 JOD). Both have service offices inside the Ministry of Industry building.",
+        "ar": "يعتمد ذلك على النشاط. تصنيع الغذاء المنزلي نشاط صناعي، فتنتسب لغرفة صناعة عمّان (40 ديناراً إذا كان رأس مالك أقل من 10,000 دينار). أما المحلات والتجارة والخدمات فتنتسب لغرفة تجارة عمّان (30 ديناراً للتسجيل الأول إذا كان رأس المال أقل من 5,000 دينار). للغرفتين مكاتب خدمة داخل مبنى وزارة الصناعة والتجارة."
+      },
+      "officeIds": [
+        "ACI",
+        "ACC"
+      ],
+      "sourceIds": [
+        "S8",
+        "S9"
       ]
     },
     {
@@ -1545,14 +2322,49 @@
         ]
       ],
       "text": {
-        "en": "Yes. Social security enrolment is mandatory for the owner of a sole proprietorship who works in it, even if you work alone, and for every employee once you have one or more workers. Contributions are paid monthly, within 15 days of the following month.",
-        "ar": "نعم. الاشتراك في الضمان الاجتماعي إلزامي لمالك المؤسسة الفردية الذي يعمل فيها حتى لو كان يعمل وحده، ولكل عامل عندما يكون لديك عامل واحد أو أكثر. تُدفع الاشتراكات شهرياً خلال 15 يوماً من الشهر التالي."
+        "en": "Yes. Social security enrolment is mandatory for the owner of a sole proprietorship who works in it, even if you work alone, and for every employee once you have one or more workers. Contributions are paid monthly, within 15 days of the following month. Registering is free: get the number online, then activate the account at SSC with a liaison officer form and your business stamp.",
+        "ar": "نعم. الاشتراك في الضمان الاجتماعي إلزامي لمالك المؤسسة الفردية الذي يعمل فيها حتى لو كان يعمل وحده، ولكل عامل عندما يكون لديك عامل واحد أو أكثر. تُدفع الاشتراكات شهرياً خلال 15 يوماً من الشهر التالي. التسجيل مجاني: احصل على الرقم إلكترونياً ثم فعّل الحساب لدى المؤسسة بنموذج ضابط الارتباط وختم المنشأة."
       },
       "officeIds": [
         "SSC"
       ],
       "sourceIds": [
-        "S1"
+        "S1",
+        "S11"
+      ]
+    },
+    {
+      "id": "ssc_rates",
+      "kind": "answer",
+      "match": [
+        [
+          "social security",
+          "ssc",
+          "ضمان"
+        ],
+        [
+          "rate",
+          "percent",
+          "%",
+          "how much",
+          "contribution",
+          "deduct",
+          "نسبة",
+          "كم",
+          "اشتراك",
+          "يخصم",
+          "اقتطاع"
+        ]
+      ],
+      "text": {
+        "en": "Social security contributions are 21.75% of the wage: 14.25% paid by the employer and 7.5% by the employee, every month. This comes from a news source rather than SSC itself, so please confirm with the Social Security Corporation.",
+        "ar": "اشتراكات الضمان الاجتماعي 21.75% من الأجر: 14.25% يدفعها صاحب العمل و7.5% يدفعها العامل شهرياً. هذه النسب من مصدر إخباري وليس من المؤسسة نفسها، لذا يرجى التأكد من المؤسسة العامة للضمان الاجتماعي."
+      },
+      "officeIds": [
+        "SSC"
+      ],
+      "sourceIds": [
+        "S20"
       ]
     },
     {

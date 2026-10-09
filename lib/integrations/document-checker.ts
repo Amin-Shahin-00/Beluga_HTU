@@ -57,7 +57,7 @@ function template(w: DocWarning, missing?: MissingDoc): Bilingual {
     case "expired":
       return {
         en: `Your ${midSentence(name.en)} expired on ${w.details.expiryDate}. Please renew it and upload the new copy; the licence steps need a valid one.`,
-        ar: `انتهت صلاحية ${name.ar} بتاريخ ${w.details.expiryDate}. يرجى تجديدها ورفع النسخة الجديدة، فخطوات الترخيص تحتاج وثيقة سارية.`,
+        ar: `انتهت صلاحية ${name.ar} بتاريخ ${w.details.expiryDate}. يرجى تجديد الوثيقة ورفع النسخة الجديدة، فخطوات الترخيص تحتاج وثيقة سارية.`,
       };
     case "blurry":
       return {

@@ -24,7 +24,7 @@ const docIds = new Set(documents.map((d) => d.doc_id));
 const stepIds = new Set(rules.map((r) => r.step_id));
 const sourceIds = new Set(sources.map((s) => s.id));
 const ocrTypes = new Set(documents.map((d) => d.ocr_doc_type));
-const conditions = new Set(["always", "optional", "if_food", "if_employees", "if_trade_name", "if_male_born_1989_plus"]);
+const conditions = new Set(["always", "optional", "if_food", "if_employees", "if_trade_name", "if_rented", "if_male_born_1989_plus"]);
 const ids = (s) => (s ? s.split(";") : []);
 
 for (const r of rules) {

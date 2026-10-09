@@ -5,13 +5,16 @@ Short answers M1 can give on stage, each with the proof to point at.
 ## AI accuracy
 
 **"How do you know the assistant isn't making things up?"**
-It can only answer from Bedaya's own data, which we built from official Jordanian sources: the Greater Amman Municipality home-business guide (prepared with the Ministry of Industry, Trade and Supply), the Amman Chamber of Commerce fee table, the JFDA's home-food licensing statement, and the e-Government portal. Every answer links to its source. With the AI model switched on, the model gets only this data and is told never to invent fees, offices or documents.
+It can only answer from Bedaya's own data, which we built from official Jordanian sources. The main one is the Ministry of Industry's eRegulations investor guide, which lists every step with its office, papers, fee and time. It's backed by the Greater Amman Municipality home-business guide, the Amman Chamber of Commerce fee table, JFDA's home-food licensing statement and the e-Government portal. Every answer links to its source. With the AI model switched on, the model gets only this data and is told never to invent fees, offices or documents.
 
 **"What happens when it doesn't know?"**
 It says so and names the right office with its website. For example, it has no verified income-tax rates, so it sends you to the Income and Sales Tax Department instead of guessing. Off-topic questions (like the weather) are politely declined.
 
 **"How accurate is it?"**
 We test it against 20 real questions in Arabic and English, including three it must *not* answer. It passes 20/20 (target 18). The pass/fail list is in [assistant-test-results.md](assistant-test-results.md) and is re-run after every data change (`npm run test:assistant`).
+
+**"Are the incubators real?"**
+Yes. JEDCO's home-business grants, the Development and Employment Fund's interest-free home-project loans, Orange Corners Jordan, Oasis500, the Queen Rania Competition, iPARK and Luminus ShamalStart. Bedaya checks eligibility (for example, the fund's 18-45 age limit) before suggesting a programme, and tells you what you'll need to show.
 
 **"Fees change. What if your data is out of date?"**
 Every fee carries its source and whether it is confirmed. Unconfirmed fees and durations are labelled "please confirm with the office" or "estimate" in the answer and in the business plan timeline. The data lives in one spreadsheet that M1 can update without touching code (`npm run knowledge`).

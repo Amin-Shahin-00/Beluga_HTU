@@ -28,6 +28,14 @@ export const pick = (b: Bilingual, lang: Lang) => b[lang];
 
 export const t = (lang: Lang, en: string, ar: string) => (lang === "ar" ? ar : en);
 
+const CITY_AR: Record<string, string> = {
+  Amman: "عمّان", Irbid: "إربد", Zarqa: "الزرقاء", Aqaba: "العقبة", Salt: "السلط", Madaba: "مأدبا",
+  Karak: "الكرك", Mafraq: "المفرق", Jerash: "جرش", Ajloun: "عجلون", Maan: "معان", Tafilah: "الطفيلة",
+};
+
+/** Governorate names as people write them in each language. */
+export const cityName = (city: string, lang: Lang) => (lang === "ar" ? (CITY_AR[city] ?? city) : city);
+
 /** "National ID card" -> "national ID card" for use mid-sentence; leaves acronyms like "JFDA approval" alone. */
 export const midSentence = (s: string) => (/^[A-Z][a-z]/.test(s) ? s[0].toLowerCase() + s.slice(1) : s);
 

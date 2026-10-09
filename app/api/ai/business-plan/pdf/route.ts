@@ -2,9 +2,10 @@ import { generateBusinessPlan, type BusinessPlan, type CostData } from "@/lib/in
 import { renderBusinessPlanPdf } from "@/lib/integrations/business-plan-pdf";
 import { badRequest, isProfile, readJson } from "../../_shared";
 
-// Send either a plan you already generated ({ plan }) or the inputs ({ profile, costs }).
+// Send either a plan you already generated ({ plan }) or the inputs ({ profile, costs }), plus "lang": "ar" | "en".
 export async function POST(req: Request) {
   const body = await readJson(req);
+  const lang = body?.lang === "ar" ? "ar" : "en";
   let plan = body?.plan as BusinessPlan | undefined;
   if (!plan?.title) {
     const costs = body?.costs as CostData | undefined;
@@ -12,8 +13,8 @@ export async function POST(req: Request) {
     plan = await generateBusinessPlan(body.profile, costs as CostData);
   }
 
-  const bytes = await renderBusinessPlanPdf(plan);
-  const fileName = `${plan.title.en.split(":")[0].replace(/[^\w-]+/g, "-")}-business-plan.pdf`;
+  const bytes = await renderBusinessPlanPdf(plan, lang);
+  const fileName = `${plan.title.en.split(":")[0].replace(/[^\w-]+/g, "-")}-business-plan-${lang}.pdf`;
   return new Response(Buffer.from(bytes), {
     headers: { "Content-Type": "application/pdf", "Content-Disposition": `attachment; filename="${fileName}"` },
   });

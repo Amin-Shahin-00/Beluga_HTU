@@ -32,7 +32,14 @@ export interface DocumentInfo {
   notes: Bilingual | null;
 }
 
-export type Condition = "always" | "optional" | "if_food" | "if_employees" | "if_trade_name" | "if_male_born_1989_plus";
+export type Condition =
+  | "always"
+  | "optional"
+  | "if_food"
+  | "if_employees"
+  | "if_trade_name"
+  | "if_rented"
+  | "if_male_born_1989_plus";
 
 export interface Step {
   order: number;
@@ -91,6 +98,8 @@ export function conditionHolds(condition: Condition, profile?: UserProfile): boo
       return b.sector === "food";
     case "if_employees":
       return b.employeesPlanned > 0;
+    case "if_rented":
+      return (b.premises ?? "rented") === "rented";
     case "if_male_born_1989_plus":
       return profile.personal.gender === "male" && Number(profile.personal.birthDate.slice(0, 4)) >= 1989;
   }
@@ -108,6 +117,7 @@ export function conditionLabel(condition: Condition, lang: Lang): string {
     if_trade_name: { en: "only if you register a trade name", ar: "فقط إذا سجلت اسماً تجارياً" },
     if_food: { en: "only for food businesses", ar: "فقط للمشاريع الغذائية" },
     if_employees: { en: "only once you have employees", ar: "فقط عند وجود موظفين" },
+    if_rented: { en: "only if you rent the place", ar: "فقط إذا كان المكان مستأجراً" },
     if_male_born_1989_plus: { en: "only for Jordanian males born 1989 or later", ar: "فقط للذكور الأردنيين مواليد 1989 فما فوق" },
   };
   return pick(labels[condition], lang);

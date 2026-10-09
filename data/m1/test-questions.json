@@ -2,7 +2,7 @@
   { "id": "q01", "lang": "en", "question": "What documents do I need to get a home business license?", "expect": { "kind": "answer", "mustMention": [["commercial regist", "registration certificate"], ["lease", "owner"]] } },
   { "id": "q02", "lang": "ar", "question": "كم رسوم تسجيل مؤسسة فردية؟", "expect": { "kind": "answer", "mustMention": [["10", "١٠"]] } },
   { "id": "q03", "lang": "en", "question": "Where do I get a tax number?", "expect": { "kind": "answer", "mustMention": [["Income and Sales Tax", "ISTD"]] } },
-  { "id": "q04", "lang": "ar", "question": "كم رسوم تسجيل شركة ذات مسؤولية محدودة؟", "expect": { "kind": "answer", "mustMention": [["25", "٢٥"]] } },
+  { "id": "q04", "lang": "ar", "question": "كم رسوم تسجيل شركة ذات مسؤولية محدودة؟", "expect": { "kind": "answer", "mustMention": [["250", "٢٥٠"]] } },
   { "id": "q05", "lang": "en", "question": "Do I need to register in social security if I work alone?", "expect": { "kind": "answer", "mustMention": [["yes", "mandatory"]] } },
   { "id": "q06", "lang": "en", "question": "What is the first step to open an LLC?", "expect": { "kind": "answer", "mustMention": [["Companies Control", "CCD"]] } },
   { "id": "q07", "lang": "en", "question": "What is the minimum capital for an LLC?", "expect": { "kind": "answer", "mustMention": [["1 JOD"]] } },

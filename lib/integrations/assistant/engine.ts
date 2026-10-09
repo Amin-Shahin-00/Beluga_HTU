@@ -51,7 +51,8 @@ const uniq = <T>(xs: T[]) => [...new Set(xs)];
 
 function feeRange(step: Step, lang: Lang): string {
   const { minJod, maxJod } = step.fee;
-  if (minJod === null) return t(lang, "fee not published", "الرسوم غير منشورة");
+  // A formula-based fee (e.g. a % of the rent) has no fixed amount, so show the formula itself.
+  if (minJod === null) return step.fee.verified === "yes" ? pick(step.fee.note, lang) : t(lang, "fee not published", "الرسوم غير منشورة");
   if (maxJod === null) return t(lang, `from ${minJod} JOD`, `من ${minJod} دينار`);
   return minJod === maxJod ? `${minJod} ${t(lang, "JOD", "دينار")}` : `${minJod}-${maxJod} ${t(lang, "JOD", "دينار")}`;
 }
@@ -99,7 +100,10 @@ function buildCandidates(): Candidate[] {
       id: `step:${step.id}:fee`,
       groups: [words, intent.fee],
       render: (lang) =>
-        stepRendered(step, `${title(lang)}: ${feeText(step, lang)}. ${t(lang, "Paid at", "تُدفع لدى")} ${officeName(step.officeId, lang)}.`),
+        stepRendered(
+          step,
+          `${title(lang)}: ${feeText(step, lang).replace(/\.$/, "")}. ${t(lang, "Paid at", "تُدفع لدى")} ${officeName(step.officeId, lang)}.`,
+        ),
     });
     out.push({
       ...base,
@@ -271,6 +275,35 @@ function buildCandidates(): Candidate[] {
             },
     });
     out.push({ id: `office:${o.id}:contact`, kind: "answer", groups: [words, either(intent.contact, intent.where)], render: contact });
+  }
+
+  // "Do I need X?" without a business type: list every step, by business type, that asks for it.
+  for (const d of Object.values(knowledge.documents)) {
+    out.push({
+      id: `doc:${d.id}:needed`,
+      kind: "answer",
+      groups: [kw(DOC_WORDS[d.id] ?? []), intent.needed],
+      render: (lang) => {
+        const uses = Object.values(knowledge.legalForms).flatMap((f) =>
+          f.steps
+            .filter((s) => s.requiredDocs.some((r) => r.docId === d.id))
+            .map((s) => ({ form: f.id, step: s, condition: s.requiredDocs.find((r) => r.docId === d.id)?.condition ?? "always" })),
+        );
+        const name = pick(d.name, lang);
+        if (!uses.length) {
+          return { text: t(lang, `The ${midSentence(name)} isn't required in Bedaya's steps.`, `${name} غير مطلوبة في خطوات بداية.`), officeIds: [], sourceIds: [] };
+        }
+        const lines = uses.map(({ form, step, condition }) => {
+          const label = conditionLabel(condition, lang);
+          return `- ${formName(form, lang)}: ${pick(step.title, lang)}${label ? ` (${label})` : ""}`;
+        });
+        return {
+          text: `${t(lang, `The ${midSentence(name)} is needed for:`, `${name} مطلوبة في:`)}\n${uniq(lines).join("\n")}${d.notes ? `\n${pick(d.notes, lang)}` : ""}`,
+          officeIds: uniq(uses.map((u) => u.step.officeId)),
+          sourceIds: uniq(uses.flatMap((u) => u.step.sourceIds)),
+        };
+      },
+    });
   }
 
   // Where to get each document.

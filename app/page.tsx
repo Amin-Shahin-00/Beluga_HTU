@@ -231,7 +231,11 @@ function Incubators({ lang, tx }: { lang: Lang; tx: (b: Bilingual) => string }) 
   return (
     <section className="panel">
       <div className="row" style={{ justifyContent: "space-between" }}>
-        <div className="muted">{lang === "ar" ? "الترتيب من M4 (هنا ترتيب بديل مؤقت)" : "Ranking comes from M4 (a stand-in ranker here)"}</div>
+        <div className="muted">
+          {lang === "ar"
+            ? "برامج أردنية حقيقية؛ الترتيب من M4 (هنا ترتيب بديل مؤقت)"
+            : "Real Jordanian programmes; ranking comes from M4 (a stand-in ranker here)"}
+        </div>
         <div className="row">
           <button className="primary" onClick={match} disabled={busy}>
             {lang === "ar" ? "اعرض الحاضنات" : "Find matches"}
@@ -247,8 +251,16 @@ function Incubators({ lang, tx }: { lang: Lang; tx: (b: Bilingual) => string }) 
         <div className="list" style={{ marginTop: 12 }}>
           {matches.map((m) => (
             <div key={m.incubatorId} className="item">
-              <strong>{tx(m.name)}</strong> <span className="muted">score {m.score}</span>
+              <strong>{tx(m.name)}</strong> <span className="badge info">{m.type}</span> <span className="muted">score {m.score}</span>
+              <div className="muted">{tx(m.organisation)}</div>
               <p>{tx(m.reason)}</p>
+              <p className="muted">
+                <a href={m.website} target="_blank" rel="noreferrer">
+                  {lang === "ar" ? "الصفحة الرسمية" : "Official page"}
+                </a>
+                {" · "}
+                {m.applicationDeadline ?? (lang === "ar" ? "مواعيد التقديم على الموقع" : "check the website for dates")}
+              </p>
             </div>
           ))}
         </div>
@@ -258,7 +270,9 @@ function Incubators({ lang, tx }: { lang: Lang; tx: (b: Bilingual) => string }) 
           {apps.map((a) => (
             <div key={a.incubatorId} className="item scroll">
               <strong>{tx(a.name)}</strong>{" "}
-              <span className={`badge ${a.readyToSubmit ? "ok" : "warning"}`}>{a.readyToSubmit ? "ready" : `${a.missingRequired.length} missing`}</span>
+              <span className={`badge ${a.readyToSubmit ? "ok" : "warning"}`}>
+                {a.readyToSubmit ? (lang === "ar" ? "جاهز" : "ready") : lang === "ar" ? `${a.missingRequired.length} للتعبئة يدوياً` : `${a.missingRequired.length} to fill in`}
+              </span>
               <table>
                 <tbody>
                   {a.fields.map((f) => (
@@ -290,11 +304,11 @@ function Plan({ lang, tx }: { lang: Lang; tx: (b: Bilingual) => string }) {
   }
 
   async function download() {
-    const res = await fetch("/api/ai/business-plan/pdf", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ plan }) });
+    const res = await fetch("/api/ai/business-plan/pdf", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ plan, lang }) });
     const url = URL.createObjectURL(await res.blob());
     const a = document.createElement("a");
     a.href = url;
-    a.download = "Laylas-Sweets-business-plan.pdf";
+    a.download = `Laylas-Sweets-business-plan-${lang}.pdf`;
     a.click();
     URL.revokeObjectURL(url);
   }
@@ -309,7 +323,7 @@ function Plan({ lang, tx }: { lang: Lang; tx: (b: Bilingual) => string }) {
           </button>
           {plan && (
             <button className="ghost" onClick={download}>
-              {lang === "ar" ? "تنزيل PDF (إنجليزي)" : "Download PDF"}
+              {lang === "ar" ? "تنزيل PDF" : "Download PDF"}
             </button>
           )}
         </div>
