@@ -1,0 +1,1058 @@
+[
+  {
+    "id": "entry",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-entry.svg"
+  },
+  {
+    "id": "consent",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-consent.svg"
+  },
+  {
+    "id": "w1",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-w1.svg"
+  },
+  {
+    "id": "w2",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-w2.svg"
+  },
+  {
+    "id": "w3",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-w3.svg"
+  },
+  {
+    "id": "w4",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-w4.svg"
+  },
+  {
+    "id": "w5",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-w5.svg"
+  },
+  {
+    "id": "w6",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-w6.svg"
+  },
+  {
+    "id": "w7",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-w7.svg"
+  },
+  {
+    "id": "w8",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-w8.svg"
+  },
+  {
+    "id": "wizard-review",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1143,
+    "file": "desktop-en-wizard-review.svg"
+  },
+  {
+    "id": "roadmap",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1132,
+    "file": "desktop-en-roadmap.svg"
+  },
+  {
+    "id": "documents",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-documents.svg"
+  },
+  {
+    "id": "ocr",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-ocr.svg"
+  },
+  {
+    "id": "signing",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-signing.svg"
+  },
+  {
+    "id": "signed",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-signed.svg"
+  },
+  {
+    "id": "incubators",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-incubators.svg"
+  },
+  {
+    "id": "applied",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-applied.svg"
+  },
+  {
+    "id": "bank",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-bank.svg"
+  },
+  {
+    "id": "bank-sent",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-bank-sent.svg"
+  },
+  {
+    "id": "assistant",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-assistant.svg"
+  },
+  {
+    "id": "notifications",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-notifications.svg"
+  },
+  {
+    "id": "appointments",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-appointments.svg"
+  },
+  {
+    "id": "plan",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-plan.svg"
+  },
+  {
+    "id": "compliance",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-compliance.svg"
+  },
+  {
+    "id": "location",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-location.svg"
+  },
+  {
+    "id": "funding",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-funding.svg"
+  },
+  {
+    "id": "experts",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-experts.svg"
+  },
+  {
+    "id": "invoicing",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-invoicing.svg"
+  },
+  {
+    "id": "partner",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-partner.svg"
+  },
+  {
+    "id": "application",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-application.svg"
+  },
+  {
+    "id": "admin",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1026,
+    "file": "desktop-en-admin.svg"
+  },
+  {
+    "id": "analytics",
+    "language": "en",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-en-analytics.svg"
+  },
+  {
+    "id": "entry",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-entry.svg"
+  },
+  {
+    "id": "consent",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-consent.svg"
+  },
+  {
+    "id": "w1",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-w1.svg"
+  },
+  {
+    "id": "w2",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-w2.svg"
+  },
+  {
+    "id": "w3",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-w3.svg"
+  },
+  {
+    "id": "w4",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-w4.svg"
+  },
+  {
+    "id": "w5",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-w5.svg"
+  },
+  {
+    "id": "w6",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-w6.svg"
+  },
+  {
+    "id": "w7",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-w7.svg"
+  },
+  {
+    "id": "w8",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-w8.svg"
+  },
+  {
+    "id": "wizard-review",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1143,
+    "file": "desktop-ar-wizard-review.svg"
+  },
+  {
+    "id": "roadmap",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1132,
+    "file": "desktop-ar-roadmap.svg"
+  },
+  {
+    "id": "documents",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-documents.svg"
+  },
+  {
+    "id": "ocr",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-ocr.svg"
+  },
+  {
+    "id": "signing",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-signing.svg"
+  },
+  {
+    "id": "signed",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-signed.svg"
+  },
+  {
+    "id": "incubators",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-incubators.svg"
+  },
+  {
+    "id": "applied",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-applied.svg"
+  },
+  {
+    "id": "bank",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-bank.svg"
+  },
+  {
+    "id": "bank-sent",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-bank-sent.svg"
+  },
+  {
+    "id": "assistant",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-assistant.svg"
+  },
+  {
+    "id": "notifications",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-notifications.svg"
+  },
+  {
+    "id": "appointments",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-appointments.svg"
+  },
+  {
+    "id": "plan",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-plan.svg"
+  },
+  {
+    "id": "compliance",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-compliance.svg"
+  },
+  {
+    "id": "location",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-location.svg"
+  },
+  {
+    "id": "funding",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-funding.svg"
+  },
+  {
+    "id": "experts",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-experts.svg"
+  },
+  {
+    "id": "invoicing",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-invoicing.svg"
+  },
+  {
+    "id": "partner",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-partner.svg"
+  },
+  {
+    "id": "application",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-application.svg"
+  },
+  {
+    "id": "admin",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1026,
+    "file": "desktop-ar-admin.svg"
+  },
+  {
+    "id": "analytics",
+    "language": "ar",
+    "size": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "file": "desktop-ar-analytics.svg"
+  },
+  {
+    "id": "entry",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 844,
+    "file": "mobile-en-entry.svg"
+  },
+  {
+    "id": "consent",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 994,
+    "file": "mobile-en-consent.svg"
+  },
+  {
+    "id": "w1",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-en-w1.svg"
+  },
+  {
+    "id": "w2",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-en-w2.svg"
+  },
+  {
+    "id": "w3",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-en-w3.svg"
+  },
+  {
+    "id": "w4",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-en-w4.svg"
+  },
+  {
+    "id": "w5",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-en-w5.svg"
+  },
+  {
+    "id": "w6",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-en-w6.svg"
+  },
+  {
+    "id": "w7",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-en-w7.svg"
+  },
+  {
+    "id": "w8",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-en-w8.svg"
+  },
+  {
+    "id": "wizard-review",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 1163,
+    "file": "mobile-en-wizard-review.svg"
+  },
+  {
+    "id": "roadmap",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 1442,
+    "file": "mobile-en-roadmap.svg"
+  },
+  {
+    "id": "documents",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 970,
+    "file": "mobile-en-documents.svg"
+  },
+  {
+    "id": "ocr",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 1205,
+    "file": "mobile-en-ocr.svg"
+  },
+  {
+    "id": "signing",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 930,
+    "file": "mobile-en-signing.svg"
+  },
+  {
+    "id": "signed",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-en-signed.svg"
+  },
+  {
+    "id": "incubators",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-en-incubators.svg"
+  },
+  {
+    "id": "applied",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-en-applied.svg"
+  },
+  {
+    "id": "bank",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 922,
+    "file": "mobile-en-bank.svg"
+  },
+  {
+    "id": "bank-sent",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-en-bank-sent.svg"
+  },
+  {
+    "id": "assistant",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-en-assistant.svg"
+  },
+  {
+    "id": "notifications",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-en-notifications.svg"
+  },
+  {
+    "id": "appointments",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 940,
+    "file": "mobile-en-appointments.svg"
+  },
+  {
+    "id": "plan",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-en-plan.svg"
+  },
+  {
+    "id": "compliance",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 942,
+    "file": "mobile-en-compliance.svg"
+  },
+  {
+    "id": "location",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 915,
+    "file": "mobile-en-location.svg"
+  },
+  {
+    "id": "funding",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-en-funding.svg"
+  },
+  {
+    "id": "experts",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-en-experts.svg"
+  },
+  {
+    "id": "invoicing",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-en-invoicing.svg"
+  },
+  {
+    "id": "partner",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-en-partner.svg"
+  },
+  {
+    "id": "application",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-en-application.svg"
+  },
+  {
+    "id": "admin",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 1136,
+    "file": "mobile-en-admin.svg"
+  },
+  {
+    "id": "analytics",
+    "language": "en",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-en-analytics.svg"
+  },
+  {
+    "id": "entry",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 844,
+    "file": "mobile-ar-entry.svg"
+  },
+  {
+    "id": "consent",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 926,
+    "file": "mobile-ar-consent.svg"
+  },
+  {
+    "id": "w1",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-w1.svg"
+  },
+  {
+    "id": "w2",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-w2.svg"
+  },
+  {
+    "id": "w3",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-w3.svg"
+  },
+  {
+    "id": "w4",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-w4.svg"
+  },
+  {
+    "id": "w5",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-w5.svg"
+  },
+  {
+    "id": "w6",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-w6.svg"
+  },
+  {
+    "id": "w7",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-w7.svg"
+  },
+  {
+    "id": "w8",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-w8.svg"
+  },
+  {
+    "id": "wizard-review",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 1105,
+    "file": "mobile-ar-wizard-review.svg"
+  },
+  {
+    "id": "roadmap",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 1384,
+    "file": "mobile-ar-roadmap.svg"
+  },
+  {
+    "id": "documents",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 946,
+    "file": "mobile-ar-documents.svg"
+  },
+  {
+    "id": "ocr",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 1147,
+    "file": "mobile-ar-ocr.svg"
+  },
+  {
+    "id": "signing",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-signing.svg"
+  },
+  {
+    "id": "signed",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-signed.svg"
+  },
+  {
+    "id": "incubators",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-incubators.svg"
+  },
+  {
+    "id": "applied",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-applied.svg"
+  },
+  {
+    "id": "bank",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-bank.svg"
+  },
+  {
+    "id": "bank-sent",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-bank-sent.svg"
+  },
+  {
+    "id": "assistant",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-assistant.svg"
+  },
+  {
+    "id": "notifications",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-notifications.svg"
+  },
+  {
+    "id": "appointments",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-appointments.svg"
+  },
+  {
+    "id": "plan",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-plan.svg"
+  },
+  {
+    "id": "compliance",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-compliance.svg"
+  },
+  {
+    "id": "location",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-location.svg"
+  },
+  {
+    "id": "funding",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-funding.svg"
+  },
+  {
+    "id": "experts",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-experts.svg"
+  },
+  {
+    "id": "invoicing",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-invoicing.svg"
+  },
+  {
+    "id": "partner",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-partner.svg"
+  },
+  {
+    "id": "application",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-application.svg"
+  },
+  {
+    "id": "admin",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 1102,
+    "file": "mobile-ar-admin.svg"
+  },
+  {
+    "id": "analytics",
+    "language": "ar",
+    "size": "mobile",
+    "width": 390,
+    "height": 902,
+    "file": "mobile-ar-analytics.svg"
+  }
+]

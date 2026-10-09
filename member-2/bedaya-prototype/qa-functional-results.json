@@ -1,0 +1,1295 @@
+{
+  "executedAt": "2026-10-09T14:17:57.547Z",
+  "scope": "Full interactive owner, partner and admin flows in Chromium with simulated touch/mobile viewports; not physical devices or Safari",
+  "errors": [],
+  "results": [
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "consent",
+      "check": "SANAD consent required",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "w1",
+      "check": "Missing answer shows actionable validation",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "w6",
+      "check": "Negative capital is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "wizard-review",
+      "check": "Eight-question flow reaches review",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "roadmap",
+      "check": "Locked step explains dependency",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "documents",
+      "check": "Sample replacement persists",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "documents",
+      "check": "Document upload shows filename",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "signing",
+      "check": "OCR corrections are retained",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "signing",
+      "check": "Signing consent is required",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "incubators",
+      "check": "No-selection application is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "incubators",
+      "check": "Application confirmation is shown",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "incubators",
+      "check": "Cancel keeps the user on matches",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "bank",
+      "check": "No-bank send is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "bank-sent",
+      "check": "Full bilingual owner flow completes",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "appointments",
+      "check": "Booking summary is visible",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "appointments",
+      "check": "Booking can be cancelled",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "assistant",
+      "check": "User chat is escaped safely",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "funding",
+      "check": "Funding filter narrows results",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "location",
+      "check": "Missing address is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "location",
+      "check": "Location result appears after input",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "plan",
+      "check": "Business plan is downloadable",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "partner",
+      "check": "Search empty state is visible",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "partner",
+      "check": "Inbox search returns matching application",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "application",
+      "check": "request decision confirms feedback",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "application",
+      "check": "approve decision confirms feedback",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "application",
+      "check": "reject decision confirms feedback",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "admin",
+      "check": "Admin tabs filter the selected section",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "admin",
+      "check": "Editable sample fee persists",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "analytics",
+      "check": "All bottleneck bars render",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "roadmap",
+      "check": "Language and direction persist after refresh",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "consent",
+      "check": "SANAD consent required",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "w1",
+      "check": "Missing answer shows actionable validation",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "w6",
+      "check": "Negative capital is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "wizard-review",
+      "check": "Eight-question flow reaches review",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "roadmap",
+      "check": "Locked step explains dependency",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "documents",
+      "check": "Sample replacement persists",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "documents",
+      "check": "Document upload shows filename",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "signing",
+      "check": "OCR corrections are retained",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "signing",
+      "check": "Signing consent is required",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "incubators",
+      "check": "No-selection application is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "incubators",
+      "check": "Application confirmation is shown",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "incubators",
+      "check": "Cancel keeps the user on matches",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "bank",
+      "check": "No-bank send is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "bank-sent",
+      "check": "Full bilingual owner flow completes",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "appointments",
+      "check": "Booking summary is visible",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "appointments",
+      "check": "Booking can be cancelled",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "assistant",
+      "check": "User chat is escaped safely",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "funding",
+      "check": "Funding filter narrows results",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "location",
+      "check": "Missing address is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "location",
+      "check": "Location result appears after input",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "plan",
+      "check": "Business plan is downloadable",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "partner",
+      "check": "Search empty state is visible",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "partner",
+      "check": "Inbox search returns matching application",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "application",
+      "check": "request decision confirms feedback",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "application",
+      "check": "approve decision confirms feedback",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "application",
+      "check": "reject decision confirms feedback",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "admin",
+      "check": "Admin tabs filter the selected section",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "admin",
+      "check": "Editable sample fee persists",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "analytics",
+      "check": "All bottleneck bars render",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "roadmap",
+      "check": "Language and direction persist after refresh",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "consent",
+      "check": "SANAD consent required",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "w1",
+      "check": "Missing answer shows actionable validation",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "w6",
+      "check": "Negative capital is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "wizard-review",
+      "check": "Eight-question flow reaches review",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "roadmap",
+      "check": "Locked step explains dependency",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "documents",
+      "check": "Sample replacement persists",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "documents",
+      "check": "Document upload shows filename",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "signing",
+      "check": "OCR corrections are retained",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "signing",
+      "check": "Signing consent is required",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "incubators",
+      "check": "No-selection application is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "incubators",
+      "check": "Application confirmation is shown",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "incubators",
+      "check": "Cancel keeps the user on matches",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "bank",
+      "check": "No-bank send is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "bank-sent",
+      "check": "Full bilingual owner flow completes",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "appointments",
+      "check": "Booking summary is visible",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "appointments",
+      "check": "Booking can be cancelled",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "assistant",
+      "check": "User chat is escaped safely",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "funding",
+      "check": "Funding filter narrows results",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "location",
+      "check": "Missing address is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "location",
+      "check": "Location result appears after input",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "plan",
+      "check": "Business plan is downloadable",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "partner",
+      "check": "Search empty state is visible",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "partner",
+      "check": "Inbox search returns matching application",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "application",
+      "check": "request decision confirms feedback",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "application",
+      "check": "approve decision confirms feedback",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "application",
+      "check": "reject decision confirms feedback",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "admin",
+      "check": "Admin tabs filter the selected section",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "admin",
+      "check": "Editable sample fee persists",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "analytics",
+      "check": "All bottleneck bars render",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "roadmap",
+      "check": "Language and direction persist after refresh",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "roadmap",
+      "check": "Mobile navigation opens",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "consent",
+      "check": "SANAD consent required",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "w1",
+      "check": "Missing answer shows actionable validation",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "w6",
+      "check": "Negative capital is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "wizard-review",
+      "check": "Eight-question flow reaches review",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "roadmap",
+      "check": "Locked step explains dependency",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "documents",
+      "check": "Sample replacement persists",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "documents",
+      "check": "Document upload shows filename",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "signing",
+      "check": "OCR corrections are retained",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "signing",
+      "check": "Signing consent is required",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "incubators",
+      "check": "No-selection application is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "incubators",
+      "check": "Application confirmation is shown",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "incubators",
+      "check": "Cancel keeps the user on matches",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "bank",
+      "check": "No-bank send is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "bank-sent",
+      "check": "Full bilingual owner flow completes",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "appointments",
+      "check": "Booking summary is visible",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "appointments",
+      "check": "Booking can be cancelled",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "assistant",
+      "check": "User chat is escaped safely",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "funding",
+      "check": "Funding filter narrows results",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "location",
+      "check": "Missing address is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "location",
+      "check": "Location result appears after input",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "plan",
+      "check": "Business plan is downloadable",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "partner",
+      "check": "Search empty state is visible",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "partner",
+      "check": "Inbox search returns matching application",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "application",
+      "check": "request decision confirms feedback",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "application",
+      "check": "approve decision confirms feedback",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "application",
+      "check": "reject decision confirms feedback",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "admin",
+      "check": "Admin tabs filter the selected section",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "admin",
+      "check": "Editable sample fee persists",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "analytics",
+      "check": "All bottleneck bars render",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "roadmap",
+      "check": "Language and direction persist after refresh",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "roadmap",
+      "check": "Mobile navigation opens",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "consent",
+      "check": "SANAD consent required",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "w1",
+      "check": "Missing answer shows actionable validation",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "w6",
+      "check": "Negative capital is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "wizard-review",
+      "check": "Eight-question flow reaches review",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "roadmap",
+      "check": "Locked step explains dependency",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "documents",
+      "check": "Sample replacement persists",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "documents",
+      "check": "Document upload shows filename",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "signing",
+      "check": "OCR corrections are retained",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "signing",
+      "check": "Signing consent is required",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "incubators",
+      "check": "No-selection application is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "incubators",
+      "check": "Application confirmation is shown",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "incubators",
+      "check": "Cancel keeps the user on matches",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "bank",
+      "check": "No-bank send is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "bank-sent",
+      "check": "Full bilingual owner flow completes",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "appointments",
+      "check": "Booking summary is visible",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "appointments",
+      "check": "Booking can be cancelled",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "assistant",
+      "check": "User chat is escaped safely",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "funding",
+      "check": "Funding filter narrows results",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "location",
+      "check": "Missing address is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "location",
+      "check": "Location result appears after input",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "plan",
+      "check": "Business plan is downloadable",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "partner",
+      "check": "Search empty state is visible",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "partner",
+      "check": "Inbox search returns matching application",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "application",
+      "check": "request decision confirms feedback",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "application",
+      "check": "approve decision confirms feedback",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "application",
+      "check": "reject decision confirms feedback",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "admin",
+      "check": "Admin tabs filter the selected section",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "admin",
+      "check": "Editable sample fee persists",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "analytics",
+      "check": "All bottleneck bars render",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "roadmap",
+      "check": "Language and direction persist after refresh",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "roadmap",
+      "check": "Mobile navigation opens",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "consent",
+      "check": "SANAD consent required",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "w1",
+      "check": "Missing answer shows actionable validation",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "w6",
+      "check": "Negative capital is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "wizard-review",
+      "check": "Eight-question flow reaches review",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "roadmap",
+      "check": "Locked step explains dependency",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "documents",
+      "check": "Sample replacement persists",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "documents",
+      "check": "Document upload shows filename",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "signing",
+      "check": "OCR corrections are retained",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "signing",
+      "check": "Signing consent is required",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "incubators",
+      "check": "No-selection application is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "incubators",
+      "check": "Application confirmation is shown",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "incubators",
+      "check": "Cancel keeps the user on matches",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "bank",
+      "check": "No-bank send is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "bank-sent",
+      "check": "Full bilingual owner flow completes",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "appointments",
+      "check": "Booking summary is visible",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "appointments",
+      "check": "Booking can be cancelled",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "assistant",
+      "check": "User chat is escaped safely",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "funding",
+      "check": "Funding filter narrows results",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "location",
+      "check": "Missing address is rejected",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "location",
+      "check": "Location result appears after input",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "plan",
+      "check": "Business plan is downloadable",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "partner",
+      "check": "Search empty state is visible",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "partner",
+      "check": "Inbox search returns matching application",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "application",
+      "check": "request decision confirms feedback",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "application",
+      "check": "approve decision confirms feedback",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "application",
+      "check": "reject decision confirms feedback",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "admin",
+      "check": "Admin tabs filter the selected section",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "admin",
+      "check": "Editable sample fee persists",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "analytics",
+      "check": "All bottleneck bars render",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "roadmap",
+      "check": "Language and direction persist after refresh",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "roadmap",
+      "check": "Mobile navigation opens",
+      "result": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+﻿key,english,arabic
+landing.title,Start your business in Jordan with one guided path.,ابدأ مشروعك في الأردن من خلال مسار واحد واضح.
+landing.subtitle,"Answer once, then get your roadmap, documents, signatures, and partner applications in one place.",أجب مرة واحدة واحصل على المسار والمستندات والتواقيع وطلبات الشركاء في مكان واحد.
+landing.cta,Login with SANAD,تسجيل الدخول عبر سند
+wizard.progress,Step {current} of {total},الخطوة {current} من {total}
+wizard.back,Back,رجوع
+wizard.continue,Continue,متابعة
+roadmap.title,Your launch roadmap,مسار إطلاق مشروعك
+roadmap.next_action,Next action,الإجراء التالي
+roadmap.cost_time,Estimated cost and time,التكلفة والمدة المتوقعة
+status.not_started,Not started,لم يبدأ
+status.in_progress,In progress,قيد التنفيذ
+status.needs_action,Needs action,يتطلب إجراء
+status.submitted,Submitted,تم الإرسال
+status.approved,Approved,تمت الموافقة
+status.rejected,Rejected,مرفوض
+documents.upload,Upload document,رفع مستند
+documents.warning_blurry,This document is blurry. Please upload a clearer copy.,هذا المستند غير واضح. يرجى رفع نسخة أوضح.
+signing.sign_all,Sign all documents,توقيع جميع المستندات
+partners.apply_selected,Apply to selected partners,التقديم للجهات المختارة
+assistant.placeholder,"Ask about licenses, documents, or next steps",اسأل عن التراخيص أو المستندات أو الخطوات التالية
+calendar.book,Book appointment,حجز موعد
+partner.request_doc,Request missing document,طلب مستند ناقص

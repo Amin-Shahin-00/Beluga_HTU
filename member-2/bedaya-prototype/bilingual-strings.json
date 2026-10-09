@@ -1,0 +1,1674 @@
+{
+  "common.demo": {
+    "en": "Interactive demo · sample data",
+    "ar": "عرض تجريبي · بيانات نموذجية"
+  },
+  "common.owner": {
+    "en": "Business owner",
+    "ar": "صاحب المشروع"
+  },
+  "common.partner": {
+    "en": "Partner",
+    "ar": "الشريك"
+  },
+  "common.admin": {
+    "en": "Admin",
+    "ar": "الإدارة"
+  },
+  "common.back": {
+    "en": "Back",
+    "ar": "رجوع"
+  },
+  "common.next": {
+    "en": "Continue",
+    "ar": "متابعة"
+  },
+  "common.save": {
+    "en": "Save changes",
+    "ar": "حفظ التغييرات"
+  },
+  "common.cancel": {
+    "en": "Cancel",
+    "ar": "إلغاء"
+  },
+  "common.review": {
+    "en": "Review",
+    "ar": "مراجعة"
+  },
+  "common.download": {
+    "en": "Download",
+    "ar": "تنزيل"
+  },
+  "common.empty": {
+    "en": "Nothing here yet",
+    "ar": "لا توجد عناصر بعد"
+  },
+  "common.error": {
+    "en": "Please complete the required field.",
+    "ar": "يرجى إكمال الحقل المطلوب."
+  },
+  "common.success": {
+    "en": "Changes saved",
+    "ar": "تم حفظ التغييرات"
+  },
+  "common.search": {
+    "en": "Search",
+    "ar": "بحث"
+  },
+  "common.home": {
+    "en": "Layla’s home bakery",
+    "ar": "مخبز ليلى المنزلي"
+  },
+  "common.profile": {
+    "en": "Layla Ahmad · Irbid",
+    "ar": "ليلى أحمد · إربد"
+  },
+  "common.typed": {
+    "en": "Entered by you",
+    "ar": "أدخلته بنفسك"
+  },
+  "common.verified": {
+    "en": "Demo identity verified",
+    "ar": "تم التحقق من الهوية التجريبية"
+  },
+  "common.mock": {
+    "en": "SANAD demo connection",
+    "ar": "اتصال سند التجريبي"
+  },
+  "common.pending": {
+    "en": "Not started",
+    "ar": "لم يبدأ"
+  },
+  "common.done": {
+    "en": "Completed",
+    "ar": "مكتمل"
+  },
+  "common.needs": {
+    "en": "Needs action",
+    "ar": "يتطلب إجراء"
+  },
+  "common.submitted": {
+    "en": "Submitted",
+    "ar": "تم الإرسال"
+  },
+  "common.locked": {
+    "en": "Complete the previous step first",
+    "ar": "أكمل الخطوة السابقة أولاً"
+  },
+  "common.notice": {
+    "en": "Illustrative details. Confirm requirements with the relevant authority.",
+    "ar": "تفاصيل توضيحية. تحقق من المتطلبات لدى الجهة المختصة."
+  },
+  "common.upload": {
+    "en": "Upload document",
+    "ar": "رفع مستند"
+  },
+  "common.sample": {
+    "en": "Use sample document",
+    "ar": "استخدام مستند نموذجي"
+  },
+  "common.signed": {
+    "en": "Signed in demo",
+    "ar": "تم التوقيع تجريبياً"
+  },
+  "common.sent": {
+    "en": "Demo application submitted",
+    "ar": "تم إرسال الطلب التجريبي"
+  },
+  "common.booked": {
+    "en": "Appointment reserved in demo",
+    "ar": "تم حجز الموعد تجريبياً"
+  },
+  "common.read": {
+    "en": "Mark all as read",
+    "ar": "تحديد الكل كمقروء"
+  },
+  "common.apply": {
+    "en": "Apply to selected",
+    "ar": "التقديم للجهات المحددة"
+  },
+  "common.sign": {
+    "en": "Review and sign",
+    "ar": "المراجعة والتوقيع"
+  },
+  "common.confirm": {
+    "en": "Confirm",
+    "ar": "تأكيد"
+  },
+  "common.reset": {
+    "en": "Reset demo",
+    "ar": "إعادة العرض"
+  },
+  "common.language": {
+    "en": "العربية",
+    "ar": "English"
+  },
+  "common.close": {
+    "en": "Close",
+    "ar": "إغلاق"
+  },
+  "common.consent": {
+    "en": "I agree to use sample identity data in this demo.",
+    "ar": "أوافق على استخدام بيانات هوية نموذجية في هذا العرض."
+  },
+  "common.loading": {
+    "en": "Preparing your workspace…",
+    "ar": "جارٍ إعداد مساحة العمل…"
+  },
+  "nav.roadmap": {
+    "en": "Your roadmap",
+    "ar": "مسار مشروعك"
+  },
+  "nav.documents": {
+    "en": "Documents",
+    "ar": "المستندات"
+  },
+  "nav.signing": {
+    "en": "Signatures",
+    "ar": "التواقيع"
+  },
+  "nav.incubators": {
+    "en": "Incubators",
+    "ar": "الحاضنات"
+  },
+  "nav.bank": {
+    "en": "Bank file",
+    "ar": "الملف البنكي"
+  },
+  "nav.assistant": {
+    "en": "Assistant",
+    "ar": "المساعد"
+  },
+  "nav.notifications": {
+    "en": "Notifications",
+    "ar": "الإشعارات"
+  },
+  "nav.appointments": {
+    "en": "Appointments",
+    "ar": "المواعيد"
+  },
+  "nav.plan": {
+    "en": "Business plan",
+    "ar": "خطة العمل"
+  },
+  "nav.compliance": {
+    "en": "Compliance",
+    "ar": "الالتزامات"
+  },
+  "nav.location": {
+    "en": "Location",
+    "ar": "الموقع"
+  },
+  "nav.funding": {
+    "en": "Funding",
+    "ar": "التمويل"
+  },
+  "nav.experts": {
+    "en": "Experts",
+    "ar": "الخبراء"
+  },
+  "nav.invoicing": {
+    "en": "E-invoicing",
+    "ar": "الفوترة الإلكترونية"
+  },
+  "entry.title": {
+    "en": "Your business begins here.",
+    "ar": "مشروعك يبدأ من هنا."
+  },
+  "entry.subtitle": {
+    "en": "Bedaya connects your next step, documents, and opportunities in one workspace.",
+    "ar": "بداية تجمع خطواتك ومستنداتك وفرصك في مساحة واحدة."
+  },
+  "entry.action": {
+    "en": "Login with SANAD",
+    "ar": "تسجيل الدخول عبر سند"
+  },
+  "entry.row.0.title": {
+    "en": "Answer once",
+    "ar": "أجب مرة واحدة"
+  },
+  "entry.row.0.detail": {
+    "en": "A profile that follows your whole journey.",
+    "ar": "ملف يرافقك طوال رحلتك."
+  },
+  "entry.row.1.title": {
+    "en": "Know your next step",
+    "ar": "اعرف خطوتك التالية"
+  },
+  "entry.row.1.detail": {
+    "en": "A clear roadmap for your business.",
+    "ar": "مسار واضح لمشروعك."
+  },
+  "entry.row.2.title": {
+    "en": "Move forward together",
+    "ar": "تقدم مع شركائك"
+  },
+  "entry.row.2.detail": {
+    "en": "Connect with incubators and banks.",
+    "ar": "تواصل مع الحاضنات والبنوك."
+  },
+  "consent.title": {
+    "en": "Connect your identity",
+    "ar": "ربط هويتك"
+  },
+  "consent.subtitle": {
+    "en": "Review what Bedaya will receive before continuing.",
+    "ar": "راجع البيانات التي ستستقبلها بداية قبل المتابعة."
+  },
+  "consent.action": {
+    "en": "Agree and continue",
+    "ar": "الموافقة والمتابعة"
+  },
+  "consent.note": {
+    "en": "This hackathon uses fictional identity data. No real SANAD connection is active.",
+    "ar": "يستخدم هذا العرض بيانات هوية افتراضية. لا يوجد اتصال فعلي بسند."
+  },
+  "consent.row.0.title": {
+    "en": "Layla Ahmad",
+    "ar": "ليلى أحمد"
+  },
+  "consent.row.1.title": {
+    "en": "••••••4821",
+    "ar": "••••••4821"
+  },
+  "consent.row.2.title": {
+    "en": "Irbid",
+    "ar": "إربد"
+  },
+  "w1.title": {
+    "en": "What would you like to start?",
+    "ar": "ما المشروع الذي تريد بدءه؟"
+  },
+  "w1.subtitle": {
+    "en": "Choose the activity closest to your idea.",
+    "ar": "اختر النشاط الأقرب لفكرتك."
+  },
+  "w1.options.0": {
+    "en": "Home bakery",
+    "ar": "مخبز منزلي"
+  },
+  "w1.options.1": {
+    "en": "Retail shop",
+    "ar": "متجر تجزئة"
+  },
+  "w1.options.2": {
+    "en": "Online store",
+    "ar": "متجر إلكتروني"
+  },
+  "w1.options.3": {
+    "en": "Service company",
+    "ar": "شركة خدمات"
+  },
+  "w2.title": {
+    "en": "Where will your business be?",
+    "ar": "أين سيكون مشروعك؟"
+  },
+  "w2.subtitle": {
+    "en": "Your city helps shape your launch steps.",
+    "ar": "تساعد مدينتك في تحديد خطوات الإطلاق."
+  },
+  "w2.options.0": {
+    "en": "Irbid",
+    "ar": "إربد"
+  },
+  "w2.options.1": {
+    "en": "Amman",
+    "ar": "عمّان"
+  },
+  "w2.options.2": {
+    "en": "Zarqa",
+    "ar": "الزرقاء"
+  },
+  "w2.options.3": {
+    "en": "Aqaba",
+    "ar": "العقبة"
+  },
+  "w3.title": {
+    "en": "Where will you work?",
+    "ar": "من أين ستعمل؟"
+  },
+  "w3.subtitle": {
+    "en": "Home businesses have a dedicated roadmap.",
+    "ar": "للمشاريع المنزلية مسار مخصص."
+  },
+  "w3.options.0": {
+    "en": "From home",
+    "ar": "من المنزل"
+  },
+  "w3.options.1": {
+    "en": "Rented shop",
+    "ar": "محل مستأجر"
+  },
+  "w3.options.2": {
+    "en": "Owned office",
+    "ar": "مكتب مملوك"
+  },
+  "w4.title": {
+    "en": "What is your business name?",
+    "ar": "ما اسم مشروعك؟"
+  },
+  "w4.subtitle": {
+    "en": "You can change this before submission.",
+    "ar": "يمكنك تغييره قبل الإرسال."
+  },
+  "w4.value": {
+    "en": "Layla’s home bakery",
+    "ar": "مخبز ليلى المنزلي"
+  },
+  "w5.title": {
+    "en": "Are you starting with partners?",
+    "ar": "هل تبدأ مع شركاء؟"
+  },
+  "w5.subtitle": {
+    "en": "Tell us who will own the business.",
+    "ar": "أخبرنا من سيمتلك المشروع."
+  },
+  "w5.options.0": {
+    "en": "Just me",
+    "ar": "أنا فقط"
+  },
+  "w5.options.1": {
+    "en": "With partners",
+    "ar": "مع شركاء"
+  },
+  "w6.title": {
+    "en": "What is your starting capital?",
+    "ar": "ما رأس المال الأولي؟"
+  },
+  "w6.subtitle": {
+    "en": "Enter an estimate in Jordanian dinars.",
+    "ar": "أدخل تقديراً بالدينار الأردني."
+  },
+  "w6.value": {
+    "en": "2500",
+    "ar": "2500"
+  },
+  "w7.title": {
+    "en": "Will anyone work with you?",
+    "ar": "هل سيعمل أحد معك؟"
+  },
+  "w7.subtitle": {
+    "en": "We will flag requirements to verify before launch.",
+    "ar": "سنوضح المتطلبات التي يجب التحقق منها قبل الإطلاق."
+  },
+  "w7.options.0": {
+    "en": "No employees yet",
+    "ar": "لا يوجد موظفون حالياً"
+  },
+  "w7.options.1": {
+    "en": "One employee",
+    "ar": "موظف واحد"
+  },
+  "w7.options.2": {
+    "en": "Two or more",
+    "ar": "اثنان أو أكثر"
+  },
+  "w8.title": {
+    "en": "What support do you need?",
+    "ar": "ما الدعم الذي تحتاجه؟"
+  },
+  "w8.subtitle": {
+    "en": "Choose your first priority.",
+    "ar": "اختر أولويتك الأولى."
+  },
+  "w8.options.0": {
+    "en": "Business account",
+    "ar": "حساب تجاري"
+  },
+  "w8.options.1": {
+    "en": "Incubator support",
+    "ar": "دعم حاضنة"
+  },
+  "w8.options.2": {
+    "en": "Funding",
+    "ar": "تمويل"
+  },
+  "wizard-review.title": {
+    "en": "Ready for your next chapter?",
+    "ar": "هل أنت جاهز للخطوة التالية؟"
+  },
+  "wizard-review.subtitle": {
+    "en": "Review your answers before creating your roadmap.",
+    "ar": "راجع إجاباتك قبل إنشاء مسار مشروعك."
+  },
+  "wizard-review.action": {
+    "en": "Create my roadmap",
+    "ar": "إنشاء مسار مشروعي"
+  },
+  "wizard-review.row.0.title": {
+    "en": "Home bakery",
+    "ar": "مخبز منزلي"
+  },
+  "wizard-review.row.1.title": {
+    "en": "Irbid",
+    "ar": "إربد"
+  },
+  "wizard-review.row.2.title": {
+    "en": "From home",
+    "ar": "من المنزل"
+  },
+  "wizard-review.row.3.title": {
+    "en": "2,500 JOD",
+    "ar": "٢٬٥٠٠ دينار"
+  },
+  "wizard-review.row.4.title": {
+    "en": "Sole owner",
+    "ar": "مالك واحد"
+  },
+  "roadmap.title": {
+    "en": "A clear path to opening day",
+    "ar": "مسار واضح ليوم الافتتاح"
+  },
+  "roadmap.subtitle": {
+    "en": "Welcome, Layla. Start with your documents; we’ll keep the next step in sight.",
+    "ar": "مرحباً ليلى. ابدئي بالمستندات وسنوضح لك الخطوة التالية."
+  },
+  "roadmap.action": {
+    "en": "Prepare documents",
+    "ar": "تجهيز المستندات"
+  },
+  "roadmap.note": {
+    "en": "Home-based track · fee estimate 120 JOD · 7–14 days. All figures are sample data, not official fees.",
+    "ar": "المسار المنزلي · تكلفة توضيحية ١٢٠ ديناراً · ٧–١٤ يوماً. جميع الأرقام نموذجية وليست رسوماً رسمية."
+  },
+  "roadmap.row.0.title": {
+    "en": "Confirm identity",
+    "ar": "تأكيد الهوية"
+  },
+  "roadmap.row.0.detail": {
+    "en": "Completed",
+    "ar": "مكتمل"
+  },
+  "roadmap.row.1.title": {
+    "en": "Prepare documents",
+    "ar": "تجهيز المستندات"
+  },
+  "roadmap.row.1.detail": {
+    "en": "Needs action",
+    "ar": "يتطلب إجراء"
+  },
+  "roadmap.row.2.title": {
+    "en": "Register business",
+    "ar": "تسجيل المشروع"
+  },
+  "roadmap.row.2.detail": {
+    "en": "Locked",
+    "ar": "مقفل"
+  },
+  "roadmap.row.3.title": {
+    "en": "Municipal review",
+    "ar": "مراجعة البلدية"
+  },
+  "roadmap.row.3.detail": {
+    "en": "Locked",
+    "ar": "مقفل"
+  },
+  "roadmap.row.4.title": {
+    "en": "Tax & social security",
+    "ar": "الضرائب والضمان"
+  },
+  "roadmap.row.4.detail": {
+    "en": "Locked",
+    "ar": "مقفل"
+  },
+  "roadmap.row.5.title": {
+    "en": "Open business account",
+    "ar": "فتح حساب تجاري"
+  },
+  "roadmap.row.5.detail": {
+    "en": "Locked",
+    "ar": "مقفل"
+  },
+  "documents.title": {
+    "en": "Your documents, together",
+    "ar": "مستنداتك في مكان واحد"
+  },
+  "documents.subtitle": {
+    "en": "Upload once. Review extracted details before they are reused.",
+    "ar": "ارفع مرة واحدة وراجع البيانات المستخرجة قبل إعادة استخدامها."
+  },
+  "documents.action": {
+    "en": "Review extracted details",
+    "ar": "مراجعة البيانات المستخرجة"
+  },
+  "documents.row.0.title": {
+    "en": "National identity",
+    "ar": "الهوية الوطنية"
+  },
+  "documents.row.0.detail": {
+    "en": "Verified sample",
+    "ar": "نموذج موثق"
+  },
+  "documents.row.1.title": {
+    "en": "Home-use consent",
+    "ar": "موافقة الاستخدام المنزلي"
+  },
+  "documents.row.1.detail": {
+    "en": "Missing document",
+    "ar": "مستند ناقص"
+  },
+  "documents.row.2.title": {
+    "en": "Address evidence",
+    "ar": "إثبات العنوان"
+  },
+  "documents.row.2.detail": {
+    "en": "Blurry sample · replace",
+    "ar": "نموذج غير واضح · استبداله"
+  },
+  "ocr.title": {
+    "en": "Check the extracted details",
+    "ar": "تحقق من البيانات المستخرجة"
+  },
+  "ocr.subtitle": {
+    "en": "You stay in control of what goes into your forms.",
+    "ar": "أنت تتحكم بالبيانات المستخدمة في نماذجك."
+  },
+  "ocr.action": {
+    "en": "Confirm details",
+    "ar": "تأكيد البيانات"
+  },
+  "ocr.note": {
+    "en": "Sample OCR preview · edit incorrect fields before confirming.",
+    "ar": "معاينة استخراج تجريبية · عدّل الحقول غير الصحيحة قبل التأكيد."
+  },
+  "ocr.row.0.title": {
+    "en": "Layla Ahmad",
+    "ar": "ليلى أحمد"
+  },
+  "ocr.row.1.title": {
+    "en": "Layla’s home bakery",
+    "ar": "مخبز ليلى المنزلي"
+  },
+  "ocr.row.2.title": {
+    "en": "Irbid",
+    "ar": "إربد"
+  },
+  "signing.title": {
+    "en": "Review. Sign. Move forward.",
+    "ar": "راجع ووقّع وتقدم."
+  },
+  "signing.subtitle": {
+    "en": "Review each generated document before your demo signature.",
+    "ar": "راجع كل مستند مولّد قبل التوقيع التجريبي."
+  },
+  "signing.action": {
+    "en": "Sign all documents",
+    "ar": "توقيع جميع المستندات"
+  },
+  "signing.note": {
+    "en": "Demo signature only · no legally binding signature is created.",
+    "ar": "توقيع تجريبي فقط · لا يتم إنشاء توقيع ملزم قانونياً."
+  },
+  "signing.row.0.title": {
+    "en": "Registration application",
+    "ar": "طلب التسجيل"
+  },
+  "signing.row.0.detail": {
+    "en": "Ready for review",
+    "ar": "جاهز للمراجعة"
+  },
+  "signing.row.1.title": {
+    "en": "Home-use declaration",
+    "ar": "إقرار الاستخدام المنزلي"
+  },
+  "signing.row.1.detail": {
+    "en": "Ready for review",
+    "ar": "جاهز للمراجعة"
+  },
+  "signing.row.2.title": {
+    "en": "Partner consent",
+    "ar": "موافقة مشاركة البيانات"
+  },
+  "signing.row.2.detail": {
+    "en": "Ready for review",
+    "ar": "جاهز للمراجعة"
+  },
+  "signed.title": {
+    "en": "Your documents are signed",
+    "ar": "تم توقيع مستنداتك"
+  },
+  "signed.subtitle": {
+    "en": "Three demo documents are ready for your partner applications.",
+    "ar": "ثلاثة مستندات تجريبية جاهزة لطلبات الشركاء."
+  },
+  "signed.action": {
+    "en": "Explore incubators",
+    "ar": "استكشاف الحاضنات"
+  },
+  "signed.row.0.title": {
+    "en": "Documents signed",
+    "ar": "مستندات موقعة"
+  },
+  "signed.row.1.title": {
+    "en": "Demo audit trail saved",
+    "ar": "تم حفظ سجل التوقيع التجريبي"
+  },
+  "incubators.title": {
+    "en": "Find the right support",
+    "ar": "اعثر على الدعم المناسب"
+  },
+  "incubators.subtitle": {
+    "en": "Matches explain why each programme fits your business. All partners below are fictional.",
+    "ar": "توضح الترشيحات سبب ملاءمة كل برنامج. الجهات التالية افتراضية."
+  },
+  "incubators.action": {
+    "en": "Apply to selected",
+    "ar": "التقديم للجهات المحددة"
+  },
+  "incubators.row.0.title": {
+    "en": "North Growth Lab",
+    "ar": "مختبر نمو الشمال"
+  },
+  "incubators.row.0.detail": {
+    "en": "Irbid · food businesses · idea stage",
+    "ar": "إربد · مشاريع غذائية · مرحلة الفكرة"
+  },
+  "incubators.row.1.title": {
+    "en": "Women Build Hub",
+    "ar": "مركز رائدات الأعمال"
+  },
+  "incubators.row.1.detail": {
+    "en": "Home businesses · mentoring · early stage",
+    "ar": "مشاريع منزلية · إرشاد · مرحلة مبكرة"
+  },
+  "incubators.row.2.title": {
+    "en": "Launch Collective",
+    "ar": "ملتقى الانطلاق"
+  },
+  "incubators.row.2.detail": {
+    "en": "National programme · market access",
+    "ar": "برنامج وطني · الوصول للأسواق"
+  },
+  "applied.title": {
+    "en": "Your next connections are on their way",
+    "ar": "طلباتك جاهزة للمراجعة"
+  },
+  "applied.subtitle": {
+    "en": "Selected applications are submitted in this demo. You can follow their status here.",
+    "ar": "تم إرسال الطلبات المحددة تجريبياً ويمكنك متابعة حالتها هنا."
+  },
+  "applied.action": {
+    "en": "Prepare bank file",
+    "ar": "تجهيز الملف البنكي"
+  },
+  "applied.row.0.title": {
+    "en": "Application received",
+    "ar": "تم استلام الطلب"
+  },
+  "applied.row.1.title": {
+    "en": "Partner review",
+    "ar": "مراجعة الشريك"
+  },
+  "bank.title": {
+    "en": "A complete file for your bank",
+    "ar": "ملف متكامل لبنكك"
+  },
+  "bank.subtitle": {
+    "en": "Review your profile, signed documents, and business plan in one package.",
+    "ar": "راجع ملفك ومستنداتك الموقعة وخطة العمل في حزمة واحدة."
+  },
+  "bank.action": {
+    "en": "Review and send",
+    "ar": "المراجعة والإرسال"
+  },
+  "bank.options.0": {
+    "en": "Demo SME Bank",
+    "ar": "بنك المشاريع التجريبي"
+  },
+  "bank.options.1": {
+    "en": "Demo Community Bank",
+    "ar": "بنك المجتمع التجريبي"
+  },
+  "bank.row.0.title": {
+    "en": "Business profile",
+    "ar": "ملف المشروع"
+  },
+  "bank.row.0.detail": {
+    "en": "Complete",
+    "ar": "مكتمل"
+  },
+  "bank.row.1.title": {
+    "en": "Signed documents",
+    "ar": "المستندات الموقعة"
+  },
+  "bank.row.1.detail": {
+    "en": "3 documents",
+    "ar": "٣ مستندات"
+  },
+  "bank.row.2.title": {
+    "en": "Business plan",
+    "ar": "خطة العمل"
+  },
+  "bank.row.2.detail": {
+    "en": "Draft ready",
+    "ar": "المسودة جاهزة"
+  },
+  "bank-sent.title": {
+    "en": "Bank file submitted",
+    "ar": "تم إرسال الملف البنكي"
+  },
+  "bank-sent.subtitle": {
+    "en": "Your sample bank has received the demo package.",
+    "ar": "استقبل البنك النموذجي الحزمة التجريبية."
+  },
+  "bank-sent.action": {
+    "en": "Book a visit",
+    "ar": "حجز زيارة"
+  },
+  "bank-sent.row.0.title": {
+    "en": "Submission reference",
+    "ar": "مرجع الإرسال"
+  },
+  "bank-sent.row.1.title": {
+    "en": "Awaiting partner response",
+    "ar": "بانتظار رد الشريك"
+  },
+  "assistant.title": {
+    "en": "A little clarity, whenever you need it",
+    "ar": "إجابة واضحة عندما تحتاجها"
+  },
+  "assistant.subtitle": {
+    "en": "Ask about your documents, roadmap, or next step.",
+    "ar": "اسأل عن مستنداتك أو مسار مشروعك أو الخطوة التالية."
+  },
+  "assistant.row.0.title": {
+    "en": "What should I prepare for the home-business review?",
+    "ar": "ماذا أجهز لمراجعة المشروع المنزلي؟"
+  },
+  "assistant.row.1.title": {
+    "en": "In this demo, prepare your identity, address evidence, and home-use consent. Confirm the exact requirements with your municipality before applying.",
+    "ar": "في هذا العرض، جهز الهوية وإثبات العنوان وموافقة الاستخدام المنزلي. تحقق من المتطلبات الدقيقة لدى البلدية قبل التقديم."
+  },
+  "notifications.title": {
+    "en": "Stay one step ahead",
+    "ar": "ابق على اطلاع"
+  },
+  "notifications.subtitle": {
+    "en": "Updates that matter to your launch.",
+    "ar": "تحديثات مهمة لإطلاق مشروعك."
+  },
+  "notifications.action": {
+    "en": "Mark all as read",
+    "ar": "تحديد الكل كمقروء"
+  },
+  "notifications.row.0.title": {
+    "en": "Your bank file was received",
+    "ar": "تم استلام ملفك البنكي"
+  },
+  "notifications.row.0.detail": {
+    "en": "Application BD-1042",
+    "ar": "الطلب BD-1042"
+  },
+  "notifications.row.1.title": {
+    "en": "A clearer address document is needed",
+    "ar": "نحتاج مستند عنوان أوضح"
+  },
+  "notifications.row.1.detail": {
+    "en": "Open your document vault",
+    "ar": "افتح خزنة المستندات"
+  },
+  "notifications.row.2.title": {
+    "en": "Your visit is coming up",
+    "ar": "موعد زيارتك يقترب"
+  },
+  "notifications.row.2.detail": {
+    "en": "Review your appointment",
+    "ar": "راجع موعدك"
+  },
+  "appointments.title": {
+    "en": "Make room for your next step",
+    "ar": "حدد موعداً لخطوتك التالية"
+  },
+  "appointments.subtitle": {
+    "en": "Choose a partner and a time that works for you.",
+    "ar": "اختر الجهة والوقت المناسب لك."
+  },
+  "appointments.action": {
+    "en": "Book appointment",
+    "ar": "حجز موعد"
+  },
+  "appointments.options.0": {
+    "en": "Demo SME Bank",
+    "ar": "بنك المشاريع التجريبي"
+  },
+  "appointments.options.1": {
+    "en": "North Growth Lab",
+    "ar": "مختبر نمو الشمال"
+  },
+  "appointments.options.2": {
+    "en": "Municipality demo desk",
+    "ar": "مكتب البلدية التجريبي"
+  },
+  "appointments.row.0.title": {
+    "en": "Monday · 12 October",
+    "ar": "الاثنين · ١٢ أكتوبر"
+  },
+  "appointments.row.0.detail": {
+    "en": "09:00 · 11:30 · 14:00",
+    "ar": "09:00 · 11:30 · 14:00"
+  },
+  "appointments.row.1.title": {
+    "en": "Tuesday · 13 October",
+    "ar": "الثلاثاء · ١٣ أكتوبر"
+  },
+  "appointments.row.1.detail": {
+    "en": "10:00 · 13:00",
+    "ar": "10:00 · 13:00"
+  },
+  "plan.title": {
+    "en": "Your idea, on paper",
+    "ar": "فكرتك على الورق"
+  },
+  "plan.subtitle": {
+    "en": "A concise plan built from your answers. Review it before sharing.",
+    "ar": "خطة مختصرة من إجاباتك. راجعها قبل المشاركة."
+  },
+  "plan.action": {
+    "en": "Download plan",
+    "ar": "تنزيل الخطة"
+  },
+  "plan.row.0.title": {
+    "en": "Business summary",
+    "ar": "ملخص المشروع"
+  },
+  "plan.row.0.detail": {
+    "en": "A home bakery in Irbid offering made-to-order pastries.",
+    "ar": "مخبز منزلي في إربد يقدم معجنات حسب الطلب."
+  },
+  "plan.row.1.title": {
+    "en": "Customers & channels",
+    "ar": "العملاء والقنوات"
+  },
+  "plan.row.1.detail": {
+    "en": "Local families; direct orders and social media.",
+    "ar": "العائلات المحلية؛ الطلب المباشر ووسائل التواصل."
+  },
+  "plan.row.2.title": {
+    "en": "Starting resources",
+    "ar": "الموارد الأولية"
+  },
+  "plan.row.2.detail": {
+    "en": "Sample capital: 2,500 JOD. Owner-operated at home.",
+    "ar": "رأس مال نموذجي: ٢٬٥٠٠ دينار. تديره المالكة من المنزل."
+  },
+  "compliance.title": {
+    "en": "Keep your business on track",
+    "ar": "حافظ على انتظام مشروعك"
+  },
+  "compliance.subtitle": {
+    "en": "A calendar for obligations after launch. Dates below are illustrative.",
+    "ar": "تقويم للالتزامات بعد الإطلاق. التواريخ التالية توضيحية."
+  },
+  "compliance.row.0.title": {
+    "en": "Tax review",
+    "ar": "مراجعة الضرائب"
+  },
+  "compliance.row.0.detail": {
+    "en": "Confirm applicability and dates",
+    "ar": "تحقق من الانطباق والمواعيد"
+  },
+  "compliance.row.1.title": {
+    "en": "Social security review",
+    "ar": "مراجعة الضمان الاجتماعي"
+  },
+  "compliance.row.1.detail": {
+    "en": "Confirm if employees are registered",
+    "ar": "تحقق من تسجيل الموظفين"
+  },
+  "compliance.row.2.title": {
+    "en": "License renewal reminder",
+    "ar": "تذكير تجديد الترخيص"
+  },
+  "compliance.row.2.detail": {
+    "en": "Review with issuing authority",
+    "ar": "راجع الجهة المصدرة"
+  },
+  "location.title": {
+    "en": "Check before you commit",
+    "ar": "تحقق قبل أن تلتزم"
+  },
+  "location.subtitle": {
+    "en": "Preview an address check before choosing premises.",
+    "ar": "عاين فحص العنوان قبل اختيار موقع المشروع."
+  },
+  "location.action": {
+    "en": "Check address",
+    "ar": "فحص العنوان"
+  },
+  "location.note": {
+    "en": "Illustrative zoning result; not an official approval.",
+    "ar": "نتيجة تنظيمية توضيحية؛ ليست موافقة رسمية."
+  },
+  "location.row.0.title": {
+    "en": "Irbid · sample residential zone",
+    "ar": "إربد · منطقة سكنية نموذجية"
+  },
+  "location.row.0.detail": {
+    "en": "Conditional match · municipality review required",
+    "ar": "توافق مشروط · تتطلب مراجعة البلدية"
+  },
+  "funding.title": {
+    "en": "Funding that fits your stage",
+    "ar": "تمويل يناسب مرحلتك"
+  },
+  "funding.subtitle": {
+    "en": "Compare fictional offers for your demo business profile.",
+    "ar": "قارن عروضاً افتراضية لملف مشروعك التجريبي."
+  },
+  "funding.row.0.title": {
+    "en": "Demo Launch Grant",
+    "ar": "منحة الانطلاق التجريبية"
+  },
+  "funding.row.0.detail": {
+    "en": "Up to 3,000 JOD · early-stage businesses",
+    "ar": "حتى ٣٬٠٠٠ دينار · مشاريع مبكرة"
+  },
+  "funding.row.1.title": {
+    "en": "Demo Microfinance",
+    "ar": "التمويل الأصغر التجريبي"
+  },
+  "funding.row.1.detail": {
+    "en": "1,000–5,000 JOD · terms require review",
+    "ar": "١٬٠٠٠–٥٬٠٠٠ دينار · مراجعة الشروط"
+  },
+  "funding.row.2.title": {
+    "en": "Demo Equipment Support",
+    "ar": "دعم المعدات التجريبي"
+  },
+  "funding.row.2.detail": {
+    "en": "Equipment contribution · food businesses",
+    "ar": "مساهمة في المعدات · مشاريع غذائية"
+  },
+  "experts.title": {
+    "en": "Get help with the hard part",
+    "ar": "احصل على مساعدة عند الحاجة"
+  },
+  "experts.subtitle": {
+    "en": "Fictional expert profiles for the hackathon prototype.",
+    "ar": "ملفات خبراء افتراضية لنموذج الهاكاثون."
+  },
+  "experts.row.0.title": {
+    "en": "Sara Ali",
+    "ar": "سارة علي"
+  },
+  "experts.row.0.detail": {
+    "en": "Accountant · tax registration · 25 JOD sample session",
+    "ar": "محاسبة · التسجيل الضريبي · جلسة نموذجية ٢٥ ديناراً"
+  },
+  "experts.row.1.title": {
+    "en": "Omar Khalil",
+    "ar": "عمر خليل"
+  },
+  "experts.row.1.detail": {
+    "en": "Legal advisor · registration · 35 JOD sample session",
+    "ar": "مستشار قانوني · التسجيل · جلسة نموذجية ٣٥ ديناراً"
+  },
+  "invoicing.title": {
+    "en": "Prepare for e-invoicing",
+    "ar": "استعد للفوترة الإلكترونية"
+  },
+  "invoicing.subtitle": {
+    "en": "Review business details before connecting to a real service.",
+    "ar": "راجع بيانات المشروع قبل الربط بخدمة فعلية."
+  },
+  "invoicing.action": {
+    "en": "Save readiness checklist",
+    "ar": "حفظ قائمة الجاهزية"
+  },
+  "invoicing.row.0.title": {
+    "en": "Business details",
+    "ar": "بيانات المشروع"
+  },
+  "invoicing.row.0.detail": {
+    "en": "Ready",
+    "ar": "جاهزة"
+  },
+  "invoicing.row.1.title": {
+    "en": "Tax number",
+    "ar": "الرقم الضريبي"
+  },
+  "invoicing.row.1.detail": {
+    "en": "Needs confirmation",
+    "ar": "يحتاج إلى تأكيد"
+  },
+  "invoicing.row.2.title": {
+    "en": "Invoice template",
+    "ar": "نموذج الفاتورة"
+  },
+  "invoicing.row.2.detail": {
+    "en": "Draft",
+    "ar": "مسودة"
+  },
+  "invoicing.row.3.title": {
+    "en": "Service connection",
+    "ar": "ربط الخدمة"
+  },
+  "invoicing.row.3.detail": {
+    "en": "Not connected in demo",
+    "ar": "غير متصل في العرض"
+  },
+  "partner.title": {
+    "en": "A better start for every application",
+    "ar": "بداية أفضل لكل طلب"
+  },
+  "partner.subtitle": {
+    "en": "Review complete profiles and keep owners informed.",
+    "ar": "راجع الملفات وأبق أصحاب المشاريع على اطلاع."
+  },
+  "partner.action": {
+    "en": "Review application",
+    "ar": "مراجعة الطلب"
+  },
+  "partner.row.0.title": {
+    "en": "Layla’s home bakery",
+    "ar": "مخبز ليلى المنزلي"
+  },
+  "partner.row.0.detail": {
+    "en": "New · Irbid · home business",
+    "ar": "جديد · إربد · مشروع منزلي"
+  },
+  "partner.row.1.title": {
+    "en": "Demo online store",
+    "ar": "متجر إلكتروني تجريبي"
+  },
+  "partner.row.1.detail": {
+    "en": "In review · Amman",
+    "ar": "قيد المراجعة · عمّان"
+  },
+  "partner.row.2.title": {
+    "en": "Demo service company",
+    "ar": "شركة خدمات تجريبية"
+  },
+  "partner.row.2.detail": {
+    "en": "Approved · Zarqa",
+    "ar": "مقبول · الزرقاء"
+  },
+  "application.title": {
+    "en": "Layla’s home bakery",
+    "ar": "مخبز ليلى المنزلي"
+  },
+  "application.subtitle": {
+    "en": "Application BD-1042 · received today · sample profile",
+    "ar": "الطلب BD-1042 · وصل اليوم · ملف نموذجي"
+  },
+  "application.row.0.title": {
+    "en": "Owner profile",
+    "ar": "ملف المالكة"
+  },
+  "application.row.0.detail": {
+    "en": "Demo verified identity",
+    "ar": "هوية موثقة تجريبياً"
+  },
+  "application.row.1.title": {
+    "en": "Documents",
+    "ar": "المستندات"
+  },
+  "application.row.1.detail": {
+    "en": "Address evidence needs replacement",
+    "ar": "يحتاج إثبات العنوان إلى استبدال"
+  },
+  "application.row.2.title": {
+    "en": "Business plan",
+    "ar": "خطة العمل"
+  },
+  "application.row.2.detail": {
+    "en": "Ready for review",
+    "ar": "جاهزة للمراجعة"
+  },
+  "admin.title": {
+    "en": "Manage the launch framework",
+    "ar": "إدارة إطار إطلاق المشاريع"
+  },
+  "admin.subtitle": {
+    "en": "Maintain the demo steps, rules, fees, partners, and user access.",
+    "ar": "إدارة الخطوات والقواعد والرسوم والشركاء وصلاحيات المستخدمين التجريبية."
+  },
+  "admin.action": {
+    "en": "Save changes",
+    "ar": "حفظ التغييرات"
+  },
+  "admin.row.0.title": {
+    "en": "Home bakery · Irbid",
+    "ar": "مخبز منزلي · إربد"
+  },
+  "admin.row.0.detail": {
+    "en": "6 steps · draft rules",
+    "ar": "٦ خطوات · قواعد مسودة"
+  },
+  "admin.row.1.title": {
+    "en": "Municipal review fee",
+    "ar": "رسوم مراجعة البلدية"
+  },
+  "admin.row.1.detail": {
+    "en": "Sample 50 JOD · unverified",
+    "ar": "٥٠ ديناراً نموذجياً · غير موثقة"
+  },
+  "admin.row.2.title": {
+    "en": "North Growth Lab",
+    "ar": "مختبر نمو الشمال"
+  },
+  "admin.row.2.detail": {
+    "en": "Active demo partner",
+    "ar": "شريك تجريبي نشط"
+  },
+  "admin.row.3.title": {
+    "en": "Layla Ahmad",
+    "ar": "ليلى أحمد"
+  },
+  "admin.row.3.detail": {
+    "en": "Owner · demo access",
+    "ar": "مالكة · وصول تجريبي"
+  },
+  "analytics.title": {
+    "en": "See where progress slows",
+    "ar": "اعرف أين يتباطأ التقدم"
+  },
+  "analytics.subtitle": {
+    "en": "Anonymous, synthetic data helps identify friction in the journey.",
+    "ar": "بيانات اصطناعية مجهولة توضح نقاط التعثر في الرحلة."
+  },
+  "analytics.row.0.title": {
+    "en": "Municipal review",
+    "ar": "مراجعة البلدية"
+  },
+  "analytics.row.0.detail": {
+    "en": "Average days · 22% sample drop-off",
+    "ar": "متوسط الأيام · تسرب نموذجي ٢٢٪"
+  },
+  "analytics.row.1.title": {
+    "en": "Document preparation",
+    "ar": "تجهيز المستندات"
+  },
+  "analytics.row.1.detail": {
+    "en": "Average days · 14% sample drop-off",
+    "ar": "متوسط الأيام · تسرب نموذجي ١٤٪"
+  },
+  "analytics.row.2.title": {
+    "en": "Bank review",
+    "ar": "مراجعة البنك"
+  },
+  "analytics.row.2.detail": {
+    "en": "Average days · 8% sample drop-off",
+    "ar": "متوسط الأيام · تسرب نموذجي ٨٪"
+  },
+  "analytics.row.3.title": {
+    "en": "Business registration",
+    "ar": "تسجيل المشروع"
+  },
+  "analytics.row.3.detail": {
+    "en": "Average days · 5% sample drop-off",
+    "ar": "متوسط الأيام · تسرب نموذجي ٥٪"
+  },
+  "entry.visible.0": {
+    "en": "Bedaya",
+    "ar": "Bedaya"
+  },
+  "entry.visible.10": {
+    "en": "01",
+    "ar": "01"
+  },
+  "entry.visible.13": {
+    "en": "02",
+    "ar": "02"
+  },
+  "entry.visible.16": {
+    "en": "03",
+    "ar": "03"
+  },
+  "entry.visible.19": {
+    "en": "Interactive demo · sample data · SANAD demo connection",
+    "ar": "عرض تجريبي · بيانات نموذجية · اتصال سند التجريبي"
+  },
+  "consent.visible.9": {
+    "en": "Name",
+    "ar": "الاسم"
+  },
+  "consent.visible.11": {
+    "en": "National ID",
+    "ar": "الرقم الوطني"
+  },
+  "consent.visible.13": {
+    "en": "City",
+    "ar": "المدينة"
+  },
+  "w1.visible.23": {
+    "en": "STEP 1 OF 8",
+    "ar": "الخطوة 1 من ٨"
+  },
+  "w2.visible.23": {
+    "en": "STEP 2 OF 8",
+    "ar": "الخطوة 2 من ٨"
+  },
+  "w3.visible.23": {
+    "en": "STEP 3 OF 8",
+    "ar": "الخطوة 3 من ٨"
+  },
+  "w4.visible.23": {
+    "en": "STEP 4 OF 8",
+    "ar": "الخطوة 4 من ٨"
+  },
+  "w5.visible.23": {
+    "en": "STEP 5 OF 8",
+    "ar": "الخطوة 5 من ٨"
+  },
+  "w5.visible.28": {
+    "en": "Number of partners",
+    "ar": "عدد الشركاء"
+  },
+  "w6.visible.23": {
+    "en": "STEP 6 OF 8",
+    "ar": "الخطوة 6 من ٨"
+  },
+  "w7.visible.23": {
+    "en": "STEP 7 OF 8",
+    "ar": "الخطوة 7 من ٨"
+  },
+  "w8.visible.23": {
+    "en": "STEP 8 OF 8",
+    "ar": "الخطوة 8 من ٨"
+  },
+  "roadmap.visible.26": {
+    "en": "17%",
+    "ar": "17%"
+  },
+  "roadmap.visible.27": {
+    "en": "Roadmap complete",
+    "ar": "اكتمال المسار"
+  },
+  "roadmap.visible.28": {
+    "en": "120 JOD",
+    "ar": "120 JOD"
+  },
+  "roadmap.visible.29": {
+    "en": "Illustrative estimate",
+    "ar": "تقدير توضيحي"
+  },
+  "roadmap.visible.30": {
+    "en": "7–14",
+    "ar": "7–14"
+  },
+  "roadmap.visible.31": {
+    "en": "Sample days",
+    "ar": "أيام نموذجية"
+  },
+  "roadmap.visible.41": {
+    "en": "04",
+    "ar": "04"
+  },
+  "roadmap.visible.44": {
+    "en": "05",
+    "ar": "05"
+  },
+  "roadmap.visible.47": {
+    "en": "06",
+    "ar": "06"
+  },
+  "documents.visible.26": {
+    "en": "ID",
+    "ar": "هوية"
+  },
+  "documents.visible.29": {
+    "en": "HOME",
+    "ar": "منزل"
+  },
+  "documents.visible.32": {
+    "en": "ADDR",
+    "ar": "عنوان"
+  },
+  "documents.visible.35": {
+    "en": "Required: a clearer copy of address evidence",
+    "ar": "مطلوب: نسخة أوضح من إثبات العنوان"
+  },
+  "ocr.visible.26": {
+    "en": "Sample document preview",
+    "ar": "معاينة المستند النموذجي"
+  },
+  "ocr.visible.28": {
+    "en": "Full name",
+    "ar": "الاسم الكامل"
+  },
+  "ocr.visible.29": {
+    "en": "Business name",
+    "ar": "اسم المشروع"
+  },
+  "signing.visible.35": {
+    "en": "I reviewed the documents and agree to a demo signature.",
+    "ar": "راجعت المستندات وأوافق على التوقيع التجريبي."
+  },
+  "signed.visible.26": {
+    "en": "✓",
+    "ar": "✓"
+  },
+  "signed.visible.29": {
+    "en": "Today",
+    "ar": "اليوم"
+  },
+  "incubators.visible.26": {
+    "en": "94%",
+    "ar": "94%"
+  },
+  "incubators.visible.29": {
+    "en": "87%",
+    "ar": "87%"
+  },
+  "incubators.visible.32": {
+    "en": "79%",
+    "ar": "79%"
+  },
+  "bank-sent.visible.27": {
+    "en": "BD-1042",
+    "ar": "BD-1042"
+  },
+  "assistant.visible.26": {
+    "en": "You",
+    "ar": "أنت"
+  },
+  "assistant.visible.30": {
+    "en": "Send",
+    "ar": "إرسال"
+  },
+  "notifications.visible.32": {
+    "en": "Tomorrow",
+    "ar": "غداً"
+  },
+  "appointments.visible.26": {
+    "en": "1",
+    "ar": "1"
+  },
+  "appointments.visible.27": {
+    "en": "2",
+    "ar": "2"
+  },
+  "appointments.visible.28": {
+    "en": "3",
+    "ar": "3"
+  },
+  "appointments.visible.29": {
+    "en": "4",
+    "ar": "4"
+  },
+  "appointments.visible.30": {
+    "en": "5",
+    "ar": "5"
+  },
+  "appointments.visible.31": {
+    "en": "6",
+    "ar": "6"
+  },
+  "appointments.visible.32": {
+    "en": "7",
+    "ar": "7"
+  },
+  "appointments.visible.33": {
+    "en": "8",
+    "ar": "8"
+  },
+  "appointments.visible.34": {
+    "en": "9",
+    "ar": "9"
+  },
+  "appointments.visible.35": {
+    "en": "10",
+    "ar": "10"
+  },
+  "appointments.visible.36": {
+    "en": "11",
+    "ar": "11"
+  },
+  "appointments.visible.37": {
+    "en": "12",
+    "ar": "12"
+  },
+  "appointments.visible.38": {
+    "en": "13",
+    "ar": "13"
+  },
+  "appointments.visible.39": {
+    "en": "14",
+    "ar": "14"
+  },
+  "appointments.visible.40": {
+    "en": "15",
+    "ar": "15"
+  },
+  "appointments.visible.41": {
+    "en": "16",
+    "ar": "16"
+  },
+  "appointments.visible.42": {
+    "en": "17",
+    "ar": "17"
+  },
+  "appointments.visible.43": {
+    "en": "18",
+    "ar": "18"
+  },
+  "appointments.visible.44": {
+    "en": "19",
+    "ar": "19"
+  },
+  "appointments.visible.45": {
+    "en": "20",
+    "ar": "20"
+  },
+  "appointments.visible.46": {
+    "en": "21",
+    "ar": "21"
+  },
+  "appointments.visible.47": {
+    "en": "22",
+    "ar": "22"
+  },
+  "appointments.visible.48": {
+    "en": "23",
+    "ar": "23"
+  },
+  "appointments.visible.49": {
+    "en": "24",
+    "ar": "24"
+  },
+  "appointments.visible.50": {
+    "en": "25",
+    "ar": "25"
+  },
+  "appointments.visible.51": {
+    "en": "26",
+    "ar": "26"
+  },
+  "appointments.visible.52": {
+    "en": "27",
+    "ar": "27"
+  },
+  "appointments.visible.53": {
+    "en": "28",
+    "ar": "28"
+  },
+  "appointments.visible.54": {
+    "en": "29",
+    "ar": "29"
+  },
+  "appointments.visible.55": {
+    "en": "30",
+    "ar": "30"
+  },
+  "appointments.visible.56": {
+    "en": "31",
+    "ar": "31"
+  },
+  "appointments.visible.61": {
+    "en": "Available slot",
+    "ar": "الموعد المتاح"
+  },
+  "appointments.visible.62": {
+    "en": "12 Oct · 09:00",
+    "ar": "12 Oct · 09:00"
+  },
+  "appointments.visible.63": {
+    "en": "12 Oct · 11:30",
+    "ar": "12 Oct · 11:30"
+  },
+  "appointments.visible.64": {
+    "en": "13 Oct · 10:00",
+    "ar": "13 Oct · 10:00"
+  },
+  "compliance.visible.57": {
+    "en": "15 NOV",
+    "ar": "15 NOV"
+  },
+  "compliance.visible.60": {
+    "en": "01 DEC",
+    "ar": "01 DEC"
+  },
+  "compliance.visible.63": {
+    "en": "01 OCT",
+    "ar": "01 OCT"
+  },
+  "location.visible.26": {
+    "en": "Address",
+    "ar": "العنوان"
+  },
+  "location.visible.27": {
+    "en": "Sample location",
+    "ar": "الموقع النموذجي"
+  },
+  "funding.visible.26": {
+    "en": "Offer type",
+    "ar": "نوع العرض"
+  },
+  "funding.visible.27": {
+    "en": "All",
+    "ar": "الكل"
+  },
+  "funding.visible.28": {
+    "en": "Grants",
+    "ar": "منح"
+  },
+  "funding.visible.29": {
+    "en": "Loans",
+    "ar": "قروض"
+  },
+  "funding.visible.30": {
+    "en": "GRANT",
+    "ar": "منحة"
+  },
+  "funding.visible.33": {
+    "en": "LOAN",
+    "ar": "قرض"
+  },
+  "funding.visible.36": {
+    "en": "SUPPORT",
+    "ar": "دعم"
+  },
+  "experts.visible.26": {
+    "en": "SA",
+    "ar": "SA"
+  },
+  "experts.visible.29": {
+    "en": "Book",
+    "ar": "حجز"
+  },
+  "experts.visible.30": {
+    "en": "OK",
+    "ar": "OK"
+  },
+  "partner.visible.8": {
+    "en": "Applications",
+    "ar": "الطلبات"
+  },
+  "partner.visible.17": {
+    "en": "BD-1039",
+    "ar": "BD-1039"
+  },
+  "partner.visible.20": {
+    "en": "BD-1036",
+    "ar": "BD-1036"
+  },
+  "application.visible.13": {
+    "en": "PROFILE",
+    "ar": "الملف"
+  },
+  "application.visible.16": {
+    "en": "DOCS",
+    "ar": "مستندات"
+  },
+  "application.visible.19": {
+    "en": "PLAN",
+    "ar": "خطة"
+  },
+  "application.visible.22": {
+    "en": "Approve",
+    "ar": "الموافقة"
+  },
+  "application.visible.23": {
+    "en": "Request document",
+    "ar": "طلب مستند"
+  },
+  "application.visible.24": {
+    "en": "Reject",
+    "ar": "رفض"
+  },
+  "admin.visible.8": {
+    "en": "Management",
+    "ar": "الإدارة"
+  },
+  "admin.visible.9": {
+    "en": "Analytics",
+    "ar": "التحليلات"
+  },
+  "admin.visible.14": {
+    "en": "Rules",
+    "ar": "القواعد"
+  },
+  "admin.visible.15": {
+    "en": "Fees",
+    "ar": "الرسوم"
+  },
+  "admin.visible.16": {
+    "en": "Partners",
+    "ar": "الشركاء"
+  },
+  "admin.visible.17": {
+    "en": "Users",
+    "ar": "المستخدمون"
+  },
+  "admin.visible.18": {
+    "en": "RULE",
+    "ar": "قاعدة"
+  },
+  "admin.visible.21": {
+    "en": "FEE",
+    "ar": "رسوم"
+  },
+  "admin.visible.24": {
+    "en": "PARTNER",
+    "ar": "شريك"
+  },
+  "admin.visible.27": {
+    "en": "USER",
+    "ar": "مستخدم"
+  },
+  "admin.visible.30": {
+    "en": "Editable sample value",
+    "ar": "قيمة نموذجية قابلة للتعديل"
+  },
+  "admin.visible.31": {
+    "en": "View analytics",
+    "ar": "عرض التحليلات"
+  },
+  "analytics.visible.14": {
+    "en": "4.8",
+    "ar": "4.8"
+  },
+  "analytics.visible.17": {
+    "en": "2.6",
+    "ar": "2.6"
+  },
+  "analytics.visible.20": {
+    "en": "1.4",
+    "ar": "1.4"
+  },
+  "analytics.visible.23": {
+    "en": "0.8",
+    "ar": "0.8"
+  }
+}

@@ -1,0 +1,5 @@
+@font-face{font-family:Bedaya Sans;src:url('DejaVuSans.ttf') format('truetype');font-display:swap}body{font-family:'Bedaya Sans',Arial,sans-serif;letter-spacing:0}html[dir=rtl]body{font-family:'Bedaya Sans',Tahoma,sans-serif}.metric b,.lead,.day{unicode-bidi:isolate;direction:ltr}.nav-icon{font-family:Arial,sans-serif}html[dir=rtl]h1{line-height:1.5}
+@media(max-width:760px){.role{width:172px}.head-actions{flex-wrap:wrap}}
+.nav-icon{display:flex;align-items:center;justify-content:center}button:has(svg){display:inline-flex;align-items:center;justify-content:center}
+.brand{display:grid;grid-template-columns:100px auto;column-gap:16px;row-gap:0;align-items:center}.brand img{grid-column:1;grid-row:1;justify-self:center;width:96px;height:46px}.brand strong{grid-column:1;grid-row:2;justify-self:center;font-size:12px;line-height:1.2;font-weight:600}.brand small{grid-column:2;grid-row:1 / span 2;text-align:start}
+@media(max-width:760px){.brand{grid-template-columns:80px;column-gap:0}.brand img{width:76px;height:42px}.brand strong{font-size:11px}}
