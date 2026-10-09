@@ -1,151 +1,245 @@
 // Entry, SANAD consent, Bedaya account and the onboarding wizard (features 7 and 1).
 // SANAD identity comes from M5's mock SANAD; the business is saved in M4's backend.
-import { $, $$, api, errorText, esc, go, loadSession, read, sanadValue, save, session, t, toast, tx } from "./core.js";
+import { $, $$, api, clearUserStorage, displayName, errorText, esc, go, homeRoute, loadSession, read, sanadValue, save, session, t, toast, tx } from "./core.js";
 
-// ---------- entry ----------
+// ---------- shared bits ----------
+const SOURCE = { verified_by_sanad: ["Verified by SANAD", "موثق من سند"], typed_by_user: ["Entered by you", "أدخلته بنفسك"], read_by_ocr: ["Read from a document", "مقروء من مستند"] };
+const sanadLogin = (returnHash) => (location.href = `/api/sanad/login?return=${encodeURIComponent(`/#${returnHash}`)}`);
+
+/** The verified SANAD fields as a list, each marked "Verified by SANAD". */
+function verifiedList(fields, nationalId) {
+  const id = String(nationalId || "");
+  const rows = [
+    [["Name", "الاسم"], tx({ en: fields.fullNameEn?.value, ar: fields.fullNameAr?.value })],
+    [["National ID", "الرقم الوطني"], id ? `${"•".repeat(6)}${id.slice(-4)}` : ""],
+    [["Date of birth", "تاريخ الميلاد"], fields.birthDate?.value],
+    [["Mobile", "الهاتف"], fields.phone?.value],
+    [["Address", "العنوان"], fields.address?.value || fields.city?.value],
+  ];
+  return `<div class="list">${rows
+    .filter((r) => r[1])
+    .map((r) => `<div class="item"><div class="details"><small>${tx(r[0])}</small><strong dir="auto">${esc(r[1])}</strong></div><span class="status done">✓ ${tx(SOURCE.verified_by_sanad)}</span></div>`)
+    .join("")}</div>`;
+}
+
+// ---------- entry (home page) ----------
 export const entry = {
   layout: "entry",
   async render() {
     const rows = [
       ["01", ["Answer once", "أجب مرة واحدة"], ["A profile that follows your whole journey.", "ملف يرافقك طوال رحلتك."]],
       ["02", ["Know your next step", "اعرف خطوتك التالية"], ["A clear roadmap built from official Jordanian sources.", "مسار واضح مبني على مصادر أردنية رسمية."]],
-      ["03", ["Move forward together", "تقدم مع شركائك"], ["Connect with real incubators, funds and banks.", "تواصل مع حاضنات وصناديق وبنوك حقيقية."]],
+      ["03", ["Move forward together", "تقدم مع شركائك"], ["Connect with real incubators, funds, banks and experts.", "تواصل مع حاضنات وصناديق وبنوك وخبراء حقيقيين."]],
     ];
-    const signedIn = session.sanad;
+    const actions = session.account
+      ? `<button class="primary" data-go="${homeRoute()}">${t(`Continue to my dashboard`, `المتابعة إلى لوحتي`)}</button><span class="muted">${esc(displayName())}</span>`
+      : `<button class="primary" id="sanad-login">${t("Login with SANAD", "تسجيل الدخول عبر سند")}</button>
+         <button data-go="account">${t("Sign in with email", "تسجيل الدخول بالبريد")}</button>
+         <button data-go="signup">${t("Create account", "إنشاء حساب")}</button>`;
     return `<div class="eyebrow">${t("Bedaya · start your business in Jordan", "بداية · ابدأ مشروعك في الأردن")}</div>
       <h1>${t("Your business begins here.", "مشروعك يبدأ من هنا.")}</h1>
       <p class="subtitle">${t("Bedaya connects your next step, documents, and opportunities in one workspace.", "بداية تجمع خطواتك ومستنداتك وفرصك في مساحة واحدة.")}</p>
-      <div class="toolbar">
-        ${signedIn
-          ? `<button class="primary" data-go="consent">${t(`Continue as ${sanadValue("fullNameEn")}`, `المتابعة باسم ${sanadValue("fullNameAr")}`)}</button>`
-          : `<button class="primary" id="sanad-login">${t("Login with SANAD", "تسجيل الدخول عبر سند")}</button>`}
-        <button data-go="account">${t("I already have a Bedaya account", "لدي حساب في بداية")}</button>
-        <button data-go="assistant">${t("Ask the assistant first", "اسأل المساعد أولاً")}</button>
-      </div>
-      <div class="list">${rows
-        .map((r) => `<div class="item"><span class="lead">${r[0]}</span><div class="details"><strong>${tx(r[1])}</strong><small>${tx(r[2])}</small></div></div>`)
-        .join("")}</div>
-      <p class="note">${t("SANAD is simulated in this hackathon build (two fictional people). Fees and steps come from official Jordanian sources.", "سند محاكى في نسخة الهاكاثون (شخصان افتراضيان). الرسوم والخطوات من مصادر أردنية رسمية.")}</p>`;
+      <div class="toolbar">${actions}</div>
+      <div class="list">${rows.map((r) => `<div class="item"><span class="lead">${r[0]}</span><div class="details"><strong>${tx(r[1])}</strong><small>${tx(r[2])}</small></div></div>`).join("")}</div>
+      <p class="note">${t("SANAD is simulated in this hackathon build (demo identities). Fees and steps come from official Jordanian sources.", "سند محاكى في نسخة الهاكاثون (هويات تجريبية). الرسوم والخطوات من مصادر أردنية رسمية.")}</p>`;
   },
   mount() {
     const btn = $("#sanad-login");
-    if (btn) btn.onclick = () => (location.href = `/api/sanad/login?return=${encodeURIComponent("/#consent")}`);
+    if (btn) btn.onclick = () => sanadLogin("sanad");
   },
 };
 
-// ---------- consent: what SANAD shares ----------
-const SOURCE = { verified_by_sanad: ["Verified by SANAD (demo)", "موثق من سند (تجريبي)"], typed_by_user: ["Entered by you", "أدخلته بنفسك"], read_by_ocr: ["Read from a document", "مقروء من مستند"] };
-
-export const consent = {
-  guard: "sanad",
+// ---------- back from SANAD: open the account linked to that national ID ----------
+export const sanad = {
+  layout: "entry",
   async render() {
-    const u = session.sanad;
-    const id = String(u.nationalId || "");
-    const rows = [
-      [["Name", "الاسم"], tx({ en: u.fullNameEn?.value, ar: u.fullNameAr?.value }), u.fullNameEn?.source],
-      [["National ID", "الرقم الوطني"], `••••••${id.slice(-4)}`, "verified_by_sanad"],
-      [["Date of birth", "تاريخ الميلاد"], u.birthDate?.value, u.birthDate?.source],
-      [["City", "المدينة"], u.city?.value, u.city?.source],
-      [["Mobile", "الهاتف"], u.phone?.value, u.phone?.source],
-      [["Email", "البريد الإلكتروني"], u.email?.value, u.email?.source],
-    ];
-    return `<div class="eyebrow">${t("Step 1 · identity", "الخطوة 1 · الهوية")}</div>
-      <h1>${t("Connect your identity", "ربط هويتك")}</h1>
-      <p class="subtitle">${t("Review what Bedaya will receive before continuing.", "راجع البيانات التي ستستقبلها بداية قبل المتابعة.")}</p>
-      <div class="list">${rows
-        .map((r) => `<div class="item"><div class="details"><small>${tx(r[0])}</small><strong class="ltr-auto">${esc(r[1])}</strong></div><span class="status">${tx(SOURCE[r[2]] || SOURCE.verified_by_sanad)}</span></div>`)
-        .join("")}</div>
-      <p class="note">${t("This hackathon uses fictional identity data from a simulated SANAD. No real SANAD connection is active.", "يستخدم هذا العرض بيانات هوية افتراضية من سند محاكى. لا يوجد اتصال فعلي بسند.")}</p>
-      <label class="option"><input type="checkbox" id="consent-box">${t("I agree that Bedaya uses this identity data to prepare my business file.", "أوافق على استخدام بداية لبيانات الهوية هذه لتجهيز ملف مشروعي.")}</label>
-      <div class="toolbar"><button class="primary" id="consent-next" disabled>${t("Agree and continue", "الموافقة والمتابعة")}</button><button id="switch-person">${t("Use a different person", "استخدام شخص آخر")}</button></div>`;
+    return `<h1>${t("Signing you in…", "جارٍ تسجيل الدخول…")}</h1><p class="subtitle" id="sanad-status">${t("Checking your SANAD identity.", "نتحقق من هويتك في سند.")}</p>`;
   },
-  mount() {
-    $("#consent-box").onchange = (e) => ($("#consent-next").disabled = !e.target.checked);
-    $("#consent-next").onclick = async () => {
-      save("identityConsent", true);
-      if (session.account) await api("/api/platform/consents", { method: "POST", body: { purpose: "mock_identity", granted: true } });
-      go(session.profile ? "roadmap" : session.account ? "w1" : "account");
-    };
-    $("#switch-person").onclick = async () => {
-      await api("/api/sanad/me", { method: "POST", body: { action: "logout" } });
-      location.href = `/api/sanad/login?return=${encodeURIComponent("/#consent")}`;
-    };
+  async mount() {
+    const res = await api("/api/account/sanad", { method: "POST", body: {} });
+    if (!res.ok) {
+      $("#sanad-status").innerHTML = `<span class="error">${esc(errorText(res))}</span>`;
+      return;
+    }
+    await loadSession();
+    if (res.data.status === "needs_account") return go("signup-sanad");
+    toast(res.data.status === "linked" ? t("SANAD identity linked to your account.", "تم ربط هوية سند بحسابك.") : t(`Welcome, ${displayName()}`, `أهلاً ${displayName()}`));
+    go(homeRoute());
   },
 };
+export const consent = sanad; // old links
 
-// ---------- Bedaya account (M4 Supabase auth) ----------
+// ---------- sign in with email ----------
 export const account = {
+  layout: "entry",
   async render() {
     if (session.account) {
       return `<div class="eyebrow">${t("Your account", "حسابك")}</div><h1>${t("You're signed in", "أنت مسجل الدخول")}</h1>
-        <p class="subtitle">${esc(session.account.email)}</p>
-        <div class="toolbar"><button class="primary" data-go="${session.profile ? "roadmap" : session.sanad ? "w1" : "entry"}">${t("Continue", "متابعة")}</button><button id="sign-out">${t("Sign out", "تسجيل الخروج")}</button></div>`;
+        <p class="subtitle">${esc(displayName())} · ${esc(session.account.email)}</p>
+        <div class="toolbar"><button class="primary" data-go="${homeRoute()}">${t("Continue", "متابعة")}</button><button id="sign-out">${t("Sign out", "تسجيل الخروج")}</button></div>`;
     }
-    const down = session.backend === "down";
-    return `<div class="wizard"><div class="eyebrow">${t("Step 2 · your Bedaya account", "الخطوة 2 · حسابك في بداية")}</div>
-      <h1>${t("Save your progress", "احفظ تقدمك")}</h1>
-      <p class="subtitle">${t("Your roadmap, bookings and applications are saved to your Bedaya account.", "يُحفظ مسارك ومواعيدك وطلباتك في حسابك على بداية.")}</p>
-      ${down
-        ? `<p class="note">${t("The account service (Member 4's Supabase) isn't configured on this server yet, so accounts can't be created. You can still use the assistant, documents and signing.", "خدمة الحسابات (Supabase الخاص بالعضو 4) غير مهيأة على هذا الخادم بعد، لذا لا يمكن إنشاء حسابات. يمكنك استخدام المساعد والمستندات والتوقيع.")}</p>
-           <div class="toolbar"><button class="primary" data-go="documents">${t("Continue to documents", "المتابعة إلى المستندات")}</button><button data-go="assistant">${t("Open the assistant", "فتح المساعد")}</button></div>`
-        : `<div class="tabs" role="tablist"><button id="tab-in" aria-pressed="true">${t("Sign in", "تسجيل الدخول")}</button><button id="tab-up" aria-pressed="false">${t("Create account", "إنشاء حساب")}</button></div>
-           <form id="auth-form" novalidate>
-             <label class="field"><span>${t("Email", "البريد الإلكتروني")}</span><input id="email" type="email" autocomplete="email" required value="${esc(read("lastEmail", sanadValue("email")))}"></label>
-             <label class="field"><span>${t("Password", "كلمة المرور")}</span><input id="password" type="password" autocomplete="current-password" required minlength="1"></label>
-             <p id="auth-error" class="error" role="alert"></p>
-             <div class="toolbar"><button class="primary" id="auth-submit">${t("Sign in", "تسجيل الدخول")}</button></div>
-           </form>
-           <p class="note">${t("New accounts must confirm their email before signing in.", "يجب تأكيد البريد الإلكتروني للحسابات الجديدة قبل تسجيل الدخول.")}</p>`}
-    </div>`;
+    if (session.backend === "down") return accountServiceDown();
+    return `<div class="wizard"><div class="eyebrow">${t("Bedaya account", "حساب بداية")}</div>
+      <h1>${t("Sign in", "تسجيل الدخول")}</h1>
+      <p class="subtitle">${t("Business owners, banks, incubators, experts and admins each sign in with their own account.", "يسجل أصحاب المشاريع والبنوك والحاضنات والخبراء والإدارة الدخول بحساباتهم الخاصة.")}</p>
+      <form id="auth-form" novalidate>
+        <label class="field"><span>${t("Email", "البريد الإلكتروني")}</span><input id="email" type="email" autocomplete="email" required></label>
+        <label class="field"><span>${t("Password", "كلمة المرور")}</span><input id="password" type="password" autocomplete="current-password" required></label>
+        <p id="auth-error" class="error" role="alert"></p>
+        <div class="toolbar"><button class="primary" id="auth-submit">${t("Sign in", "تسجيل الدخول")}</button><button type="button" id="sanad-login">${t("Login with SANAD", "تسجيل الدخول عبر سند")}</button></div>
+      </form>
+      <p class="muted">${t("New here?", "جديد هنا؟")} <a href="#signup">${t("Create an account", "أنشئ حساباً")}</a></p></div>`;
   },
   mount() {
     const out = $("#sign-out");
     if (out) out.onclick = signOut;
+    const sanadBtn = $("#sanad-login");
+    if (sanadBtn) sanadBtn.onclick = () => sanadLogin("sanad");
     const form = $("#auth-form");
     if (!form) return;
-    let mode = "signin";
-    const setMode = (m) => {
-      mode = m;
-      $("#tab-in").setAttribute("aria-pressed", String(m === "signin"));
-      $("#tab-up").setAttribute("aria-pressed", String(m === "signup"));
-      $("#auth-submit").textContent = m === "signin" ? t("Sign in", "تسجيل الدخول") : t("Create account", "إنشاء حساب");
-      $("#password").autocomplete = m === "signin" ? "current-password" : "new-password";
-      $("#auth-error").textContent = "";
-    };
-    $("#tab-in").onclick = (e) => (e.preventDefault(), setMode("signin"));
-    $("#tab-up").onclick = (e) => (e.preventDefault(), setMode("signup"));
     form.onsubmit = async (e) => {
       e.preventDefault();
       const email = $("#email").value.trim();
       const password = $("#password").value;
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !password || (mode === "signup" && password.length < 8)) {
-        $("#auth-error").textContent = t("Use a valid email. New passwords need at least 8 characters.", "استخدم بريداً صحيحاً. كلمة المرور الجديدة 8 أحرف على الأقل.");
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !password) {
+        $("#auth-error").textContent = t("Enter your email and password.", "أدخل بريدك الإلكتروني وكلمة المرور.");
         return;
       }
       $("#auth-submit").disabled = true;
-      const res = await api("/api/auth", { method: "POST", body: { action: mode, email, password } });
+      const res = await api("/api/auth", { method: "POST", body: { action: "signin", email, password } });
       $("#auth-submit").disabled = false;
-      save("lastEmail", email);
       if (!res.ok) {
         $("#auth-error").textContent = errorText(res);
         return;
       }
-      if (mode === "signup") {
-        toast(t("Account created. Confirm your email, then sign in.", "تم إنشاء الحساب. أكد بريدك الإلكتروني ثم سجّل الدخول."));
-        setMode("signin");
-        return;
-      }
       await loadSession();
-      if (read("identityConsent", false)) await api("/api/platform/consents", { method: "POST", body: { purpose: "mock_identity", granted: true } });
-      go(session.profile ? "roadmap" : session.sanad ? "w1" : "entry");
+      toast(t(`Welcome, ${displayName()}`, `أهلاً ${displayName()}`));
+      go(homeRoute());
     };
   },
 };
 
+function accountServiceDown() {
+  return `<div class="wizard"><h1>${t("Accounts are unavailable", "الحسابات غير متاحة")}</h1>
+    <p class="note">${t("The account service (Supabase) isn't configured on this server yet. Add the Supabase URL and keys to .env.local and restart. The assistant still works.", "خدمة الحسابات (Supabase) غير مهيأة على هذا الخادم بعد. أضف رابط Supabase والمفاتيح إلى ملف .env.local ثم أعد التشغيل. المساعد ما زال يعمل.")}</p>
+    <div class="toolbar"><button class="primary" data-go="assistant">${t("Open the assistant", "فتح المساعد")}</button></div></div>`;
+}
+
+// ---------- create account ----------
+export const signup = {
+  layout: "entry",
+  async render() {
+    if (session.account) return account.render();
+    if (session.backend === "down") return accountServiceDown();
+    return `<div class="wizard"><div class="eyebrow">${t("New business owner", "صاحب مشروع جديد")}</div>
+      <h1>${t("Create your Bedaya account", "أنشئ حسابك في بداية")}</h1>
+      <p class="subtitle">${t("The fastest way: SANAD fills in your name, national ID, birth date, phone and address for you, verified.", "الطريقة الأسرع: يملأ سند اسمك ورقمك الوطني وتاريخ ميلادك وهاتفك وعنوانك، موثقة.")}</p>
+      <div class="toolbar"><button class="primary" id="sanad-signup">${t("Create account with SANAD", "إنشاء حساب عبر سند")}</button></div>
+      <h2 style="margin-top:28px">${t("Or with email only", "أو بالبريد الإلكتروني فقط")}</h2>
+      <form id="signup-form" novalidate>
+        <label class="field"><span>${t("Email", "البريد الإلكتروني")}</span><input id="email" type="email" autocomplete="email" required></label>
+        <label class="field"><span>${t("Password (at least 8 characters)", "كلمة المرور (8 أحرف على الأقل)")}</span><input id="password" type="password" autocomplete="new-password" minlength="8" required></label>
+        <p id="auth-error" class="error" role="alert"></p>
+        <div class="toolbar"><button id="auth-submit">${t("Create account", "إنشاء حساب")}</button></div>
+      </form>
+      <p class="muted">${t("Already have an account?", "لديك حساب؟")} <a href="#account">${t("Sign in", "تسجيل الدخول")}</a></p></div>`;
+  },
+  mount() {
+    const s = $("#sanad-signup");
+    if (s) s.onclick = () => sanadLogin("sanad");
+    const form = $("#signup-form");
+    if (!form) return account.mount?.();
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      const email = $("#email").value.trim();
+      const password = $("#password").value;
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || password.length < 8) {
+        $("#auth-error").textContent = t("Use a valid email and a password of at least 8 characters.", "استخدم بريداً صحيحاً وكلمة مرور من 8 أحرف على الأقل.");
+        return;
+      }
+      $("#auth-submit").disabled = true;
+      const res = await api("/api/auth", { method: "POST", body: { action: "signup", email, password } });
+      $("#auth-submit").disabled = false;
+      if (!res.ok) return ($("#auth-error").textContent = errorText(res));
+      toast(t("Account created. Sign in to continue.", "تم إنشاء الحساب. سجّل الدخول للمتابعة."));
+      go("account");
+    };
+  },
+};
+
+// ---------- create account with SANAD (C1) ----------
+export const signupSanad = {
+  layout: "entry",
+  async render() {
+    const p = session.pendingSanad;
+    if (session.account) return account.render();
+    if (!p) return `<div class="wizard"><h1>${t("Create account with SANAD", "إنشاء حساب عبر سند")}</h1><p class="subtitle">${t("Start by signing in to SANAD.", "ابدأ بتسجيل الدخول إلى سند.")}</p><div class="toolbar"><button class="primary" id="sanad-again">${t("Continue with SANAD", "المتابعة عبر سند")}</button></div></div>`;
+    return `<div class="wizard"><div class="eyebrow">${t("Create account with SANAD", "إنشاء حساب عبر سند")}</div>
+      <h1>${t(`Welcome, ${p.user.fullNameEn?.value ?? ""}`, `أهلاً ${p.user.fullNameAr?.value ?? ""}`)}</h1>
+      <p class="subtitle">${t("SANAD shared these details. They're verified, so you can't edit them here.", "شارك سند هذه البيانات. وهي موثقة، لذا لا يمكن تعديلها هنا.")}</p>
+      ${verifiedList(p.user, p.nationalId)}
+      <form id="sanad-signup-form" novalidate style="margin-top:20px">
+        <label class="field"><span>${t("Email for your Bedaya account", "البريد الإلكتروني لحسابك في بداية")}</span><input id="email" type="email" autocomplete="email" required value="${esc(p.user.email?.value ?? "")}"></label>
+        <label class="field"><span>${t("Choose a password (at least 8 characters)", "اختر كلمة مرور (8 أحرف على الأقل)")}</span><input id="password" type="password" autocomplete="new-password" minlength="8" required></label>
+        <label class="option"><input type="checkbox" id="consent-box">${t("I agree that Bedaya stores these SANAD details on my account to prepare my business file.", "أوافق على أن تحفظ بداية بيانات سند هذه في حسابي لتجهيز ملف مشروعي.")}</label>
+        <p id="auth-error" class="error" role="alert"></p>
+        <div class="toolbar"><button class="primary" id="auth-submit" disabled>${t("Create my account", "إنشاء حسابي")}</button><button type="button" id="cancel">${t("Cancel", "إلغاء")}</button></div>
+      </form>
+      <p class="note">${t("SANAD is a demo in this build: the identity data is fictional.", "سند تجريبي في هذه النسخة: بيانات الهوية افتراضية.")}</p></div>`;
+  },
+  mount() {
+    const again = $("#sanad-again");
+    if (again) again.onclick = () => sanadLogin("sanad");
+    const form = $("#sanad-signup-form");
+    if (!form) return account.mount?.();
+    $("#consent-box").onchange = (e) => ($("#auth-submit").disabled = !e.target.checked);
+    $("#cancel").onclick = async () => {
+      await signOut();
+    };
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      const email = $("#email").value.trim();
+      const password = $("#password").value;
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || password.length < 8) {
+        $("#auth-error").textContent = t("Use a valid email and a password of at least 8 characters.", "استخدم بريداً صحيحاً وكلمة مرور من 8 أحرف على الأقل.");
+        return;
+      }
+      $("#auth-submit").disabled = true;
+      const res = await api("/api/account/sanad-signup", { method: "POST", body: { email, password, consent: true } });
+      if (!res.ok) {
+        $("#auth-submit").disabled = false;
+        $("#auth-error").textContent = errorText(res);
+        return;
+      }
+      if (res.data.status === "confirm_email") {
+        toast(res.data.message);
+        return go("entry");
+      }
+      await loadSession();
+      toast(t("Your account is ready.", "حسابك جاهز."));
+      go("w1");
+    };
+  },
+};
+
+// ---------- link SANAD to an email-only owner account ----------
+export const linkSanad = {
+  async render() {
+    if (session.identity) return `<h1>${t("SANAD is linked", "سند مرتبط")}</h1>${verifiedList(session.identity.verified, session.identity.nationalId)}<div class="toolbar"><button class="primary" data-go="${homeRoute()}">${t("Continue", "متابعة")}</button></div>`;
+    return `<div class="eyebrow">${t("Verify your identity", "تحقق من هويتك")}</div>
+      <h1>${t("Link your SANAD identity", "اربط هويتك في سند")}</h1>
+      <p class="subtitle">${t("Government forms need your verified name and national ID. Link SANAD once; Bedaya fills them in from then on.", "تحتاج النماذج الحكومية اسمك ورقمك الوطني الموثقين. اربط سند مرة واحدة وستملؤها بداية بعدها.")}</p>
+      <div class="toolbar"><button class="primary" id="link">${t("Link with SANAD", "الربط عبر سند")}</button></div>`;
+  },
+  mount() {
+    const b = $("#link");
+    if (b) b.onclick = () => sanadLogin("sanad");
+  },
+};
+
 export async function signOut() {
-  await Promise.all([api("/api/auth", { method: "POST", body: { action: "signout" } }), api("/api/sanad/me", { method: "POST", body: { action: "logout" } })]);
-  save("wizard", {});
-  save("identityConsent", false);
+  await api("/api/account/logout", { method: "POST", body: {} });
+  clearUserStorage();
   await loadSession();
   go("entry");
 }
@@ -205,7 +299,7 @@ const cityKey = (ar) => CITIES.find((c) => c.ar === ar || c.en === ar)?.en;
 /** Fills empty answers from the SANAD record and M5's business info, once. */
 async function prefill() {
   const a = read("wizard", {});
-  if (a.prefilled || !session.sanad) return a;
+  if (a.prefilled || !session.identity) return a;
   const res = await api("/api/profile");
   const p = res.ok ? res.data.profile : null;
   const nextMonth = new Date(Date.now() + 31 * 864e5).toISOString().slice(0, 7);
@@ -243,7 +337,7 @@ function optionList(step, value) {
 
 function wizardScreen(step, index) {
   return {
-    guard: "sanad",
+    guard: "identity",
     async render() {
       const a = await prefill();
       let body;
@@ -280,7 +374,7 @@ function wizardScreen(step, index) {
           if (step.field === "partners") $("#partner-box").hidden = r.value !== "1";
         };
       });
-      $("#back").onclick = () => go(index === 0 ? "consent" : STEPS[index - 1].id);
+      $("#back").onclick = () => go(index === 0 ? "entry" : STEPS[index - 1].id);
       $("#next").onclick = () => {
         const fail = (msg) => ($("#validation").textContent = msg || t("Please complete the required field.", "يرجى إكمال الحقل المطلوب."));
         if (step.field === "name") {
@@ -323,7 +417,7 @@ export function buildProfile(a) {
   const home = a.premises === "home";
   const legalForm = withPartners ? "llc" : home ? "home_business" : "sole_proprietorship";
   const gender = sanadValue("gender") === "M" ? "male" : "female";
-  const nationalId = /^\d{10}$/.test(String(session.sanad?.nationalId)) ? String(session.sanad.nationalId) : "";
+  const nationalId = /^\d{10}$/.test(String(session.identity?.nationalId)) ? String(session.identity.nationalId) : "";
   return {
     language: document.documentElement.lang === "ar" ? "ar" : "en",
     personal: {
@@ -358,7 +452,7 @@ export function buildProfile(a) {
 
 // ---------- review and submit ----------
 export const review = {
-  guard: "sanad",
+  guard: "identity",
   async render() {
     const a = read("wizard", {});
     const missing = ["activity", "city", "premises", "nameEn", "partners", "capital", "staff", "support", "description"].filter((k) => a[k] === undefined || a[k] === "");
@@ -415,7 +509,7 @@ export const review = {
       const submitted = await api(`/api/platform/businesses/${business.id}/onboarding/submit`, { method: "POST", body: profile });
       if (!submitted.ok && submitted.status !== 409) return fail(submitted);
       // 3. Keep M5's form filler in step with the same names and capital.
-      if (session.sanad)
+      if (session.identity)
         await api("/api/profile", {
           method: "POST",
           body: { businessNameAr: profile.business.nameAr, businessNameEn: profile.business.nameEn, capitalJod: profile.business.startupCapitalJod, partners: Number(a.partners) === 1 ? Number(a.partnerCount) || 1 : 0 },

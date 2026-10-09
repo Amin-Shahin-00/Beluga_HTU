@@ -1,0 +1,50 @@
+/* Bedaya published-site template. Colours and fonts come from the owner's brand (CSS variables). */
+.ps { --p: #00543f; --a: #e0a030; --d: #1c2421; --l: #f7f5f0; margin: 0; min-height: 100vh; background: var(--l); color: var(--d); font: 16px/1.7 var(--font); }
+.ps * { box-sizing: border-box; }
+.ps a { color: var(--p); }
+.ps-head { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 10px 20px; background: color-mix(in srgb, var(--l) 92%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid color-mix(in srgb, var(--d) 10%, transparent); }
+.ps-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--d) !important; font-size: 18px; }
+.ps-brand img { border-radius: 8px; }
+.ps-head nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: 15px; }
+.ps-head nav a { text-decoration: none; color: var(--d); }
+.ps-lang { border: 1px solid color-mix(in srgb, var(--d) 25%, transparent); border-radius: 999px; padding: 2px 12px; }
+.ps-hero { padding: 72px 20px 64px; text-align: center; background: var(--p); color: var(--l); }
+.ps-hero h1 { font-size: clamp(32px, 6vw, 56px); line-height: 1.2; margin: 0 0 14px; }
+.ps-hero p { max-width: 640px; margin: 0 auto 26px; opacity: 0.92; font-size: 18px; }
+.ps-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 10px 26px; border-radius: 999px; border: 0; background: var(--a); color: var(--d) !important; font: 700 16px/1 var(--font); text-decoration: none; cursor: pointer; }
+.ps-btn:disabled { opacity: 0.6; }
+.ps-sec { max-width: 1040px; margin: 0 auto; padding: 56px 20px 8px; }
+.ps-sec h2 { font-size: 28px; margin: 0 0 18px; color: var(--p); }
+.ps-body { white-space: pre-line; max-width: 760px; }
+.ps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+.ps-card { background: #fff; border-radius: 14px; padding: 18px 20px; border: 1px solid color-mix(in srgb, var(--d) 8%, transparent); }
+.ps-card h3 { margin: 0 0 6px; font-size: 18px; }
+.ps-card p { margin: 0 0 10px; font-size: 14px; opacity: 0.8; }
+.ps-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.ps-price { font-weight: 700; color: var(--p); }
+.ps-small { font-size: 14px; font-weight: 700; text-decoration: none; border: 1px solid var(--p); border-radius: 999px; padding: 4px 14px; }
+.ps-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.ps-gallery figure { margin: 0; }
+.ps-gallery img, .ps-tile { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 12px; display: block; }
+.ps-tile { background: linear-gradient(135deg, var(--p), var(--a)); }
+.ps-tile[data-i="1"] { background: radial-gradient(circle at 30% 30%, var(--a), var(--p)); }
+.ps-tile[data-i="2"] { background: repeating-linear-gradient(45deg, var(--p) 0 18px, color-mix(in srgb, var(--p) 80%, var(--l)) 18px 36px); }
+.ps-gallery figcaption { font-size: 14px; margin-top: 6px; opacity: 0.8; }
+.ps-map { width: 100%; height: 320px; border: 0; border-radius: 14px; }
+.ps-muted { font-size: 14px; opacity: 0.75; }
+.ps-contact { display: grid; grid-template-columns: 1fr 1.3fr; gap: 28px; align-items: start; }
+.ps-contact ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.ps-form { display: grid; gap: 12px; background: #fff; padding: 20px; border-radius: 14px; }
+.ps-form label { display: grid; gap: 4px; font-size: 14px; }
+.ps-form input, .ps-form textarea { font: inherit; padding: 10px 12px; border-radius: 8px; border: 1px solid color-mix(in srgb, var(--d) 20%, transparent); width: 100%; }
+.ps-hp { position: absolute; left: -9999px; width: 1px; height: 1px; }
+.ps-err { color: #b42318; margin: 0; }
+.ps-sent { background: #fff; padding: 20px; border-radius: 14px; font-weight: 700; color: var(--p); }
+.ps-foot { text-align: center; padding: 48px 20px 90px; font-size: 14px; opacity: 0.7; }
+.ps-wa { position: fixed; bottom: 18px; inset-inline-end: 18px; width: 56px; height: 56px; border-radius: 50%; background: #25d366; color: #fff !important; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); z-index: 3; }
+@media (max-width: 700px) {
+  .ps-contact { grid-template-columns: 1fr; }
+  .ps-hero { padding: 48px 16px 44px; }
+  .ps-sec { padding: 40px 16px 4px; }
+  .ps-head { padding: 10px 16px; }
+}

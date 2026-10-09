@@ -1,6 +1,6 @@
 // Partner inbox and review (feature 15), admin (feature 16) and analytics (feature 22): M4's role-checked APIs.
 // Government offices and SANAD have their own mock staff dashboards from M5 (/dashboard/*).
-import { $, $$, api, confirmDialog, day, errorText, esc, go, jod, read, save, session, t, toast, tx } from "./core.js";
+import { $, $$, api, confirmDialog, day, errorText, esc, go, jod, read, save, session, t, time, toast, tx } from "./core.js";
 
 const STATUS = {
   submitted: ["New", "جديد", "info"],
@@ -26,17 +26,23 @@ async function inbox() {
   return res;
 }
 
-// ---------- partner inbox ----------
+const PARTY = {
+  bank: { eyebrow: ["Bank", "البنك"], title: ["Bank file applications", "طلبات الملفات البنكية"], sub: ["Business owners who chose to send you their bank file. Only the documents they selected are included.", "أصحاب مشاريع اختاروا إرسال ملفهم البنكي إليك. تُرفق المستندات التي اختاروها فقط."] },
+  incubator: { eyebrow: ["Incubator", "الحاضنة"], title: ["Applications to your programme", "الطلبات المقدمة لبرنامجك"], sub: ["Review complete profiles and keep owners informed.", "راجع الملفات وأبقِ أصحاب المشاريع على اطلاع."] },
+  admin: { eyebrow: ["Admin", "الإدارة"], title: ["All partner applications", "كل طلبات الشركاء"], sub: ["Every bank and incubator inbox, for support.", "كل صناديق البنوك والحاضنات، لأغراض الدعم."] },
+};
+
+// ---------- partner inbox (bank and incubator accounts each see only their own) ----------
 export const partner = {
-  layoutRole: "partner",
+  guard: "partner",
   async render() {
-    if (!session.account) return `<h1>${t("Applications inbox", "صندوق الطلبات")}</h1><p class="note">${t("Sign in with a partner account.", "سجّل الدخول بحساب شريك.")}</p><div class="toolbar"><button class="primary" data-go="account">${t("Sign in", "تسجيل الدخول")}</button></div>${staffLinks()}`;
+    const party = PARTY[session.role] || PARTY.incubator;
     const res = await inbox();
-    if (!res.ok) return `<div class="eyebrow">${t("Partner", "الشريك")}</div><h1>${t("A better start for every application", "بداية أفضل لكل طلب")}</h1>${res.status === 403 ? noRole(t("The inbox", "صندوق الطلبات")) : `<p class="error">${esc(errorText(res))}</p>`}${staffLinks()}`;
+    if (!res.ok) return `<div class="eyebrow">${tx(party.eyebrow)}</div><h1>${tx(party.title)}</h1>${res.status === 403 ? noRole(t("The inbox", "صندوق الطلبات")) : `<p class="error" role="alert">${esc(errorText(res))}</p><div class="toolbar"><button data-go="partner">${t("Try again", "حاول مرة أخرى")}</button></div>`}`;
     const rows = res.data.data;
-    return `<div class="eyebrow">${t("Partner", "الشريك")} · ${esc(session.membership?.partner_key || t("all partners", "كل الشركاء"))}</div>
-      <h1>${t("A better start for every application", "بداية أفضل لكل طلب")}</h1>
-      <p class="subtitle">${t("Review complete profiles and keep owners informed.", "راجع الملفات وأبقِ أصحاب المشاريع على اطلاع.")}</p>
+    return `<div class="eyebrow">${tx(party.eyebrow)}${session.partnerKey ? ` · <span class="ltr">${esc(session.partnerKey)}</span>` : ""}</div>
+      <h1>${tx(party.title)}</h1>
+      <p class="subtitle">${tx(party.sub)}</p>
       <label class="field"><span>${t("Search", "بحث")}</span><input id="inbox-search" placeholder="${t("Name, city or reference", "الاسم أو المدينة أو المرجع")}"></label>
       <div class="list" id="inbox">${
         rows.length
@@ -52,7 +58,7 @@ export const partner = {
               .join("")
           : `<div class="item"><div class="details"><small>${t("No applications yet.", "لا توجد طلبات بعد.")}</small></div></div>`
       }</div>
-      <p id="inbox-empty" class="summary" hidden>${t("Nothing matches your search.", "لا شيء يطابق البحث.")}</p>${staffLinks()}`;
+      <p id="inbox-empty" class="summary" hidden>${t("Nothing matches your search.", "لا شيء يطابق البحث.")}</p>${session.role === "admin" ? staffLinks() : ""}`;
   },
   mount() {
     const search = $("#inbox-search");
@@ -69,7 +75,7 @@ export const partner = {
 
 // ---------- one application ----------
 export const application = {
-  layoutRole: "partner",
+  guard: "partner",
   async render() {
     const res = await inbox();
     const a = res.ok ? res.data.data.find((x) => x.id === read("appId", "")) : null;
@@ -117,10 +123,10 @@ export const application = {
 
 // ---------- admin ----------
 export const admin = {
-  layoutRole: "admin",
+  guard: "admin",
   async render() {
-    if (!session.account) return `<h1>${t("Manage the launch framework", "إدارة إطار إطلاق المشاريع")}</h1><p class="note">${t("Sign in with an admin account.", "سجّل الدخول بحساب مدير.")}</p><div class="toolbar"><button class="primary" data-go="account">${t("Sign in", "تسجيل الدخول")}</button></div>${staffLinks()}`;
-    const [catalog, users] = await Promise.all([api("/api/platform/admin/catalog"), api("/api/platform/admin/users")]);
+    const [catalog, users, experts] = await Promise.all([api("/api/platform/admin/catalog"), api("/api/platform/admin/users"), api("/api/experts")]);
+    this.experts = experts.ok ? experts.data.data : [];
     if (!catalog.ok) return `<div class="eyebrow">${t("Admin", "الإدارة")}</div><h1>${t("Manage the launch framework", "إدارة إطار إطلاق المشاريع")}</h1>${catalog.status === 403 ? noRole(t("Management", "الإدارة")) : `<p class="error">${esc(errorText(catalog))}</p>`}${staffLinks()}`;
     const entries = catalog.data.data;
     const tab = read("adminTab", "catalog");
@@ -138,9 +144,9 @@ export const admin = {
             .join("")}</tbody></table>
            <h2 style="margin-top:24px">${t("Assign a role", "تعيين صلاحية")}</h2>
            <div class="grid-2"><label class="field"><span>${t("User ID (Supabase)", "معرف المستخدم (Supabase)")}</span><input id="role-user" class="ltr"></label>
-           <label class="field"><span>${t("Role", "الصلاحية")}</span><select id="role-role"><option value="partner">partner</option><option value="admin">admin</option></select></label>
-           <label class="field"><span>${t("Partner key (for partners)", "مفتاح الشريك (للشركاء)")}</span><select id="role-partner"><option value="">—</option>${entries.filter((e) => e.kind === "partner").map((e) => `<option>${esc(e.key)}</option>`).join("")}</select></label></div>
-           <div class="toolbar"><button class="primary" id="assign">${t("Save role", "حفظ الصلاحية")}</button></div>`}`;
+           <label class="field"><span>${t("Role", "الصلاحية")}</span><select id="role-role"><option value="partner">${t("partner (bank / incubator)", "شريك (بنك / حاضنة)")}</option><option value="expert">${t("expert", "خبير")}</option><option value="admin">${t("admin", "مدير")}</option></select></label>
+           <label class="field"><span>${t("Partner or expert", "الشريك أو الخبير")}</span><select id="role-partner"><option value="">—</option><optgroup label="${t("Partners", "الشركاء")}">${entries.filter((e) => e.kind === "partner").map((e) => `<option>${esc(e.key)}</option>`).join("")}</optgroup><optgroup label="${t("Experts", "الخبراء")}">${this.experts.map((e) => `<option>${esc(e.key)}</option>`).join("")}</optgroup></select></label></div>
+           <div class="toolbar"><button class="primary" id="assign">${t("Save role", "حفظ الصلاحية")}</button></div>`}${staffLinks()}`;
   },
   mount() {
     $$("[data-tab]").forEach((b) => (b.onclick = () => (save("adminTab", b.dataset.tab), go("admin"))));
@@ -178,9 +184,10 @@ export const admin = {
 
 // ---------- analytics ----------
 export const analytics = {
-  layoutRole: "admin",
+  guard: "admin",
   async render() {
-    const res = session.account ? await api("/api/platform/analytics") : null;
+    const res = await api("/api/platform/analytics");
+    if (!res.ok) return `<div class="eyebrow">${t("Analytics", "التحليلات")}</div><h1>${t("See where progress slows", "اعرف أين يتباطأ التقدم")}</h1><p class="error" role="alert">${esc(errorText(res))}</p><div class="toolbar"><button data-go="analytics">${t("Try again", "حاول مرة أخرى")}</button></div>`;
     const rows = res?.ok ? res.data.data : [];
     const max = Math.max(1, ...rows.map((r) => r.averageDays));
     const STEP = { registration: ["Business registration", "تسجيل المشروع"], documents: ["Document preparation", "تجهيز المستندات"], licensing: ["Licensing", "الترخيص"] };
@@ -193,5 +200,83 @@ export const analytics = {
         .join("")}</div>
       ${res?.ok ? `<p class="note">${esc(res.data.disclaimer)}</p>` : ""}
       <div class="toolbar"><button data-go="admin">${t("Back to management", "العودة للإدارة")}</button></div>`;
+  },
+};
+
+// ---------- expert dashboard: the expert's own availability and bookings ----------
+// Jordan keeps UTC+3 all year, so times entered here are sent with a +03:00 offset.
+const ammanDate = (d = new Date()) => new Date(d.getTime() + 3 * 3600e3).toISOString().slice(0, 10);
+export const expert = {
+  guard: "expert",
+  async render() {
+    const res = await api("/api/experts/me");
+    const head = `<div class="eyebrow">${t("Expert dashboard", "لوحة الخبير")}</div>`;
+    if (!res.ok) return `${head}<h1>${t("My availability", "مواعيدي")}</h1><p class="error" role="alert">${esc(errorText(res))}</p><div class="toolbar"><button data-go="expert">${t("Try again", "حاول مرة أخرى")}</button></div>`;
+    const { expert: me, slots } = res.data;
+    const upcoming = slots.filter((s) => new Date(s.starts_at) > new Date());
+    const booked = upcoming.filter((s) => s.status === "booked");
+    const open = upcoming.filter((s) => s.status === "open");
+    const row = (s) => `<div class="item"><span class="lead ltr">${esc(time(s.starts_at))}</span><div class="details"><strong>${esc(day(s.starts_at))}</strong><small>${s.duration_minutes} ${t("min", "دقيقة")}${s.status === "booked" ? ` · ${t("Booked by a Bedaya business owner", "محجوز من صاحب مشروع في بداية")} <span class="ltr">#${esc(s.business_id ?? "")}</span>` : ""}</small></div>
+      ${s.status === "booked" ? `<span class="status done">${t("Booked", "محجوز")}</span><button data-cancel="${esc(s.id)}">${t("Cancel booking", "إلغاء الحجز")}</button>` : `<span class="status info">${t("Free", "متاح")}</span><button data-remove="${esc(s.id)}">${t("Remove", "حذف")}</button>`}</div>`;
+    return `${head}<h1>${esc(tx({ en: me.name_en, ar: me.name_ar }))}</h1>
+      <p class="subtitle">${esc(tx({ en: me.title_en, ar: me.title_ar }))} · ${esc(jod(me.fee_jod))} · ${t("Owners only see the free times you add here.", "يرى أصحاب المشاريع الأوقات المتاحة التي تضيفها هنا فقط.")}</p>
+      <div class="card"><h2>${t("Add free time", "إضافة وقت متاح")}</h2>
+        <div class="grid-2">
+          <label class="field"><span>${t("Date", "التاريخ")}</span><input type="date" id="slot-date" min="${ammanDate()}" value="${ammanDate(new Date(Date.now() + 864e5))}"></label>
+          <label class="field"><span>${t("Start time (Amman)", "وقت البدء (عمّان)")}</span><input type="time" id="slot-time" value="10:00" step="900"></label>
+          <label class="field"><span>${t("Length", "المدة")}</span><select id="slot-minutes">${[30, 45, 60, 90].map((m) => `<option value="${m}" ${m === 45 ? "selected" : ""}>${m} ${t("minutes", "دقيقة")}</option>`).join("")}</select></label>
+          <label class="field"><span>${t("Repeat", "التكرار")}</span><select id="slot-repeat"><option value="1">${t("Just this day", "هذا اليوم فقط")}</option><option value="5">${t("Next 5 days", "الأيام الخمسة القادمة")}</option><option value="10">${t("Next 10 days", "الأيام العشرة القادمة")}</option></select></label>
+        </div>
+        <p id="slot-error" class="error" role="alert"></p>
+        <div class="toolbar"><button class="primary" id="add-slot">${t("Add", "إضافة")}</button></div></div>
+      <h2 style="margin-top:24px">${t("Booked sessions", "الجلسات المحجوزة")} <span class="status ${booked.length ? "done" : ""}">${booked.length}</span></h2>
+      <div class="list">${booked.length ? booked.map(row).join("") : `<div class="item"><div class="details"><small>${t("No bookings yet.", "لا حجوزات بعد.")}</small></div></div>`}</div>
+      <h2 style="margin-top:24px">${t("Free times", "الأوقات المتاحة")} <span class="status info">${open.length}</span></h2>
+      <div class="list">${open.length ? open.map(row).join("") : `<div class="item"><div class="details"><small>${t("You have no free times. Add some above so owners can book you.", "ليس لديك أوقات متاحة. أضف بعضها أعلاه ليتمكن أصحاب المشاريع من حجزك.")}</small></div></div>`}</div>`;
+  },
+  mount() {
+    const add = $("#add-slot");
+    if (add)
+      add.onclick = async () => {
+        const date = $("#slot-date").value;
+        const clock = $("#slot-time").value;
+        const minutes = Number($("#slot-minutes").value);
+        const repeat = Number($("#slot-repeat").value);
+        $("#slot-error").textContent = "";
+        if (!date || !clock) return ($("#slot-error").textContent = t("Choose a date and time.", "اختر التاريخ والوقت."));
+        add.disabled = true;
+        let added = 0;
+        let lastError = "";
+        for (let i = 0; i < repeat; i++) {
+          const d = new Date(`${date}T12:00:00Z`);
+          d.setUTCDate(d.getUTCDate() + i);
+          const startsAt = `${d.toISOString().slice(0, 10)}T${clock}:00+03:00`;
+          const res = await api("/api/experts/me/slots", { method: "POST", body: { startsAt, minutes } });
+          if (res.ok) added++;
+          else lastError = errorText(res);
+        }
+        add.disabled = false;
+        if (!added) return ($("#slot-error").textContent = lastError);
+        toast(t(`${added} free time(s) added.`, `أضيف ${added} وقت متاح.`) + (lastError ? ` ${lastError}` : ""));
+        go("expert");
+      };
+    $$("[data-remove]").forEach(
+      (b) =>
+        (b.onclick = async () => {
+          const res = await api(`/api/experts/me/slots/${encodeURIComponent(b.dataset.remove)}`, { method: "DELETE" });
+          toast(res.ok ? t("Removed.", "تم الحذف.") : errorText(res));
+          if (res.ok) go("expert");
+        }),
+    );
+    $$("[data-cancel]").forEach(
+      (b) =>
+        (b.onclick = async () => {
+          const ok = await confirmDialog({ title: t("Cancel this booking?", "إلغاء هذا الحجز؟"), body: t("The owner will no longer have this session and the time becomes free again.", "لن تبقى الجلسة لصاحب المشروع وسيصبح الوقت متاحاً مجدداً."), confirmLabel: t("Cancel booking", "إلغاء الحجز") });
+          if (!ok.confirmed) return;
+          const res = await api(`/api/experts/bookings/${encodeURIComponent(b.dataset.cancel)}/cancel`, { method: "POST" });
+          toast(res.ok ? t("Booking cancelled.", "تم إلغاء الحجز.") : errorText(res));
+          if (res.ok) go("expert");
+        }),
+    );
   },
 };

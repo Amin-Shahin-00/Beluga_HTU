@@ -78,7 +78,7 @@ const lang = () => document.documentElement.lang;
 
 // ---------- documents (features 3 and 9) ----------
 const UPLOAD_TYPES = ["national_id", "lease_contract", "property_ownership_document", "property_owner_approval", "building_documents", "building_residents_consent", "product_label", "registration_certificate", "passport"];
-const M4_KIND = { national_id: "identity", passport: "identity", lease_contract: "address", property_ownership_document: "address", registration_certificate: "registration" };
+const M4_KIND = { national_id: "identity", passport: "identity", lease_contract: "address", property_ownership_document: "address", registration_certificate: "registration", signed: "signed" };
 const SAMPLES = [
   ["layla-national-id.png", ["Clear ID sample", "نموذج هوية واضح"]],
   ["layla-national-id-blurry.png", ["Blurry ID sample", "نموذج هوية غير واضح"]],
@@ -87,7 +87,7 @@ const SAMPLES = [
 const SEVERITY = { error: "error", warning: "warning", info: "info" };
 
 export const documents = {
-  guard: "sanad",
+  guard: "identity",
   async render() {
     const [docs, check, ref] = await Promise.all([api("/api/documents"), api("/api/documents/check"), reference()]);
     const uploads = docs.ok ? docs.data.documents.filter((d) => d.kind === "upload") : [];
@@ -225,7 +225,7 @@ const FIELD_LABELS = {
 };
 
 export const ocr = {
-  guard: "sanad",
+  guard: "identity",
   async render() {
     const res = await api("/api/documents");
     const uploads = res.ok ? res.data.documents.filter((d) => d.kind === "upload") : [];
@@ -271,7 +271,7 @@ const FORM_STATUS = {
 };
 
 export const signing = {
-  guard: "sanad",
+  guard: "identity",
   async render() {
     const res = await api("/api/documents");
     const forms = res.ok ? res.data.documents.filter((d) => d.kind === "generated") : [];
@@ -320,7 +320,10 @@ export const signing = {
         sign.disabled = true;
         const res = await api("/api/documents/sign-all", { method: "POST", body: {}, timeoutMs: 60000 });
         if (!res.ok) return (toast(errorText(res)), (sign.disabled = false));
-        if (ready()) await api("/api/platform/consents", { method: "POST", body: { purpose: "e_signature", granted: true } });
+        if (ready()) {
+          await api("/api/platform/consents", { method: "POST", body: { purpose: "e_signature", granted: true } });
+          await mirrorSigned();
+        }
         save("lastSigned", res.data.signed?.length || 0);
         toast(t("Forms signed.", "تم توقيع النماذج."));
         go("signing");
@@ -337,8 +340,22 @@ export const signing = {
   },
 };
 
+/** Copies each signed form into the business vault (kind "signed") so it can go in the bank file. Skips ones already copied. */
+async function mirrorSigned() {
+  const [forms, vault] = await Promise.all([api("/api/documents"), api(bpath("documents"))]);
+  if (!forms.ok || !vault.ok) return;
+  const have = new Set(vault.data.data.map((d) => d.filename));
+  for (const f of forms.data.documents.filter((d) => d.kind === "generated" && d.status === "signed" && d.fileUrl)) {
+    const name = `${String(f.docType || f.title || "form").replace(/[^\w.-]+/g, "-").slice(0, 120)}-signed.pdf`;
+    if (have.has(name)) continue;
+    const pdf = await fetch(f.fileUrl, { credentials: "same-origin" }).catch(() => null);
+    if (!pdf?.ok) continue;
+    await mirrorToM4(new File([await pdf.blob()], name, { type: "application/pdf" }), "signed", null);
+  }
+}
+
 export const signed = {
-  guard: "sanad",
+  guard: "identity",
   async render() {
     const res = await api("/api/documents");
     const forms = res.ok ? res.data.documents.filter((d) => d.kind === "generated") : [];

@@ -183,6 +183,8 @@ export interface SanadUser {
   phone?: Field;
   email?: Field;
   city?: Field;
+  /** Home address (SANAD "address" scope). */
+  address?: Field;
 }
 
 export interface IdentityProvider {

@@ -16,6 +16,7 @@ export const DEMO_USERS: SanadUser[] = [
     phone: s("+962790000001"),
     email: s("layla.demo@example.com"),
     city: s("إربد"),
+    address: s("إربد، حي النزهة، شارع 12، بناية 7"),
   },
   {
     nationalId: "9990000002",
@@ -26,8 +27,28 @@ export const DEMO_USERS: SanadUser[] = [
     phone: s("+962790000002"),
     email: s("omar.demo@example.com"),
     city: s("عمّان"),
+    address: s("عمّان، الشميساني، شارع 5، بناية 21"),
+  },
+  {
+    // No Bedaya account yet: use this person to try "Create account with SANAD".
+    nationalId: "9990000003",
+    fullNameAr: s("رامي سامي صالح"),
+    fullNameEn: s("Rami Sami Saleh"),
+    birthDate: s("1998-07-21"),
+    gender: s("M"),
+    phone: s("+962790000003"),
+    email: s("rami.demo@example.com"),
+    city: s("الزرقاء"),
+    address: s("الزرقاء، حي الأمير محمد، شارع 3، بناية 9"),
   },
 ];
+
+/** MOCK SANAD passwords (the real SANAD checks its own credentials). Listed in the README only. */
+export const MOCK_SANAD_PASSWORDS: Record<string, string> = {
+  "9990000001": "Sanad2026!",
+  "9990000002": "Sanad2026!",
+  "9990000003": "Sanad2026!",
+};
 
 /** Wizard answers (feature 1) for each demo user. Owned by M4 in the real app. */
 export const DEMO_PROFILES: BusinessProfile[] = [

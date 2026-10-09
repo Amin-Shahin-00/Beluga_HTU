@@ -5,7 +5,7 @@
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from "fs";
 import { join } from "path";
 import { consentHistory } from "../lib/integrations/consent";
-import { LAYLA_ID } from "../lib/integrations/demoData";
+import { LAYLA_ID, MOCK_SANAD_PASSWORDS } from "../lib/integrations/demoData";
 import { checkDocuments } from "../lib/integrations/document-checker";
 import { generateForms, getDocumentFile, listDocuments, ocrResults, reviewDocument, signAll, submitAll, uploadDocument } from "../lib/integrations/documents";
 import { EINVOICING_SETUP } from "../lib/integrations/einvoicing";
@@ -31,7 +31,7 @@ async function main() {
   const idp = getIdentityProvider();
   const url = idp.getLoginUrl("/roadmap", ["identity", "contact", "address"]);
   line(`    login URL: ${url}`);
-  const code = getMockSanad().authorize(LAYLA_ID, ["identity", "contact", "address"]);
+  const code = getMockSanad().authorize(LAYLA_ID, ["identity", "contact", "address"], MOCK_SANAD_PASSWORDS[LAYLA_ID]);
   const user = await idp.exchangeCode(code);
   line(`    signed in: ${user.fullNameEn.value} (${user.nationalId})`);
   for (const [k, v] of Object.entries(user)) {

@@ -30,6 +30,7 @@
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.117.3",
     "jszip": "^3.10.2",
+    "leaflet": "^1.9.4",
     "next": "^16.4.0",
     "pdf-lib": "^1.17.1",
     "react": "^19.3.0",

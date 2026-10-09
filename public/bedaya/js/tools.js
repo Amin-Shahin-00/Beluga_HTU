@@ -1,6 +1,6 @@
 // Assistant (M5 AI), notifications (M4 + M5), appointments, business plan, compliance, location (M4),
 // and e-invoicing (M5).
-import { $, $$, api, bpath, confirmDialog, day, download, errorText, esc, go, jod, lang, needsAccount, ready, session, t, time, toast, tx } from "./core.js";
+import { $, $$, api, bpath, confirmDialog, day, download, errorText, esc, go, jod, lang, loadScript, loadStyle, needsAccount, ready, sanadValue, session, t, time, toast, tx } from "./core.js";
 
 // ---------- assistant (feature 8), with Member 3's chat behaviour ----------
 const history = []; // kept for this visit only; sent with each question (last 10 turns)
@@ -106,7 +106,7 @@ export const assistant = {
 
 // ---------- notifications (feature 11): M4's roadmap/booking messages + M5's form/office messages ----------
 export async function loadNotifications() {
-  const [m4, m5] = await Promise.all([session.account ? api("/api/platform/notifications") : null, session.sanad ? api("/api/notifications") : null]);
+  const [m4, m5] = await Promise.all([session.account ? api("/api/platform/notifications") : null, session.identity ? api("/api/notifications") : null]);
   const items = [
     ...(m4?.ok ? m4.data.data.map((n) => ({ id: n.id, from: "m4", title: { en: n.title_en, ar: n.title_ar }, body: { en: n.body_en, ar: n.body_ar }, read: Boolean(n.read_at), at: n.created_at })) : []),
     ...(m5?.ok ? m5.data.notifications.map((n) => ({ id: n.id, from: "m5", title: { en: n.titleEn, ar: n.titleAr }, body: { en: n.bodyEn, ar: n.bodyAr }, read: Boolean(n.read), at: n.createdAt, link: n.link })) : []),
@@ -135,7 +135,7 @@ export const notifications = {
       const items = await loadNotifications();
       await Promise.all([
         ...items.filter((n) => n.from === "m4" && !n.read).map((n) => api(`/api/platform/notifications/${n.id}`, { method: "PATCH", body: {} })),
-        session.sanad ? api("/api/notifications", { method: "POST", body: {} }) : null,
+        session.identity ? api("/api/notifications", { method: "POST", body: {} }) : null,
       ]);
       toast(t("All caught up.", "لا جديد."));
       go("notifications");
@@ -167,7 +167,8 @@ export const appointments = {
     const dates = [...free.map((s) => new Date(s.payload.starts_at)), ...mine.map((b) => new Date(slotOf(b.slot_key)?.starts_at))];
     return `<div class="eyebrow">${t("Appointments", "المواعيد")}</div>
       <h1>${t("Make room for your next step", "حدد موعداً لخطوتك التالية")}</h1>
-      <p class="subtitle">${t("Choose a time with a partner. Demo schedules, not real institution calendars.", "اختر وقتاً مع جهة شريكة. مواعيد تجريبية وليست تقويمات حقيقية.")}</p>
+      <p class="subtitle">${t("Funding and partner visits (banks, incubators). Demo schedules, not real institution calendars. Expert sessions are booked separately on the Experts page.", "زيارات التمويل والشركاء (البنوك والحاضنات). مواعيد تجريبية وليست تقويمات حقيقية. تُحجز جلسات الخبراء بشكل منفصل من صفحة الخبراء.")}</p>
+      <div class="toolbar"><button data-go="experts">${t("Book an expert instead", "حجز خبير بدلاً من ذلك")}</button></div>
       ${calendar(dates)}
       ${mine.length ? `<h2>${t("Your bookings", "حجوزاتك")}</h2><div class="list">${mine
         .map((b) => {
@@ -187,7 +188,7 @@ export const appointments = {
         book.disabled = true;
         const res = await api(bpath("bookings"), { method: "POST", body: { slotKey: $("#slot").value } });
         if (!res.ok) return ((book.disabled = false), toast(res.status === 409 ? t("That slot was just taken. Pick another.", "حُجز هذا الموعد للتو. اختر غيره.") : errorText(res)));
-        if (session.sanad) {
+        if (session.identity) {
           const label = $("#slot").selectedOptions[0].textContent.split(" · ");
           await api("/api/notifications/send", { method: "POST", body: { event: "visit_soon", vars: { placeAr: label[2], placeEn: label[2], date: label[0], time: label[1] } } });
         }
@@ -249,31 +250,144 @@ export const compliance = {
 };
 
 // ---------- location (feature 18) ----------
+// The owner types an address (prefilled from SANAD), the map jumps to that area, and they place the
+// exact pin. The location is saved on the business (versioned workspace "location") and the checker
+// uses that saved point plus the business's own activity. No external geocoding service or key:
+// a small built-in list of Jordanian areas finds the neighbourhood; the pin gives the exact point.
+const PLACES = [
+  // neighbourhoods first (more specific), then cities
+  [["jabal al-hussein", "jabal al hussein", "جبل الحسين"], [31.971, 35.9075, 16]],
+  [["abdali", "العبدلي"], [31.962, 35.9075, 16]],
+  [["shmeisani", "shmaisani", "الشميساني"], [31.9705, 35.887, 16]],
+  [["sweifieh", "الصويفية"], [31.955, 35.862, 15]],
+  [["khalda", "خلدا"], [31.996, 35.84, 15]],
+  [["jabal amman", "جبل عمان", "جبل عمّان"], [31.951, 35.922, 15]],
+  [["nuzha", "al-nuzha", "النزهة"], [32.545, 35.85, 16]],
+  [["prince mohammad", "الأمير محمد"], [32.06, 36.09, 15]],
+  [["amman", "عمان", "عمّان"], [31.9539, 35.9106, 13]],
+  [["irbid", "إربد", "اربد"], [32.5556, 35.85, 13]],
+  [["zarqa", "الزرقاء", "الزرقا"], [32.0608, 36.09, 13]],
+  [["aqaba", "العقبة"], [29.532, 35.006, 13]],
+  [["salt", "السلط"], [32.039, 35.727, 13]],
+  [["madaba", "مادبا"], [31.716, 35.794, 13]],
+  [["mafraq", "المفرق"], [32.343, 36.208, 13]],
+  [["karak", "الكرك"], [31.185, 35.704, 13]],
+];
+const findPlace = (text) => {
+  const q = String(text || "").toLowerCase();
+  return PLACES.find(([names]) => names.some((n) => q.includes(n)))?.[1] || null;
+};
+const SECTOR = { food: ["Food", "أغذية"], retail: ["Retail", "تجارة تجزئة"], crafts: ["Crafts", "حِرف"], services: ["Services", "خدمات"], tech: ["Technology", "تقنية"] };
+
 export const location = {
   async render() {
-    if (!ready()) return `<h1>${t("Check before you commit", "تحقق قبل أن تلتزم")}</h1>${needsAccount(t("The location check", "فحص الموقع"))}`;
-    const cat = await api("/api/platform/catalog");
-    const areas = cat.ok ? cat.data.data.find((c) => c.key === "location-demo")?.payload?.areas || [] : [];
-    const activities = [...new Set(areas.flatMap((a) => a.activities))];
+    const title = t("Check before you commit", "تحقق قبل أن تلتزم");
+    if (!ready()) return `<h1>${title}</h1>${needsAccount(t("The location check", "فحص الموقع"))}`;
+    const [saved, cat] = await Promise.all([api(`/api/workspace/${session.business.id}/location`), api("/api/platform/catalog")]);
+    if (!saved.ok || !cat.ok) return `<h1>${title}</h1><p class="error" role="alert">${esc(errorText(saved.ok ? cat : saved))}</p><div class="toolbar"><button data-go="location">${t("Try again", "حاول مرة أخرى")}</button></div>`;
+    this.zones = cat.data.data.find((c) => c.key === "location-demo")?.payload?.zones || [];
+    this.saved = saved.data.latest?.data || null;
+    this.versions = saved.data.versions?.length || 0;
+    const address = this.saved?.address || sanadValue("address") || session.profile.personal.city || "";
     const sector = session.profile.business.sector;
     return `<div class="eyebrow">${t("Location", "الموقع")}</div>
-      <h1>${t("Check before you commit", "تحقق قبل أن تلتزم")}</h1>
-      <p class="subtitle">${t("Preview an area check before choosing premises.", "عاين فحص المنطقة قبل اختيار موقع المشروع.")}</p>
-      <div class="grid-2"><label class="field"><span>${t("Area", "المنطقة")}</span><select id="area">${areas.map((a) => `<option>${esc(a.name)}</option>`).join("")}</select></label>
-      <label class="field"><span>${t("Activity", "النشاط")}</span><select id="activity">${activities.map((a) => `<option ${a === sector ? "selected" : ""}>${esc(a)}</option>`).join("")}</select></label></div>
-      <div class="map" aria-hidden="true"><span class="pin" id="pin">${t("Choose an area", "اختر منطقة")}</span></div>
-      <div id="location-result"></div>
-      <div class="toolbar"><button class="primary" id="check" ${areas.length ? "" : "disabled"}>${t("Check address", "فحص العنوان")}</button></div>`;
+      <h1>${title}</h1>
+      <p class="subtitle">${t("Find your area, put the pin on your exact premises, save it to your business, then run the check.", "اعثر على منطقتك، ضع الدبوس على موقع مشروعك بالضبط، احفظه على مشروعك، ثم شغّل الفحص.")}</p>
+      <div class="grid-2">
+        <label class="field"><span>${t("Business address", "عنوان المشروع")}</span><input id="address" value="${esc(address)}" autocomplete="street-address" placeholder="${t("e.g. Irbid, Al-Nuzha, Street 12", "مثال: إربد، حي النزهة، شارع 12")}"></label>
+        <div class="field"><span>${t("Your activity (from your profile)", "نشاطك (من ملفك)")}</span><p><span class="status info">${esc(tx(SECTOR[sector] || [sector, sector]))}</span></p></div>
+      </div>
+      <div class="toolbar"><button id="find">${t("Find on map", "البحث على الخريطة")}</button>${sanadValue("address") ? `<button id="use-sanad">${t("Use my SANAD address", "استخدام عنواني في سند")}</button>` : ""}</div>
+      <p id="find-note" class="muted" aria-live="polite"></p>
+      <div id="map" class="leaflet-map" role="application" aria-label="${t("Map: tap to place your business pin", "خريطة: انقر لوضع دبوس مشروعك")}"><p class="skeleton">${t("Loading map…", "جارٍ تحميل الخريطة…")}</p></div>
+      <p class="muted" id="pin-text">${this.saved ? t(`Saved pin: ${this.saved.lat.toFixed(5)}, ${this.saved.lng.toFixed(5)} (version ${this.versions})`, `الدبوس المحفوظ: ${this.saved.lat.toFixed(5)}، ${this.saved.lng.toFixed(5)} (نسخة ${this.versions})`) : t("No location saved yet. Tap the map to place your pin.", "لم يُحفظ موقع بعد. انقر على الخريطة لوضع الدبوس.")}</p>
+      <div class="toolbar"><button class="primary" id="save-loc">${t("Save location to my business", "حفظ الموقع على مشروعي")}</button><button id="check" ${this.saved ? "" : "disabled"}>${t("Check this location", "فحص هذا الموقع")}</button></div>
+      <div id="location-result" aria-live="polite"></div>
+      <p class="note">${t("Coloured areas are fictional demo zones, not official municipal zoning. Map data © OpenStreetMap contributors.", "المناطق الملونة مناطق تجريبية افتراضية وليست تنظيماً بلدياً رسمياً. بيانات الخريطة © مساهمو OpenStreetMap.")}</p>`;
   },
-  mount() {
-    const btn = $("#check");
-    if (!btn) return;
-    btn.onclick = async () => {
-      const res = await api("/api/platform/location", { method: "POST", body: { area: $("#area").value, activity: $("#activity").value } });
+  async mount() {
+    const self = location;
+    loadStyle("/vendor/leaflet/leaflet.css");
+    try {
+      await loadScript("/vendor/leaflet/leaflet.js");
+    } catch {
+      $("#map").innerHTML = `<p class="error" role="alert">${t("The map couldn't load. You can still save the address and check it later.", "تعذر تحميل الخريطة. يمكنك حفظ العنوان وفحصه لاحقاً.")}</p>`;
+      return;
+    }
+    const L = window.L;
+    L.Icon.Default.imagePath = "/vendor/leaflet/images/";
+    $("#map").replaceChildren();
+    const start = self.saved ? [self.saved.lat, self.saved.lng, 16] : findPlace($("#address").value) || [31.9539, 35.9106, 12];
+    const map = L.map("map", { scrollWheelZoom: false }).setView([start[0], start[1]], start[2]);
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "© OpenStreetMap" }).addTo(map);
+    for (const z of self.zones) {
+      const ok = z.activities.includes(session.profile.business.sector);
+      L.polygon(z.polygon, { color: ok ? "#00543f" : "#b42318", weight: 2, dashArray: "6 4", fillOpacity: 0.12 }).addTo(map).bindTooltip(lang === "ar" ? z.nameAr : z.name);
+    }
+    let pin = self.saved ? L.marker([self.saved.lat, self.saved.lng], { draggable: true }).addTo(map) : null;
+    let point = self.saved ? { lat: self.saved.lat, lng: self.saved.lng } : null;
+    const dirty = () => {
+      $("#pin-text").textContent = t(`Pin: ${point.lat.toFixed(5)}, ${point.lng.toFixed(5)} (not saved yet)`, `الدبوس: ${point.lat.toFixed(5)}، ${point.lng.toFixed(5)} (غير محفوظ بعد)`);
+      $("#check").disabled = true;
+      $("#location-result").replaceChildren();
+    };
+    const place = (latlng) => {
+      point = { lat: latlng.lat, lng: latlng.lng };
+      if (pin) pin.setLatLng(latlng);
+      else {
+        pin = L.marker(latlng, { draggable: true }).addTo(map);
+        pin.on("dragend", () => ((point = pin.getLatLng()), dirty()));
+      }
+      dirty();
+    };
+    if (pin) pin.on("dragend", () => ((point = pin.getLatLng()), dirty()));
+    map.on("click", (e) => place(e.latlng));
+    setTimeout(() => map.invalidateSize(), 50);
+
+    const find = () => {
+      const hit = findPlace($("#address").value);
+      if (!hit) return ($("#find-note").textContent = t("We couldn't find that area. Move the map and tap your location.", "لم نجد هذه المنطقة. حرّك الخريطة وانقر على موقعك."));
+      map.setView([hit[0], hit[1]], hit[2]);
+      $("#find-note").textContent = t("Area found. Now tap your exact premises on the map.", "تم إيجاد المنطقة. انقر الآن على موقع مشروعك بالضبط.");
+    };
+    $("#find").onclick = find;
+    $("#address").onkeydown = (e) => e.key === "Enter" && find();
+    const useSanad = $("#use-sanad");
+    if (useSanad) useSanad.onclick = () => (($("#address").value = sanadValue("address")), find());
+
+    $("#save-loc").onclick = async () => {
+      const address = $("#address").value.trim();
+      if (!address) return toast(t("Type the address first.", "اكتب العنوان أولاً."));
+      if (!point) return toast(t("Tap the map to place your pin.", "انقر على الخريطة لوضع الدبوس."));
+      const btn = $("#save-loc");
+      btn.disabled = true;
+      const res = await api(`/api/workspace/${session.business.id}/location`, { method: "POST", body: { data: { address, lat: Number(point.lat.toFixed(6)), lng: Number(point.lng.toFixed(6)) }, approved: true } });
+      btn.disabled = false;
       if (!res.ok) return toast(errorText(res));
+      self.saved = res.data.data?.data || { address, ...point };
+      $("#pin-text").textContent = t(`Saved to your business (version ${res.data.data?.version ?? ""}).`, `تم الحفظ على مشروعك (نسخة ${res.data.data?.version ?? ""}).`);
+      $("#check").disabled = false;
+      toast(t("Location saved.", "تم حفظ الموقع."));
+    };
+
+    $("#check").onclick = async () => {
+      const box = $("#location-result");
+      box.innerHTML = `<p class="skeleton">${t("Checking…", "جارٍ الفحص…")}</p>`;
+      const res = await api("/api/location/check", { method: "POST", body: { businessId: session.business.id } });
+      if (!res.ok) return (box.innerHTML = `<p class="error" role="alert">${esc(errorText(res))}</p>`);
       const r = res.data;
-      $("#pin").textContent = $("#area").value;
-      $("#location-result").innerHTML = `<div class="summary"><strong>${r.allowed === true ? t("Allowed in this demo zone", "مسموح في هذه المنطقة التجريبية") : r.allowed === false ? t("Not allowed in this demo zone", "غير مسموح في هذه المنطقة التجريبية") : t("Unknown: ask the municipality", "غير معروف: راجع البلدية")}</strong><p class="muted">${esc(r.disclaimer)}</p></div>`;
+      const verdict =
+        r.allowed === true
+          ? [t("Allowed in this demo zone", "مسموح في هذه المنطقة التجريبية"), "done"]
+          : r.allowed === false
+            ? [t("Not allowed in this demo zone", "غير مسموح في هذه المنطقة التجريبية"), "error"]
+            : [t("Outside the demo zones: ask your municipality", "خارج المناطق التجريبية: راجع البلدية"), "warning"];
+      box.innerHTML = `<div class="summary"><p><span class="status ${verdict[1]}">${esc(verdict[0])}</span></p>
+        <dl class="kv"><dt>${t("Address", "العنوان")}</dt><dd>${esc(r.location.address)}</dd>
+        <dt>${t("Zone", "المنطقة")}</dt><dd>${r.zone ? esc(lang === "ar" ? r.zone.nameAr : r.zone.name) : "—"}</dd>
+        <dt>${t("Activity checked", "النشاط المفحوص")}</dt><dd>${esc(tx(SECTOR[r.activity] || [r.activity, r.activity]))}</dd>
+        ${r.zone ? `<dt>${t("Allowed here", "المسموح هنا")}</dt><dd>${r.zone.activities.map((a) => esc(tx(SECTOR[a] || [a, a]))).join(t(", ", "، "))}</dd>` : ""}</dl>
+        <p class="muted">${esc(r.disclaimer)}</p></div>`;
     };
   },
 };

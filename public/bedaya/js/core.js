@@ -128,33 +128,61 @@ export function go(route) {
   else location.hash = route;
 }
 
-// ---------- session: SANAD (M5 identity), Bedaya account (M4 Supabase), business ----------
+// ---------- session: one source of truth, GET /api/account/me ----------
+// The account (Supabase), its role, and the SANAD identity linked to it. Nothing about the person is
+// cached in the browser: when the account changes, every per-user key is wiped.
 export const session = {
-  sanad: null, // SANAD record: fields are { value, source }
-  account: null, // { id, email } from Supabase
   backend: "unknown", // "ok" | "down" (Supabase not configured or unreachable)
+  account: null, // { id, email }
+  role: null, // "owner" | "bank" | "incubator" | "expert" | "admin"
+  partnerKey: null,
+  expert: null, // { key, name, title } for expert accounts
+  identity: null, // { nationalId, verified: { field: { value, source } } } linked SANAD identity
+  pendingSanad: null, // SANAD login that has no account yet: { nationalId, user }
   businesses: [],
   business: null,
   onboarding: null, // M4 bedaya_profiles row
   profile: null, // submitted UserProfile (M5 shape)
-  membership: null, // { role, partner_key } for partner/admin
 };
 
-export async function loadSession() {
-  const [sanad, auth] = await Promise.all([api("/api/sanad/me"), api("/api/auth")]);
-  session.sanad = sanad.ok ? sanad.data.user : null;
-  session.account = auth.ok ? auth.data.user : null;
-  session.backend = auth.ok || auth.status === 401 ? "ok" : "down";
-  session.businesses = [];
-  session.business = null;
-  session.onboarding = null;
-  session.profile = null;
-  session.membership = null;
-  if (!session.account) return session;
+const KEEP = new Set(["bedaya.lang"]);
+/** Removes every per-user value from this browser (wizard answers, selections, IDs). */
+export function clearUserStorage() {
+  try {
+    Object.keys(localStorage)
+      .filter((k) => k.startsWith("bedaya.") && !KEEP.has(k))
+      .forEach((k) => localStorage.removeItem(k));
+  } catch {
+    /* storage unavailable */
+  }
+  for (const k of Object.keys(memory)) if (k !== "lang") delete memory[k];
+}
 
-  const [list, me] = await Promise.all([api("/api/business"), api("/api/platform/me")]);
+export async function loadSession() {
+  const me = await api("/api/account/me");
+  const ctx = me.ok ? me.data : {};
+  Object.assign(session, {
+    backend: me.ok ? ctx.backend : "down",
+    account: ctx.account ?? null,
+    role: ctx.role ?? null,
+    partnerKey: ctx.partnerKey ?? null,
+    expert: ctx.expert ?? null,
+    identity: ctx.identity ?? null,
+    pendingSanad: ctx.pendingSanad ?? null,
+    businesses: [],
+    business: null,
+    onboarding: null,
+    profile: null,
+  });
+  // A different person (or nobody) is signed in now: forget the previous person's local data.
+  if (read("accountId", null) !== (session.account?.id ?? null)) {
+    clearUserStorage();
+    save("accountId", session.account?.id ?? null);
+  }
+  if (!session.account || session.role !== "owner") return session;
+
+  const list = await api("/api/business");
   session.businesses = list.ok ? list.data.data || [] : [];
-  session.membership = me.ok ? me.data.membership : null;
   const wanted = read("businessId", null);
   session.business = session.businesses.find((b) => b.id === wanted) || session.businesses[0] || null;
   if (session.business) {
@@ -164,6 +192,33 @@ export async function loadSession() {
     if (session.onboarding?.submitted_at) session.profile = { ...session.onboarding.answers, userId: session.account.id };
   }
   return session;
+}
+
+/** The main page for each kind of account. */
+export function homeRoute() {
+  if (!session.account) return "entry";
+  return { owner: session.profile ? "roadmap" : session.identity ? "w1" : "link-sanad", bank: "partner", incubator: "partner", expert: "expert", admin: "admin" }[session.role] || "entry";
+}
+
+/** Loads a script once (Leaflet, pdf-lib). */
+const scripts = {};
+export function loadScript(src) {
+  scripts[src] ??= new Promise((resolve, reject) => {
+    const s = document.createElement("script");
+    s.src = src;
+    s.onload = resolve;
+    s.onerror = () => reject(new Error(`Could not load ${src}`));
+    document.head.append(s);
+  });
+  return scripts[src];
+}
+export function loadStyle(href) {
+  if (!document.querySelector(`link[href="${href}"]`)) {
+    const l = document.createElement("link");
+    l.rel = "stylesheet";
+    l.href = href;
+    document.head.append(l);
+  }
 }
 
 /** Office and document names from M1's data (cached). */
@@ -182,10 +237,14 @@ export const docName = (ref, id) => (ref.documents[id] ? tx(ref.documents[id].na
 export const bpath = (sub) => `/api/platform/businesses/${session.business?.id}/${sub}`;
 export const ready = () => Boolean(session.account && session.profile);
 
-/** SANAD field value, e.g. sanadValue("fullNameEn") */
-export const sanadValue = (key) => session.sanad?.[key]?.value ?? "";
-export const displayName = () =>
-  session.profile ? tx({ en: session.profile.personal.fullNameEn, ar: session.profile.personal.fullNameAr }) : session.sanad ? tx({ en: sanadValue("fullNameEn"), ar: sanadValue("fullNameAr") }) : "";
+/** A SANAD-verified field of the signed-in owner (or of a SANAD login waiting for an account). */
+export const sanadValue = (key) => session.identity?.verified?.[key]?.value ?? session.pendingSanad?.user?.[key]?.value ?? "";
+export const displayName = () => {
+  if (session.identity) return tx({ en: sanadValue("fullNameEn"), ar: sanadValue("fullNameAr") });
+  if (session.expert) return tx(session.expert.name);
+  if (session.profile) return tx({ en: session.profile.personal.fullNameEn, ar: session.profile.personal.fullNameAr });
+  return session.account?.email ?? "";
+};
 
 /** HTML for a "needs an account / backend" placeholder inside a screen. */
 export function needsAccount(feature) {
@@ -196,5 +255,6 @@ export function needsAccount(feature) {
     )}</p>`;
   }
   if (!session.account) return `<p class="note">${t("Sign in to your Bedaya account to use this.", "سجّل الدخول إلى حسابك في بداية لاستخدام هذه الميزة.")}</p><div class="toolbar"><button class="primary" data-go="account">${t("Sign in", "تسجيل الدخول")}</button></div>`;
-  return `<p class="note">${t("Finish the onboarding questions first.", "أكمل أسئلة البداية أولاً.")}</p><div class="toolbar"><button class="primary" data-go="w1">${t("Start the questions", "ابدأ الأسئلة")}</button></div>`;
+  if (session.role !== "owner") return `<p class="note">${t("This is for business owners. Your account has a different role.", "هذه الميزة لأصحاب المشاريع. لحسابك دور مختلف.")}</p>`;
+  return `<p class="note">${t("Finish the onboarding questions first.", "أكمل أسئلة البداية أولاً.")}</p><div class="toolbar"><button class="primary" data-go="${session.identity ? "w1" : "link-sanad"}">${t("Start the questions", "ابدأ الأسئلة")}</button></div>`;
 }

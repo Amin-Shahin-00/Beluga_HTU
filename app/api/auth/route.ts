@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { checkMutation, json, readObject } from "@/lib/http";
+import { bindSanadSession, clearAllSessions } from "@/lib/account";
 
 export async function GET() {
   try {
@@ -18,6 +19,7 @@ export async function POST(request: Request) {
     const supabase = await createClient();
     if (input.action === "signout") {
       const { error } = await supabase.auth.signOut({ scope: "local" });
+      await clearAllSessions();
       return error ? json({ error: "Could not sign out." }, 500) : json({ message: "Signed out." });
     }
     if (!["signin", "signup"].includes(String(input.action))) return json({ error: "Invalid action." }, 400);
@@ -31,6 +33,10 @@ export async function POST(request: Request) {
     }
     const { data, error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
     if (error) return json({ error: "Incorrect credentials or email not confirmed." }, 401);
+    // The SANAD session (documents, forms, signing) must belong to this account, never to whoever used the browser before.
+    const { data: identity } = await supabase.from("bedaya_identities").select("national_id, verified").eq("user_id", data.user.id).maybeSingle();
+    const linked = identity as { national_id: string; verified: Record<string, { value: unknown; source: string }> } | null;
+    await bindSanadSession(linked?.national_id ?? null, linked?.verified);
     return json({ user: { id: data.user.id, email: data.user.email } });
   } catch { return json({ error: "Service unavailable." }, 503); }
 }

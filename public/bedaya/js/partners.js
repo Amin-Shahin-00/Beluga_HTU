@@ -1,6 +1,6 @@
 // Incubators, applications, bank file, funding and experts (features 5, 6, 19, 20).
 // Matching and reasons come from M5 (through M4 when signed in); applications are saved by M4.
-import { $, $$, api, bpath, confirmDialog, day, download, errorText, esc, go, needsAccount, read, ready, save, session, t, toast, tx } from "./core.js";
+import { $, $$, api, bpath, confirmDialog, day, download, errorText, esc, go, jod, needsAccount, read, ready, save, session, t, time, toast, tx } from "./core.js";
 
 const TYPE = {
   incubator: ["Incubator", "حاضنة"],
@@ -36,7 +36,7 @@ async function loadMatches() {
     const res = await api(bpath("incubators"));
     if (res.ok) return { matches: res.data.matches, scores: Object.fromEntries(res.data.ranked.map((r) => [r.incubatorId, r.score])), source: "m4" };
   }
-  if (session.sanad) {
+  if (session.identity) {
     const p = await api("/api/profile/user-profile");
     if (p.ok) {
       const res = await api("/api/ai/incubators/match", { method: "POST", body: { profile: p.data.profile } });
@@ -167,40 +167,99 @@ export const applied = {
   },
 };
 
+
 // ---------- bank file (feature 6) ----------
+// The owner picks exactly which documents go to the bank. Signed documents start selected.
+const DOC_KIND = {
+  identity: ["ID", "هوية"],
+  address: ["Address proof", "إثبات عنوان"],
+  registration: ["Registration", "تسجيل"],
+  license: ["Licence", "رخصة"],
+  signed: ["Signed", "موقّع"],
+  other: ["Other", "أخرى"],
+};
+const kb = (n) => (n >= 1048576 ? `${(n / 1048576).toFixed(1)} MB` : `${Math.max(1, Math.round(n / 1024))} KB`);
+
 export const bank = {
   async render() {
     if (!ready()) return `<h1>${t("A complete file for your bank", "ملف متكامل لبنكك")}</h1>${needsAccount(t("The bank file", "الملف البنكي"))}`;
-    const [catalog, vault, plan, forms] = await Promise.all([api("/api/platform/catalog"), api(bpath("documents")), api(bpath("plan")), session.sanad ? api("/api/documents") : null]);
+    const [catalog, vault, plan] = await Promise.all([api("/api/platform/catalog"), api(bpath("documents")), api(bpath("plan"))]);
+    if (!vault.ok) return `<h1>${t("A complete file for your bank", "ملف متكامل لبنكك")}</h1><p class="error" role="alert">${esc(errorText(vault))}</p><div class="toolbar"><button data-go="bank">${t("Try again", "حاول مرة أخرى")}</button></div>`;
     const banks = catalog.ok ? catalog.data.data.filter((c) => c.kind === "partner" && c.payload?.kind === "bank") : [];
-    const vaultCount = vault.ok ? vault.data.data.filter((d) => d.status === "ready").length : 0;
-    const signedForms = forms?.ok ? forms.data.documents.filter((d) => d.kind === "generated" && d.status !== "ready_to_sign").length : 0;
+    const docs = vault.data.data.filter((d) => d.status === "ready");
+    this.total = docs.length;
     return `<div class="eyebrow">${t("Bank-ready file", "ملف جاهز للبنك")}</div>
       <h1>${t("A complete file for your bank", "ملف متكامل لبنكك")}</h1>
-      <p class="subtitle">${t("Your profile, documents and business plan in one package.", "ملفك ومستنداتك وخطة عملك في حزمة واحدة.")}</p>
+      <p class="subtitle">${t("Your profile and business plan, plus only the documents you choose.", "ملفك وخطة عملك، مع المستندات التي تختارها فقط.")}</p>
       <div class="list">
         <div class="item"><span class="lead">01</span><div class="details"><strong>${t("Business profile", "ملف المشروع")}</strong></div><span class="status done">${t("Complete", "مكتمل")}</span></div>
-        <div class="item"><span class="lead">02</span><div class="details"><strong>${t("Documents in your vault", "المستندات في خزنتك")}</strong><small>${t(`${signedForms} signed government form(s) in Bedaya`, `${signedForms} نموذج حكومي موقّع في بداية`)}</small></div><span class="status ${vaultCount ? "" : "warning"}">${vaultCount} ${t("file(s)", "ملف")}</span></div>
-        <div class="item"><span class="lead">03</span><div class="details"><strong>${t("Business plan", "خطة العمل")}</strong></div><span class="status ${plan.ok ? "" : "warning"}">${plan.ok ? t("Draft ready", "المسودة جاهزة") : t("Not ready", "غير جاهزة")}</span></div>
+        <div class="item"><span class="lead">02</span><div class="details"><strong>${t("Business plan", "خطة العمل")}</strong></div><span class="status ${plan.ok ? "" : "warning"}">${plan.ok ? t("Draft ready", "المسودة جاهزة") : t("Not ready", "غير جاهزة")}</span></div>
       </div>
+      <h2 style="margin-top:28px">${t("Documents to include", "المستندات المرفقة")}</h2>
+      ${
+        docs.length
+          ? `<div class="doc-picker">
+          <label class="option select-all"><input type="checkbox" id="select-all"> <strong>${t("Select all", "تحديد الكل")}</strong> <span class="status info" id="doc-count" aria-live="polite"></span></label>
+          <div class="list">${docs
+            .map(
+              (d) => `<label class="item doc-row"><input type="checkbox" data-doc="${esc(d.id)}" ${d.kind === "signed" ? "checked" : ""} aria-label="${esc(d.filename)}">
+              <div class="details"><strong class="ltr-text">${esc(d.filename)}</strong><small>${esc(day(d.created_at))} · ${esc(kb(Number(d.size_bytes) || 0))}</small></div>
+              <span class="status ${d.kind === "signed" ? "done" : ""}">${esc(tx(DOC_KIND[d.kind] || DOC_KIND.other))}</span></label>`,
+            )
+            .join("")}</div></div>`
+          : `<div class="list"><div class="item"><div class="details"><strong>${t("No documents in your vault yet", "لا توجد مستندات في خزنتك بعد")}</strong><small>${t("Upload or sign documents first; the bank file can still be sent with your profile and plan only.", "ارفع المستندات أو وقّعها أولاً؛ يمكن إرسال الملف البنكي بملفك وخطتك فقط.")}</small></div><button data-go="documents">${t("Open documents", "فتح المستندات")}</button></div></div>`
+      }
       <h2 style="margin-top:28px">${t("Send to", "الإرسال إلى")}</h2>
       <div class="options">${banks.length ? banks.map((b, i) => `<label class="option"><input type="radio" name="bank" value="${esc(b.key)}" ${i === 0 ? "checked" : ""}>${esc(tx(b.payload.name))}${b.is_demo ? ` <span class="status warning">${t("fictional", "افتراضي")}</span>` : ""}</label>`).join("") : `<p class="muted">${t("No bank partners are set up yet.", "لا يوجد شركاء بنكيون بعد.")}</p>`}</div>
       <p class="note">${t("No real bank list exists yet, so the only bank is a clearly fictional demo. Nothing leaves Bedaya.", "لا توجد قائمة بنوك حقيقية بعد، لذا البنك الوحيد تجريبي وافتراضي بوضوح. لا يخرج شيء من بداية.")}</p>
-      <div class="toolbar"><button class="primary" id="send-bank" ${banks.length ? "" : "disabled"}>${t("Review and send", "المراجعة والإرسال")}</button><button id="zip">${t("Download the file (ZIP)", "تنزيل الملف (ZIP)")}</button></div>`;
+      <div class="toolbar"><button class="primary" id="send-bank" ${banks.length ? "" : "disabled"}>${t("Review and send", "المراجعة والإرسال")}</button><button id="zip">${t("Download selected (ZIP)", "تنزيل المحدد (ZIP)")}</button></div>`;
   },
   mount() {
+    const boxes = $$("[data-doc]");
+    const all = $("#select-all");
+    const selected = () => boxes.filter((b) => b.checked).map((b) => b.dataset.doc);
+    const sync = () => {
+      const n = selected().length;
+      if (all) {
+        all.checked = n === boxes.length && n > 0;
+        all.indeterminate = n > 0 && n < boxes.length;
+        $("#doc-count").textContent = t(`${n} of ${boxes.length} selected`, `${n} من ${boxes.length} محدد`);
+      }
+    };
+    boxes.forEach((b) => (b.onchange = sync));
+    if (all)
+      all.onchange = () => {
+        boxes.forEach((b) => (b.checked = all.checked));
+        sync();
+      };
+    sync();
     const zip = $("#zip");
-    if (zip) zip.onclick = async () => ((zip.disabled = true), await download(bpath("bank-package"), "bedaya-bank-package.zip"), (zip.disabled = false));
+    if (zip)
+      zip.onclick = async () => {
+        zip.disabled = true;
+        await download(`${bpath("bank-package")}?documents=${encodeURIComponent(selected().join(","))}`, "bedaya-bank-package.zip");
+        zip.disabled = false;
+      };
     const send = $("#send-bank");
     if (send)
       send.onclick = async () => {
         const key = $("input[name=bank]:checked")?.value;
         if (!key) return toast(t("Choose a bank.", "اختر بنكاً."));
-              const ok = await confirmDialog({ title: t("Send your bank file?", "إرسال ملفك البنكي؟"), body: t("Your profile, plan and documents will be shared with the selected bank inside Bedaya.", "ستُشارك ملفك وخطتك ومستنداتك مع البنك المحدد داخل بداية."), confirmLabel: t("Send", "إرسال") });
+        const ids = selected();
+        const names = boxes.filter((b) => b.checked).map((b) => `<li class="ltr-text">${esc(b.getAttribute("aria-label"))}</li>`).join("");
+        const ok = await confirmDialog({
+          title: t("Send your bank file?", "إرسال ملفك البنكي؟"),
+          body: t(`Your profile, plan and ${ids.length} selected document(s) will be shared with the bank inside Bedaya. Nothing else is sent.`, `سيُشارك ملفك وخطتك و${ids.length} مستند محدد مع البنك داخل بداية. لا يُرسل شيء آخر.`),
+          html: names ? `<ul>${names}</ul>` : "",
+          confirmLabel: t("Send", "إرسال"),
+        });
         if (!ok.confirmed) return;
-        const res = await api(bpath("applications"), { method: "POST", body: { partnerKeys: [key], consent: true } });
+        send.disabled = true;
+        const res = await api(bpath("applications"), { method: "POST", body: { partnerKeys: [key], consent: true, documentIds: ids } });
+        send.disabled = false;
         if (!res.ok) return toast(errorText(res));
         save("bankRef", res.data.data[0]?.id || "");
+        save("bankDocs", ids.length);
         go("bank-sent");
       };
   },
@@ -243,21 +302,105 @@ export const funding = {
   },
 };
 
-// ---------- experts (feature 20, screens only) ----------
-const EXPERTS = [
-  ["SA", ["Sara Ali", "سارة علي"], ["Accountant · tax registration · sample session 25 JOD", "محاسبة · التسجيل الضريبي · جلسة نموذجية 25 ديناراً"]],
-  ["OK", ["Omar Khalil", "عمر خليل"], ["Legal advisor · company registration · sample session 35 JOD", "مستشار قانوني · تسجيل الشركات · جلسة نموذجية 35 ديناراً"]],
-  ["RM", ["Rana Masri", "رنا المصري"], ["Food-safety consultant · JFDA preparation · sample session 30 JOD", "مستشارة سلامة غذاء · التحضير للغذاء والدواء · جلسة نموذجية 30 ديناراً"]],
-];
+
+// ---------- experts (feature 20) ----------
+// Each expert publishes their own availability (expert dashboard). Owners see only that expert's
+// free slots; the database refuses a slot that was booked a moment earlier (no double booking).
+// These are separate from the funding/partner appointment slots on the Appointments page.
+const initials = (name) => name.split(/\s+/).map((w) => w[0]).slice(0, 2).join("").toUpperCase();
+const expertName = (e) => tx({ en: e.name_en, ar: e.name_ar });
+const whenText = (iso, minutes) => `${day(iso)} · ${time(iso)} · ${minutes} ${t("min", "دقيقة")}`;
+
 export const experts = {
   async render() {
+    if (!session.account) return `<h1>${t("Get help with the hard part", "احصل على مساعدة عند الحاجة")}</h1>${needsAccount(t("Expert booking", "حجز الخبراء"))}`;
+    const [list, mine] = await Promise.all([api("/api/experts"), api("/api/experts/bookings")]);
+    if (!list.ok) return `<h1>${t("Get help with the hard part", "احصل على مساعدة عند الحاجة")}</h1><p class="error" role="alert">${esc(errorText(list))}</p><div class="toolbar"><button data-go="experts">${t("Try again", "حاول مرة أخرى")}</button></div>`;
+    const all = list.data.data;
+    const byKey = Object.fromEntries(all.map((e) => [e.key, e]));
+    const bookings = (mine.ok ? mine.data.data : []).filter((b) => new Date(b.starts_at) > new Date());
     return `<div class="eyebrow">${t("Experts", "الخبراء")}</div>
       <h1>${t("Get help with the hard part", "احصل على مساعدة عند الحاجة")}</h1>
-      <p class="subtitle">${t("Fictional expert profiles for the hackathon prototype.", "ملفات خبراء افتراضية لنموذج الهاكاثون.")}</p>
-      <div class="list">${EXPERTS.map((e, i) => `<div class="item"><span class="lead">${e[0]}</span><div class="details"><strong>${tx(e[1])}</strong><small>${tx(e[2])}</small></div><button data-expert="${i}">${t("Book", "حجز")}</button></div>`).join("")}</div>
-      <p class="note">${t("Expert booking isn't connected yet; this opens the appointments screen.", "حجز الخبراء غير مربوط بعد؛ يفتح هذا صفحة المواعيد.")}</p>`;
+      <p class="subtitle">${t("Each expert sets their own hours. Pick an expert to see only their free times.", "يحدد كل خبير أوقاته بنفسه. اختر خبيراً لترى أوقاته المتاحة فقط.")}</p>
+      ${
+        bookings.length
+          ? `<h2>${t("Your expert sessions", "جلساتك مع الخبراء")}</h2><div class="list">${bookings
+              .map((b) => {
+                const e = byKey[b.expert_key];
+                return `<div class="item"><span class="lead">${esc(initials(e?.name_en || b.expert_key))}</span><div class="details"><strong>${esc(e ? expertName(e) : b.expert_key)}</strong><small>${esc(whenText(b.starts_at, b.duration_minutes))}</small></div><button data-cancel="${esc(b.id)}">${t("Cancel", "إلغاء")}</button></div>`;
+              })
+              .join("")}</div><h2 style="margin-top:28px">${t("All experts", "كل الخبراء")}</h2>`
+          : ""
+      }
+      <div class="list">${
+        all.length
+          ? all
+              .map(
+                (e) => `<div class="item"><span class="lead">${esc(initials(e.name_en))}</span><div class="details"><strong>${esc(expertName(e))}${e.is_demo ? ` <span class="status warning">${t("demo", "تجريبي")}</span>` : ""}</strong><small>${esc(tx({ en: e.title_en, ar: e.title_ar }))} · ${esc(jod(e.fee_jod))}</small>
+                <small>${e.freeSlots ? t(`${e.freeSlots} free time(s)`, `${e.freeSlots} وقت متاح`) : t("No free times right now", "لا أوقات متاحة حالياً")}</small></div>
+                <button class="${e.freeSlots ? "primary" : ""}" data-expert="${esc(e.key)}" ${e.freeSlots ? "" : "disabled"}>${t("See times", "عرض الأوقات")}</button></div>`,
+              )
+              .join("")
+          : `<div class="item"><div class="details"><small>${t("No experts have joined yet.", "لم ينضم خبراء بعد.")}</small></div></div>`
+      }</div>
+      <p class="note">${t("Expert profiles are demo accounts for the hackathon. Sessions are recorded in Bedaya only.", "ملفات الخبراء حسابات تجريبية للهاكاثون. تُسجل الجلسات في بداية فقط.")}</p>`;
   },
   mount() {
-    $$("[data-expert]").forEach((b) => (b.onclick = () => (toast(t("Pick a time on the appointments screen.", "اختر وقتاً في صفحة المواعيد.")), go("appointments"))));
+    $$("[data-expert]").forEach((b) => (b.onclick = () => (save("expertKey", b.dataset.expert), go("expert-book"))));
+    $$("[data-cancel]").forEach(
+      (b) =>
+        (b.onclick = async () => {
+          const ok = await confirmDialog({ title: t("Cancel this session?", "إلغاء هذه الجلسة؟"), body: t("The time becomes free for others again.", "سيصبح الوقت متاحاً للآخرين مجدداً."), confirmLabel: t("Cancel session", "إلغاء الجلسة") });
+          if (!ok.confirmed) return;
+          const res = await api(`/api/experts/bookings/${encodeURIComponent(b.dataset.cancel)}/cancel`, { method: "POST" });
+          toast(res.ok ? t("Session cancelled.", "تم إلغاء الجلسة.") : errorText(res));
+          if (res.ok) go("experts");
+        }),
+    );
+  },
+};
+
+export const expertBook = {
+  async render() {
+    const key = read("expertKey", "");
+    const head = `<div class="eyebrow">${t("Book an expert", "حجز خبير")}</div>`;
+    if (!key) return `${head}<h1>${t("Choose an expert first", "اختر خبيراً أولاً")}</h1><div class="toolbar"><button class="primary" data-go="experts">${t("See experts", "عرض الخبراء")}</button></div>`;
+    if (!ready()) return `${head}<h1>${t("Book an expert", "حجز خبير")}</h1>${needsAccount(t("Expert booking", "حجز الخبراء"))}`;
+    const [list, slots] = await Promise.all([api("/api/experts"), api(`/api/experts/${encodeURIComponent(key)}/slots`)]);
+    const e = list.ok ? list.data.data.find((x) => x.key === key) : null;
+    if (!e || !slots.ok) return `${head}<h1>${t("Couldn't load this expert", "تعذر تحميل هذا الخبير")}</h1><p class="error" role="alert">${esc(slots.ok ? t("Expert not found.", "الخبير غير موجود.") : errorText(slots))}</p><div class="toolbar"><button data-go="experts">${t("Back to experts", "العودة للخبراء")}</button></div>`;
+    const free = slots.data.data;
+    // Group by day so the list is easy to scan.
+    const groups = {};
+    for (const s of free) (groups[day(s.starts_at)] ??= []).push(s);
+    return `${head}<h1>${esc(expertName(e))}</h1>
+      <p class="subtitle">${esc(tx({ en: e.title_en, ar: e.title_ar }))} · ${esc(jod(e.fee_jod))}</p>
+      ${
+        free.length
+          ? Object.entries(groups)
+              .map(([d, list]) => `<h3>${esc(d)}</h3><div class="options slot-grid">${list.map((s) => `<label class="option"><input type="radio" name="slot" value="${esc(s.id)}"><span class="ltr-text">${esc(time(s.starts_at))}</span> · ${s.duration_minutes} ${t("min", "دقيقة")}</label>`).join("")}</div>`)
+              .join("")
+          : `<p class="summary">${t("This expert has no free times right now. Try another expert or check back later.", "لا توجد أوقات متاحة لهذا الخبير حالياً. جرّب خبيراً آخر أو عد لاحقاً.")}</p>`
+      }
+      <p class="note">${t("Times are shown in Amman time. Only this expert's own availability is listed.", "الأوقات بتوقيت عمّان. تظهر أوقات هذا الخبير فقط.")}</p>
+      <div class="toolbar">${free.length ? `<button class="primary" id="book">${t("Book this time", "حجز هذا الوقت")}</button>` : ""}<button data-go="experts">${t("Back to experts", "العودة للخبراء")}</button></div>`;
+  },
+  mount() {
+    const book = $("#book");
+    if (!book) return;
+    book.onclick = async () => {
+      const slotId = $("input[name=slot]:checked")?.value;
+      if (!slotId) return toast(t("Pick a time.", "اختر وقتاً."));
+      book.disabled = true;
+      const res = await api(`/api/experts/${encodeURIComponent(read("expertKey", ""))}/book`, { method: "POST", body: { slotId, businessId: session.business.id } });
+      book.disabled = false;
+      if (res.status === 409) {
+        toast(t("That time was just booked by someone else. Pick another.", "حُجز هذا الوقت للتو من شخص آخر. اختر وقتاً آخر."));
+        return go("expert-book");
+      }
+      if (!res.ok) return toast(errorText(res));
+      toast(t("Booked. You'll find it at the top of the experts page.", "تم الحجز. ستجده في أعلى صفحة الخبراء."));
+      go("experts");
+    };
   },
 };

@@ -1,0 +1,6 @@
+.backbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 10px 16px; background: #fff; border-bottom: 1px solid #dbe4df; font: 13px/1.6 Tahoma, Arial, sans-serif; color: #596761; }
+.backbar nav { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.backbar a { color: #00543f; }
+.backbar-home { border: 1px solid #dbe4df; border-radius: 6px; padding: 6px 12px; text-decoration: none; font-weight: 700; min-height: 36px; display: inline-flex; align-items: center; }
+.backbar-home:hover { background: #eef5f1; }
+@media (max-width: 640px) { .backbar-home { width: 100%; justify-content: center; } }

@@ -6,7 +6,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { join } from "path";
 import { randomUUID } from "crypto";
-import type { BusinessProfile, DocType, OcrResult, Payment, Source } from "./types";
+import type { BusinessProfile, DocType, OcrResult, Payment, SanadUser, Source } from "./types";
 
 // Vercel's project folder is read-only, so use /tmp there. /tmp is per server
 // instance and gets wiped, so on Vercel data can disappear between requests
@@ -129,6 +129,8 @@ interface Db {
   /** Business info the user edited. Stand-in for M4's wizard answers. */
   profiles: BusinessProfile[];
   mock_sanad_codes: MockCodeRow[];
+  /** The verified record SANAD returned at the last login (IdentityProvider.exchangeCode), per national ID. */
+  sanad_sessions: { nationalId: string; user: SanadUser; receivedAt: string }[];
 }
 
 const EMPTY: Db = {
@@ -141,6 +143,7 @@ const EMPTY: Db = {
   reviews: [],
   profiles: [],
   mock_sanad_codes: [],
+  sanad_sessions: [],
 };
 
 // ---------------------------------------------------------------- core

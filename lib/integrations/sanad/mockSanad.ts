@@ -3,7 +3,7 @@
 
 import { createHash, randomBytes } from "crypto";
 import { hasConsent, logAccess, recordConsent } from "../consent";
-import { demoUser } from "../demoData";
+import { MOCK_SANAD_PASSWORDS, demoUser } from "../demoData";
 import { stampSignature } from "../pdf/sign";
 import { find, insert, newId, now, update } from "../store";
 import type {
@@ -33,8 +33,15 @@ export class MockSanad implements IdentityProvider, SignatureProvider, PaymentPr
    * Called by the mock SANAD login page after the user picks a demo identity
    * and approves the consent screen. Real SANAD does this step on its side.
    */
-  authorize(nationalId: string, scopes: SanadScope[]): string {
-    if (!demoUser(nationalId)) throw new Error("Unknown demo user");
+  /** Mock credential check (the real SANAD checks its own credentials). Returns the person's name for the consent screen. */
+  verify(nationalId: string, password: string): { nameAr: string; nameEn: string } {
+    const user = demoUser(nationalId);
+    if (!user || MOCK_SANAD_PASSWORDS[nationalId] !== password) throw new Error("National ID or SANAD password is incorrect");
+    return { nameAr: user.fullNameAr.value, nameEn: user.fullNameEn.value };
+  }
+
+  authorize(nationalId: string, scopes: SanadScope[], password: string): string {
+    this.verify(nationalId, password);
     recordConsent(nationalId, scopes, "sanad_login");
     const code = randomBytes(16).toString("hex");
     insert("mock_sanad_codes", {
@@ -68,7 +75,7 @@ export class MockSanad implements IdentityProvider, SignatureProvider, PaymentPr
       gender: user.gender,
     };
     if (scopes.includes("contact")) Object.assign(out, { phone: user.phone, email: user.email });
-    if (scopes.includes("address")) out.city = user.city;
+    if (scopes.includes("address")) Object.assign(out, { city: user.city, address: user.address });
     return out;
   }
 

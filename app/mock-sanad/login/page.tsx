@@ -1,96 +1,104 @@
 "use client";
-// MOCK SANAD login + consent screen. Stands in for the real SANAD page until
-// MoDEE approves the integration. Clearly labeled as a mock on screen.
+// MOCK SANAD login + consent screen. Stands in for the real SANAD page until MoDEE approves the
+// integration. Clearly labelled as a mock. Demo identities are listed in the README, not here.
 
 import { useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useState, type FormEvent } from "react";
 
-type DemoUser = { nationalId: string; nameAr: string; nameEn: string };
 type Scopes = Record<string, { ar: string; en: string }>;
 
 function MockSanadLogin() {
   const params = useSearchParams();
-  const returnUrl = params.get("return") || "/m5-demo";
+  const returnUrl = params.get("return") || "/";
   const requested = (params.get("scopes") || "identity").split(",");
-  const [users, setUsers] = useState<DemoUser[]>([]);
   const [labels, setLabels] = useState<Scopes>({});
-  const [picked, setPicked] = useState<string | null>(null);
-  const [stage, setStage] = useState<"pick" | "consent">("pick");
+  const [nationalId, setNationalId] = useState("");
+  const [password, setPassword] = useState("");
+  const [person, setPerson] = useState<{ nameAr: string; nameEn: string } | null>(null);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
     fetch("/api/sanad/demo-users")
       .then((r) => r.json())
-      .then((d) => {
-        setUsers(d.users);
-        setLabels(d.scopes);
-        setPicked(d.users[0]?.nationalId ?? null);
-      })
-      .catch(() => setError("Could not load demo users"));
+      .then((d) => setLabels(d.scopes ?? {}))
+      .catch(() => setLabels({}));
   }, []);
+
+  async function call(action: "verify" | "authorize") {
+    const r = await fetch("/api/sanad/mock/authorize", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action, nationalId, password, scopes: requested, return: returnUrl }),
+    });
+    return { ok: r.ok, data: await r.json().catch(() => ({})) };
+  }
+
+  async function signIn(e: FormEvent) {
+    e.preventDefault();
+    setBusy(true);
+    setError("");
+    const res = await call("verify");
+    setBusy(false);
+    if (!res.ok) return setError(res.data.error || "Sign-in failed");
+    setPerson(res.data);
+  }
 
   async function approve() {
     setBusy(true);
     setError("");
-    const r = await fetch("/api/sanad/mock/authorize", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ nationalId: picked, scopes: requested, return: returnUrl }),
-    });
-    const d = await r.json();
-    if (!r.ok) {
+    const res = await call("authorize");
+    if (!res.ok) {
       setBusy(false);
-      return setError(d.error);
+      return setError(res.data.error || "Could not approve");
     }
-    window.location.href = d.redirect;
+    window.location.href = res.data.redirect;
   }
-
-  const user = users.find((u) => u.nationalId === picked);
 
   return (
     <>
-      <div className="mock-banner">
-        نسخة تجريبية من سند - ليست خدمة سند الحقيقية · MOCK SANAD - not the real SANAD service
-      </div>
+      <div className="mock-banner">نسخة تجريبية من سند - ليست خدمة سند الحقيقية · MOCK SANAD - demo only, not the real SANAD service</div>
       <div className="wrap" style={{ maxWidth: 520 }}>
+        <p>
+          <a href="/">← العودة إلى بداية · Back to Bedaya</a>
+        </p>
         <div className="card">
           <div className="sanad-head">
             <div className="sanad-logo">سند</div>
             <div>
               <h1>تسجيل الدخول عبر سند</h1>
-              <div className="en">Sign in with SANAD (mock)</div>
+              <div className="en">Sign in with SANAD (demo)</div>
             </div>
           </div>
         </div>
 
-        {stage === "pick" && (
-          <div className="card">
-            <h2>اختر هوية تجريبية</h2>
-            <p className="en">Choose a demo identity (dummy data)</p>
-            {users.map((u) => (
-              <label key={u.nationalId} className={`choice ${picked === u.nationalId ? "on" : ""}`}>
-                <input type="radio" name="u" checked={picked === u.nationalId} onChange={() => setPicked(u.nationalId)} />
-                <div>
-                  <div>{u.nameAr}</div>
-                  <div className="en">
-                    {u.nameEn} · {u.nationalId}
-                  </div>
-                </div>
-              </label>
-            ))}
+        {!person && (
+          <form className="card" onSubmit={signIn}>
+            <label>
+              الرقم الوطني <span className="en">· National ID</span>
+              <input inputMode="numeric" autoComplete="username" maxLength={10} value={nationalId} onChange={(e) => setNationalId(e.target.value.replace(/\D/g, ""))} required />
+            </label>
+            <label>
+              كلمة مرور سند <span className="en">· SANAD password</span>
+              <input type="password" autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            </label>
             <div className="row" style={{ marginTop: 12 }}>
-              <button className="primary" disabled={!picked} onClick={() => setStage("consent")}>
-                متابعة · Continue
+              <button className="primary" disabled={busy || nationalId.length !== 10 || !password}>
+                دخول · Sign in
+              </button>
+              <button type="button" onClick={() => (window.location.href = returnUrl.split("#")[0] || "/")}>
+                إلغاء · Cancel
               </button>
             </div>
-          </div>
+          </form>
         )}
 
-        {stage === "consent" && user && (
+        {person && (
           <div className="card">
             <h2>منصة بداية تطلب الوصول إلى بياناتك</h2>
-            <p className="en">Bedaya is asking to use this data from your SANAD account:</p>
+            <p className="en">
+              {person.nameAr} · {person.nameEn}: Bedaya is asking to use this data from your SANAD account:
+            </p>
             <ul>
               {requested.map((s) => (
                 <li key={s}>
@@ -107,12 +115,12 @@ function MockSanadLogin() {
               <button className="primary" disabled={busy} onClick={approve}>
                 أوافق · Approve
               </button>
-              <button onClick={() => (window.location.href = returnUrl)}>إلغاء · Cancel</button>
+              <button onClick={() => (setPerson(null), setPassword(""))}>رجوع · Back</button>
             </div>
           </div>
         )}
 
-        {error && <div className="card tag warn">{error}</div>}
+        {error && <div className="card tag warn" role="alert">{error}</div>}
       </div>
     </>
   );
