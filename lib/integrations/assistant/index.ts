@@ -4,6 +4,7 @@ import { generate, type LlmMessage, type LlmSource } from "../llm";
 import { detectLang, normalize, pick } from "../text";
 import type { Lang, LegalForm, UserProfile } from "../types";
 import { answerFromKnowledge, detectForms, type AnswerKind } from "./engine";
+import { conversationAnswer } from "./conversation";
 
 export interface ChatRequest {
   message: string;
@@ -66,6 +67,8 @@ function contextForm(req: ChatRequest): LegalForm | undefined {
 
 /** Answers from the data; a follow-up like "and how much is it?" is read together with the previous question. */
 function engineAnswer(req: ChatRequest, lang: Lang) {
+  const conversation = conversationAnswer(req.message, req.history ?? [], lang);
+  if (conversation) return conversation;
   const form = contextForm(req);
   const direct = answerFromKnowledge(req.message, lang, form);
   const previous = (req.history ?? []).filter((m) => m.role === "user").at(-1)?.content;

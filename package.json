@@ -14,7 +14,8 @@
     "test:features": "tsx scripts/test-features.ts",
     "demo:cache": "tsx scripts/build-demo-cache.ts",
     "ask": "tsx scripts/ask.ts",
-    "demo:m5": "tsx scripts/m5-demo.ts"
+    "demo:m5": "tsx scripts/m5-demo.ts",
+    "test:conversation": "tsx scripts/test-conversation.ts"
   },
   "devDependencies": {
     "@types/node": "^26.6.4",

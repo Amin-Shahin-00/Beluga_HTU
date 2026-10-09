@@ -1,9 +1,20 @@
 node_modules/
 .next/
 .env
-.env.local
+.env.*
+!.env.example
+!**/.env.example
 next-env.d.ts
 *.tsbuildinfo
+
 # M5 identity: local demo data and demo script output
 .data/
 output/
+
+# Member 3 Python artifacts
+**/__pycache__/
+**/*.pyc
+**/.venv/
+**/.idea/
+
+.DS_Store
