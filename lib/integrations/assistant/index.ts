@@ -67,9 +67,16 @@ function contextForm(req: ChatRequest): LegalForm | undefined {
 
 /** Answers from the data; a follow-up like "and how much is it?" is read together with the previous question. */
 function engineAnswer(req: ChatRequest, lang: Lang) {
+  const form = contextForm(req);
+  // A bare "how much?" after a specific question: answer that step's fee when the data knows it,
+  // otherwise Member 3's clarifying question below asks which cost is meant.
+  const lastUser = (req.history ?? []).filter((m) => m.role === "user").at(-1)?.content;
+  if (lastUser && /^(and\s+)?(how much|what (is|are) the cost|كم|قديش)/i.test(req.message.trim())) {
+    const followUp = answerFromKnowledge(`${lastUser} ${req.message}`, lang, form);
+    if (followUp.matchedId?.endsWith(":fee")) return followUp;
+  }
   const conversation = conversationAnswer(req.message, req.history ?? [], lang);
   if (conversation) return conversation;
-  const form = contextForm(req);
   const direct = answerFromKnowledge(req.message, lang, form);
   const previous = (req.history ?? []).filter((m) => m.role === "user").at(-1)?.content;
   if (direct.matchedId || !previous) return direct;
