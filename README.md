@@ -1,3 +1,59 @@
+# Member 3 - Bedaya frontend and chat connection
+
+Member 3's Flask frontend is in **bedaya_project/**. The repository root retains Member 5's existing Next.js API service from M5_Ameen (base commit 00a3d02). It uses Member 1's data under data/m1/. The frontend remains Python + Flask + HTML + CSS + vanilla JavaScript.
+
+## Run the connected demo
+
+Two terminals are needed. The Node service is a teammate dependency; it does not replace the frontend.
+
+Terminal 1, in the repository root (Node 20+ installed):
+
+```sh
+npm install
+LLM_PROVIDER=mock WATCHPACK_POLLING=true npm run dev -- --webpack --hostname 127.0.0.1 --port 3000
+```
+
+Terminal 2:
+
+```sh
+cd bedaya_project
+python -m pip install -r requirements.txt
+BEDAYA_API_BASE_URL=http://127.0.0.1:3000 PORT=5002 python bedaya.py
+```
+
+Open http://127.0.0.1:5002. Keep both terminals open. These environment-variable commands are for macOS/Linux; on Windows PowerShell set `$env:BEDAYA_API_BASE_URL="http://127.0.0.1:3000"`, `$env:PORT="5002"`, and `$env:LLM_PROVIDER="mock"` in the appropriate terminal before running the commands without inline environment assignments.
+
+## Member 3 work
+
+- Eight responsive frontend screens: home, demo login, questionnaire, dashboard, documents, assistant, support, funding.
+- Fixed shared layout collision causing narrow overlapping cards.
+- Chat adapter for confirmed POST /api/ai/chat: history, source labels, safe source/office links, loading, retry, timeout/offline states.
+- Local data-mode dialogue improvements in lib/integrations/assistant/conversation.ts: greetings, business-idea clarification, budget questions, thanks, and ambiguous cost follow-ups. These are rule-based prompts, not live AI.
+- Questionnaire data and selected files are not automatically forwarded to the service.
+
+Roadmap and support screens remain generic demonstrations. Documents remain local selection/preview. Sign-in is simulated. Chat is team-data mode by default; live model configuration belongs to Member 5 and secrets must stay server-side. Do not commit real .env files.
+
+## Checks
+
+```sh
+cd bedaya_project
+python -m unittest discover -s tests -v
+```
+
+At repository root:
+
+```sh
+npm run typecheck
+npm run test:assistant
+npm run test:conversation
+```
+
+Verified: 8 Flask tests; TypeScript check; 20 existing assistant tests; 10 additional conversation/API scenarios. See bedaya_project/README.md for detailed frontend guidance. Existing PDF study guide is an older snapshot and is not the current integration documentation.
+
+---
+
+## Member 5 service documentation
+
 # Bedaya: M5 AI features (Ameen)
 
 The AI features of Bedaya, a helper for people starting a business in Jordan:
