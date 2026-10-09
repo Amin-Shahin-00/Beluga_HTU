@@ -104,6 +104,22 @@ Other pages, each with a back bar:
 - `/mock-sanad/login`: the mock SANAD sign-in, clearly labelled as a demo, in Arabic or English. It runs in 3 steps: sign in with national ID and SANAD password, approve exactly what Bedaya receives, then return to Bedaya.
 - Developer benches: `/ai-bench`, `/m5-demo` and `/backend`.
 
+## The AI assistant (chatbot)
+
+The **Assistant** page, and the **Ask Bedaya** button on every page, is a chatbot that guides clients through the process in Arabic or English.
+
+- **Grounded, not trained.** Each answer is built from Bedaya's official data, retrieved for the question (fees, papers, offices, timings, sources). It also uses the signed-in client's own situation, read on the server: their business, roadmap progress, next step, the papers still needed, total fees and matching funding programmes. The model writes the answer; the facts come from the data. Nothing is fine-tuned, so when a fee changes you update the data and the chatbot follows.
+- **Open-source and local by default.** It runs Qwen 2.5 7B through [Ollama](https://ollama.com) on the laptop's GPU. It's free, needs no API key and no internet, and nothing leaves the machine. Answers stream word by word.
+- **Always answers.** If the model is off or slow, the chatbot falls back to Bedaya's offline engine, which still answers personally (next step, total fees, missing papers, funding matches).
+- **Safe output.** Model text is escaped. Only bold, lists and links to known Bedaya pages are rendered, and official sources are listed under each answer.
+
+Setup on a new machine:
+```
+winget install Ollama.Ollama      # or download from ollama.com
+ollama pull qwen2.5:7b            # about 4.7 GB; runs on a 6 GB GPU
+```
+Then set `LLM_PROVIDER=ollama` in `.env.local` and restart. To use Claude instead (paid), set `LLM_PROVIDER=anthropic`, `LLM_API_KEY` and `BEDAYA_ALLOW_EXTERNAL_AI=true`.
+
 ## Tests
 
 ```
@@ -124,7 +140,7 @@ npm run build
   - The demo bank, appointment and expert slots, compliance dates, zoning areas on the map, and analytics.
   - Domain availability and purchase, and published-site hosting (local subdomains).
   - Email/WhatsApp sending, which is only logged.
-- **AI:** works with no API key (`LLM_PROVIDER=mock` answers from the data and the Launch Studio uses offline generators). Live AI needs `LLM_PROVIDER=anthropic`, `LLM_API_KEY` and `BEDAYA_ALLOW_EXTERNAL_AI=true`, all as environment variables. Logos from the model are rebuilt by an allow-list SVG sanitiser. The 14 brand fonts are served from `public/vendor/fonts` (SIL Open Font Licence; `scripts/fetch-fonts.mjs` downloaded them). Logos, designs, PDFs and published sites keep their fonts offline; only the street-map tiles need internet. Websites are JSON that fills Bedaya's template, never model-written HTML.
+- **AI:** works with no API key. `LLM_PROVIDER=mock` answers from the data, and the Launch Studio uses offline generators. `LLM_PROVIDER=ollama` runs a free open-source model locally (see the AI assistant section above). `LLM_PROVIDER=anthropic` uses Claude and needs `LLM_API_KEY` and `BEDAYA_ALLOW_EXTERNAL_AI=true`. All of these are environment variables. Logos from the model are rebuilt by an allow-list SVG sanitiser. The 14 brand fonts are served from `public/vendor/fonts` (SIL Open Font Licence; `scripts/fetch-fonts.mjs` downloaded them). Logos, designs, PDFs and published sites keep their fonts offline; only the street-map tiles need internet. Websites are JSON that fills Bedaya's template, never model-written HTML.
 
 ## More documentation
 

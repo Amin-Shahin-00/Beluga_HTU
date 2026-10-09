@@ -8,6 +8,7 @@ import * as staff from "./staff.js";
 import * as tools from "./tools.js";
 import * as studio from "./studio.js";
 import * as services from "./services.js";
+import { floatingChat } from "./chat.js";
 
 const ROUTES = {
   entry: onboarding.entry,
@@ -144,7 +145,8 @@ function breadcrumb(route, title) {
   const home = homeRoute();
   const crumbs = [`<a href="#entry">${t("Home", "الرئيسية")}</a>`];
   if (session.account && route !== home) crumbs.push(`<a href="#${home}">${t("Main page", "الصفحة الرئيسية لحسابي")}</a>`);
-  const section = session.role === "owner" && groupOf(route) && groupOf(route).id !== route ? groupOf(route).label : SECTION[route];
+  const group = session.role === "owner" ? groupOf(route) : null;
+  const section = group ? (group.id !== route ? group.label : null) : SECTION[route];
   if (section && route !== home) crumbs.push(`<span>${tx(section)}</span>`);
   crumbs.push(`<span aria-current="page">${esc(title)}</span>`);
   const back = session.account && route !== home ? `<button class="back-main" data-go="${home}"><i data-lucide="arrow-left"></i>${t("Back to main page", "العودة للصفحة الرئيسية")}</button>` : "";
@@ -207,6 +209,7 @@ async function render() {
       toast(error?.message || t("Something went wrong.", "حدث خطأ ما."));
     }
   }
+  floatingChat(route);
   paintIcons();
   updateUnread();
 }

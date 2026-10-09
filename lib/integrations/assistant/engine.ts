@@ -368,6 +368,45 @@ function score(c: Candidate, text: string, forms: LegalForm[], contextForm?: Leg
   return total;
 }
 
+export interface Retrieved extends Rendered {
+  id: string;
+}
+/**
+ * The k knowledge entries most related to the question, for the chatbot's grounding context.
+ * Full matches (every keyword group) rank first; partial matches fill the rest so the model sees
+ * nearby facts too. Each entry is rendered in the requested language.
+ */
+export function retrieveKnowledge(question: string, lang: Lang, contextForm?: LegalForm, k = 6): Retrieved[] {
+  const text = normalize(question);
+  const forms = detectForms(text);
+  const partial = (c: Candidate) => {
+    let total = 0;
+    let hits = 0;
+    for (const group of c.groups) {
+      const best = longestMatch(text, group);
+      if (best) (hits++, (total += best + 5));
+    }
+    if (!hits) return 0;
+    if (c.forms && forms.length && !c.forms.some((f) => forms.includes(f))) total -= 15;
+    if (c.forms && !forms.length && contextForm && c.forms.includes(contextForm)) total += 3;
+    return total + hits * 2;
+  };
+  const ranked = candidates
+    .map((c) => ({ c, full: score(c, text, forms, contextForm), part: partial(c) }))
+    .filter((r) => r.full > 0 || r.part > 0)
+    .sort((a, b) => (b.full > 0 ? 1000 + b.full : b.part) - (a.full > 0 ? 1000 + a.full : a.part));
+  const out: Retrieved[] = [];
+  const seen = new Set<string>();
+  for (const { c } of ranked) {
+    const r = c.render(lang);
+    if (seen.has(r.text)) continue;
+    seen.add(r.text);
+    out.push({ id: c.id, ...r });
+    if (out.length >= k) break;
+  }
+  return out;
+}
+
 export function answerFromKnowledge(question: string, lang: Lang, contextForm?: LegalForm): EngineAnswer {
   const text = normalize(question);
   const forms = detectForms(text);

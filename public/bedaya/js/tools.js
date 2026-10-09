@@ -1,109 +1,20 @@
 // Assistant (M5 AI), notifications (M4 + M5), appointments, business plan, compliance, location (M4),
 // and e-invoicing (M5).
 import { $, $$, api, bpath, confirmDialog, day, download, errorText, esc, go, jod, lang, loadScript, loadStyle, needsAccount, ready, sanadValue, session, t, time, toast, tx } from "./core.js";
+import { mountChat } from "./chat.js";
 
-// ---------- assistant (feature 8), with Member 3's chat behaviour ----------
-const history = []; // kept for this visit only; sent with each question (last 10 turns)
-const SUGGESTIONS = [
-  ["What documents do I need for a home business licence?", "شو الوثائق المطلوبة لرخصة المهن المنزلية؟"],
-  ["Can I run a bakery from home?", "هل أستطيع فتح مخبز من البيت؟"],
-  ["How much does it cost to register an LLC?", "كم رسوم تسجيل شركة ذات مسؤولية محدودة؟"],
-  ["Do I need to register in social security if I work alone?", "هل لازم أسجل بالضمان إذا ما عندي موظفين؟"],
-];
-const SOURCE_LABEL = {
-  mock: ["Answer from Bedaya's verified data · no live AI", "إجابة من بيانات بداية الموثقة · بدون ذكاء اصطناعي مباشر"],
-  llm: ["Live AI answer from Bedaya's data", "إجابة ذكاء اصطناعي مباشرة من بيانات بداية"],
-  cache: ["Saved AI answer", "إجابة ذكاء اصطناعي محفوظة"],
-  fallback: ["Data answer · live AI unavailable", "إجابة من البيانات · الذكاء الاصطناعي غير متاح"],
-};
-
+// ---------- assistant (feature 8): Bedaya's chatbot, grounded in official data and the client's progress ----------
 export const assistant = {
   async render() {
     return `<div class="eyebrow">${t("Assistant", "المساعد")}</div>
-      <h1>${t("A little clarity, whenever you need it", "إجابة واضحة عندما تحتاجها")}</h1>
-      <p class="subtitle">${t("Ask about fees, documents, offices or your next step, in Arabic or English.", "اسأل عن الرسوم أو المستندات أو الجهات أو خطوتك التالية، بالعربية أو الإنجليزية.")}</p>
-      <div class="chips">${SUGGESTIONS.map((s) => `<button data-question="${esc(tx(s))}">${esc(tx(s))}</button>`).join("")}</div>
-      <div id="messages"><div class="bubble assistant"><small>${t("Bedaya", "بداية")}</small><p>${t("Hello! I answer only from official Jordanian sources. When I don't know something, I'll tell you which office to ask.", "مرحباً! أجيب فقط من مصادر أردنية رسمية. وإذا لم أعرف شيئاً سأخبرك بالجهة التي تسألها.")}</p></div></div>
-      <form class="chat-form" id="chat-form" novalidate><input id="question" maxlength="1000" aria-label="${t("Your question", "سؤالك")}" placeholder="${t("Type your question", "اكتب سؤالك")}" dir="auto"><button class="primary" id="send">${t("Send", "إرسال")}</button></form>
-      <div class="toolbar"><button id="chat-clear">${t("Clear conversation", "مسح المحادثة")}</button></div>
-      <p class="note" id="chat-disclaimer">${t("No government endorsement. Confirm current requirements with the relevant authority.", "لا تمثل جهة حكومية. تأكد من المتطلبات الحالية لدى الجهة المختصة.")}</p>`;
+      <h1>${t("Your guide through every step", "دليلك في كل خطوة")}</h1>
+      <p class="subtitle">${t("Chat in Arabic or English about fees, papers, offices, funding or your next step. It knows where you are in your roadmap.", "تحدث بالعربية أو الإنجليزية عن الرسوم والأوراق والجهات والتمويل أو خطوتك التالية. يعرف أين وصلت في مسارك.")}</p>
+      <div id="assistant-chat"></div>`;
   },
   mount() {
-    const box = $("#messages");
-    let busy = false;
-    for (const turn of history) bubble(turn.content, turn.role === "user" ? "user" : "assistant");
-    function bubble(text, kind) {
-      const el = document.createElement("div");
-      el.className = `bubble ${kind === "user" ? "" : "assistant"}`;
-      el.textContent = text;
-      el.dir = "auto";
-      box.append(el);
-      el.scrollIntoView({ block: "nearest" });
-      return el;
-    }
-    function link(container, title, url) {
-      try {
-        const u = new URL(url);
-        if (!["http:", "https:"].includes(u.protocol) || typeof title !== "string") return;
-        const a = document.createElement("a");
-        a.href = u.href;
-        a.textContent = title;
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
-        container.append(a);
-      } catch {
-        /* skip malformed links */
-      }
-    }
-    async function send(message) {
-      if (busy) return;
-      message = message.trim();
-      if (!message) return toast(t("Please enter a question.", "يرجى كتابة سؤال."));
-      busy = true;
-      $("#send").disabled = true;
-      bubble(message, "user");
-      $("#question").value = "";
-      const loading = bubble(t("Thinking…", "لحظة…"), "assistant");
-      const res = await api("/api/ai/chat", { method: "POST", body: { message, history: history.slice(-10), ...(session.profile ? { profile: session.profile } : {}) }, timeoutMs: 18000 });
-      if (res.ok && typeof res.data.answer === "string" && res.data.answer.trim()) {
-        const r = res.data;
-        loading.textContent = r.answer;
-        loading.dir = r.lang === "ar" ? "rtl" : "ltr";
-        const label = document.createElement("small");
-        label.className = "answer-source";
-        label.textContent = tx(SOURCE_LABEL[r.source] || SOURCE_LABEL.mock);
-        loading.append(label);
-        const links = document.createElement("div");
-        links.className = "answer-links";
-        (r.sources || []).forEach((s) => s && link(links, s.title, s.url));
-        (r.offices || []).forEach((o) => o && link(links, o.name, o.website));
-        if (links.childNodes.length) loading.append(links);
-        if (typeof r.disclaimer === "string") $("#chat-disclaimer").textContent = r.disclaimer;
-        history.push({ role: "user", content: message }, { role: "assistant", content: r.answer });
-        if (history.length > 10) history.splice(0, history.length - 10);
-      } else {
-        loading.classList.add("failure");
-        loading.textContent = res.status === 0 ? errorText(res) : `${t("No answer received", "لم تصل إجابة")}: ${errorText(res)}`;
-        const retry = document.createElement("button");
-        retry.type = "button";
-        retry.textContent = t("Ask again", "اسأل مرة أخرى");
-        retry.onclick = () => send(message);
-        loading.append(document.createElement("br"), retry);
-      }
-      busy = false;
-      $("#send").disabled = false;
-      $("#question").focus();
-    }
-    $("#chat-form").onsubmit = (e) => (e.preventDefault(), send($("#question").value));
-    $$("[data-question]").forEach((b) => (b.onclick = () => send(b.dataset.question)));
-    $("#chat-clear").onclick = () => {
-      history.length = 0;
-      box.replaceChildren();
-      bubble(t("Conversation cleared. Ask about starting a business in Jordan.", "تم مسح المحادثة. اسأل عن بدء مشروع في الأردن."), "assistant");
-    };
+    mountChat($("#assistant-chat")).focus();
   },
 };
-
 // ---------- notifications (feature 11): M4's roadmap/booking messages + M5's form/office messages ----------
 export async function loadNotifications() {
   const [m4, m5] = await Promise.all([session.account ? api("/api/platform/notifications") : null, session.identity ? api("/api/notifications") : null]);
