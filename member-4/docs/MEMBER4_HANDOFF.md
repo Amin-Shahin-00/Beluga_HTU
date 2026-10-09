@@ -131,10 +131,10 @@ Security audit: runtime dependencies had 0 known vulnerabilities at the audit pe
 
 ## Deployment handoff
 
-No GitHub repository or Vercel deployment was created or published. The imported upstream branch was read only and not modified. To deploy:
+The backend source is published in Amin-Shahin-00/Beluga_HTU, branch M4_Bedaya, under member-4/. Existing team files and the M5 branch were preserved. Vercel deployment is not published. To deploy:
 
-1. Put this project in the team's agreed GitHub branch (coordinate with M3; do not overwrite M5's branch).
-2. Import that repository into Vercel, choose Next.js, and add only the Supabase URL/publishable key from your local config in Vercel Environment Variables.
+1. Use the M4_Bedaya branch, or coordinate merging it with M3. Do not overwrite the M5 branch.
+2. Import that repository into Vercel, choose Next.js, set Root Directory to member-4, and add only the Supabase URL/publishable key from your local config in Vercel Environment Variables.
 3. Keep `LLM_PROVIDER=mock`, `BEDAYA_ALLOW_EXTERNAL_AI=false` for the demo; no model key is required.
 4. Apply the two migrations and team seed to the target Supabase project if it differs from the current development project.
 5. Set Supabase Auth Site URL and allowed redirects to the deployed origin. Keep email confirmation enabled.
