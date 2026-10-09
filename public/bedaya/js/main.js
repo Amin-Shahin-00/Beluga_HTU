@@ -52,24 +52,7 @@ const OWNER_ONLY = new Set(["link-sanad", ...Object.keys(onboarding.wizardScreen
 
 // Member 2's navigation and icons, per kind of account.
 const NAV = {
-  owner: [
-    ["roadmap", ["Your roadmap", "مسار مشروعك"], "route"],
-    ["documents", ["Documents", "المستندات"], "files"],
-    ["signing", ["Signatures", "التواقيع"], "signature"],
-    ["incubators", ["Incubators", "الحاضنات"], "sprout"],
-    ["bank", ["Bank file", "الملف البنكي"], "landmark"],
-    ["studio", ["Launch Studio", "استوديو الإطلاق"], "sparkles"],
-    ["services", ["Startup services", "خدمات الانطلاق"], "briefcase"],
-    ["assistant", ["Assistant", "المساعد"], "message-circle"],
-    ["notifications", ["Notifications", "الإشعارات"], "bell"],
-    ["appointments", ["Appointments", "المواعيد"], "calendar-days"],
-    ["experts", ["Experts", "الخبراء"], "users"],
-    ["plan", ["Business plan", "خطة العمل"], "notebook-pen"],
-    ["compliance", ["Compliance", "الالتزامات"], "calendar-check"],
-    ["location", ["Location", "الموقع"], "map-pin"],
-    ["funding", ["Funding", "التمويل"], "wallet"],
-    ["invoicing", ["E-invoicing", "الفوترة الإلكترونية"], "receipt"],
-  ],
+  owner: [], // built from GROUPS below
   bank: [["partner", ["Bank applications", "طلبات البنك"], "landmark"]],
   incubator: [["partner", ["Applications", "الطلبات"], "inbox"]],
   expert: [["expert", ["My availability", "مواعيدي"], "calendar-days"]],
@@ -79,6 +62,26 @@ const NAV = {
     ["partner", ["All applications", "كل الطلبات"], "inbox"],
   ],
 };
+// The owner's pages, combined into a few sections. The menu shows one item per section; inside a
+// section, tabs lead to its pages. `also` lists pages reached from inside a section (no tab of their own).
+const GROUPS = [
+  { id: "roadmap", label: ["Your roadmap", "مسار مشروعك"], icon: "route", tabs: [["roadmap", ["Steps", "الخطوات"]], ["plan", ["Business plan", "خطة العمل"]], ["location", ["Location", "الموقع"]], ["compliance", ["Compliance", "الالتزامات"]]] },
+  { id: "documents", label: ["Documents & signing", "المستندات والتواقيع"], icon: "files", tabs: [["documents", ["Documents", "المستندات"]], ["signing", ["Sign forms", "توقيع النماذج"]]], also: ["ocr", "signed"] },
+  { id: "incubators", label: ["Funding & support", "التمويل والدعم"], icon: "sprout", tabs: [["incubators", ["Incubators", "الحاضنات"]], ["funding", ["Funding", "التمويل"]], ["bank", ["Bank file", "الملف البنكي"]], ["applied", ["My applications", "طلباتي"]], ["experts", ["Experts", "الخبراء"]], ["appointments", ["Appointments", "المواعيد"]]], also: ["bank-sent", "expert-book"] },
+  { id: "studio", label: ["Launch Studio", "استوديو الإطلاق"], icon: "sparkles", tabs: [["studio", ["Overview", "نظرة عامة"]], ["studio-brand", ["Brand kit", "الهوية"]], ["studio-design", ["Designs", "التصاميم"]], ["studio-site", ["Website", "الموقع الإلكتروني"]]] },
+  { id: "services", label: ["Business tools", "أدوات الأعمال"], icon: "briefcase", tabs: [["services", ["Overview", "نظرة عامة"]], ["services-hr", ["HR & payroll", "الموارد البشرية"]], ["services-domain", ["Domain & email", "النطاق والبريد"]], ["services-accounting", ["Accounting", "المحاسبة"]], ["invoicing", ["E-invoicing", "الفوترة الإلكترونية"]], ["services-presence", ["Online presence", "الحضور الرقمي"]], ["services-hiring", ["Hiring", "التوظيف"]]] },
+  { id: "assistant", label: ["Assistant", "المساعد"], icon: "message-circle", tabs: [] },
+  { id: "notifications", label: ["Notifications", "الإشعارات"], icon: "bell", tabs: [] },
+];
+NAV.owner = GROUPS.map((g) => [g.id, g.label, g.icon]);
+const groupOf = (route) => GROUPS.find((g) => g.id === route || g.tabs.some(([id]) => id === route) || (g.also || []).includes(route));
+/** Tabs for the section the page belongs to (owner pages only). */
+function sectionTabs(route) {
+  const g = session.role === "owner" ? groupOf(route) : null;
+  if (!g || g.tabs.length < 2) return "";
+  const current = g.tabs.find(([id]) => id === route)?.[0] ?? { ocr: "documents", signed: "signing", "bank-sent": "bank", "expert-book": "experts" }[route];
+  return `<div class="section-tabs" role="navigation" aria-label="${esc(tx(g.label))}">${g.tabs.map(([id, label]) => `<a href="#${id}" ${id === current ? 'aria-current="page"' : ""}>${tx(label)}</a>`).join("")}</div>`;
+}
 const ROLE_LABEL = {
   owner: ["Business owner", "صاحب مشروع"],
   bank: ["Bank", "بنك"],
@@ -126,7 +129,7 @@ function sidebar(route) {
       .map(([id, label, icon]) => {
         const active =
           route === id ||
-          (["studio", "services"].includes(id) && route.startsWith(`${id}-`)) ||
+          (session.role === "owner" && groupOf(route)?.id === id) ||
           (id === "partner" && route === "application") ||
           (id === "experts" && route === "expert-book") ||
           (id === "bank" && route === "bank-sent");
@@ -141,7 +144,8 @@ function breadcrumb(route, title) {
   const home = homeRoute();
   const crumbs = [`<a href="#entry">${t("Home", "الرئيسية")}</a>`];
   if (session.account && route !== home) crumbs.push(`<a href="#${home}">${t("Main page", "الصفحة الرئيسية لحسابي")}</a>`);
-  if (SECTION[route] && !(route === home)) crumbs.push(`<span>${tx(SECTION[route])}</span>`);
+  const section = session.role === "owner" && groupOf(route) && groupOf(route).id !== route ? groupOf(route).label : SECTION[route];
+  if (section && route !== home) crumbs.push(`<span>${tx(section)}</span>`);
   crumbs.push(`<span aria-current="page">${esc(title)}</span>`);
   const back = session.account && route !== home ? `<button class="back-main" data-go="${home}"><i data-lucide="arrow-left"></i>${t("Back to main page", "العودة للصفحة الرئيسية")}</button>` : "";
   return `<div class="crumbs"><nav aria-label="${t("Breadcrumb", "مسار التنقل")}" class="breadcrumb">${crumbs.join('<span class="sep" aria-hidden="true">›</span>')}</nav>${back}</div>`;
@@ -189,7 +193,7 @@ async function render() {
   const main = $("#main");
   main.innerHTML = html;
   const title = main.querySelector("h1")?.textContent?.trim() || "Bedaya";
-  if (!entryLayout) main.insertAdjacentHTML("afterbegin", breadcrumb(route, title));
+  if (!entryLayout) main.insertAdjacentHTML("afterbegin", breadcrumb(route, title) + sectionTabs(route));
   main.insertAdjacentHTML("beforeend", `<footer>${t("Bedaya hackathon build · SANAD, OCR and signatures are simulated · fees and steps from official Jordanian sources", "نسخة هاكاثون بداية · سند والقراءة الآلية والتواقيع محاكاة · الرسوم والخطوات من مصادر أردنية رسمية")}</footer>`);
   document.title = `${title} | ${t("Bedaya", "بداية")}`;
   $$("[data-go]", main).forEach((b) => (b.onclick = () => go(b.dataset.go)));

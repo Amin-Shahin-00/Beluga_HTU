@@ -129,6 +129,10 @@ table.data th { font-size: 12px; color: var(--muted); font-weight: 700; }
 
 /* ---------- Part 3: accounts per party, navigation, bank selection, experts, map ---------- */
 .role-chip { font-weight: 700; }
+.section-tabs { display: flex; gap: 6px; margin: -6px 0 26px; padding-bottom: 2px; border-bottom: 1px solid var(--line); overflow-x: auto; scrollbar-width: thin; }
+.section-tabs a { flex: none; padding: 10px 16px; border-radius: 6px 6px 0 0; text-decoration: none; color: var(--muted); font-size: 14px; border-bottom: 3px solid transparent; margin-bottom: -3px; white-space: nowrap; }
+.section-tabs a:hover { color: var(--green); background: #eef5f1; }
+.section-tabs a[aria-current="page"] { color: var(--green); font-weight: 700; border-bottom-color: var(--green); }
 .crumbs { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: -16px 0 22px; }
 nav.breadcrumb { display: flex; flex-direction: row; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 13px; color: var(--muted); }
 .breadcrumb a { padding: 0; display: inline; color: var(--green); font-size: 13px; text-decoration: underline; }
