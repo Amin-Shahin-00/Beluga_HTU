@@ -154,3 +154,111 @@ export interface TestQuestion {
     mustMention: string[][];
   };
 }
+
+// ======================================================================
+// M5 partner: identity, documents, signing. Added when merging into the team
+// repo; nothing above was changed. OCR uses OcrResult and DocType from above.
+// SANAD-ready: login, signing and payments go through the three provider
+// interfaces below. MockSanad implements them today; the real SANAD adapter
+// becomes a second implementation once MoDEE approves.
+
+/** Where a value came from. Every field shown to the user carries one. */
+export type Source = "verified_by_sanad" | "typed_by_user" | "read_by_ocr";
+
+export interface Field<T = string> {
+  value: T;
+  source: Source;
+}
+
+/** Data scopes the user must consent to before we pull them from SANAD. */
+export type SanadScope = "identity" | "contact" | "address";
+
+export interface SanadUser {
+  /** National ID number: the main user key across M5. */
+  nationalId: string;
+  fullNameAr: Field;
+  fullNameEn: Field;
+  birthDate: Field; // YYYY-MM-DD
+  gender: Field<"M" | "F">;
+  phone?: Field;
+  email?: Field;
+  city?: Field;
+}
+
+export interface IdentityProvider {
+  /** URL to send the browser to for "Login with SANAD". */
+  getLoginUrl(returnUrl: string, scopes: SanadScope[]): string;
+  /** Exchange the one-time code from the callback for verified user data. */
+  exchangeCode(code: string): Promise<SanadUser>;
+}
+
+export interface DocumentToSign {
+  documentId: string;
+  title: string;
+  pdf: Uint8Array;
+}
+
+export interface SignedDocument {
+  documentId: string;
+  signedPdf: Uint8Array;
+  /** SHA-256 of the signed PDF bytes. */
+  hash: string;
+  signedAt: string; // ISO timestamp
+  /** Reference the signature provider gives the signature. */
+  signatureRef: string;
+}
+
+export interface SignatureProvider {
+  /** Sign all documents in one session ("sign all"). */
+  signDocuments(nationalId: string, docs: DocumentToSign[]): Promise<SignedDocument[]>;
+}
+
+export type PaymentStatus = "pending" | "paid" | "failed";
+
+export interface Payment {
+  paymentId: string;
+  nationalId: string;
+  amountJod: number;
+  description: string;
+  status: PaymentStatus;
+  createdAt: string;
+}
+
+export interface PaymentProvider {
+  createPayment(nationalId: string, amountJod: number, description: string): Promise<Payment>;
+  getPayment(paymentId: string): Promise<Payment | null>;
+}
+
+/** Produces the OcrResult above. OCR_PROVIDER=mock today; tesseract/cloud later. */
+export interface OcrProvider {
+  scan(
+    /** `id` becomes OcrResult.fileId (the stored document's id). */
+    file: { id: string; name: string; mimeType: string; bytes: Uint8Array },
+    hint?: DocType,
+    /** Who uploaded it. Real OCR ignores this; the mock uses it to pick dummy data. */
+    context?: { nationalId?: string },
+  ): Promise<OcrResult>;
+}
+
+/**
+ * The business answers M5's forms are filled from, each value with its source.
+ * Stand-in for M4's wizard output; toUserProfile() in profile.ts converts it
+ * to the UserProfile above for the AI routes.
+ */
+export interface BusinessProfile {
+  nationalId: string;
+  businessNameAr: Field;
+  businessNameEn: Field;
+  activityAr: Field;
+  activityEn: Field;
+  /** ISIC activity code, dummy for the demo. 10xx/11xx = food. */
+  activityCode: Field;
+  city: Field;
+  address: Field;
+  homeBased: Field<boolean>;
+  legalForm: Field<"sole_proprietorship" | "llc">;
+  capitalJod: Field<number>;
+  partners: Field<number>;
+  phone: Field;
+  email: Field;
+}

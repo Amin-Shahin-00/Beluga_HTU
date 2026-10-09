@@ -1,0 +1,96 @@
+/* M5 identity/documents screens: /dashboard, /m5-demo, /mock-sanad.
+   Everything is scoped under .m5 (set by those routes' layouts) so it never
+   touches the rest of the app, and the shared globals.css doesn't change it. */
+
+.m5 {
+  --bg: #f6f7f8;
+  --card: #ffffff;
+  --ink: #1a1f29;
+  --muted: #6b7280;
+  --line: #e3e6ea;
+  --green: #1a7f4d;
+  --green-soft: #e8f5ee;
+  --red: #b42318;
+  --red-soft: #fdecea;
+  --blue: #2159b3;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font: 15px/1.5 "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+  color-scheme: light;
+}
+.m5 * { box-sizing: border-box; }
+.m5 .wrap { max-width: 980px; margin: 0 auto; padding: 20px 16px 60px; }
+.m5 .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px; margin-bottom: 16px; }
+.m5 h1 { font-size: 22px; margin: 0 0 4px; }
+.m5 h2 { font-size: 17px; margin: 0 0 12px; }
+.m5 .en { direction: ltr; unicode-bidi: isolate; text-align: left; color: var(--muted); font-size: 13px; }
+.m5 span.en { display: inline-block; }
+.m5 .muted { color: var(--muted); font-size: 13px; }
+.m5 a { color: var(--blue); }
+.m5 button, .m5 .btn {
+  font: inherit; font-size: 14px; padding: 9px 16px; border-radius: 8px; border: 1px solid var(--line);
+  background: var(--card); color: var(--ink); cursor: pointer; text-decoration: none; display: inline-block;
+}
+.m5 button.primary, .m5 .btn.primary { background: var(--green); border-color: var(--green); color: #fff; }
+.m5 button:disabled { opacity: 0.5; cursor: default; }
+.m5 .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.m5 .mock-banner { background: var(--red-soft); color: var(--red); font-weight: 700; padding: 10px 16px; text-align: center; }
+.m5 table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.m5 td, .m5 th { padding: 8px 6px; border-bottom: 1px solid var(--line); text-align: start; vertical-align: top; }
+.m5 td { overflow-wrap: anywhere; }
+.m5 .tag { font-size: 11px; padding: 2px 8px; border-radius: 99px; white-space: nowrap; }
+.m5 .tag.sanad { background: var(--green-soft); color: var(--green); }
+.m5 .tag.typed { background: #eef0f3; color: var(--muted); }
+.m5 .tag.ocr { background: #e8effa; color: var(--blue); }
+.m5 .tag.signed { background: var(--green-soft); color: var(--green); }
+.m5 .tag.ready { background: #fff5e0; color: #8a5a00; }
+.m5 .tag.warn { background: var(--red-soft); color: var(--red); }
+.m5 .tag.blue { background: #e8effa; color: var(--blue); }
+.m5 .tag.grey { background: #eef0f3; color: var(--muted); }
+.m5 pre { background: #0f1419; color: #d6deeb; padding: 12px; border-radius: 8px; overflow: auto; font-size: 12px; direction: ltr; text-align: left; max-height: 260px; }
+.m5 .choice { display: flex; gap: 10px; align-items: center; padding: 12px; border: 1px solid var(--line); border-radius: 10px; margin-bottom: 8px; cursor: pointer; }
+.m5 .choice.on { border-color: var(--green); background: var(--green-soft); }
+.m5 .sanad-head { display: flex; align-items: center; gap: 10px; }
+.m5 .sanad-logo { width: 42px; height: 42px; border-radius: 10px; background: var(--green); color: #fff; display: grid; place-items: center; font-weight: 700; }
+
+/* dashboards */
+.m5 .wrap.wide { max-width: 1120px; }
+.m5 .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.m5 .topbar a { text-decoration: none; font-size: 14px; }
+.m5 .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.m5 .grid .card { margin-bottom: 0; }
+.m5 .party { display: flex; flex-direction: column; gap: 8px; text-decoration: none; color: inherit; border-top: 4px solid var(--accent, var(--green)); }
+.m5 .party:hover { border-color: var(--accent, var(--green)); }
+.m5 .party ul { margin: 0; padding-inline-start: 18px; font-size: 14px; }
+.m5 .party .who { font-size: 12px; font-weight: 700; color: var(--accent, var(--green)); }
+.m5 .stats { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); margin-bottom: 16px; }
+.m5 .stat { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.m5 .stat b { display: block; font-size: 24px; line-height: 1.2; }
+.m5 .stat span { color: var(--muted); font-size: 12px; }
+.m5 .steps { display: flex; gap: 6px; flex-wrap: wrap; list-style: none; padding: 0; margin: 0; }
+.m5 .steps li { flex: 1 1 120px; padding: 8px 10px; border-radius: 8px; background: #eef0f3; color: var(--muted); font-size: 13px; }
+.m5 .steps li.done { background: var(--green-soft); color: var(--green); font-weight: 600; }
+.m5 .steps li.now { background: #fff5e0; color: #8a5a00; font-weight: 600; }
+.m5 .steps li.bad { background: var(--red-soft); color: var(--red); font-weight: 600; }
+.m5 .m5-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.m5 .m5-tabs button.on { background: var(--ink); border-color: var(--ink); color: #fff; }
+.m5 .form-grid { display: grid; gap: 10px 14px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.m5 .form-grid label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }
+.m5 input[type="text"], .m5 input[type="number"], .m5 select, .m5 textarea {
+  flex: none; font: inherit; font-size: 14px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--card); color: var(--ink); width: 100%;
+}
+.m5 textarea { min-height: 64px; resize: vertical; }
+.m5 .note { padding: 10px 12px; border-radius: 8px; background: #fff5e0; color: #6b4600; font-size: 14px; margin-top: 8px; }
+.m5 .note.bad { background: var(--red-soft); color: var(--red); }
+.m5 .note.good { background: var(--green-soft); color: var(--green); }
+.m5 .review-box { border: 1px solid var(--line); border-radius: 10px; padding: 12px; margin-top: 10px; }
+.m5 .empty { color: var(--muted); font-size: 14px; padding: 14px 0; }
+
+@media (max-width: 640px) {
+  .m5 .hide-sm { display: none; }
+  .m5 .card { padding: 14px; }
+  .m5 .tag { white-space: normal; }
+  .m5 td, .m5 th { padding: 7px 4px; font-size: 13px; }
+}

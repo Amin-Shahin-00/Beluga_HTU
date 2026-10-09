@@ -85,3 +85,54 @@ docs/                    API contract, judge answers, assistant test results, sa
 - **M5 partner:** the OCR route returns `OcrResult[]` exactly as in `types.ts` (with `fileId` and `fileName`). `pdf-rtl.ts` handles Arabic in pdf-lib, so reuse it for signed documents. Move `business-plan-pdf.ts` onto your helper when it lands. Call `generate()` from `llm.ts` for any AI need. The checker now expects the real GAM/JFDA forms (owner approval, declaration and pledge, inspection pledge); the two pledges can be signed in-app.
 - **M4 (backend):** please adapt [db/m5-tables.sql](db/m5-tables.sql) (`documents`, `signatures`, `notifications`, `consent_log`) to your schema. Send your incubator ranking as `[{ incubatorId, score }]`, and confirm or replace the `UserProfile` shape.
 - **M1 (data):** keep the spreadsheet columns as they are and run `npm run knowledge && npm run check:data && npm run test:assistant` after edits. Still worth confirming by phone: the home-licence fee for your exact profession (20-50 JOD), Oasis500's investment terms, and whether Luminus ShamalStart has an open cohort. Replace the 20 test questions with yours if they differ. [docs/judge-answers.md](docs/judge-answers.md) covers AI accuracy and privacy.
+
+---
+
+# Bedaya: M5 identity, documents and signing (Abdullah)
+
+The other half of M5. It runs offline on dummy data, and nothing calls an outside API. Every mock is labelled "MOCK" or "DEMO" on screen and in the PDFs.
+
+| # | Feature | Status | Code |
+| --- | --- | --- | --- |
+| 7 | SANAD-ready login (mock), consent and access log | Live | [lib/integrations/sanad/](lib/integrations/sanad/), [consent.ts](lib/integrations/consent.ts), [app/mock-sanad/](app/mock-sanad/) |
+| 3 | Document vault: upload + OCR (mock, returns the shared `OcrResult`) | Live | [ocr/mockOcr.ts](lib/integrations/ocr/mockOcr.ts), [documents.ts](lib/integrations/documents.ts) |
+| 3 | Auto-fill government forms as PDF (Arabic + English), including the GAM declaration and JFDA inspection pledges | Live | [lib/integrations/pdf/](lib/integrations/pdf/) |
+| 4 | Sign all in one session (mock SANAD), submit to offices, office approve/return | Live | [pdf/sign.ts](lib/integrations/pdf/sign.ts), [documents.ts](lib/integrations/documents.ts) |
+| 11 | Notifications (in-app; email and WhatsApp logged only) | Prototype | [notify.ts](lib/integrations/notify.ts) |
+| 21 | E-invoicing setup content (JoFotara) | Screens only | [einvoicing.ts](lib/integrations/einvoicing.ts) |
+
+## Run it
+
+```
+npm install
+npm run dev        # http://localhost:3000/dashboard: who controls what, plus the 4 party dashboards
+npm run demo:m5    # Layla's whole path in the terminal; PDFs go to output/
+```
+
+Pages: `/dashboard` (client, government office, SANAD and admin dashboards), `/m5-demo` (test console), `/mock-sanad/login`. A good demo order is client → Login with SANAD → Layla → upload "Good ID" → Generate → Sign all → Submit, then the government dashboard as Greater Irbid Municipality → Approve, or Return with a note. Delete `.data/` for a clean state (the admin dashboard also has a reset button).
+
+## How it fits with the AI half
+
+- **OCR → document checker:** uploads return the shared `OcrResult`. `GET /api/documents/ocr` gives `files` for `POST /api/ai/documents/check`, and `GET /api/documents/check` runs Ameen's checker on the signed-in user directly. Pledges signed in Bedaya count as provided.
+- **UserProfile:** `GET /api/profile/user-profile` builds the shared `UserProfile` from SANAD data and business info, for every `/api/ai/*` route, until M4's wizard stores the real one.
+- **Types:** the identity types (`SanadUser`, `Field`, the provider interfaces, `BusinessProfile`) were added at the end of [types.ts](lib/integrations/types.ts). No existing shape changed.
+- **Arabic PDFs:** [pdf/text.ts](lib/integrations/pdf/text.ts) has `drawText` (mixed Arabic/English, right-to-left word order, shrink-to-fit) and `wrapLines`, with IBM Plex Sans Arabic in `assets/fonts/`.
+
+## What is mocked, and how to switch
+
+| Mock | Stands in for | To switch |
+| --- | --- | --- |
+| `MockSanad` | SANAD login, e-signature, payments | Write a real class with the same three interfaces (`IdentityProvider`, `SignatureProvider`, `PaymentProvider`) and set `SANAD_MODE=real`. Needs MoDEE approval. |
+| `MockOcr` | Tesseract or a cloud OCR | Write another `OcrProvider` that returns the same `OcrResult`. `OCR_PROVIDER` picks it. |
+| [store.ts](lib/integrations/store.ts) (JSON in `.data/`) | M4's Supabase tables | Rewrite only `store.ts` against [db/m5-tables.sql](db/m5-tables.sql). On Vercel it uses `/tmp`, so data doesn't survive between server instances until then. |
+| [session.ts](lib/session.ts) (cookie) | Supabase auth | M4 swaps the helpers. Staff roles are a mock role picker. |
+| [templates.ts](lib/integrations/pdf/templates.ts) | Official forms from M1 | Add the official forms. Every demo PDF says "DEMO FORM - NOT OFFICIAL". |
+| [demoData.ts](lib/integrations/demoData.ts) | SANAD records + wizard answers | Two fake people (`999…` IDs): Layla (home bakery, Irbid) and Omar (LLC, Amman). |
+| Email / WhatsApp | Real sending | [notify.ts](lib/integrations/notify.ts) writes to an outbox. Add a sender there. |
+
+## Hand-offs
+
+- **M3 (frontend):** [docs/m5-identity-api.md](docs/m5-identity-api.md) has every route, the form statuses and the staff roles. The `/dashboard` pages are prototypes to copy or restyle.
+- **M4 (backend):** [db/m5-tables.sql](db/m5-tables.sql) is now one file for both M5 halves. It adds `reviews`, `profiles`, `outbox` and `payments`, plus the form columns on `documents`. Call `POST /api/notifications/send` from the roadmap and booking code.
+- **M1 (data):** the forms in `templates.ts` and the text in `einvoicing.ts` are placeholders until the official forms and the JoFotara note arrive. `IRBID` (Greater Irbid Municipality) isn't in `offices.csv` yet.
+- **Team decision:** this half's Layla is a home bakery in **Irbid** (the team's demo story). Ameen's fixtures have Layla making sweets in **Amman**, with a different national ID and full name. Pick one before demo day.
