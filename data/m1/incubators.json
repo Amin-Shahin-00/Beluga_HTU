@@ -1,0 +1,120 @@
+[
+  {
+    "id": "inc_amman_launchpad",
+    "name": { "ar": "منصة عمّان للانطلاق", "en": "Amman Launchpad" },
+    "city": "Amman",
+    "sectors": ["tech", "services", "retail"],
+    "stages": ["prototype", "revenue"],
+    "womenFocused": false,
+    "homeBasedFriendly": false,
+    "maxFundingJod": 15000,
+    "programWeeks": 12,
+    "applicationDeadline": "2026-11-15",
+    "applicationFields": [
+      { "key": "founder_name", "label": { "ar": "اسم المؤسس", "en": "Founder name" }, "type": "text", "required": true },
+      { "key": "email", "label": { "ar": "البريد الإلكتروني", "en": "Email" }, "type": "email", "required": true },
+      { "key": "startup_name", "label": { "ar": "اسم الشركة الناشئة", "en": "Startup name" }, "type": "text", "required": true },
+      { "key": "pitch", "label": { "ar": "الفكرة في جملة واحدة", "en": "One-line pitch" }, "type": "text", "required": true, "maxLength": 140 },
+      { "key": "stage", "label": { "ar": "المرحلة", "en": "Stage" }, "type": "select", "required": true, "options": ["idea", "mvp", "revenue"] },
+      { "key": "funding_ask_jod", "label": { "ar": "التمويل المطلوب (دينار)", "en": "Funding ask (JOD)" }, "type": "number", "required": false }
+    ]
+  },
+  {
+    "id": "inc_women_makers",
+    "name": { "ar": "صانعات الأردن", "en": "Women Makers Jordan" },
+    "city": "Amman",
+    "sectors": ["food", "crafts", "retail", "services"],
+    "stages": ["idea", "prototype", "revenue"],
+    "womenFocused": true,
+    "homeBasedFriendly": true,
+    "maxFundingJod": 5000,
+    "programWeeks": 8,
+    "applicationDeadline": "2026-10-30",
+    "applicationFields": [
+      { "key": "applicant_full_name_ar", "label": { "ar": "الاسم الرباعي", "en": "Full name (Arabic)" }, "type": "text", "required": true },
+      { "key": "national_number", "label": { "ar": "الرقم الوطني", "en": "National number" }, "type": "text", "required": true },
+      { "key": "mobile", "label": { "ar": "رقم الهاتف", "en": "Mobile" }, "type": "phone", "required": true },
+      { "key": "governorate", "label": { "ar": "المحافظة", "en": "Governorate" }, "type": "text", "required": true },
+      { "key": "project_idea", "label": { "ar": "وصف المشروع", "en": "Project description" }, "type": "textarea", "required": true, "maxLength": 500 },
+      { "key": "works_from_home", "label": { "ar": "هل المشروع من المنزل؟", "en": "Is it home-based?" }, "type": "select", "required": true, "options": ["yes", "no"] }
+    ]
+  },
+  {
+    "id": "inc_petra_ventures",
+    "name": { "ar": "مختبر البتراء للمشاريع", "en": "Petra Ventures Lab" },
+    "city": "Amman",
+    "sectors": ["tech", "tourism"],
+    "stages": ["prototype", "revenue"],
+    "womenFocused": false,
+    "homeBasedFriendly": false,
+    "maxFundingJod": 30000,
+    "programWeeks": 16,
+    "applicationDeadline": "2026-12-01",
+    "applicationFields": [
+      { "key": "team_lead", "label": { "ar": "قائد الفريق", "en": "Team lead" }, "type": "text", "required": true },
+      { "key": "contact_email", "label": { "ar": "البريد الإلكتروني", "en": "Contact email" }, "type": "email", "required": true },
+      { "key": "company", "label": { "ar": "اسم الشركة", "en": "Company" }, "type": "text", "required": true },
+      { "key": "problem", "label": { "ar": "المشكلة التي تحلها", "en": "Problem you solve" }, "type": "textarea", "required": true, "maxLength": 400 },
+      { "key": "team_size", "label": { "ar": "حجم الفريق", "en": "Team size" }, "type": "number", "required": true }
+    ]
+  },
+  {
+    "id": "inc_irbid_youth",
+    "name": { "ar": "مشاريع شباب إربد", "en": "Irbid Youth Startups" },
+    "city": "Irbid",
+    "sectors": ["food", "agriculture", "crafts", "services"],
+    "stages": ["idea", "prototype"],
+    "womenFocused": false,
+    "homeBasedFriendly": true,
+    "maxFundingJod": 3000,
+    "programWeeks": 6,
+    "applicationDeadline": "2026-11-05",
+    "applicationFields": [
+      { "key": "name", "label": { "ar": "الاسم", "en": "Name" }, "type": "text", "required": true },
+      { "key": "date_of_birth", "label": { "ar": "تاريخ الميلاد", "en": "Date of birth" }, "type": "date", "required": true },
+      { "key": "phone_number", "label": { "ar": "الهاتف", "en": "Phone" }, "type": "phone", "required": true },
+      { "key": "sector", "label": { "ar": "القطاع", "en": "Sector" }, "type": "select", "required": true, "options": ["food", "agriculture", "crafts", "services", "other"] },
+      { "key": "budget_jod", "label": { "ar": "الميزانية المتوقعة (دينار)", "en": "Expected budget (JOD)" }, "type": "number", "required": true }
+    ]
+  },
+  {
+    "id": "inc_aqaba_blue",
+    "name": { "ar": "مركز العقبة الأزرق", "en": "Aqaba Blue Hub" },
+    "city": "Aqaba",
+    "sectors": ["tourism", "services", "food"],
+    "stages": ["prototype", "revenue"],
+    "womenFocused": false,
+    "homeBasedFriendly": false,
+    "maxFundingJod": 10000,
+    "programWeeks": 10,
+    "applicationDeadline": "2026-12-20",
+    "applicationFields": [
+      { "key": "full_name_en", "label": { "ar": "الاسم بالإنجليزية", "en": "Full name (English)" }, "type": "text", "required": true },
+      { "key": "email_address", "label": { "ar": "البريد الإلكتروني", "en": "Email address" }, "type": "email", "required": true },
+      { "key": "business_name", "label": { "ar": "اسم المشروع", "en": "Business name" }, "type": "text", "required": true },
+      { "key": "target_market", "label": { "ar": "السوق المستهدف", "en": "Target market" }, "type": "textarea", "required": true, "maxLength": 300 },
+      { "key": "launch_date", "label": { "ar": "تاريخ الإطلاق", "en": "Launch date" }, "type": "text", "required": false }
+    ]
+  },
+  {
+    "id": "inc_zarqa_green",
+    "name": { "ar": "حاضنة الزرقاء الخضراء", "en": "Zarqa Green Incubator" },
+    "city": "Zarqa",
+    "sectors": ["agriculture", "food", "crafts"],
+    "stages": ["idea", "prototype", "revenue"],
+    "womenFocused": true,
+    "homeBasedFriendly": true,
+    "maxFundingJod": 7000,
+    "programWeeks": 8,
+    "applicationDeadline": "2026-11-25",
+    "applicationFields": [
+      { "key": "owner_name", "label": { "ar": "اسم صاحبة المشروع", "en": "Owner name" }, "type": "text", "required": true },
+      { "key": "id_number", "label": { "ar": "رقم الهوية", "en": "ID number" }, "type": "text", "required": true },
+      { "key": "email", "label": { "ar": "البريد الإلكتروني", "en": "Email" }, "type": "email", "required": true },
+      { "key": "project_name_ar", "label": { "ar": "اسم المشروع بالعربية", "en": "Project name (Arabic)" }, "type": "text", "required": true },
+      { "key": "capital_jod", "label": { "ar": "رأس المال الحالي (دينار)", "en": "Current capital (JOD)" }, "type": "number", "required": true },
+      { "key": "need_jod", "label": { "ar": "التمويل المطلوب (دينار)", "en": "Funding needed (JOD)" }, "type": "number", "required": true },
+      { "key": "employees", "label": { "ar": "عدد العاملين", "en": "Employees" }, "type": "number", "required": false }
+    ]
+  }
+]

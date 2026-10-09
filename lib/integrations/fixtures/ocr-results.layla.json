@@ -1,0 +1,51 @@
+[
+  {
+    "fileId": "10000000-0000-4000-8000-000000000001",
+    "fileName": "layla-national-id.jpg",
+    "docType": "national_id",
+    "fields": {
+      "name": "ليلى أحمد محمود الخطيب",
+      "nameEn": "LAYLA AHMAD MAHMOUD ALKHATIB",
+      "nationalId": "9991012345",
+      "birthDate": "1999-03-14",
+      "expiryDate": "2031-05-20",
+      "documentNumber": "RXK482913"
+    },
+    "confidence": 0.93,
+    "imageQuality": 0.88
+  },
+  {
+    "fileId": "10000000-0000-4000-8000-000000000002",
+    "fileName": "lease-contract.pdf",
+    "docType": "lease_contract",
+    "fields": {
+      "name": "ليلى أحمد محمود الخطيب",
+      "issueDate": "2026-01-01",
+      "expiryDate": "2026-12-31"
+    },
+    "confidence": 0.85,
+    "imageQuality": 0.8
+  },
+  {
+    "fileId": "10000000-0000-4000-8000-000000000003",
+    "fileName": "health-certificate.jpg",
+    "docType": "health_certificate",
+    "fields": {
+      "name": "ليلى أحمد الخطيب",
+      "issueDate": "2025-06-01",
+      "expiryDate": "2026-06-01"
+    },
+    "confidence": 0.9,
+    "imageQuality": 0.84
+  },
+  {
+    "fileId": "10000000-0000-4000-8000-000000000004",
+    "fileName": "neighbours-consent.jpg",
+    "docType": "home_business_consent",
+    "fields": {
+      "name": "ليل? أحم? الخ?يب"
+    },
+    "confidence": 0.41,
+    "imageQuality": 0.32
+  }
+]

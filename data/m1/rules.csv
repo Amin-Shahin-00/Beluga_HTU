@@ -1,0 +1,18 @@
+legal_form,step_order,step_id,title_en,title_ar,office_id,required_docs,fee_jod,days,condition,notes
+home_business,1,reserve_trade_name,Reserve a trade name,حجز الاسم التجاري,MIT,national_id,10,1,always,
+home_business,2,register_sole_proprietorship,Register the business,تسجيل المؤسسة الفردية,MIT,national_id;trade_name_certificate,50,1,always,
+home_business,3,home_business_license,Get the home business license,ترخيص المشروع المنزلي,GAM,national_id;registration_certificate;lease_contract;home_business_consent;health_certificate,30,7,always,health_certificate is only needed for food businesses
+home_business,4,tax_number,Get a tax number,الحصول على الرقم الضريبي,ISTD,national_id;registration_certificate,0,1,always,
+home_business,5,social_security,Register employees in social security,تسجيل العاملين في الضمان الاجتماعي,SSC,national_id;registration_certificate,0,1,if_employees,Only needed once you hire employees
+sole_proprietorship,1,reserve_trade_name,Reserve a trade name,حجز الاسم التجاري,MIT,national_id,10,1,always,
+sole_proprietorship,2,register_sole_proprietorship,Register the business,تسجيل المؤسسة الفردية,MIT,national_id;trade_name_certificate,50,1,always,
+sole_proprietorship,3,chamber_membership,Join the Chamber of Commerce,الانتساب لغرفة التجارة,ACC,national_id;registration_certificate,100,1,always,
+sole_proprietorship,4,vocational_license,Get the vocational license,رخصة المهن,GAM,national_id;registration_certificate;lease_contract;civil_defense_approval,150,10,always,
+sole_proprietorship,5,tax_number,Get a tax number,الحصول على الرقم الضريبي,ISTD,national_id;registration_certificate,0,1,always,
+sole_proprietorship,6,social_security,Register employees in social security,تسجيل العاملين في الضمان الاجتماعي,SSC,national_id;registration_certificate,0,1,if_employees,Only needed once you hire employees
+llc,1,reserve_trade_name,Reserve a trade name,حجز الاسم التجاري,MIT,national_id,10,1,always,
+llc,2,register_llc,Register the company,تسجيل الشركة ذات المسؤولية المحدودة,CCD,national_id;trade_name_certificate;memorandum_of_association;bank_capital_letter,200,3,always,Every partner's national ID is needed
+llc,3,chamber_membership,Join the Chamber of Commerce,الانتساب لغرفة التجارة,ACC,national_id;registration_certificate,100,1,always,
+llc,4,vocational_license,Get the vocational license,رخصة المهن,GAM,national_id;registration_certificate;lease_contract;civil_defense_approval,150,10,always,
+llc,5,tax_number,Get a tax number,الحصول على الرقم الضريبي,ISTD,national_id;registration_certificate,0,1,always,
+llc,6,social_security,Register employees in social security,تسجيل العاملين في الضمان الاجتماعي,SSC,national_id;registration_certificate,0,1,if_employees,Only needed once you hire employees

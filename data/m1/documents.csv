@@ -1,0 +1,11 @@
+doc_id,name_en,name_ar,issued_by,has_expiry,ocr_doc_type
+national_id,National ID card,البطاقة الشخصية,CSPD,yes,national_id
+passport,Passport,جواز السفر,CSPD,yes,passport
+trade_name_certificate,Trade name reservation certificate,شهادة حجز الاسم التجاري,MIT,yes,trade_name_certificate
+registration_certificate,Business registration certificate,شهادة تسجيل المؤسسة,MIT,no,registration_certificate
+lease_contract,Lease contract or property deed,عقد الإيجار أو سند الملكية,landlord,yes,lease_contract
+home_business_consent,Building owner and neighbours consent,موافقة مالك العقار والجيران,landlord,no,home_business_consent
+health_certificate,Food handler health certificate,الشهادة الصحية,MOH,yes,health_certificate
+memorandum_of_association,Memorandum of association,عقد التأسيس,CCD,no,memorandum_of_association
+bank_capital_letter,Bank letter confirming capital deposit,كتاب البنك بإيداع رأس المال,bank,no,bank_capital_letter
+civil_defense_approval,Civil Defense approval,موافقة الدفاع المدني,CDD,yes,civil_defense_approval
