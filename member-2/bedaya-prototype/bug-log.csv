@@ -1,0 +1,7 @@
+id,severity,screen,steps_to_reproduce,expected,actual,status,retest
+UX-001,High,Figma nested containers,Open Arabic roadmap in Figma,All child content visible,Horizontal containers clip child content,Open - tool quota blocks repair,Native recovery plugin supplied; not executed
+UX-002,Medium,Arabic typography,Open Arabic prototype,Crisp Arabic sans-serif and ordered numbers,Fallback glyphs and reversed ranges,Fixed,Local DejaVu font and bidi isolation visually checked
+UX-003,Medium,Mobile header,Open Arabic at 390px,Full role label visible,Role label truncated,Fixed,Role selector widened; final screenshot checked
+QA-001,Pending,Physical devices,Run on Android and iPhone,Native browser and touch testing,Only viewport simulation available,Pending,Physical devices unavailable
+QA-002,Medium,Navigation test,Advance rapidly through wizard,Wait for the destination screen to render,URL changed before DOM render caused false timeout,Fixed,184 functional checks passed after matching the rendered screen heading
+UX-004,Low,Brand lockup,Open header in both languages,Bedaya beneath Arabic logo in smaller type,Previously arranged side by side,Fixed,Centred below logo at 1440 390 and 320 pixel widths

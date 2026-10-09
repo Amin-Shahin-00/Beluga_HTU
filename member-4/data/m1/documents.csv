@@ -1,0 +1,21 @@
+doc_id,name_en,name_ar,issued_by,issued_by_step,has_expiry,ocr_doc_type,notes_en,notes_ar
+national_id,National ID card,البطاقة الشخصية,CSPD,,yes,national_id,Non-Jordanians use a valid passport.,لغير الأردنيين جواز سفر ساري المفعول.
+passport,Passport,جواز السفر,CSPD,,yes,passport,,
+service_booklet,Military service booklet (deferred),دفتر خدمة العلم (مؤجل),CSPD,,no,service_booklet,Only for Jordanian males born in 1989 or later.,فقط للذكور الأردنيين مواليد 1989 فما فوق.
+trade_name_certificate,Trade name certificate,شهادة تسجيل الاسم التجاري,MIT,reserve_trade_name,no,trade_name_certificate,,
+registration_certificate,Trader registration certificate (commercial register),شهادة تسجيل التاجر (السجل التجاري),MIT,register_sole_proprietorship;register_llc,no,registration_certificate,,
+chamber_certificate,Chamber membership certificate,شهادة الانتساب للغرفة,ACC,chamber_membership;chamber_of_industry,yes,chamber_certificate,,
+lease_contract,Rent contract,عقد الإيجار,landlord,,yes,lease_contract,,
+property_ownership_document,Title deed of the property (copy),سند ملكية العقار (نسخة),landlord,,no,property_ownership_document,Ask your landlord for a copy if you rent.,اطلب نسخة من المالك إذا كنت مستأجراً.
+property_owner_approval,Property owner approval form,نموذج موافقة مالك العقار,landlord,,no,property_owner_approval,GAM form signed by the owner of the home.,نموذج الأمانة يوقعه مالك المنزل.
+declaration_pledge,GAM declaration and pledge form,نموذج الإقرار والتعهد لأمانة عمّان,applicant,,no,declaration_pledge,"You sign it yourself, and you can do this inside Bedaya. It covers allowing inspections and following the licence conditions.","توقعه بنفسك ويمكنك ذلك داخل بداية. يشمل السماح بالتفتيش والالتزام بشروط الترخيص."
+building_documents,"Building documents: occupancy permit, construction licence, building specifications certificate and zoning sheet","وثائق البناء: إذن الإشغال ورخصة الإنشاء وشهادة مواصفات البناء والمخطط التنظيمي",landlord,,no,building_documents,Usually held by the owner of the building.,عادة تكون لدى مالك البناء.
+building_residents_consent,Consent of the building's residents,موافقة سكان البناء,landlord,,no,building_residents_consent,JFDA asks for it for home food businesses.,تطلبها مؤسسة الغذاء والدواء للمشاريع الغذائية المنزلية.
+inspection_pledge,JFDA pledge for inspection form,نموذج التعهد بالتفتيش لمؤسسة الغذاء والدواء,applicant,,no,inspection_pledge,"You sign it yourself, and you can do this inside Bedaya.",توقعه بنفسك ويمكنك ذلك داخل بداية.
+product_label,Product label design (one per food type),تصميم ملصق المنتج (لكل نوع غذاء),applicant,,no,product_label,,
+gam_rental_certificate,GAM rent-contract certificate,شهادة عقد الإيجار من الأمانة,GAM,gam_rental_certificate,no,gam_rental_certificate,,
+jfda_approval,JFDA food processing and label approval,موافقة الغذاء والدواء على التصنيع والملصق,JFDA,jfda_home_food_license,yes,jfda_approval,,
+vocational_licence,Vocational licence,رخصة المهن,GAM,home_business_license;vocational_license,yes,vocational_licence,,
+liaison_officer_form,Social security liaison officer form,نموذج ضابط الارتباط للضمان,applicant,,no,liaison_officer_form,,
+memorandum_of_association,Memorandum and articles of association,عقد التأسيس والنظام الأساسي,partners,,no,memorandum_of_association,,
+bank_capital_letter,Bank letter proving at least 50% of each partner's share is deposited,كتاب بنكي يثبت إيداع 50% على الأقل من حصة كل شريك,bank,,no,bank_capital_letter,,

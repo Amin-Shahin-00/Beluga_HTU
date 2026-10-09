@@ -1,0 +1,4 @@
+const iconNames=['route','files','signature','sprout','landmark','message-circle','bell','calendar-days','notebook-pen','calendar-check','map-pin','wallet','users','receipt'];
+const iconObserver=new MutationObserver(paintIcons);
+function paintIcons(){iconObserver.disconnect();document.querySelectorAll('.nav-icon:not([data-painted])').forEach((n,i)=>{n.dataset.painted='true';n.innerHTML='<i data-lucide="'+iconNames[i%iconNames.length]+'"></i>'});document.querySelectorAll('[data-locked]:not([data-painted]),#menu:not([data-painted])').forEach(n=>{n.dataset.painted='true';n.innerHTML='<i data-lucide="'+(n.id==='menu'?'menu':'lock-keyhole')+'"></i>'});lucide.createIcons({attrs:{width:18,height:18,'aria-hidden':'true'}});iconObserver.observe(document.getElementById('app'),{childList:true,subtree:true});}
+paintIcons();

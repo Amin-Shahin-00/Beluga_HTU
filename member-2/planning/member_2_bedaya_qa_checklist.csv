@@ -1,0 +1,9 @@
+﻿platform_or_area,test,acceptance_criteria,status,notes
+Laptop,Full demo path,Landing to admin analytics works without broken links.,Pending,
+Laptop,Bilingual switch,Arabic RTL and English LTR persist after refresh.,Pending,
+Android,Owner screens,"Wizard, roadmap, documents, signing, and partner cards are usable.",Pending,
+iPhone,Owner screens,"No text clipping, overflow, or hidden primary buttons.",Pending,
+Prototype,Fallback path,Figma prototype covers every live feature in the demo script.,Pending,
+Content,Copy completeness,All visible labels exist in the shared strings file.,Pending,
+Accessibility,Contrast and touch targets,Primary actions pass contrast and touch targets are at least 44px.,Pending,
+Backup,Video,Backup demo video recorded after feature freeze.,Pending,

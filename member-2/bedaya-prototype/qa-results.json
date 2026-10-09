@@ -1,0 +1,1421 @@
+{
+  "executedAt": "2026-10-09T14:02:11.357Z",
+  "scope": "Chromium desktop and mobile viewport simulation; not physical device or Safari testing",
+  "errors": [],
+  "results": [
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "entry",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "consent",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "w1",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "w2",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "w3",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "w4",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "w5",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "w6",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "w7",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "w8",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "wizard-review",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "roadmap",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "documents",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "ocr",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "signing",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "signed",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "incubators",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "applied",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "bank",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "bank-sent",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "assistant",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "notifications",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "appointments",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "plan",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "compliance",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "location",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "funding",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "experts",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "invoicing",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "partner",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "application",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "admin",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "analytics",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "entry",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "consent",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "w1",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "w2",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "w3",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "w4",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "w5",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "w6",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "w7",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "w8",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "wizard-review",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "roadmap",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "documents",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "ocr",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "signing",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "signed",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "incubators",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "applied",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "bank",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "bank-sent",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "assistant",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "notifications",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "appointments",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "plan",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "compliance",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "location",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "funding",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "experts",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "invoicing",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "partner",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "application",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "admin",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "analytics",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "w1",
+      "check": "Required answer validation",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "signing",
+      "check": "Consent required for signing",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "en",
+      "screen": "bank-sent",
+      "check": "Complete owner demo path",
+      "result": "PASS"
+    },
+    {
+      "device": "Laptop",
+      "language": "ar",
+      "screen": "roadmap",
+      "check": "Language survives refresh",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "entry",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "consent",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "w1",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "w2",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "w3",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "w4",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "w5",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "w6",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "w7",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "w8",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "wizard-review",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "roadmap",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "documents",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "ocr",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "signing",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "signed",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "incubators",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "applied",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "bank",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "bank-sent",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "assistant",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "notifications",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "appointments",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "plan",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "compliance",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "location",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "funding",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "experts",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "invoicing",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "partner",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "application",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "admin",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "en",
+      "screen": "analytics",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "entry",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "consent",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "w1",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "w2",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "w3",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "w4",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "w5",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "w6",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "w7",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "w8",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "wizard-review",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "roadmap",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "documents",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "ocr",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "signing",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "signed",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "incubators",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "applied",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "bank",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "bank-sent",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "assistant",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "notifications",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "appointments",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "plan",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "compliance",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "location",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "funding",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "experts",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "invoicing",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "partner",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "application",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "admin",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "Android viewport",
+      "language": "ar",
+      "screen": "analytics",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "entry",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "consent",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "w1",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "w2",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "w3",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "w4",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "w5",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "w6",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "w7",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "w8",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "wizard-review",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "roadmap",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "documents",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "ocr",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "signing",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "signed",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "incubators",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "applied",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "bank",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "bank-sent",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "assistant",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "notifications",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "appointments",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "plan",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "compliance",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "location",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "funding",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "experts",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "invoicing",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "partner",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "application",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "admin",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "en",
+      "screen": "analytics",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "entry",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "consent",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "w1",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "w2",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "w3",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "w4",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "w5",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "w6",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "w7",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "w8",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "wizard-review",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "roadmap",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "documents",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "ocr",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "signing",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "signed",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "incubators",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "applied",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "bank",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "bank-sent",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "assistant",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "notifications",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "appointments",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "plan",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "compliance",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "location",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "funding",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "experts",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "invoicing",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "partner",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "application",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "admin",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "device": "iPhone viewport",
+      "language": "ar",
+      "screen": "analytics",
+      "check": "No horizontal overflow",
+      "result": "PASS"
+    }
+  ]
+}
