@@ -50,7 +50,7 @@ function engineLabel(engine) {
  */
 export function mountChat(root, { compact = false } = {}) {
   root.innerHTML = `<div class="chatbot ${compact ? "compact" : ""}">
-      <div class="chat-head"><span class="chat-avatar" aria-hidden="true">ب</span><div><strong>${t("Bedaya Assistant", "مساعد بداية")}</strong><small id="chat-engine" class="muted"></small></div>
+      <div class="chat-head"><div><strong>${t("Bedaya Assistant", "مساعد بداية")}</strong><small id="chat-engine" class="muted"></small></div>
         <button type="button" class="chat-icon" id="chat-reset" title="${t("New conversation", "محادثة جديدة")}" aria-label="${t("New conversation", "محادثة جديدة")}"><i data-lucide="rotate-ccw"></i></button></div>
       <div class="chat-log" id="chat-log" aria-live="polite"></div>
       <div class="chips chat-suggest" id="chat-suggest"></div>
