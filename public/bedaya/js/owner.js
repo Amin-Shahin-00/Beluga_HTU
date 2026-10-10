@@ -124,7 +124,6 @@ export const documents = {
         <p class="muted">${t("Or try a sample:", "أو جرّب نموذجاً:")}</p>
         <div class="chips">${SAMPLES.map(([file, label]) => `<button data-sample="${file}">${esc(tx(label))}</button>`).join("")}</div>
       </div>
-      <p class="note">${t("OCR is simulated in this build: it returns realistic results for the sample IDs. Files stay on this Bedaya server.", "القراءة الآلية محاكاة في هذه النسخة وتعيد نتائج واقعية لنماذج الهوية. تبقى الملفات على خادم بداية.")}</p>
       <div class="toolbar"><button class="primary" data-go="signing">${t("Prepare and sign forms", "تجهيز النماذج وتوقيعها")}</button></div>`;
   },
   mount() {
@@ -297,13 +296,12 @@ export const signing = {
               .join("")
           : `<div class="item"><div class="details"><small>${t("No forms yet. Prepare them from your profile and documents.", "لا توجد نماذج بعد. جهزها من ملفك ومستنداتك.")}</small></div></div>`
       }</div>
-      ${toSign ? `<label class="option" style="margin-top:20px"><input type="checkbox" id="sign-consent">${t("I reviewed the forms and agree to sign them with SANAD (demo signature, not legally binding).", "راجعت النماذج وأوافق على توقيعها عبر سند (توقيع تجريبي غير ملزم قانونياً).")}</label>` : ""}
+      ${toSign ? `<label class="option" style="margin-top:20px"><input type="checkbox" id="sign-consent">${t("I reviewed the forms and agree to sign them with SANAD.", "راجعت النماذج وأوافق على توقيعها عبر سند.")}</label>` : ""}
       <div class="toolbar">
         <button ${forms.length ? "" : 'class="primary"'} id="generate">${forms.length ? (returned ? t("Regenerate returned forms", "إعادة تجهيز النماذج المعادة") : t("Refresh forms", "تحديث النماذج")) : t("Prepare my forms", "تجهيز نماذجي")}</button>
         ${toSign ? `<button class="primary" id="sign-all" disabled>${t(`Sign all ${toSign} forms`, `توقيع جميع النماذج (${toSign})`)}</button>` : ""}
         ${toSend ? `<button class="primary" id="submit-all">${t(`Send ${toSend} signed form(s) to the offices`, `إرسال ${toSend} نموذج موقّع إلى الجهات`)}</button>` : ""}
-      </div>
-      <p class="note">${t("Demo forms: every PDF says DEMO FORM - NOT OFFICIAL until the official templates arrive.", "نماذج تجريبية: كل ملف يحمل عبارة نموذج تجريبي غير رسمي حتى وصول النماذج الرسمية.")}</p>`;
+      </div>`;
   },
   mount() {
     $("#generate").onclick = async (e) => {
@@ -367,7 +365,6 @@ export const signed = {
       <div class="list">${sent
         .map((f) => `<div class="item"><span class="lead">${esc(f.office || "")}</span><div class="details"><strong>${esc(f.title)}</strong><small>${esc(f.officeName ? tx(f.officeName) : "")}</small></div><span class="status ${f.status === "returned" ? "error" : f.status === "approved" ? "done" : "info"}">${tx(FORM_STATUS[f.status])}</span></div>`)
         .join("")}</div>
-      <p class="note">${t("Demo: the Bedaya admin account plays each government office on the staff dashboard, where it approves or returns these forms.", "تجريبي: يمثل حساب إدارة بداية كل جهة حكومية في لوحة الموظفين، ومنها يوافق على النماذج أو يعيدها.")}</p>
       <div class="toolbar"><button class="primary" data-go="incubators">${t("Explore incubators", "استكشاف الحاضنات")}</button><button data-go="roadmap">${t("Back to the roadmap", "العودة إلى المسار")}</button></div>`;
   },
 };

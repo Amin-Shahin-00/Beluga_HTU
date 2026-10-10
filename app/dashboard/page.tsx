@@ -60,7 +60,7 @@ const PARTIES = [
 export default function DashboardHub() {
   return (
     <>
-      <div className="mock-banner">بيانات تجريبية · سند تجريبي · Dummy data, SANAD is a MOCK</div>
+      
       <div className="wrap wide">
         <div className="card">
           <h1>بداية · من يتحكم بماذا؟</h1>

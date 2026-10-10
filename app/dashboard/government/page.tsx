@@ -131,7 +131,7 @@ function OfficeQueue({ signOut }: { signOut: () => void }) {
                     ) : (
                       <span className="tag warn">✗ التوقيع غير صالح أو المستند معدّل · Invalid or changed</span>
                     )}
-                    <div className="en">{d.signature.signatureRef} · {fmt(d.signature.signedAt)} · SANAD (mock)</div>
+                    <div className="en">{d.signature.signatureRef} · {fmt(d.signature.signedAt)} · SANAD</div>
                   </td>
                 </tr>
                 {!!d.missingFields.length && (

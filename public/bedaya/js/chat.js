@@ -39,9 +39,8 @@ function format(raw) {
 
 function engineLabel(engine) {
   if (!engine) return "";
-  if (engine.provider === "ollama") return engine.ready ? t(`AI: ${engine.model} · open-source, runs on this computer`, `ذكاء اصطناعي: ${engine.model} · مفتوح المصدر ويعمل على هذا الجهاز`) : t("AI model is starting… answers from Bedaya's data meanwhile", "النموذج قيد التشغيل… الإجابات من بيانات بداية مؤقتاً");
-  if (engine.provider === "anthropic") return t(`AI: ${engine.model}`, `ذكاء اصطناعي: ${engine.model}`);
-  return t("Offline answers from Bedaya's verified data", "إجابات دون اتصال من بيانات بداية الموثقة");
+  if (engine.provider === "ollama") return engine.ready ? t("Answers in Arabic and English", "يجيب بالعربية والإنجليزية") : t("Answers in Arabic and English", "يجيب بالعربية والإنجليزية");
+  return t("Answers in Arabic and English", "يجيب بالعربية والإنجليزية");
 }
 
 /**
@@ -80,9 +79,7 @@ export function mountChat(root, { compact = false } = {}) {
     const links = [...new Set([...(pages || []), ...((meta && meta.links) || [])])].filter((p) => PAGES[p]).slice(0, 3);
     el.innerHTML = `<div class="msg-body">${html || '<span class="typing"><i></i><i></i><i></i></span>'}</div>${
       links.length ? `<div class="msg-actions">${links.map((p) => `<button type="button" data-page="${p}">${esc(tx(PAGES[p]))} ${t("→", "←")}</button>`).join("")}</div>` : ""
-    }${meta && (meta.sources?.length || meta.offices?.length) ? `<details class="msg-sources"><summary>${t("Sources", "المصادر")}</summary>${[...(meta.sources || []), ...(meta.offices || []).map((o) => ({ title: o.name, url: o.website }))].map((s) => (/^https?:\/\//.test(s.url) ? `<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.title)}</a>` : "")).join("")}</details>` : ""}${
-      meta?.source === "fallback" ? `<small class="msg-meta">${t("Answered from Bedaya's data (AI model unavailable)", "إجابة من بيانات بداية (النموذج غير متاح)")}</small>` : ""
-    }`;
+    }${meta && (meta.sources?.length || meta.offices?.length) ? `<details class="msg-sources"><summary>${t("Sources", "المصادر")}</summary>${[...(meta.sources || []), ...(meta.offices || []).map((o) => ({ title: o.name, url: o.website }))].map((s) => (/^https?:\/\//.test(s.url) ? `<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.title)}</a>` : "")).join("")}</details>` : ""}`;
     el.querySelectorAll("[data-page]").forEach((b) => (b.onclick = () => go(b.dataset.page)));
   }
 

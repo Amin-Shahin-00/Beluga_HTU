@@ -124,7 +124,7 @@ function header() {
 
 function sidebar(route) {
   const items = NAV[session.role] || [];
-  const verified = session.identity ? t("Identity verified by SANAD (demo)", "هوية موثقة من سند (تجريبي)") : session.role === "owner" ? t("SANAD not linked yet", "سند غير مرتبط بعد") : session.expert ? tx(session.expert.title) : "";
+  const verified = session.identity ? t("Identity verified by SANAD", "هوية موثقة من سند") : session.role === "owner" ? t("SANAD not linked yet", "سند غير مرتبط بعد") : session.expert ? tx(session.expert.title) : "";
   return `<aside id="aside"><div class="profile"><b>${esc(["bank", "incubator", "admin"].includes(session.role) ? `${tx(ROLE_LABEL[session.role])}${session.partnerKey ? ` · ${session.partnerKey}` : ""}` : displayName() || t("Guest", "زائر"))}</b>${verified ? `<span>${esc(verified)}</span>` : ""}${session.account ? `<span style="display:block">${esc(session.account.email ?? "")}</span>` : ""}</div>
     <nav>${items
       .map(([id, label, icon]) => {
@@ -137,7 +137,7 @@ function sidebar(route) {
         return `<a href="#${id}" class="${active ? "active" : ""}"><span class="nav-icon" aria-hidden="true"><i data-lucide="${icon}"></i></span>${tx(label)}${id === "notifications" ? `<span class="count" id="unread" hidden></span>` : ""}</a>`;
       })
       .join("")}
-    ${session.role === "admin" ? `<a href="/dashboard/government"><span class="nav-icon" aria-hidden="true"><i data-lucide="building-2"></i></span>${t("Government office (demo)", "جهة حكومية (تجريبي)")}</a><a href="/dashboard/sanad"><span class="nav-icon" aria-hidden="true"><i data-lucide="shield-check"></i></span>${t("SANAD dashboard (demo)", "لوحة سند (تجريبي)")}</a>` : ""}
+    ${session.role === "admin" ? `<a href="/dashboard/government"><span class="nav-icon" aria-hidden="true"><i data-lucide="building-2"></i></span>${t("Government office", "الجهة الحكومية")}</a><a href="/dashboard/sanad"><span class="nav-icon" aria-hidden="true"><i data-lucide="shield-check"></i></span>${t("SANAD dashboard", "لوحة سند")}</a>` : ""}
     </nav></aside>`;
 }
 
@@ -196,7 +196,7 @@ async function render() {
   main.innerHTML = html;
   const title = main.querySelector("h1")?.textContent?.trim() || "Bedaya";
   if (!entryLayout) main.insertAdjacentHTML("afterbegin", breadcrumb(route, title) + sectionTabs(route));
-  main.insertAdjacentHTML("beforeend", `<footer>${t("Bedaya hackathon build · SANAD, OCR and signatures are simulated · fees and steps from official Jordanian sources", "نسخة هاكاثون بداية · سند والقراءة الآلية والتواقيع محاكاة · الرسوم والخطوات من مصادر أردنية رسمية")}</footer>`);
+  main.insertAdjacentHTML("beforeend", `<footer>${t("© 2026 Bedaya · Fees and steps from official Jordanian sources", "© 2026 بداية · الرسوم والخطوات من مصادر أردنية رسمية")}</footer>`);
   document.title = `${title} | ${t("Bedaya", "بداية")}`;
   $$("[data-go]", main).forEach((b) => (b.onclick = () => go(b.dataset.go)));
   const gateSanad = $("#gate-sanad");

@@ -6,7 +6,7 @@ import BackBar from "../components/BackBar";
 export default function M5Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="m5" dir="rtl" lang="ar">
-      <BackBar ar="لوحات الموظفين التجريبية" en="Demo staff dashboards" />
+      <BackBar ar="لوحات الموظفين" en="Staff dashboards" />
       {children}
     </div>
   );

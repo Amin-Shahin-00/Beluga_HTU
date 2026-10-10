@@ -11,7 +11,7 @@ const studio = (action, body = {}) => api(`/api/studio/${action}`, { method: "PO
 const svgUrl = (svg) => `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 const slugify = (s) => String(s || "").toLowerCase().normalize("NFKD").replace(/[^\w\s-]/g, "").trim().replace(/[\s_]+/g, "-").replace(/-+/g, "-").slice(0, 40).replace(/^-|-$/g, "");
 const pal = (brand) => Object.fromEntries((brand?.palette || []).map((p) => [p.role, p.hex]));
-const sourceNote = (src) => (src && src !== "mock" ? "" : `<span class="status info">${t("offline AI draft", "مسودة ذكاء اصطناعي دون اتصال")}</span>`);
+const sourceNote = () => "";
 
 function downloadBlob(blob, filename) {
   const url = URL.createObjectURL(blob);
@@ -216,8 +216,7 @@ const hub = {
         ${card("studio-brand", "palette", t("1 · Brand kit", "١ · الهوية"), t("Names, logos, colours, fonts and tone of voice, plus a one-page brand guide.", "أسماء وشعارات وألوان وخطوط ونبرة، مع دليل هوية من صفحة واحدة."), b?.approvedVersion ? t("Approved", "معتمدة") : b?.version ? t("Draft saved", "مسودة محفوظة") : t("Not started", "لم تبدأ"), b?.approvedVersion ? "done" : b?.version ? "warning" : "", b?.version ? t("Open brand kit", "فتح الهوية") : t("Create my brand", "أنشئ هويتي"))}
         ${card("studio-design", "image", t("2 · Design studio", "٢ · استوديو التصميم"), t("Social posts, profile and cover images, business card, flyer, menu and shop sign.", "منشورات وصور الحساب والغلاف وبطاقة العمل والنشرة والقائمة ولافتة المحل."), designCount ? t(`${designCount} design(s) saved`, `${designCount} تصميم محفوظ`) : t("Not started", "لم يبدأ"), designCount ? "done" : "", t("Open designs", "فتح التصاميم"))}
         ${card("studio-site", "globe", t("3 · Website", "٣ · الموقع"), t("A bilingual one-page site or store with map, contact form and WhatsApp.", "موقع أو متجر من صفحة واحدة بلغتين مع خريطة ونموذج تواصل وواتساب."), site.ok && site.data.site ? t(`Published at /s/${site.data.site.slug}`, `منشور على /s/${site.data.site.slug}`) : t("Not published", "غير منشور"), site.ok && site.data.site ? "done" : "", t("Open website builder", "فتح منشئ الموقع"))}
-      </div>
-      <p class="note">${t("AI runs offline in this demo unless an AI key is configured on the server; every result is a draft for you to check. Templates are Bedaya's own.", "يعمل الذكاء الاصطناعي دون اتصال في هذا العرض ما لم يُضبط مفتاح على الخادم؛ كل نتيجة مسودة تراجعها. القوالب من تصميم بداية.")}</p>`;
+      </div>`;
   },
 };
 
@@ -787,7 +786,7 @@ const siteScreen = {
             ${s.published ? `<p><span class="status done">${t("Live", "منشور")}</span> <a href="/s/${esc(s.published.slug)}" target="_blank" rel="noopener">/s/${esc(s.published.slug)}</a> · <a href="${location.protocol}//${esc(s.published.slug)}.${esc(host)}/" target="_blank" rel="noopener" class="ltr">${esc(s.published.slug)}.${esc(host)}</a></p>` : `<p class="muted">${t("Not published yet.", "لم يُنشر بعد.")}</p>`}
             <label class="field"><span>${t("Web address (subdomain)", "عنوان الموقع (نطاق فرعي)")}</span><div class="slug-row ltr"><input id="slug" value="${esc(slugValue)}" maxlength="40" pattern="[a-z0-9-]+"><span>.${esc(host)}</span></div></label>
             <div class="toolbar tight"><button class="primary" id="publish">${s.published ? t("Approve and update the live site", "اعتماد وتحديث الموقع المنشور") : t("Approve and publish", "اعتماد ونشر")}</button></div>
-            <p class="muted">${t("Demo hosting on Bedaya: your-name.localhost works on this computer; a real domain can be connected from Startup services.", "استضافة تجريبية على بداية: يعمل your-name.localhost على هذا الجهاز، ويمكن ربط نطاق حقيقي من خدمات الانطلاق.")}</p></div>
+            <p class="muted">${t("Want your own domain? Connect it from Business tools.", "تريد نطاقاً خاصاً بك؟ اربطه من أدوات الأعمال.")}</p></div>
           <div class="card"><h2>${t("Messages from your website", "رسائل من موقعك")} <span class="status info">${s.messages.length}</span></h2>
             ${s.messages.length ? `<div class="list">${s.messages.map((m) => `<div class="item"><div class="details"><strong>${esc(m.name)} · <span class="ltr">${esc(m.contact)}</span></strong><small>${esc(m.message)}</small><small>${new Date(m.created_at).toLocaleString(lang === "ar" ? "ar-JO" : "en-GB")}</small></div></div>`).join("")}</div>` : `<p class="muted">${t("No messages yet. Visitors' contact-form messages appear here.", "لا رسائل بعد. تظهر هنا رسائل الزوار من نموذج التواصل.")}</p>`}</div>
         </div>

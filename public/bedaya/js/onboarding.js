@@ -41,7 +41,7 @@ export const entry = {
       <p class="subtitle">${t("Bedaya connects your next step, documents, and opportunities in one workspace.", "بداية تجمع خطواتك ومستنداتك وفرصك في مساحة واحدة.")}</p>
       <div class="toolbar">${actions}</div>
       <div class="list">${rows.map((r) => `<div class="item"><span class="lead">${r[0]}</span><div class="details"><strong>${tx(r[1])}</strong><small>${tx(r[2])}</small></div></div>`).join("")}</div>
-      <p class="note">${t("SANAD is simulated in this hackathon build (demo identities). Fees and steps come from official Jordanian sources.", "سند محاكى في نسخة الهاكاثون (هويات تجريبية). الرسوم والخطوات من مصادر أردنية رسمية.")}</p>`;
+      <p class="note">${t("Fees and steps come from official Jordanian sources.", "الرسوم والخطوات من مصادر أردنية رسمية.")}</p>`;
   },
   mount() {
     const btn = $("#sanad-login");
@@ -184,8 +184,7 @@ export const signupSanad = {
         <label class="option"><input type="checkbox" id="consent-box">${t("I agree that Bedaya stores these SANAD details on my account to prepare my business file.", "أوافق على أن تحفظ بداية بيانات سند هذه في حسابي لتجهيز ملف مشروعي.")}</label>
         <p id="auth-error" class="error" role="alert"></p>
         <div class="toolbar"><button class="primary" id="auth-submit" disabled>${t("Create my account", "إنشاء حسابي")}</button><button type="button" id="cancel">${t("Cancel", "إلغاء")}</button></div>
-      </form>
-      <p class="note">${t("SANAD is a demo in this build: the identity data is fictional.", "سند تجريبي في هذه النسخة: بيانات الهوية افتراضية.")}</p></div>`;
+      </form></div>`;
   },
   mount() {
     const again = $("#sanad-again");

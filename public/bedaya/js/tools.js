@@ -38,7 +38,6 @@ export const notifications = {
               .join("")
           : `<div class="item"><div class="details"><small>${t("Nothing here yet.", "لا توجد إشعارات بعد.")}</small></div></div>`
       }</div>
-      <p class="note">${t("Email and WhatsApp copies are logged in the demo outbox; nothing is actually sent.", "نسخ البريد وواتساب تُسجل في صندوق تجريبي ولا يُرسل شيء فعلياً.")}</p>
       <div class="toolbar"><button class="primary" id="read-all" ${items.some((n) => !n.read) ? "" : "disabled"}>${t("Mark all as read", "تحديد الكل كمقروء")}</button></div>`;
   },
   mount() {
@@ -78,7 +77,7 @@ export const appointments = {
     const dates = [...free.map((s) => new Date(s.payload.starts_at)), ...mine.map((b) => new Date(slotOf(b.slot_key)?.starts_at))];
     return `<div class="eyebrow">${t("Appointments", "المواعيد")}</div>
       <h1>${t("Make room for your next step", "حدد موعداً لخطوتك التالية")}</h1>
-      <p class="subtitle">${t("Funding and partner visits (banks, incubators). Demo schedules, not real institution calendars. Expert sessions are booked separately on the Experts page.", "زيارات التمويل والشركاء (البنوك والحاضنات). مواعيد تجريبية وليست تقويمات حقيقية. تُحجز جلسات الخبراء بشكل منفصل من صفحة الخبراء.")}</p>
+      <p class="subtitle">${t("Book a visit with a bank or incubator. Expert sessions are booked on the Experts page.", "احجز زيارة لبنك أو حاضنة. تُحجز جلسات الخبراء من صفحة الخبراء.")}</p>
       <div class="toolbar"><button data-go="experts">${t("Book an expert instead", "حجز خبير بدلاً من ذلك")}</button></div>
       ${calendar(dates)}
       ${mine.length ? `<h2>${t("Your bookings", "حجوزاتك")}</h2><div class="list">${mine
@@ -214,7 +213,7 @@ export const location = {
       <p class="muted" id="pin-text">${this.saved ? t(`Saved pin: ${this.saved.lat.toFixed(5)}, ${this.saved.lng.toFixed(5)} (version ${this.versions})`, `الدبوس المحفوظ: ${this.saved.lat.toFixed(5)}، ${this.saved.lng.toFixed(5)} (نسخة ${this.versions})`) : t("No location saved yet. Tap the map to place your pin.", "لم يُحفظ موقع بعد. انقر على الخريطة لوضع الدبوس.")}</p>
       <div class="toolbar"><button class="primary" id="save-loc">${t("Save location to my business", "حفظ الموقع على مشروعي")}</button><button id="check" ${this.saved ? "" : "disabled"}>${t("Check this location", "فحص هذا الموقع")}</button></div>
       <div id="location-result" aria-live="polite"></div>
-      <p class="note">${t("Coloured areas are fictional demo zones, not official municipal zoning. Map data © OpenStreetMap contributors.", "المناطق الملونة مناطق تجريبية افتراضية وليست تنظيماً بلدياً رسمياً. بيانات الخريطة © مساهمو OpenStreetMap.")}</p>`;
+      <p class="note">${t("Confirm zoning with your municipality before signing a lease. Map data © OpenStreetMap contributors.", "تأكد من التنظيم لدى البلدية قبل توقيع عقد الإيجار. بيانات الخريطة © مساهمو OpenStreetMap.")}</p>`;
   },
   async mount() {
     const self = location;
@@ -297,16 +296,15 @@ export const location = {
       const r = res.data;
       const verdict =
         r.allowed === true
-          ? [t("Allowed in this demo zone", "مسموح في هذه المنطقة التجريبية"), "done"]
+          ? [t("Allowed in this zone", "مسموح في هذه المنطقة"), "done"]
           : r.allowed === false
-            ? [t("Not allowed in this demo zone", "غير مسموح في هذه المنطقة التجريبية"), "error"]
-            : [t("Outside the demo zones: ask your municipality", "خارج المناطق التجريبية: راجع البلدية"), "warning"];
+            ? [t("Not allowed in this zone", "غير مسموح في هذه المنطقة"), "error"]
+            : [t("Outside the mapped zones: ask your municipality", "خارج المناطق المحددة: راجع البلدية"), "warning"];
       box.innerHTML = `<div class="summary"><p><span class="status ${verdict[1]}">${esc(verdict[0])}</span></p>
         <dl class="kv"><dt>${t("Address", "العنوان")}</dt><dd>${esc(r.location.address)}</dd>
         <dt>${t("Zone", "المنطقة")}</dt><dd>${r.zone ? esc(lang === "ar" ? r.zone.nameAr : r.zone.name) : "—"}</dd>
         <dt>${t("Activity checked", "النشاط المفحوص")}</dt><dd>${esc(tx(SECTOR[r.activity] || [r.activity, r.activity]))}</dd>
-        ${r.zone ? `<dt>${t("Allowed here", "المسموح هنا")}</dt><dd>${r.zone.activities.map((a) => esc(tx(SECTOR[a] || [a, a]))).join(t(", ", "، "))}</dd>` : ""}</dl>
-        <p class="muted">${esc(r.disclaimer)}</p></div>`;
+        ${r.zone ? `<dt>${t("Allowed here", "المسموح هنا")}</dt><dd>${r.zone.activities.map((a) => esc(tx(SECTOR[a] || [a, a]))).join(t(", ", "، "))}</dd>` : ""}</dl></div>`;
     };
   },
 };
@@ -325,7 +323,6 @@ export const invoicing = {
       <h1>${esc(pick(d, "title"))}</h1>
       <p class="subtitle">${esc(pick(d, "intro"))}</p>
       <div class="list">${steps.map((s, i) => `<div class="item"><span class="lead">${String(i + 1).padStart(2, "0")}</span><div class="details"><strong>${esc(pick(s, "title"))}</strong><small>${esc(pick(s, "body"))}</small></div></div>`).join("")}</div>
-      ${fields.length ? `<h2 style="margin-top:28px">${t("Details you'll need", "البيانات التي ستحتاجها")}</h2><div class="list">${fields.map((f) => `<div class="item"><div class="details"><strong>${esc(pick(f, "label"))}</strong></div></div>`).join("")}</div>` : ""}
-      <p class="note">${t("Screens only: the JoFotara connection isn't built yet. The text is a placeholder until Member 1's JoFotara note.", "واجهات فقط: الربط مع جوفوترة غير منفذ بعد. النص مؤقت حتى وصول ملاحظة العضو 1.")}</p>`;
+      ${fields.length ? `<h2 style="margin-top:28px">${t("Details you'll need", "البيانات التي ستحتاجها")}</h2><div class="list">${fields.map((f) => `<div class="item"><div class="details"><strong>${esc(pick(f, "label"))}</strong></div></div>`).join("")}</div>` : ""}`;
   },
 };

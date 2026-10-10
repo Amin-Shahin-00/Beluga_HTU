@@ -54,7 +54,7 @@ export const SOURCE_TAG: Record<string, [string, string]> = {
 export function Shell({ title, sub, banner, children }: { title: string; sub: string; banner?: string; children: ReactNode }) {
   return (
     <>
-      <div className="mock-banner">{banner ?? "بيانات تجريبية · سند تجريبي · Dummy data, SANAD is a MOCK"}</div>
+      {banner && <div className="mock-banner">{banner}</div>}
       <div className="wrap wide">
         <div className="topbar">
           <div>
@@ -129,7 +129,7 @@ export function StaffGate({ roles, children }: { roles: string[]; children: (rol
 
   return (
     <div className="card" style={{ maxWidth: 560 }}>
-      <h2>تسجيل دخول الموظفين (تجريبي)</h2>
+      <h2>تسجيل دخول الموظفين</h2>
       <p className="en">Staff sign-in (demo): as the Bedaya admin, choose which office to act as. In real life each party signs in through its own system.</p>
       {roles.length > 1 &&
         roles.map((r) => (

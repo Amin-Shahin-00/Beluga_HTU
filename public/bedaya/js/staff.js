@@ -11,9 +11,9 @@ const STATUS = {
 };
 
 const staffLinks = () => `<div class="grid-2" style="margin-top:20px">
-  <div class="card"><h2>${t("Government office (demo)", "جهة حكومية (تجريبي)")}</h2><p class="muted">${t("Review, approve or return signed forms sent to your office.", "راجع النماذج الموقعة المرسلة لجهتك ووافق عليها أو أعدها.")}</p><a class="button" href="/dashboard/government">${t("Open", "فتح")}</a></div>
-  <div class="card"><h2>${t("SANAD / MoDEE (demo)", "سند / وزارة الاقتصاد الرقمي (تجريبي)")}</h2><p class="muted">${t("Login codes, consents and signatures issued.", "رموز الدخول والموافقات والتواقيع الصادرة.")}</p><a class="button" href="/dashboard/sanad">${t("Open", "فتح")}</a></div>
-  <div class="card"><h2>${t("Bedaya team (demo)", "فريق بداية (تجريبي)")}</h2><p class="muted">${t("Applicants' progress, warnings and the message outbox.", "تقدم المتقدمين والتنبيهات وصندوق الرسائل.")}</p><a class="button" href="/dashboard/admin">${t("Open", "فتح")}</a></div>
+  <div class="card"><h2>${t("Government office", "الجهة الحكومية")}</h2><p class="muted">${t("Review, approve or return signed forms sent to your office.", "راجع النماذج الموقعة المرسلة لجهتك ووافق عليها أو أعدها.")}</p><a class="button" href="/dashboard/government">${t("Open", "فتح")}</a></div>
+  <div class="card"><h2>${t("SANAD / MoDEE", "سند / وزارة الاقتصاد الرقمي")}</h2><p class="muted">${t("Login codes, consents and signatures issued.", "رموز الدخول والموافقات والتواقيع الصادرة.")}</p><a class="button" href="/dashboard/sanad">${t("Open", "فتح")}</a></div>
+  <div class="card"><h2>${t("Bedaya team", "فريق بداية")}</h2><p class="muted">${t("Applicants' progress, warnings and the message outbox.", "تقدم المتقدمين والتنبيهات وصندوق الرسائل.")}</p><a class="button" href="/dashboard/admin">${t("Open", "فتح")}</a></div>
 </div>`;
 
 const noRole = (what) => `<p class="note">${t(
@@ -133,7 +133,7 @@ export const admin = {
     this.entries = entries;
     return `<div class="eyebrow">${t("Admin", "الإدارة")}</div>
       <h1>${t("Manage the launch framework", "إدارة إطار إطلاق المشاريع")}</h1>
-      <p class="subtitle">${t("Rules, partners, demo slots and roles. Changes apply to new roadmaps.", "القواعد والشركاء والمواعيد التجريبية والصلاحيات. تنطبق التغييرات على المسارات الجديدة.")}</p>
+      <p class="subtitle">${t("Rules, partners, appointment slots and roles. Changes apply to new roadmaps.", "القواعد والشركاء والمواعيد والصلاحيات. تنطبق التغييرات على المسارات الجديدة.")}</p>
       <div class="tabs">${[["catalog", ["Catalog", "الفهرس"]], ["users", ["Users", "المستخدمون"]]].map(([k, v]) => `<button data-tab="${k}" aria-pressed="${tab === k}">${tx(v)}</button>`).join("")}<button data-go="analytics">${t("Analytics", "التحليلات")}</button></div>
       ${tab === "catalog"
         ? `<table class="data"><thead><tr><th>${t("Key", "المفتاح")}</th><th>${t("Kind", "النوع")}</th><th>${t("Demo?", "تجريبي؟")}</th><th></th></tr></thead><tbody>${entries

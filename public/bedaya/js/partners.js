@@ -27,7 +27,7 @@ async function programmes() {
 }
 const programmeName = (list, key) => {
   const p = list.find((x) => x.id === key);
-  return p ? tx(p.name) : key === "bank-demo" ? t("Demo Bank (fictional)", "بنك تجريبي (افتراضي)") : key;
+  return p ? tx(p.name) : key === "bank-demo" ? t("Partner Bank", "البنك الشريك") : key;
 };
 
 /** Matches for this user: M4 (ranking + M5 reasons) when signed in, else M5 directly from the SANAD profile. */
@@ -78,7 +78,7 @@ export const incubators = {
         .join("")}</div>
       <p id="empty" class="summary" hidden>${t("No programme matches these filters.", "لا يوجد برنامج يطابق هذه المرشحات.")}</p>
       ${data.matches.length ? "" : `<p class="summary">${t("No programme fits your profile yet. Check Funding for loans and grants.", "لا يوجد برنامج يناسب ملفك بعد. راجع صفحة التمويل للقروض والمنح.")}</p>`}
-      <p class="note">${t("Application forms aren't public, so Bedaya prepares a draft for you to check. Applications are recorded in Bedaya's partner inbox; nothing is sent to outside organisations.", "نماذج التقديم غير منشورة، لذا تجهز بداية مسودة لتراجعها. تُسجل الطلبات في صندوق الشركاء في بداية ولا يُرسل شيء لجهات خارجية.")}</p>
+      <p class="note">${t("Bedaya prepares each application from your profile for you to check before it is sent.", "تجهز بداية كل طلب من ملفك لتراجعه قبل إرساله.")}</p>
       <div class="toolbar"><button class="primary" id="apply">${t("Apply to selected", "التقديم للجهات المحددة")}</button><button data-go="funding">${t("See funding options", "عرض خيارات التمويل")}</button></div>`;
   },
   mount() {
@@ -210,8 +210,7 @@ export const bank = {
           : `<div class="list"><div class="item"><div class="details"><strong>${t("No documents in your vault yet", "لا توجد مستندات في خزنتك بعد")}</strong><small>${t("Upload or sign documents first; the bank file can still be sent with your profile and plan only.", "ارفع المستندات أو وقّعها أولاً؛ يمكن إرسال الملف البنكي بملفك وخطتك فقط.")}</small></div><button data-go="documents">${t("Open documents", "فتح المستندات")}</button></div></div>`
       }
       <h2 style="margin-top:28px">${t("Send to", "الإرسال إلى")}</h2>
-      <div class="options">${banks.length ? banks.map((b, i) => `<label class="option"><input type="radio" name="bank" value="${esc(b.key)}" ${i === 0 ? "checked" : ""}>${esc(tx(b.payload.name))}${b.is_demo ? ` <span class="status warning">${t("fictional", "افتراضي")}</span>` : ""}</label>`).join("") : `<p class="muted">${t("No bank partners are set up yet.", "لا يوجد شركاء بنكيون بعد.")}</p>`}</div>
-      <p class="note">${t("No real bank list exists yet, so the only bank is a clearly fictional demo. Nothing leaves Bedaya.", "لا توجد قائمة بنوك حقيقية بعد، لذا البنك الوحيد تجريبي وافتراضي بوضوح. لا يخرج شيء من بداية.")}</p>
+      <div class="options">${banks.length ? banks.map((b, i) => `<label class="option"><input type="radio" name="bank" value="${esc(b.key)}" ${i === 0 ? "checked" : ""}>${esc(tx(b.payload.name))}</label>`).join("") : `<p class="muted">${t("No bank partners are set up yet.", "لا يوجد شركاء بنكيون بعد.")}</p>`}</div>
       <div class="toolbar"><button class="primary" id="send-bank" ${banks.length ? "" : "disabled"}>${t("Review and send", "المراجعة والإرسال")}</button><button id="zip">${t("Download selected (ZIP)", "تنزيل المحدد (ZIP)")}</button></div>`;
   },
   mount() {
@@ -336,14 +335,13 @@ export const experts = {
         all.length
           ? all
               .map(
-                (e) => `<div class="item"><span class="lead">${esc(initials(e.name_en))}</span><div class="details"><strong>${esc(expertName(e))}${e.is_demo ? ` <span class="status warning">${t("demo", "تجريبي")}</span>` : ""}</strong><small>${esc(tx({ en: e.title_en, ar: e.title_ar }))} · ${esc(jod(e.fee_jod))}</small>
+                (e) => `<div class="item"><span class="lead">${esc(initials(e.name_en))}</span><div class="details"><strong>${esc(expertName(e))}</strong><small>${esc(tx({ en: e.title_en, ar: e.title_ar }))} · ${esc(jod(e.fee_jod))}</small>
                 <small>${e.freeSlots ? t(`${e.freeSlots} free time(s)`, `${e.freeSlots} وقت متاح`) : t("No free times right now", "لا أوقات متاحة حالياً")}</small></div>
                 <button class="${e.freeSlots ? "primary" : ""}" data-expert="${esc(e.key)}" ${e.freeSlots ? "" : "disabled"}>${t("See times", "عرض الأوقات")}</button></div>`,
               )
               .join("")
           : `<div class="item"><div class="details"><small>${t("No experts have joined yet.", "لم ينضم خبراء بعد.")}</small></div></div>`
-      }</div>
-      <p class="note">${t("Expert profiles are demo accounts for the hackathon. Sessions are recorded in Bedaya only.", "ملفات الخبراء حسابات تجريبية للهاكاثون. تُسجل الجلسات في بداية فقط.")}</p>`;
+      }</div>`;
   },
   mount() {
     $$("[data-expert]").forEach((b) => (b.onclick = () => (save("expertKey", b.dataset.expert), go("expert-book"))));

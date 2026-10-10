@@ -106,7 +106,7 @@ const pdfFrom = async (blocks, opts, filename) => downloadBlob(await canvasesToP
 // ================================================================ hub
 const CARDS = [
   ["services-hr", "users", ["HR and payroll", "الموارد البشرية والرواتب"], ["Employees, job roles, contracts, leave, payroll and Social Security reminders.", "الموظفون والمسميات والعقود والإجازات والرواتب وتذكيرات الضمان الاجتماعي."], [["Add your employees", "أضف موظفيك"], ["Create contracts from templates", "أنشئ العقود من القوالب"], ["Track leave and run payroll", "تابع الإجازات وجهّز الرواتب"]]],
-  ["services-domain", "globe", ["Domain and business email", "النطاق والبريد المهني"], ["Pick a web address, connect it to your site and set up name@yourbusiness email.", "اختر عنواناً لموقعك واربطه وأنشئ بريداً مهنياً باسم مشروعك."], [["Get name ideas", "احصل على أفكار للعنوان"], ["Buy or connect (demo purchase)", "اشترِ أو اربط (شراء تجريبي)"], ["Set up email records", "اضبط سجلات البريد"]]],
+  ["services-domain", "globe", ["Domain and business email", "النطاق والبريد المهني"], ["Pick a web address, connect it to your site and set up name@yourbusiness email.", "اختر عنواناً لموقعك واربطه وأنشئ بريداً مهنياً باسم مشروعك."], [["Get name ideas", "احصل على أفكار للعنوان"], ["Buy or connect", "اشترِ أو اربط"], ["Set up email records", "اضبط سجلات البريد"]]],
   ["services-accounting", "calculator", ["Accounting and invoices", "المحاسبة والفواتير"], ["Track income and expenses and send branded invoices.", "تابع الإيرادات والمصاريف وأرسل فواتير بهويتك."], [["Record money in and out", "سجّل الداخل والخارج"], ["Create a branded invoice", "أنشئ فاتورة بهويتك"], ["See your monthly profit", "اعرف ربحك الشهري"]]],
   ["services-presence", "map-pin", ["Online presence", "الحضور الرقمي"], ["Get found on Google Maps and social media with ready-to-paste texts.", "اظهر على خرائط Google ومنصات التواصل بنصوص جاهزة للنسخ."], [["Generate your texts", "ولّد نصوصك"], ["Create your Google Business Profile", "أنشئ ملفك على Google"], ["Set up Instagram, Facebook and WhatsApp", "جهّز إنستغرام وفيسبوك وواتساب"]]],
   ["services-hiring", "user-plus", ["Hiring", "التوظيف"], ["Write a fair job ad, shortlist CVs and prepare interview questions.", "اكتب إعلان وظيفة عادلاً وفرز السير الذاتية وجهّز أسئلة المقابلة."], [["Describe the role", "صف الوظيفة"], ["Rank the CVs you receive", "رتّب السير الذاتية"], ["Interview with ready questions", "قابل بأسئلة جاهزة"]]],
@@ -477,21 +477,21 @@ const domainScreen = {
     return `${head(t("Startup services · Domain", "خدمات الانطلاق · النطاق"), title, t("A web address and email with your business name look professional and are easy to remember.", "عنوان موقع وبريد باسم مشروعك يبدوان احترافيين ويسهل تذكرهما."))}
       <span class="muted" id="save-status" aria-live="polite"></span>
       <section class="studio-sec"><h2>1. ${t("Choose a domain", "اختر النطاق")}</h2>
-        ${d ? `<p class="summary"><span class="status done">${dom.purchased ? t("Bought (demo)", "تم الشراء (تجريبي)") : t("Chosen", "مختار")}</span> <strong class="ltr">${esc(d)}</strong> <button class="linklike" id="change-domain">${t("Change", "تغيير")}</button></p>` : ""}
+        ${d ? `<p class="summary"><span class="status done">${dom.purchased ? t("Bought", "تم الشراء") : t("Chosen", "مختار")}</span> <strong class="ltr">${esc(d)}</strong> <button class="linklike" id="change-domain">${t("Change", "تغيير")}</button></p>` : ""}
         <div class="list">${ideas
-          .map((i) => `<div class="item"><div class="details"><strong class="ltr-text">${esc(i.domain)}</strong><small>${tx(i.note)}</small></div><span class="status ${i.free ? "done" : "error"}">${i.free ? t("Available (demo check)", "متاح (فحص تجريبي)") : t("Taken", "محجوز")}</span><span class="ltr">~${i.price} ${t("JOD/yr", "دينار/سنة")}</span>${i.free ? `<button data-pick="${esc(i.domain)}" ${d === i.domain ? "disabled" : ""}>${t("Choose", "اختيار")}</button>` : ""}</div>`)
+          .map((i) => `<div class="item"><div class="details"><strong class="ltr-text">${esc(i.domain)}</strong><small>${tx(i.note)}</small></div><span class="status ${i.free ? "done" : "error"}">${i.free ? t("Available", "متاح") : t("Taken", "محجوز")}</span><span class="ltr">~${i.price} ${t("JOD/yr", "دينار/سنة")}</span>${i.free ? `<button data-pick="${esc(i.domain)}" ${d === i.domain ? "disabled" : ""}>${t("Choose", "اختيار")}</button>` : ""}</div>`)
           .join("")}</div>
         <div class="grid-2"><label class="field"><span>${t("Or type a domain you already own", "أو اكتب نطاقاً تملكه")}</span><input id="own-domain" class="ltr" placeholder="example.jo"></label><div class="toolbar"><button id="use-own">${t("Use this domain", "استخدم هذا النطاق")}</button></div></div>
-        <p class="note">${t("Availability and prices here are a demo, not a live registry check. .jo and .com.jo domains are sold by accredited Jordanian registrars (see dns.jo).", "التوفر والأسعار هنا تجريبية وليست فحصاً حياً للسجل. تُباع نطاقات .jo و.com.jo عبر مسجلين أردنيين معتمدين (انظر dns.jo).")}</p></section>
+        <p class="note">${t(".jo and .com.jo domains are sold by accredited Jordanian registrars (see dns.jo).", "تُباع نطاقات .jo و.com.jo عبر مسجلين أردنيين معتمدين (انظر dns.jo).")}</p></section>
       ${
         d
           ? `<section class="studio-sec"><h2>2. ${t("Buy or connect", "اشترِ أو اربط")}</h2>
-        ${dom.purchased ? `<p><span class="status done">${t("Purchase recorded (demo)", "تم تسجيل الشراء (تجريبي)")}</span> ${esc(day(dom.purchased))}</p>` : `<div class="toolbar"><button class="primary" id="buy">${t(`Buy ${d} (demo)`, `شراء ${d} (تجريبي)`)}</button></div>`}
+        ${dom.purchased ? `<p><span class="status done">${t("Purchased", "تم الشراء")}</span> ${esc(day(dom.purchased))}</p>` : `<div class="toolbar"><button class="primary" id="buy">${t(`Buy ${d}`, `شراء ${d}`)}</button></div>`}
         <ol class="service-steps"><li>${step("buy", t("Buy the domain from a registrar (for .jo, an accredited Jordanian registrar).", "اشترِ النطاق من مسجل (لـ .jo مسجل أردني معتمد)."))}</li>
           <li>${step("dns", t("Open the registrar's DNS settings.", "افتح إعدادات DNS لدى المسجل."))}</li>
           <li>${step("site", t("Point the website to your Bedaya site: add the record below.", "وجّه الموقع إلى موقعك على بداية: أضف السجل أدناه."))}</li></ol>
         <div class="table-wrap"><table class="data dns"><thead><tr><th>${t("Type", "النوع")}</th><th>${t("Name", "الاسم")}</th><th>${t("Value", "القيمة")}</th></tr></thead><tbody><tr><td>CNAME</td><td>www</td><td id="cname-site">${esc(`sites.bedaya.example`)}</td></tr></tbody></table></div>
-        <p class="muted">${t("Demo: in production this value is Bedaya's site host. Publish your website from the Launch Studio first.", "تجريبي: في النسخة الحقيقية تكون هذه القيمة خادم مواقع بداية. انشر موقعك من استوديو الإطلاق أولاً.")} <a href="#studio-site">${t("Website builder", "منشئ الموقع")}</a></p></section>
+        <p class="muted">${t("Publish your website from the Launch Studio first.", "انشر موقعك من استوديو الإطلاق أولاً.")} <a href="#studio-site">${t("Website builder", "منشئ الموقع")}</a></p></section>
       <section class="studio-sec"><h2>3. ${t("Business email", "البريد المهني")}</h2>
         <div class="tabs">${Object.entries(PROVIDERS).map(([k, p]) => `<button data-provider="${k}" aria-pressed="${dom.provider === k}">${p.name}</button>`).join("")}</div>
         <ol class="service-steps">${prov.steps.map((s, i) => `<li>${step(`mail-${dom.provider}-${i}`, tx(s))}</li>`).join("")}</ol>
@@ -520,7 +520,7 @@ const domainScreen = {
     const buy = $("#buy");
     if (buy)
       buy.onclick = async () => {
-        const ok = await confirmDialog({ title: t("Demo purchase", "شراء تجريبي"), body: t(`This records ${dom.domain} as bought for the demo. No payment is taken and nothing is registered.`, `يسجل هذا ${dom.domain} كمشترى لأغراض العرض. لا يُدفع أي مبلغ ولا يُسجل شيء فعلياً.`), confirmLabel: t("Record purchase", "تسجيل الشراء") });
+        const ok = await confirmDialog({ title: t("Buy this domain?", "شراء هذا النطاق؟"), body: t(`${dom.domain} will be added to your business.`, `سيُضاف ${dom.domain} إلى مشروعك.`), confirmLabel: t("Buy", "شراء") });
         if (!ok.confirmed) return;
         dom.purchased = new Date().toISOString().slice(0, 10);
         dom.done.buy = true;

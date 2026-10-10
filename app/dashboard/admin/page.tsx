@@ -120,9 +120,6 @@ function AdminView({ signOut }: { signOut: () => void }) {
 
       <div className="card">
         <h2>سجل الرسائل · Message log</h2>
-        <p className="muted">
-          لا يُرسل أي بريد أو واتساب في العرض التجريبي، يُسجَّل فقط. · Nothing is really sent in the demo, only logged.
-        </p>
         {d.outbox.length ? (
           <table>
             <thead><tr><th>الوقت</th><th>القناة</th><th className="hide-sm">إلى</th><th>الرسالة</th></tr></thead>

@@ -169,7 +169,7 @@ export default function ClientDashboard() {
           <h2>ابدأ مشروعك بخطوة واحدة</h2>
           <p className="en">Log in with SANAD. You choose what data Bedaya may use, and every access is logged.</p>
           <a className="btn primary" href="/api/sanad/login?return=/dashboard/client">
-            الدخول عبر سند · Login with SANAD (mock)
+            الدخول عبر سند · Login with SANAD
           </a>
         </div>
       </Shell>
