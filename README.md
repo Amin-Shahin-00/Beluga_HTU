@@ -184,6 +184,8 @@ npm run build
 ```
 
 ## More documentation
+- **Bedaya documentation (PDF):** [docs/Bedaya documentation.pdf](docs/Bedaya%20documentation.pdf)
+- **Pitch presentation (HTML, opens offline in any browser):** [docs/presentation/bedaya-pitch.html](docs/presentation/bedaya-pitch.html)
 - AI API: [docs/m5-api.md](docs/m5-api.md)
 - Identity and documents API: [docs/m5-identity-api.md](docs/m5-identity-api.md)
 - Backend: [docs/member-4/MEMBER4_HANDOFF.md](docs/member-4/MEMBER4_HANDOFF.md) and [BACKEND_GUIDE.md](docs/member-4/BACKEND_GUIDE.md)
