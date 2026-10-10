@@ -82,7 +82,7 @@ function engineLabel(engine) {
  */
 export function mountChat(root, { compact = false } = {}) {
   root.innerHTML = `<div class="chatbot ${compact ? "compact" : ""}">
-      <div class="chat-head"><img class="chat-avatar-img" src="/bedaya/mascot-head.png" alt="" width="40" height="40"><div><strong>${t("Bedaya Assistant", "مساعد بداية")}</strong><small id="chat-engine" class="muted"></small></div>
+      <div class="chat-head"><img class="chat-avatar-img" src="/bedaya/mascot-head.png" alt="" width="40" height="40"><div><strong>${t("Saad", "سعد")}</strong><small id="chat-engine" class="muted"></small></div>
         <button type="button" class="chat-icon" id="chat-reset" title="${t("New conversation", "محادثة جديدة")}" aria-label="${t("New conversation", "محادثة جديدة")}"><i data-lucide="rotate-ccw"></i></button></div>
       <div class="chat-log" id="chat-log" aria-live="polite"></div>
       <div class="chips chat-suggest" id="chat-suggest"></div>
@@ -221,7 +221,7 @@ export function mountChat(root, { compact = false } = {}) {
 }
 
 /**
- * The floating "Ask Bedaya" button and panel, on every page except the Assistant page and staff accounts.
+ * The floating "Ask Saad" character and panel, on every page except the Assistant page and staff accounts.
  * The panel survives page changes (the conversation stays open) and is rebuilt when the person changes.
  */
 export function floatingChat(route) {
@@ -244,15 +244,15 @@ export function floatingChat(route) {
   fab.id = "chat-fab";
   fab.className = "chat-fab";
   fab.type = "button";
-  fab.setAttribute("aria-label", t("Ask Bedaya Assistant", "اسأل مساعد بداية"));
-  fab.innerHTML = `<span class="fab-bubble">${t("Ask Bedaya", "اسأل بداية")}</span><img src="/bedaya/mascot.png" alt="" width="84" height="100">`;
+  fab.setAttribute("aria-label", t("Ask Saad", "اسأل سعد"));
+  fab.innerHTML = `<span class="fab-bubble">${t("Ask Saad", "اسأل سعد")}</span><img src="/bedaya/mascot.png" alt="" width="84" height="100">`;
   panel = document.createElement("div");
   panel.id = "chat-panel";
   panel.className = "chat-panel";
   panel.dataset.who = who;
   panel.hidden = true;
   panel.setAttribute("role", "dialog");
-  panel.setAttribute("aria-label", t("Bedaya Assistant", "مساعد بداية"));
+  panel.setAttribute("aria-label", t("Saad", "سعد"));
   document.body.append(fab, panel);
   let chat = null;
   fab.onclick = () => {

@@ -135,7 +135,7 @@ function briefFallback(c: CopilotContext) {
 }
 export async function writeBrief(c: CopilotContext, instruction?: string, current?: string) {
   const fallback = briefFallback(c);
-  const system = `You are Bedaya Copilot, a business-registration advisor in Jordan. Write a one-page brief that shows the owner you understand their business, with these sections: Your business; Legal path (and why it suits them); What you need to open; Cost and time; Watch out for (2–3 risks specific to them). About 150 words. ${RULES(c.lang)}\n\nFACTS:\n${grounding(c)}`;
+  const system = `You are Saad, Bedaya's AI copilot and business-registration advisor in Jordan. Write a one-page brief that shows the owner you understand their business, with these sections: Your business; Legal path (and why it suits them); What you need to open; Cost and time; Watch out for (2–3 risks specific to them). About 150 words. ${RULES(c.lang)}\n\nFACTS:\n${grounding(c)}`;
   const user = instruction && current ? `Here is the current brief:\n${current}\n\nRevise it as the owner asks: ${instruction}` : "Write the business brief.";
   return write("copilot", system, user, instruction && current ? current : fallback, 450);
 }
@@ -153,7 +153,7 @@ function recommendationsFallback(c: CopilotContext): Bi[] {
 }
 export async function writePlan(c: CopilotContext) {
   const fallback = recommendationsFallback(c);
-  const system = `You are Bedaya Copilot. From the FACTS, give the owner 4 to 5 short, specific recommendations for doing their registration well: the best order, what to sign where, what suits their kind of business, and funding. Reply with JSON only: {"recommendations":["…", "…"]}. Each item one sentence. ${RULES(c.lang)}\n\nFACTS:\n${grounding(c)}`;
+  const system = `You are Saad, Bedaya's AI copilot. From the FACTS, give the owner 4 to 5 short, specific recommendations for doing their registration well: the best order, what to sign where, what suits their kind of business, and funding. Reply with JSON only: {"recommendations":["…", "…"]}. Each item one sentence. ${RULES(c.lang)}\n\nFACTS:\n${grounding(c)}`;
   const r = await generate({ task: "copilot", system, messages: [{ role: "user", content: "Give the recommendations as JSON." }], fallback: () => JSON.stringify({ recommendations: fallback.map((x) => (c.lang === "ar" ? x.ar : x.en)) }), maxTokens: 450 });
   const recs = parseJson<{ recommendations?: unknown[] }>(r.text)?.recommendations;
   const ok = Array.isArray(recs) && recs.filter((x) => typeof x === "string" && x.trim()).length >= 2;
@@ -197,7 +197,7 @@ export async function writeDoc(c: CopilotContext, id: string, instruction?: stri
   const spec = c.writeDocs.find((d) => d.id === id);
   if (!spec) return null;
   const fallback = docFallback(c, id);
-  const system = `You are Bedaya Copilot, preparing paperwork for a business registration in Jordan. Write: ${DOC_BRIEF[id]} ${RULES(c.lang)}\n\nFACTS:\n${grounding(c)}`;
+  const system = `You are Saad, Bedaya's AI copilot, preparing paperwork for a business registration in Jordan. Write: ${DOC_BRIEF[id]} ${RULES(c.lang)}\n\nFACTS:\n${grounding(c)}`;
   const user = instruction && current ? `Here is the current draft:\n${current}\n\nRevise it as the owner asks: ${instruction}` : `Write the "${pick(spec.title, c.lang)}".`;
   return write("copilot", system, user, instruction && current ? current : fallback, 650);
 }

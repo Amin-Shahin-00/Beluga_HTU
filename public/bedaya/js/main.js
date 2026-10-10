@@ -68,7 +68,7 @@ const NAV = {
 // The owner's pages, combined into a few sections. The menu shows one item per section; inside a
 // section, tabs lead to its pages. `also` lists pages reached from inside a section (no tab of their own).
 const GROUPS = [
-  { id: "copilot", label: ["AI Copilot", "المستشار الذكي"], icon: "bot", tabs: [] },
+  { id: "copilot", label: ["Saad", "سعد"], icon: "bot", tabs: [] },
   { id: "roadmap", label: ["Your roadmap", "مسار مشروعك"], icon: "route", tabs: [["roadmap", ["Steps", "الخطوات"]], ["plan", ["Business plan", "خطة العمل"]], ["location", ["Location", "الموقع"]], ["compliance", ["Compliance", "الالتزامات"]]] },
   { id: "documents", label: ["Documents & signing", "المستندات والتواقيع"], icon: "files", tabs: [["documents", ["Documents", "المستندات"]], ["signing", ["Sign forms", "توقيع النماذج"]]], also: ["ocr", "signed"] },
   { id: "incubators", label: ["Funding & support", "التمويل والدعم"], icon: "sprout", tabs: [["incubators", ["Incubators", "الحاضنات"]], ["funding", ["Funding", "التمويل"]], ["bank", ["Bank file", "الملف البنكي"]], ["applied", ["My applications", "طلباتي"]], ["experts", ["Experts", "الخبراء"]], ["appointments", ["Appointments", "المواعيد"]]], also: ["bank-sent", "expert-book"] },

@@ -71,8 +71,8 @@ function reviewCard(item, title, row, { why = "", generateLabel, empty }) {
 // ---------------------------------------------------------------- page
 export const copilot = {
   async render() {
-    const title = t("Your AI Copilot", "مستشارك الذكي");
-    if (!ready()) return `<h1>${title}</h1>${needsAccount(t("The Copilot", "المستشار الذكي"))}`;
+    const title = t("Saad, your AI copilot", "سعد، مستشارك الذكي");
+    if (!ready()) return `<h1>${title}</h1>${needsAccount(t("Saad", "سعد"))}`;
     try {
       await loadState();
     } catch (e) {
@@ -84,8 +84,8 @@ export const copilot = {
     const nextStage = st.find((s) => !s.done && s.open);
     return `<div id="cp-root"><div class="cp-hero">
         <img src="/bedaya/mascot.png" alt="" width="110" height="130">
-        <div><div class="eyebrow">${t("AI Copilot", "المستشار الذكي")}</div>
-          <h1>${first ? t(`Hi ${first}, I've studied ${c.business?.name || "your business"}`, `أهلاً ${first}، درستُ ${c.business?.name || "مشروعك"}`) : title}</h1>
+        <div><div class="eyebrow">${t("Saad · AI copilot", "سعد · المستشار الذكي")}</div>
+          <h1>${first ? t(`Hi ${first}, I'm Saad. I've studied ${c.business?.name || "your business"}`, `أهلاً ${first}، أنا سعد. درستُ ${c.business?.name || "مشروعك"}`) : title}</h1>
           <p class="subtitle">${t("I prepare the work: a brief of your business, a plan of where to go and what to sign, and the paperwork. You stay in control: nothing counts until you approve it.", "أنا أجهز العمل: ملخص مشروعك، وخطة بالجهات وما توقعه، والأوراق المطلوبة. وأنت صاحب القرار: لا يُعتمد شيء قبل موافقتك.")}</p></div>
       </div>
       <ol class="cp-stepper">${st.map((s, i) => `<li class="${s.done ? "done" : s === nextStage ? "now" : ""} ${s.open ? "" : "locked"}"><a href="#cp-${s.id}"><span class="cp-dot">${s.done ? "✓" : i + 1}</span><span>${s.label}${s.count ? ` <small>${s.count}</small>` : ""}</span></a></li>`).join("")}</ol>
@@ -215,7 +215,7 @@ async function rerender() {
   window.scrollTo(0, y);
 }
 async function aiJob(label, fn) {
-  if (busy) return toast(t("The copilot is still working on the previous request.", "ما زال المستشار يعمل على الطلب السابق."));
+  if (busy) return toast(t("Saad is still working on the previous request.", "ما زال سعد يعمل على الطلب السابق."));
   busy = label;
   await rerender();
   try {

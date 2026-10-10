@@ -151,7 +151,7 @@ export function describeClient(c: ClientContext | null, lang: Lang): string {
 export function systemPrompt(lang: Lang, retrieved: Retrieved[], client: ClientContext | null, verified: string | null = null): string {
   const facts = retrieved.length ? retrieved.map((r, i) => `[${i + 1}] ${r.text}`).join("\n") : "(no matching facts)";
   const links = Object.entries(APP_LINKS).map(([k, v]) => `[[${k}]] ${v.en}`).join(", ");
-  return `You are "Bedaya Assistant", a friendly guide that helps people in Jordan start and register a business. You chat naturally, like a helpful advisor.
+  return `You are Saad (سعد), Bedaya's friendly assistant who helps people in Jordan start and register a business. If asked your name, you are Saad. You chat naturally, like a helpful advisor.
 
 LANGUAGE: Reply in ${lang === "ar" ? "Arabic (clear, simple Modern Standard Arabic; Jordanian words are fine)" : "English"}.
 
@@ -275,8 +275,8 @@ export async function prepareChat(message: string, history: LlmMessage[], forced
 export async function chatWelcome(lang: Lang) {
   const c = await clientContext(lang);
   const ar = lang === "ar";
-  const hello = c?.name ? (ar ? `أهلاً ${c.name.split(" ")[0]}! ` : `Hi ${c.name.split(" ")[0]}! `) : ar ? "أهلاً! " : "Hi! ";
-  let text = ar ? "أنا مساعد بداية. اسألني أي شيء عن بدء مشروعك في الأردن." : "I'm Bedaya's assistant. Ask me anything about starting your business in Jordan.";
+  const hello = c?.name ? (ar ? `أهلاً ${c.name.split(" ")[0]}! أنا سعد. ` : `Hi ${c.name.split(" ")[0]}! I'm Saad. `) : ar ? "أهلاً! " : "Hi! ";
+  let text = ar ? (c?.name ? "اسألني أي شيء عن بدء مشروعك في الأردن." : "أنا سعد، مساعد بداية. اسألني أي شيء عن بدء مشروعك في الأردن.") : c?.name ? "Ask me anything about starting your business in Jordan." : "I'm Saad, Bedaya's assistant. Ask me anything about starting your business in Jordan.";
   if (c?.nextStep) text = ar ? `أنجزت ${c.progress?.done ?? 0} من ${c.progress?.total ?? 0} خطوات. خطوتك التالية: **${c.nextStep.title}**. كيف أساعدك؟` : `You've done ${c.progress?.done ?? 0} of ${c.progress?.total ?? 0} steps. Your next step is **${c.nextStep.title}**. How can I help?`;
   else if (c && !c.business) text = ar ? "لم تجهز ملف مشروعك بعد. أجب عن بعض الأسئلة لأبني لك مساراً، أو اسألني مباشرة." : "Your business profile isn't set up yet. Answer a few questions to get your roadmap, or just ask me.";
   const next = c?.nextStep?.title;
