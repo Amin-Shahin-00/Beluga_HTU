@@ -40,6 +40,7 @@ Accounts, roadmaps, bookings, applications, expert availability, Launch Studio d
    - `supabase/migrations/202610090002_member4_platform.sql`
    - `supabase/migrations/202610100001_parties_studio_services.sql` (roles per party, SANAD identities, experts, versioned drafts, websites, map zones)
    - `supabase/migrations/202610110001_assistant_chats.sql` (saved assistant conversations)
+   - `supabase/migrations/202610110002_change_legal_form.sql` (switch the legal structure and rebuild the roadmap)
    - `supabase/seeds/team.sql`
    - `supabase/seeds/accounts.sql` (the demo accounts below; safe to re-run)
 
@@ -109,7 +110,7 @@ Other pages, each with a back bar:
 
 After signing in, a business owner lands on the **AI Copilot**. It studies their business (profile, SANAD identity, roadmap, documents) and prepares the work in four stages. Nothing counts until the owner approves it:
 
-1. **Understand**: a one-page business brief (legal path, what's needed, cost and time, risks). The owner can approve it, edit it themselves, or ask the AI to change it.
+1. **Understand**: first the **legal structure**. Saad compares home business, sole proprietorship and LLC (who owns it, liability, official fees, steps and time from the real data, when to choose it, what to watch out for), recommends one for this business with its reasons, and lets the owner switch. Switching rebuilds the roadmap; it is refused once a step is done. Partnerships, shareholding and non-profit companies are explained too, with "Ask an expert". Then a one-page business brief (legal path, what's needed, cost and time, risks). The owner can approve it, edit it themselves, or ask the AI to change it.
 2. **Plan**: every step with where to go, how (e-sign with SANAD in Bedaya, in person, or at a shop), what to sign, the papers, fees, timing and a tip, plus AI recommendations. Each step is approved or skipped by the owner.
 3. **Documents**: the AI drafts the paperwork it can write (activity description, trade-name options, landlord approval letter, home-business commitments, JFDA product sheet, funding letter). Bedaya fills the official forms, and the owner reviews and approves each one. Approved documents download as branded PDFs.
 4. **Sign & submit**: only after approval does the owner sign with SANAD.

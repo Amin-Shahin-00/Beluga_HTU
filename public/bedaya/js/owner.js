@@ -23,6 +23,7 @@ export const roadmap = {
     return `<div class="eyebrow">${esc(name)}</div>
       <h1>${t("A clear path to opening day", "مسار واضح ليوم الافتتاح")}</h1>
       <p class="subtitle">${nextAction ? t(`Next step: ${nextAction.title_en}.`, `الخطوة التالية: ${nextAction.title_ar}.`) : t("Every step is complete. Well done!", "اكتملت كل الخطوات. أحسنت!")}</p>
+      <p class="muted">${t("Legal structure", "الشكل القانوني")}: <strong>${esc(tx({ home_business: ["Home business", "مشروع منزلي"], sole_proprietorship: ["Sole proprietorship", "مؤسسة فردية"], llc: ["Limited liability company", "شركة ذات مسؤولية محدودة"] }[session.profile.business.legalForm] || ["", ""]))}</strong> · <a href="#copilot" id="change-structure">${t("Compare and change with Saad", "قارن وغيّر مع سعد")}</a></p>
       <div class="metrics">
         <div class="metric"><b>${progress}%</b><small>${t("Roadmap complete", "اكتمال المسار")}</small></div>
         <div class="metric"><b>${esc(fee)}</b><small>${t("Official fees (range)", "الرسوم الرسمية (نطاق)")}</small></div>

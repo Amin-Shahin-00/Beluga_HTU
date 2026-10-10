@@ -1,7 +1,7 @@
 // Bedaya Copilot: the AI studies the business and prepares the work; the owner approves every piece
 // (human in the loop). Stages: 1 understand (brief) → 2 plan (each step) → 3 documents → 4 sign & submit.
 // Every AI draft, human edit and approval is a new version in the workspace (kind "copilot").
-import { $, $$, api, day, errorText, esc, go, lang, needsAccount, ready, session, t, toast, tx } from "./core.js";
+import { $, $$, api, confirmDialog, day, errorText, esc, go, lang, loadSession, needsAccount, ready, session, t, toast, tx } from "./core.js";
 import { formatRich } from "./chat.js";
 import { pdfFromText } from "./services.js";
 
@@ -15,7 +15,7 @@ async function loadState() {
   const ctx = await api(`/api/copilot/context?lang=${lang}`);
   if (!ctx.ok) throw Object.assign(new Error(errorText(ctx)), { status: ctx.status });
   const c = ctx.data;
-  const [brief, plan, forms, log, ...docRows] = await Promise.all([getItem("brief"), getItem("plan"), api("/api/documents"), api("/api/copilot/log"), ...c.writeDocs.map((d) => getItem(`doc:${d.id}`))]);
+  const [brief, plan, forms, log, structures, structureRow, ...docRows] = await Promise.all([getItem("brief"), getItem("plan"), api("/api/documents"), api("/api/copilot/log"), api(`/api/copilot/structures?lang=${lang}`), getItem("structure"), ...c.writeDocs.map((d) => getItem(`doc:${d.id}`))]);
   const generated = forms.ok ? (forms.data.documents || []).filter((d) => d.kind === "generated") : [];
   const formRows = await Promise.all(generated.map((f) => getItem(`form:${f.id}`)));
   state = {
@@ -26,6 +26,8 @@ async function loadState() {
     forms: generated,
     formApprovals: Object.fromEntries(generated.map((f, i) => [f.id, formRows[i].ok ? formRows[i].data.latest : null])),
     log: log.ok ? log.data.data : [],
+    structures: structures.ok ? structures.data : null,
+    structureChangedAt: structureRow.ok && structureRow.data.latest ? structureRow.data.latest.created_at : null,
   };
 }
 
@@ -50,8 +52,10 @@ function stages() {
 // ---------------------------------------------------------------- reusable review card (draft → edit / revise → approve)
 function reviewCard(item, title, row, { why = "", generateLabel, empty }) {
   const d = row?.data;
-  const isApproved = approved(row);
-  const status = !d ? ["", t("Not drafted", "لم تُكتب بعد")] : isApproved ? ["done", t("Approved by you", "اعتمدتها")] : ["warning", d.actor === "ai" ? t("AI draft · needs your review", "مسودة الذكاء الاصطناعي · تحتاج مراجعتك") : t("Edited · needs approval", "معدّلة · تحتاج اعتماد")];
+  // The brief is out of date if it was written for another structure, or before the latest structure change.
+  const stale = item === "brief" && d && ((d.legalForm && state.structures && d.legalForm !== state.structures.current) || (state.structureChangedAt && new Date(row.created_at) < new Date(state.structureChangedAt)));
+  const isApproved = approved(row) && !stale;
+  const status = !d ? ["", t("Not drafted", "لم تُكتب بعد")] : stale ? ["error", t("Out of date: your structure changed", "قديم: تغيّر شكلك القانوني")] : isApproved ? ["done", t("Approved by you", "اعتمدتها")] : ["warning", d.actor === "ai" ? t("AI draft · needs your review", "مسودة الذكاء الاصطناعي · تحتاج مراجعتك") : t("Edited · needs approval", "معدّلة · تحتاج اعتماد")];
   return `<div class="cp-card ${isApproved ? "approved" : ""}" data-item="${esc(item)}">
     <div class="cp-card-head"><div><h3>${esc(title)}</h3>${why ? `<small class="muted">${esc(why)}</small>` : ""}</div><span class="status ${status[0]}">${status[1]}</span></div>
     ${
@@ -59,7 +63,7 @@ function reviewCard(item, title, row, { why = "", generateLabel, empty }) {
         ? `<div class="cp-draft" dir="auto">${formatRich(d.text).html}</div>
            <div class="cp-edit" hidden><textarea rows="12" dir="auto">${esc(d.text)}</textarea></div>
            <div class="toolbar tight cp-actions">
-             ${isApproved ? `<button data-act="reopen">${t("Reopen for changes", "إعادة فتح للتعديل")}</button><button data-act="pdf"><i data-lucide="download"></i>${t("Download PDF", "تنزيل PDF")}</button>` : `<button class="primary" data-act="approve"><i data-lucide="check"></i>${t("Approve", "اعتماد")}</button><button data-act="edit"><i data-lucide="pencil"></i>${t("Edit myself", "تعديل بنفسي")}</button><button data-act="revise"><i data-lucide="sparkles"></i>${t("Ask AI to change", "اطلب تعديلاً من الذكاء الاصطناعي")}</button>`}
+             ${stale ? `<button class="primary" data-act="restale"><i data-lucide="refresh-cw"></i>${t("Update for my new structure", "حدّثه لشكلي الجديد")}</button>` : ""}${isApproved ? `<button data-act="reopen">${t("Reopen for changes", "إعادة فتح للتعديل")}</button><button data-act="pdf"><i data-lucide="download"></i>${t("Download PDF", "تنزيل PDF")}</button>` : `<button class="primary" data-act="approve"><i data-lucide="check"></i>${t("Approve", "اعتماد")}</button><button data-act="edit"><i data-lucide="pencil"></i>${t("Edit myself", "تعديل بنفسي")}</button><button data-act="revise"><i data-lucide="sparkles"></i>${t("Ask AI to change", "اطلب تعديلاً من الذكاء الاصطناعي")}</button>`}
            </div>
            <form class="cp-revise" hidden><input maxlength="500" dir="auto" placeholder="${t("e.g. make it shorter, more formal, mention delivery…", "مثال: اجعله أقصر، أكثر رسمية، اذكر التوصيل…")}"><button class="primary">${t("Rewrite", "إعادة الكتابة")}</button></form>
            <small class="muted cp-meta">${t("Version", "النسخة")} ${row.version} · ${esc(day(row.created_at))}</small>`
@@ -93,6 +97,7 @@ export const copilot = {
 
       <section class="cp-stage" id="cp-understand">
         <h2>1. ${t("Understand your business", "فهم مشروعك")}</h2>
+        ${structureHtml()}
         ${reviewCard("brief", t("Business brief", "ملخص المشروع"), state.brief, { why: t("How I understand your business. Correct anything I got wrong.", "كيف أفهم مشروعك. صحّح أي شيء أخطأتُ فيه."), generateLabel: t("Study my business", "ادرس مشروعي"), empty: t("I'll read your profile, roadmap and documents and write a one-page brief for you to check.", "سأقرأ ملفك ومسارك ومستنداتك وأكتب ملخصاً من صفحة واحدة لتراجعه.") })}
       </section>
 
@@ -118,6 +123,7 @@ export const copilot = {
   mount() {
     if (!state) return;
     bindReviewCards();
+    bindStructure();
     bindPlan();
     bindDocs();
     const sign = $("#cp-go-sign");
@@ -234,7 +240,7 @@ async function draftWith(item, instruction, current) {
   const isBrief = item === "brief";
   const res = await api(`/api/copilot/${isBrief ? "brief" : "doc"}`, { method: "POST", body: { lang, ...(isBrief ? {} : { docId: item.slice(4) }), ...(instruction ? { instruction, current } : {}) }, timeoutMs: 120000 });
   if (!res.ok) return toast(errorText(res));
-  const saved = await saveItem(item, { text: res.data.draft, actor: "ai", action: instruction ? "revise" : "draft", title: itemMeta(item).title, instruction: instruction || undefined }, false);
+  const saved = await saveItem(item, { text: res.data.draft, actor: "ai", action: instruction ? "revise" : "draft", title: itemMeta(item).title, instruction: instruction || undefined, legalForm: state.structures?.current }, false);
   if (!saved.ok) toast(errorText(saved));
 }
 function bindReviewCards() {
@@ -246,6 +252,10 @@ function bindReviewCards() {
       const act = b.dataset.act;
       b.onclick = async () => {
         if (act === "generate") return aiJob(item === "brief" ? t("Studying your business… (about 20 seconds)", "أدرس مشروعك… (حوالي 20 ثانية)") : t(`Writing your ${meta.title}… (about 20 seconds)`, `أكتب ${meta.title}… (حوالي 20 ثانية)`), () => draftWith(item));
+        if (act === "restale") {
+          // A fresh draft from the new facts reads better than patching the old text.
+          return aiJob(t("Rewriting your brief for the new structure… (about 25 seconds)", "أعيد كتابة ملخصك للشكل الجديد… (حوالي 25 ثانية)"), () => draftWith(item));
+        }
         if (act === "approve") {
           const r = await saveItem(item, { ...row.data, actor: "human", action: "approve" }, true);
           if (!r.ok) return toast(errorText(r));
@@ -335,6 +345,58 @@ function bindDocs() {
         await saveItem(`form:${b.dataset.approveForm}`, { actor: "human", action: "approve", title: b.dataset.title }, true);
         toast(t("Form approved. It can now be signed.", "تم اعتماد النموذج ويمكن توقيعه الآن."));
         rerender();
+      }),
+  );
+}
+
+// ---------------------------------------------------------------- legal structure (owner decides; Saad recommends)
+function structureHtml() {
+  const st = state.structures;
+  if (!st) return "";
+  const current = st.options.find((o) => o.current);
+  const rec = st.options.find((o) => o.id === st.recommended);
+  const money = (e) => (e ? `${e.feeMin.toLocaleString("en")}${e.feeMax > e.feeMin ? `–${e.feeMax.toLocaleString("en")}` : ""} ${t("JOD", "دينار")}${e.unknownFees ? t(` + ${e.unknownFees} unpublished`, ` + ${e.unknownFees} غير منشورة`) : ""}` : "");
+  const card = (o) => `<div class="cp-form ${o.fit === "recommended" ? "recommended" : ""} ${o.current ? "current" : ""} ${o.fit === "not_for_you" ? "dim" : ""}">
+      <div class="cp-form-badges">${o.fit === "recommended" ? `<span class="status done">${t("Saad recommends", "يوصي به سعد")}</span>` : ""}${o.current ? `<span class="status info">${t("Your current choice", "اختيارك الحالي")}</span>` : ""}${o.supported ? "" : `<span class="status">${t("With an expert", "مع خبير")}</span>`}</div>
+      <h4>${esc(o.name)}</h4><p class="muted">${esc(o.what)}</p>
+      <dl class="kv cp-kv"><dt>${t("Owners", "المالكون")}</dt><dd>${esc(o.owners)}</dd><dt>${t("Liability", "المسؤولية")}</dt><dd>${esc(o.liability)}</dd>
+        ${o.estimate ? `<dt>${t("Official fees", "الرسوم الرسمية")}</dt><dd>${esc(money(o.estimate))}</dd><dt>${t("Steps", "الخطوات")}</dt><dd>${o.estimate.steps}${o.estimate.days ? t(` · about ${o.estimate.days} days`, ` · حوالي ${o.estimate.days} يوماً`) : ""}</dd>` : ""}</dl>
+      <strong class="cp-form-h">${t("Choose it when", "اختره عندما")}</strong><ul>${o.bestFor.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+      <strong class="cp-form-h">${t("Watch out", "انتبه إلى")}</strong><ul>${o.watchOut.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+      ${o.why.length && o.fit !== "recommended" ? `<small class="muted">${t("For you", "بالنسبة لك")}: ${esc(o.why.join(" · "))}</small>` : ""}
+      <div class="toolbar tight">${
+        o.current ? `<button disabled>${t("Current structure", "الشكل الحالي")}</button>`
+        : o.supported ? `<button class="${o.fit === "recommended" ? "primary" : ""}" data-structure="${esc(o.id)}" ${st.locked ? "disabled" : ""}>${t("Choose this", "اختر هذا")}</button>`
+        : `<button data-go="experts">${t("Ask an expert", "اسأل خبيراً")}</button>`
+      }</div></div>`;
+  return `<div class="cp-card cp-structure" id="cp-structure">
+    <div class="cp-card-head"><div><h3>${t("Legal structure", "الشكل القانوني")}</h3><small class="muted">${t("What kind of business should you register? Compare the options; the choice is yours.", "ما نوع المنشأة التي تسجلها؟ قارن الخيارات؛ والقرار لك.")}</small></div>
+      <span class="status ${current?.id === st.recommended ? "done" : "warning"}">${t("Current", "الحالي")}: ${esc(current?.name || "")}</span></div>
+    ${rec ? `<div class="cp-rec-box"><img src="/bedaya/mascot-head.png" alt="" width="44" height="44"><div><strong>${current?.id === rec.id ? t(`Your choice matches my recommendation: ${rec.name}`, `اختيارك يطابق توصيتي: ${rec.name}`) : t(`I recommend: ${rec.name}`, `أوصي بـ: ${rec.name}`)}</strong><ul>${rec.why.map((w) => `<li>${esc(w)}</li>`).join("")}</ul></div></div>` : ""}
+    ${st.locked ? `<p class="note">${t("You've already completed a roadmap step, so the structure is fixed here. To change it, talk to an expert.", "أنجزت خطوة من مسارك، لذا لا يمكن تغيير الشكل القانوني هنا. للتغيير تحدث مع خبير.")}</p>` : ""}
+    <div class="cp-forms">${st.options.filter((o) => o.supported).map(card).join("")}</div>
+    <details class="cp-more"><summary>${t("Other structures (partnerships, shareholding, non-profit)", "أشكال أخرى (التضامن، التوصية، المساهمة، غير الربحية)")}</summary><div class="cp-forms">${st.options.filter((o) => !o.supported).map(card).join("")}</div></details>
+  </div>`;
+}
+function bindStructure() {
+  $$("[data-structure]").forEach(
+    (b) =>
+      (b.onclick = async () => {
+        const o = state.structures.options.find((x) => x.id === b.dataset.structure);
+        const e = o.estimate;
+        const ok = await confirmDialog({
+          title: t(`Switch to ${o.name}?`, `التحويل إلى ${o.name}؟`),
+          html: `<ul><li>${t(`Your roadmap is rebuilt for ${o.name}: ${e.steps} steps, official fees about ${e.feeMin}${e.feeMax > e.feeMin ? `–${e.feeMax}` : ""} JOD.`, `يُعاد بناء مسارك لـ${o.name}: ${e.steps} خطوات، والرسوم الرسمية حوالي ${e.feeMin}${e.feeMax > e.feeMin ? `–${e.feeMax}` : ""} دينار.`)}</li><li>${t("Unsigned forms for your current structure are withdrawn; you'll prepare the new ones.", "تُسحب النماذج غير الموقعة الخاصة بشكلك الحالي، وتجهز النماذج الجديدة.")}</li><li>${t("Saad will update your brief and plan with you.", "سيحدّث سعد الملخص والخطة معك.")}</li></ul>`,
+          confirmLabel: t("Yes, switch", "نعم، حوّل"),
+        });
+        if (!ok.confirmed) return;
+        await aiJob(t("Rebuilding your roadmap for the new structure…", "أعيد بناء مسارك للشكل الجديد…"), async () => {
+          const res = await api("/api/copilot/structure", { method: "POST", body: { legalForm: o.id } });
+          if (!res.ok) return toast(errorText(res));
+          await saveItem("structure", { actor: "human", action: "decide", title: t(`legal structure: ${o.name}`, `الشكل القانوني: ${o.name}`), legalForm: o.id }, true);
+          await loadSession();
+          toast(t(`Done. Your roadmap now follows ${o.name}.`, `تم. مسارك الآن يتبع ${o.name}.`));
+        });
       }),
   );
 }

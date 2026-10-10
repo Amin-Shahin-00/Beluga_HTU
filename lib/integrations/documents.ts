@@ -12,7 +12,7 @@ import { fillForm } from "./pdf/fillForm";
 import { templatesFor } from "./pdf/templates";
 import { getProfile } from "./profile";
 import { getSignatureProvider, sanadMode } from "./sanad";
-import { find, getFile, insert, list, newId, now, putFile, update, type DocumentRow, type DocumentStatus, type ReviewDecision } from "./store";
+import { find, getFile, insert, list, newId, now, putFile, remove, update, type DocumentRow, type DocumentStatus, type ReviewDecision } from "./store";
 import type { DocType, OcrResult } from "./types";
 
 /** Statuses that are final for the user: generate keeps these forms as they are. */
@@ -109,6 +109,18 @@ export async function generateForms(nationalId: string): Promise<GenerateResult>
 
   if (generated.length) notify(nationalId, "forms_ready", { count: generated.length });
   return { generated, keptSigned };
+}
+
+/**
+ * After the legal structure changes, unsigned forms the new structure doesn't need are withdrawn.
+ * Signed, submitted or approved forms are never touched.
+ */
+export function withdrawUnneededForms(nationalId: string): number {
+  const user = demoUser(nationalId);
+  const profile = getProfile(nationalId);
+  if (!user || !profile) return 0;
+  const needed = new Set(templatesFor({ user, profile }).map((t) => t.key));
+  return remove("documents", (d) => d.nationalId === nationalId && d.kind === "generated" && !LOCKED.includes(d.status) && !needed.has(d.docType));
 }
 
 // ---------------------------------------------------------------- sign all

@@ -44,6 +44,18 @@ export function updateProfile(nationalId: string, patch: Partial<Record<Editable
   return next;
 }
 
+/** Sets the legal structure chosen in Saad (server only): it decides which government forms are needed. */
+export function setLegalForm(nationalId: string, legalForm: "home_business" | "sole_proprietorship" | "llc"): BusinessProfile | null {
+  const current = getProfile(nationalId);
+  if (!current) return null;
+  const next = structuredClone(current);
+  next.legalForm = { value: legalForm === "llc" ? "llc" : "sole_proprietorship", source: "typed_by_user" };
+  next.homeBased = { value: legalForm === "home_business", source: "typed_by_user" };
+  if (find("profiles", (p) => p.nationalId === nationalId)) update("profiles", (p) => p.nationalId === nationalId, next);
+  else insert("profiles", next);
+  return next;
+}
+
 // ---------------------------------------------------------------- UserProfile
 // Ameen's AI routes (/api/ai/*) take the shared UserProfile. This builds it
 // from the signed-in user's SANAD data and business info until M4's wizard

@@ -198,6 +198,15 @@ export function update<K extends keyof Db>(
   return n;
 }
 
+/** Removes the rows that match. Returns how many were removed. */
+export function remove<K extends keyof Db>(table: K, where: (r: Db[K][number]) => boolean): number {
+  const db = load();
+  const before = (db[table] as Db[K][number][]).length;
+  (db as unknown as Record<string, unknown>)[table] = (db[table] as Db[K][number][]).filter((r) => !where(r));
+  save(db);
+  return before - (db[table] as Db[K][number][]).length;
+}
+
 /** Wipe everything (used by the demo script for a clean run). */
 export function resetStore() {
   save(structuredClone(EMPTY));

@@ -224,6 +224,23 @@ html[dir="rtl"] .fab-bubble { border-end-end-radius: 14px; border-end-start-radi
 .cp-who { display: inline-block; min-width: 46px; text-align: center; font-size: 11px; font-weight: 700; border-radius: 999px; padding: 2px 8px; margin-inline-end: 6px; }
 .cp-who.ai { background: #e8f0fa; color: var(--blue); }
 .cp-who.you { background: #e8f2ed; color: var(--green); }
+/* Legal structure chooser */
+.cp-rec-box { display: flex; gap: 12px; align-items: flex-start; background: #eef7f2; border: 1px solid #cfe6db; border-radius: 12px; padding: 12px 14px; margin: 6px 0 14px; }
+.cp-rec-box img { width: 44px; height: 44px; border-radius: 50%; flex: none; background: white; }
+.cp-rec-box ul { margin: 4px 0 0; padding-inline-start: 20px; font-size: 14px; }
+.cp-forms { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 10px; }
+.cp-form { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; background: white; }
+.cp-form.recommended { border: 2px solid var(--green); box-shadow: 0 6px 18px #00543f1a; }
+.cp-form.current { background: #f7fbf9; }
+.cp-form.dim { opacity: 0.65; }
+.cp-form h4 { margin: 6px 0 4px; font-size: 16px; }
+.cp-form p { font-size: 13px; margin: 0 0 8px; }
+.cp-form ul { margin: 2px 0 8px; padding-inline-start: 18px; font-size: 13px; }
+.cp-form .toolbar { margin-top: auto; padding-top: 8px; }
+.cp-form-h { font-size: 13px; }
+.cp-form-badges { display: flex; gap: 6px; flex-wrap: wrap; min-height: 26px; }
+.cp-more { margin-top: 14px; }
+.cp-more summary { cursor: pointer; font-weight: 700; color: var(--green); }
 /* Assistant page: past conversations beside the chat */
 .assistant-layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 18px; align-items: start; }
 .chat-history { background: white; border: 1px solid var(--line); border-radius: 14px; padding: 14px; max-height: min(70vh, 720px); overflow-y: auto; }
