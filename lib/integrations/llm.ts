@@ -41,7 +41,8 @@ export interface LlmResult {
 
 type Provider = "mock" | "anthropic" | "ollama";
 // Features the local model handles by default: the chatbot and short Launch Studio drafts.
-const OLLAMA_DEFAULT_TASKS = ["chat", "studio_names", "studio_tone"];
+// "copilot" covers the copilot's brief, plan recommendations and document drafts.
+const OLLAMA_DEFAULT_TASKS = ["chat", "copilot", "studio_names", "studio_tone"];
 
 export function llmConfig() {
   const provider = (process.env.LLM_PROVIDER ?? "mock") as Provider;

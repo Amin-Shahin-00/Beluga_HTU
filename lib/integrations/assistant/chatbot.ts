@@ -125,7 +125,7 @@ export async function clientContext(lang: Lang): Promise<ClientContext | null> {
   }
 }
 
-function describeClient(c: ClientContext | null, lang: Lang): string {
+export function describeClient(c: ClientContext | null, lang: Lang): string {
   if (!c) return "The visitor is not signed in. Answer generally and suggest signing in to get a personal roadmap.";
   const lines = [`Name: ${c.name || "unknown"}`];
   if (c.business) {

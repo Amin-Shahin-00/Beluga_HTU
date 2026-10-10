@@ -39,6 +39,7 @@ Accounts, roadmaps, bookings, applications, expert availability, Launch Studio d
    - `supabase/migrations/202610090001_business_ownership.sql`
    - `supabase/migrations/202610090002_member4_platform.sql`
    - `supabase/migrations/202610100001_parties_studio_services.sql` (roles per party, SANAD identities, experts, versioned drafts, websites, map zones)
+   - `supabase/migrations/202610110001_assistant_chats.sql` (saved assistant conversations)
    - `supabase/seeds/team.sql`
    - `supabase/seeds/accounts.sql` (the demo accounts below; safe to re-run)
 
@@ -104,9 +105,20 @@ Other pages, each with a back bar:
 - `/mock-sanad/login`: the mock SANAD sign-in, clearly labelled as a demo, in Arabic or English. It runs in 3 steps: sign in with national ID and SANAD password, approve exactly what Bedaya receives, then return to Bedaya.
 - Developer benches: `/ai-bench`, `/m5-demo` and `/backend`.
 
+## The AI Copilot (human in the loop)
+
+After signing in, a business owner lands on the **AI Copilot**. It studies their business (profile, SANAD identity, roadmap, documents) and prepares the work in four stages. Nothing counts until the owner approves it:
+
+1. **Understand**: a one-page business brief (legal path, what's needed, cost and time, risks). The owner can approve it, edit it themselves, or ask the AI to change it.
+2. **Plan**: every step with where to go, how (e-sign with SANAD in Bedaya, in person, or at a shop), what to sign, the papers, fees, timing and a tip, plus AI recommendations. Each step is approved or skipped by the owner.
+3. **Documents**: the AI drafts the paperwork it can write (activity description, trade-name options, landlord approval letter, home-business commitments, JFDA product sheet, funding letter). Bedaya fills the official forms, and the owner reviews and approves each one. Approved documents download as branded PDFs.
+4. **Sign & submit**: only after approval does the owner sign with SANAD.
+
+Every AI draft and every human edit or approval is saved as a version and shown in an activity log (`AI` / `You`). The copilot uses the same local model as the chatbot, and offline templates when the model is off.
+
 ## The AI assistant (chatbot)
 
-The **Assistant** page, and the **Ask Bedaya** button on every page, is a chatbot that guides clients through the process in Arabic or English.
+The **Assistant** page, with past conversations saved to the account, and the **Ask Bedaya** character on every other page, is a chatbot that guides clients through the process in Arabic or English.
 
 - **Grounded, not trained.** Each answer is built from Bedaya's official data, retrieved for the question (fees, papers, offices, timings, sources). It also uses the signed-in client's own situation, read on the server: their business, roadmap progress, next step, the papers still needed, total fees and matching funding programmes. The model writes the answer; the facts come from the data. Nothing is fine-tuned, so when a fee changes you update the data and the chatbot follows.
 - **Open-source and local by default.** It runs Qwen 2.5 7B through [Ollama](https://ollama.com) on the laptop's GPU. It's free, needs no API key and no internet, and nothing leaves the machine. Answers stream word by word.

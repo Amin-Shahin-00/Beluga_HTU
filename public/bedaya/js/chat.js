@@ -9,11 +9,44 @@ const PAGES = {
   bank: ["Bank file", "الملف البنكي"], experts: ["Book an expert", "حجز خبير"], appointments: ["Appointments", "المواعيد"], studio: ["Launch Studio", "استوديو الإطلاق"],
   "studio-site": ["Website builder", "منشئ الموقع"], services: ["Business tools", "أدوات الأعمال"], "services-hr": ["HR & payroll", "الموارد البشرية"], invoicing: ["E-invoicing", "الفوترة الإلكترونية"],
 };
-const MAX_TURNS = 16;
+const MAX_TURNS = 40;
 const history = () => read("chat", []);
 const remember = (turns) => save("chat", turns.slice(-MAX_TURNS));
+const currentId = () => read("chatId", null);
+
+/** Saves the conversation to the account (signed-in owners), so it appears in past chats on any device. */
+async function persist(turns) {
+  remember(turns);
+  if (!session.account || !turns.length) return;
+  const id = currentId();
+  const title = (turns.find((m) => m.role === "user")?.content || "").replace(/\s+/g, " ").slice(0, 80);
+  const res = id
+    ? await fetch(`/api/ai/chats/${id}`, { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: turns.slice(-MAX_TURNS) }) })
+    : await fetch("/api/ai/chats", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ title, messages: turns.slice(-MAX_TURNS) }) });
+  if (!id && res.ok) save("chatId", (await res.json()).id);
+  if (id && res.status === 404) (save("chatId", null), persist(turns));
+  window.dispatchEvent(new CustomEvent("bedaya-chats-changed"));
+}
+/** Opens a saved conversation in every chat window. */
+export async function openConversation(id) {
+  const res = await fetch(`/api/ai/chats/${id}`);
+  if (!res.ok) return toast(t("That conversation could not be opened.", "تعذر فتح هذه المحادثة."));
+  const { data } = await res.json();
+  save("chatId", data.id);
+  remember(data.messages || []);
+  window.dispatchEvent(new CustomEvent("bedaya-chat-switch"));
+}
+/** Starts a fresh conversation in every chat window. */
+export function newConversation() {
+  save("chatId", null);
+  remember([]);
+  window.dispatchEvent(new CustomEvent("bedaya-chat-switch"));
+}
 
 /** Safe formatting for model text: escape, then bold, lists, and [[page]] buttons. */
+export function formatRich(raw) {
+  return format(raw);
+}
 function format(raw) {
   const pages = [];
   let text = esc(raw).replace(/\[\[([a-z-]+)\]\]/g, (_, id) => {
@@ -49,7 +82,7 @@ function engineLabel(engine) {
  */
 export function mountChat(root, { compact = false } = {}) {
   root.innerHTML = `<div class="chatbot ${compact ? "compact" : ""}">
-      <div class="chat-head"><div><strong>${t("Bedaya Assistant", "مساعد بداية")}</strong><small id="chat-engine" class="muted"></small></div>
+      <div class="chat-head"><img class="chat-avatar-img" src="/bedaya/mascot-head.png" alt="" width="40" height="40"><div><strong>${t("Bedaya Assistant", "مساعد بداية")}</strong><small id="chat-engine" class="muted"></small></div>
         <button type="button" class="chat-icon" id="chat-reset" title="${t("New conversation", "محادثة جديدة")}" aria-label="${t("New conversation", "محادثة جديدة")}"><i data-lucide="rotate-ccw"></i></button></div>
       <div class="chat-log" id="chat-log" aria-live="polite"></div>
       <div class="chips chat-suggest" id="chat-suggest"></div>
@@ -123,11 +156,11 @@ export function mountChat(root, { compact = false } = {}) {
         }
       }
       render(el, text, meta);
-      remember([...turns, { role: "user", content: question }, { role: "assistant", content: text }]);
+      persist([...turns, { role: "user", content: question }, { role: "assistant", content: text }]);
     } catch (e) {
       if (e.name === "AbortError") {
         render(el, text || t("Stopped.", "تم الإيقاف."));
-        if (text) remember([...turns, { role: "user", content: question }, { role: "assistant", content: text }]);
+        if (text) persist([...turns, { role: "user", content: question }, { role: "assistant", content: text }]);
       } else {
         el.classList.add("failure");
         el.innerHTML = `<div class="msg-body"><p>${esc(e.message || t("Something went wrong.", "حدث خطأ ما."))}</p></div><div class="msg-actions"><button type="button">${t("Try again", "حاول مرة أخرى")}</button></div>`;
@@ -172,10 +205,16 @@ export function mountChat(root, { compact = false } = {}) {
   };
   $("#chat-reset", root).onclick = () => {
     if (controller) controller.abort();
-    remember([]);
-    start();
+    newConversation();
     toast(t("New conversation started.", "بدأت محادثة جديدة."));
   };
+  // Another window (page or floating panel) switched conversation: show the same one here.
+  const onSwitch = () => {
+    if (!root.isConnected) return window.removeEventListener("bedaya-chat-switch", onSwitch);
+    controller?.abort();
+    start();
+  };
+  window.addEventListener("bedaya-chat-switch", onSwitch);
   start();
   window.lucide?.createIcons({ attrs: { width: 18, height: 18 } });
   return { focus: () => input.focus() };
@@ -206,7 +245,7 @@ export function floatingChat(route) {
   fab.className = "chat-fab";
   fab.type = "button";
   fab.setAttribute("aria-label", t("Ask Bedaya Assistant", "اسأل مساعد بداية"));
-  fab.innerHTML = `<i data-lucide="message-circle"></i><span>${t("Ask Bedaya", "اسأل بداية")}</span>`;
+  fab.innerHTML = `<span class="fab-bubble">${t("Ask Bedaya", "اسأل بداية")}</span><img src="/bedaya/mascot.png" alt="" width="84" height="100">`;
   panel = document.createElement("div");
   panel.id = "chat-panel";
   panel.className = "chat-panel";

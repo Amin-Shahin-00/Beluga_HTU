@@ -1,7 +1,7 @@
 // Assistant (M5 AI), notifications (M4 + M5), appointments, business plan, compliance, location (M4),
 // and e-invoicing (M5).
-import { $, $$, api, bpath, confirmDialog, day, download, errorText, esc, go, jod, lang, loadScript, loadStyle, needsAccount, ready, sanadValue, session, t, time, toast, tx } from "./core.js";
-import { mountChat } from "./chat.js";
+import { $, $$, api, bpath, confirmDialog, day, download, errorText, esc, go, jod, lang, loadScript, loadStyle, needsAccount, read, ready, sanadValue, session, t, time, toast, tx } from "./core.js";
+import { mountChat, newConversation, openConversation } from "./chat.js";
 
 // ---------- assistant (feature 8): Bedaya's chatbot, grounded in official data and the client's progress ----------
 export const assistant = {
@@ -9,10 +9,57 @@ export const assistant = {
     return `<div class="eyebrow">${t("Assistant", "المساعد")}</div>
       <h1>${t("Your guide through every step", "دليلك في كل خطوة")}</h1>
       <p class="subtitle">${t("Chat in Arabic or English about fees, papers, offices, funding or your next step. It knows where you are in your roadmap.", "تحدث بالعربية أو الإنجليزية عن الرسوم والأوراق والجهات والتمويل أو خطوتك التالية. يعرف أين وصلت في مسارك.")}</p>
-      <div id="assistant-chat"></div>`;
+      <div class="assistant-layout">
+        <aside class="chat-history" aria-label="${t("Past conversations", "المحادثات السابقة")}">
+          <button class="primary chat-new" id="chat-new"><i data-lucide="plus"></i>${t("New chat", "محادثة جديدة")}</button>
+          <h3>${t("Past conversations", "المحادثات السابقة")}</h3>
+          <div id="chat-history-list" class="chat-history-list"><p class="muted">${t("Loading…", "جارٍ التحميل…")}</p></div>
+        </aside>
+        <div id="assistant-chat"></div>
+      </div>`;
   },
   mount() {
     mountChat($("#assistant-chat")).focus();
+    $("#chat-new").onclick = () => newConversation();
+    const list = $("#chat-history-list");
+    async function refresh() {
+      if (!list.isConnected) return window.removeEventListener("bedaya-chats-changed", refresh), window.removeEventListener("bedaya-chat-switch", refresh);
+      if (!session.account) {
+        list.innerHTML = `<p class="muted">${t("Sign in to keep your conversations.", "سجّل الدخول لحفظ محادثاتك.")}</p>`;
+        return;
+      }
+      const res = await api("/api/ai/chats");
+      if (!res.ok) {
+        list.innerHTML = `<p class="error">${esc(errorText(res))}</p>`;
+        return;
+      }
+      const current = read("chatId", null);
+      const items = res.data.data;
+      list.innerHTML = items.length
+        ? items
+            .map(
+              (c) => `<div class="chat-history-item ${c.id === current ? "active" : ""}">
+                <button class="chat-history-open" data-chat="${esc(c.id)}" dir="auto"><strong>${esc(c.title || t("Conversation", "محادثة"))}</strong><small>${esc(day(c.updated_at))} · ${Math.ceil(c.turns / 2)} ${t("questions", "سؤال")}</small></button>
+                <button class="chat-icon" data-del-chat="${esc(c.id)}" aria-label="${t("Delete conversation", "حذف المحادثة")}" title="${t("Delete", "حذف")}"><i data-lucide="trash-2"></i></button></div>`,
+            )
+            .join("")
+        : `<p class="muted">${t("Your conversations will appear here.", "ستظهر محادثاتك هنا.")}</p>`;
+      list.querySelectorAll("[data-chat]").forEach((b) => (b.onclick = () => openConversation(b.dataset.chat)));
+      list.querySelectorAll("[data-del-chat]").forEach(
+        (b) =>
+          (b.onclick = async () => {
+            const ok = await confirmDialog({ title: t("Delete this conversation?", "حذف هذه المحادثة؟"), confirmLabel: t("Delete", "حذف") });
+            if (!ok.confirmed) return;
+            await api(`/api/ai/chats/${b.dataset.delChat}`, { method: "DELETE" });
+            if (read("chatId", null) === b.dataset.delChat) newConversation();
+            refresh();
+          }),
+      );
+      window.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+    }
+    window.addEventListener("bedaya-chats-changed", refresh);
+    window.addEventListener("bedaya-chat-switch", refresh);
+    refresh();
   },
 };
 // ---------- notifications (feature 11): M4's roadmap/booking messages + M5's form/office messages ----------

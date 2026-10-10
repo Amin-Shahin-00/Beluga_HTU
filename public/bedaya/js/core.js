@@ -197,7 +197,7 @@ export async function loadSession() {
 /** The main page for each kind of account. */
 export function homeRoute() {
   if (!session.account) return "entry";
-  return { owner: session.profile ? "roadmap" : session.identity ? "w1" : "link-sanad", bank: "partner", incubator: "partner", expert: "expert", admin: "admin" }[session.role] || "entry";
+  return { owner: session.profile ? "copilot" : session.identity ? "w1" : "link-sanad", bank: "partner", incubator: "partner", expert: "expert", admin: "admin" }[session.role] || "entry";
 }
 
 /** Loads a script once (Leaflet, pdf-lib). */

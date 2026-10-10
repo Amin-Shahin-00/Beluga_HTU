@@ -102,6 +102,19 @@ async function documentPages(blocks, { title, brand }) {
   return pages;
 }
 const pdfFrom = async (blocks, opts, filename) => downloadBlob(await canvasesToPdf(await documentPages(blocks, opts), 595.28, 841.89), filename);
+/** A branded A4 PDF from copilot text (**headings**, "- " lists, paragraphs). */
+export async function pdfFromText(text, title, filename) {
+  const brand = await activeBrand().catch(() => null);
+  const blocks = [{ text: title, size: 40, weight: 700, gap: 24 }];
+  for (const raw of String(text).split("\n")) {
+    const line = raw.trim();
+    if (!line) continue;
+    const heading = /^\*\*(.+)\*\*$/.exec(line);
+    if (heading) blocks.push({ text: heading[1], size: 30, weight: 700, gap: 10 });
+    else blocks.push({ text: (/^[-•*]\s+/.test(line) ? `•  ${line.replace(/^[-•*]\s+/, "")}` : line).replace(/\*\*/g, ""), size: 26, gap: 8 });
+  }
+  return pdfFrom(blocks, { title, brand }, filename);
+}
 
 // ================================================================ hub
 const CARDS = [

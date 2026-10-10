@@ -8,6 +8,7 @@ import * as staff from "./staff.js";
 import * as tools from "./tools.js";
 import * as studio from "./studio.js";
 import * as services from "./services.js";
+import * as copilotPage from "./copilot.js";
 import { floatingChat } from "./chat.js";
 
 const ROUTES = {
@@ -41,6 +42,7 @@ const ROUTES = {
   invoicing: tools.invoicing,
   ...studio.routes,
   ...services.routes,
+  ...copilotPage.routes,
   partner: staff.partner,
   application: staff.application,
   expert: staff.expert,
@@ -49,7 +51,7 @@ const ROUTES = {
 };
 const ENTRY_LAYOUT = new Set(["entry", "sanad", "consent", "account", "signup", "signup-sanad"]);
 // Business-owner pages. Other parties (bank, incubator, expert, admin) are sent back to their own home.
-const OWNER_ONLY = new Set(["link-sanad", ...Object.keys(onboarding.wizardScreens), "review", "roadmap", "documents", "ocr", "signing", "signed", "incubators", "applied", "bank", "bank-sent", "experts", "expert-book", "appointments", "notifications", "plan", "compliance", "location", ...Object.keys(studio.routes), ...Object.keys(services.routes)]);
+const OWNER_ONLY = new Set(["copilot", "link-sanad", ...Object.keys(onboarding.wizardScreens), "review", "roadmap", "documents", "ocr", "signing", "signed", "incubators", "applied", "bank", "bank-sent", "experts", "expert-book", "appointments", "notifications", "plan", "compliance", "location", ...Object.keys(studio.routes), ...Object.keys(services.routes)]);
 
 // Member 2's navigation and icons, per kind of account.
 const NAV = {
@@ -66,6 +68,7 @@ const NAV = {
 // The owner's pages, combined into a few sections. The menu shows one item per section; inside a
 // section, tabs lead to its pages. `also` lists pages reached from inside a section (no tab of their own).
 const GROUPS = [
+  { id: "copilot", label: ["AI Copilot", "المستشار الذكي"], icon: "bot", tabs: [] },
   { id: "roadmap", label: ["Your roadmap", "مسار مشروعك"], icon: "route", tabs: [["roadmap", ["Steps", "الخطوات"]], ["plan", ["Business plan", "خطة العمل"]], ["location", ["Location", "الموقع"]], ["compliance", ["Compliance", "الالتزامات"]]] },
   { id: "documents", label: ["Documents & signing", "المستندات والتواقيع"], icon: "files", tabs: [["documents", ["Documents", "المستندات"]], ["signing", ["Sign forms", "توقيع النماذج"]]], also: ["ocr", "signed"] },
   { id: "incubators", label: ["Funding & support", "التمويل والدعم"], icon: "sprout", tabs: [["incubators", ["Incubators", "الحاضنات"]], ["funding", ["Funding", "التمويل"]], ["bank", ["Bank file", "الملف البنكي"]], ["applied", ["My applications", "طلباتي"]], ["experts", ["Experts", "الخبراء"]], ["appointments", ["Appointments", "المواعيد"]]], also: ["bank-sent", "expert-book"] },
