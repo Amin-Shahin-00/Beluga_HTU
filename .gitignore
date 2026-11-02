@@ -18,3 +18,22 @@ output/
 **/.idea/
 
 .DS_Store
+
+# Local-only files excluded from publication
+.env
+.env.local
+.env.*.local
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+*.pem
+*.key
+*.pfx
+*.p12
+.venv/
+node_modules/
+__pycache__/
+.openai/
+.sites-runtime/
